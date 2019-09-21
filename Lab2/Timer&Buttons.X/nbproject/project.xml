@@ -4,17 +4,15 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>Timer&amp;Buttons</name>
-            <creation-uuid>13666089-3353-454a-bcd3-49d721772103</creation-uuid>
+            <creation-uuid>2b503976-4738-4c50-b1b7-ac6dad042b7d</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions/>
+            <header-extensions>h</header-extensions>
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
-            <sourceRootList>
-                <sourceRootElem>../../Documents/OISP191/Micro/MPLAP_PIC/Lab2</sourceRootElem>
-            </sourceRootList>
+            <sourceRootList/>
             <confList>
                 <confElem>
                     <name>default</name>

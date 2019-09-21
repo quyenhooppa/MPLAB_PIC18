@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/Applications/microchip/xc8/v2.10/pic/dat/en_msgs.txt -cs \
   -h+dist/default/production/Timer_Buttons.X.production.sym \
   --cmf=dist/default/production/Timer_Buttons.X.production.cmf -z -Q18F8722 \
-  -o/tmp/xcx8H5QQr --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcuZNMi2Y --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Timer_Buttons.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-0F5Fh -pstack=STACK -ACODE=00h-01FFFFh \
   -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcBSaGH1r.o dist/default/production/Timer_Buttons.X.production.o 
+  /tmp/xcjnPUorJ.o dist/default/production/Timer_Buttons.X.production.o 
 
 Object code version is 3.11
 
@@ -38,7 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcBSaGH1r.o
+/tmp/xcjnPUorJ.o
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -476,11 +476,11 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 152 in file "main.c"
+		line 12 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  state           1   10[COMRAM] enum E4566
+  state           1   10[COMRAM] enum E4564
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -508,7 +508,7 @@ Total ram usage:        3 bytes
 
  *************** function _timerInitialize *****************
  Defined at:
-		line 49 in file "main.c"
+		line 8 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -538,7 +538,7 @@ Total ram usage:        0 bytes
 
  *************** function _defineTMR0Register *****************
  Defined at:
-		line 45 in file "main.c"
+		line 3 in file "clock.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -568,7 +568,7 @@ Total ram usage:        2 bytes
 
  *************** function _oscillationInitialize *****************
  Defined at:
-		line 40 in file "main.c"
+		line 3 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -598,7 +598,7 @@ Total ram usage:        0 bytes
 
  *************** function _ledInitialize *****************
  Defined at:
-		line 63 in file "main.c"
+		line 22 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -628,7 +628,7 @@ Total ram usage:        0 bytes
 
  *************** function _buttonInitialize *****************
  Defined at:
-		line 57 in file "main.c"
+		line 16 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -658,7 +658,7 @@ Total ram usage:        0 bytes
 
  *************** function _deviceInterrupt *****************
  Defined at:
-		line 143 in file "main.c"
+		line 7 in file "clock.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -689,7 +689,7 @@ Total ram usage:        0 bytes
 
  *************** function i2_defineTMR0Register *****************
  Defined at:
-		line 45 in file "main.c"
+		line 3 in file "clock.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -718,7 +718,7 @@ Total ram usage:        2 bytes
 
  *************** function _button *****************
  Defined at:
-		line 96 in file "main.c"
+		line 31 in file "button.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -750,7 +750,7 @@ Total ram usage:        4 bytes
 
  *************** function _readIButton *****************
  Defined at:
-		line 68 in file "main.c"
+		line 3 in file "button.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -779,7 +779,7 @@ Total ram usage:        2 bytes
 
  *************** function _readDButton *****************
  Defined at:
-		line 82 in file "main.c"
+		line 17 in file "button.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -810,6 +810,19 @@ Total ram usage:        2 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
+button.c
+		_readIButton   		CODE           	049A	0000	81
+		_readDButton   		CODE           	04EA	0000	81
+		_button        		CODE           	02D4	0000	455
+
+button.c estimated size: 617
+
+clock.c
+		_deviceInterrupt		CODE           	0008	0000	41
+		_defineTMR0Register		CODE           	05A4	0000	11
+
+clock.c estimated size: 52
+
 shared
 		__initialization		CODE           	053A	0000	45
 		i2_defineTMR0Register		CODE           	05CC	0000	11
@@ -817,16 +830,15 @@ shared
 shared estimated size: 56
 
 main.c
-		_readIButton   		CODE           	049A	0000	81
-		_deviceInterrupt		CODE           	0008	0000	41
-		_readDButton   		CODE           	04EA	0000	81
 		_main          		CODE           	0012	0000	707
+
+main.c estimated size: 707
+
+system.c
 		_oscillationInitialize		CODE           	05AE	0000	11
-		_button        		CODE           	02D4	0000	455
 		_buttonInitialize		CODE           	05C2	0000	11
 		_timerInitialize		CODE           	0592	0000	19
-		_defineTMR0Register		CODE           	05A4	0000	11
 		_ledInitialize 		CODE           	05B8	0000	11
 
-main.c estimated size: 1428
+system.c estimated size: 52
 

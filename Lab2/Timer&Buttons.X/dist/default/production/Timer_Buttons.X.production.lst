@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Mon Sep 16 10:49:40 2019
+                                                                                               Sat Sep 21 08:53:50 2019
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F8722
@@ -89,16 +89,16 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     75  0005D9  01                 	db	1
     76  0000                     _PORTBbits	set	3969
     77  0000                     _PORTAbits	set	3968
-    78  0000                     _LATD	set	3980
-    79  0000                     _TRISD	set	3989
-    80  0000                     _ADCON1	set	4033
-    81  0000                     _TRISBbits	set	3987
-    82  0000                     _TRISAbits	set	3986
-    83  0000                     _TMR0L	set	4054
-    84  0000                     _T0CON	set	4053
-    85  0000                     _INTCONbits	set	4082
-    86  0000                     _OSCTUNE	set	3995
-    87  0000                     _OSCCON	set	4051
+    78  0000                     _TRISD	set	3989
+    79  0000                     _ADCON1	set	4033
+    80  0000                     _TRISBbits	set	3987
+    81  0000                     _TRISAbits	set	3986
+    82  0000                     _TMR0L	set	4054
+    83  0000                     _T0CON	set	4053
+    84  0000                     _INTCONbits	set	4082
+    85  0000                     _OSCTUNE	set	3995
+    86  0000                     _OSCCON	set	4051
+    87  0000                     _LATD	set	3980
     88                           
     89                           ; #config settings
     90  0000                     
@@ -223,11 +223,11 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    209 ;;
    210 ;; *************** function _main *****************
    211 ;; Defined at:
-   212 ;;		line 152 in file "main.c"
+   212 ;;		line 12 in file "main.c"
    213 ;; Parameters:    Size  Location     Type
    214 ;;		None
    215 ;; Auto vars:     Size  Location     Type
-   216 ;;  state           1   10[COMRAM] enum E4566
+   216 ;;  state           1   10[COMRAM] enum E4564
    217 ;; Return value:  Size  Location     Type
    218 ;;                  1    wreg      void 
    219 ;; Registers used:
@@ -264,392 +264,392 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    245  000012                     _main:
    246                           	opt callstack 26
    247  000012                     
-   248                           ;main.c: 153:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;;
-      +                          main.c: 154:     oscillationInitialize();
+   248                           ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;;m
+      +                          ain.c: 14:     oscillationInitialize();
    249  000012  ECD7  F002         	call	_oscillationInitialize	;wreg free
    250                           
-   251                           ;main.c: 155:     timerInitialize();
+   251                           ;main.c: 15:     timerInitialize();
    252  000016  ECC9  F002         	call	_timerInitialize	;wreg free
    253                           
-   254                           ;main.c: 156:     buttonInitialize();
+   254                           ;main.c: 16:     buttonInitialize();
    255  00001A  ECE1  F002         	call	_buttonInitialize	;wreg free
    256                           
-   257                           ;main.c: 157:     ledInitialize();
+   257                           ;main.c: 17:     ledInitialize();
    258  00001E  ECDC  F002         	call	_ledInitialize	;wreg free
    259  000022                     
-   260                           ;main.c: 158:     state = init;
+   260                           ;main.c: 18:     state = init;
    261  000022  0E00               	movlw	0
    262  000024  6E17               	movwf	main@state^0,c
-   263  000026  EF3F  F001         	goto	l1241
-   264  00002A                     l1153:
+   263  000026  EF3F  F001         	goto	l1311
+   264  00002A                     l1223:
    265                           
-   266                           ;main.c: 162:                 countFast = 0;
+   266                           ;main.c: 22:                 countFast = 0;
    267  00002A  0E00               	movlw	0
    268  00002C  6E06               	movwf	(_countFast+1)^0,c
    269  00002E  0E00               	movlw	0
    270  000030  6E05               	movwf	_countFast^0,c
    271                           
-   272                           ;main.c: 163:                 countSlow = 0;
+   272                           ;main.c: 23:                 countSlow = 0;
    273  000032  0E00               	movlw	0
    274  000034  6E08               	movwf	(_countSlow+1)^0,c
    275  000036  0E00               	movlw	0
    276  000038  6E07               	movwf	_countSlow^0,c
    277  00003A                     
-   278                           ;main.c: 164:                 if (iCount > 0) {
+   278                           ;main.c: 24:                 if (iCount > 0) {
    279  00003A  BE0C               	btfsc	(_iCount+1)^0,7,c
-   280  00003C  EF28  F000         	goto	u551
+   280  00003C  EF28  F000         	goto	u541
    281  000040  500C               	movf	(_iCount+1)^0,w,c
-   282  000042  E108               	bnz	u550
+   282  000042  E108               	bnz	u540
    283  000044  040B               	decf	_iCount^0,w,c
    284  000046  A0D8               	btfss	status,0,c
-   285  000048  EF28  F000         	goto	u551
-   286  00004C  EF2A  F000         	goto	u550
-   287  000050                     u551:
-   288  000050  EF2F  F000         	goto	l1161
-   289  000054                     u550:
+   285  000048  EF28  F000         	goto	u541
+   286  00004C  EF2A  F000         	goto	u540
+   287  000050                     u541:
+   288  000050  EF2F  F000         	goto	l1231
+   289  000054                     u540:
    290  000054                     
-   291                           ;main.c: 165:                     LATD++;
+   291                           ;main.c: 25:                     LATD++;
    292  000054  2A8C               	incf	140,f,c	;volatile
    293  000056                     
-   294                           ;main.c: 166:                     state = iNormal;
+   294                           ;main.c: 26:                     state = iNormal;
    295  000056  0E01               	movlw	1
    296  000058  6E17               	movwf	main@state^0,c
    297                           
-   298                           ;main.c: 167:                 }
-   299  00005A  EF3F  F001         	goto	l1241
-   300  00005E                     l1161:
+   298                           ;main.c: 27:                 }
+   299  00005A  EF3F  F001         	goto	l1311
+   300  00005E                     l1231:
    301  00005E  500B               	movf	_iCount^0,w,c
    302  000060  100C               	iorwf	(_iCount+1)^0,w,c
    303  000062  A4D8               	btfss	status,2,c
-   304  000064  EF36  F000         	goto	u561
-   305  000068  EF38  F000         	goto	u560
-   306  00006C                     u561:
-   307  00006C  EF3F  F001         	goto	l101
-   308  000070                     u560:
+   304  000064  EF36  F000         	goto	u551
+   305  000068  EF38  F000         	goto	u550
+   306  00006C                     u551:
+   307  00006C  EF3F  F001         	goto	l36
+   308  000070                     u550:
    309  000070  BE0A               	btfsc	(_dCount+1)^0,7,c
-   310  000072  EF43  F000         	goto	u571
+   310  000072  EF43  F000         	goto	u561
    311  000076  500A               	movf	(_dCount+1)^0,w,c
-   312  000078  E108               	bnz	u570
+   312  000078  E108               	bnz	u560
    313  00007A  0409               	decf	_dCount^0,w,c
    314  00007C  A0D8               	btfss	status,0,c
-   315  00007E  EF43  F000         	goto	u571
-   316  000082  EF45  F000         	goto	u570
-   317  000086                     u571:
-   318  000086  EF3F  F001         	goto	l101
-   319  00008A                     u570:
+   315  00007E  EF43  F000         	goto	u561
+   316  000082  EF45  F000         	goto	u560
+   317  000086                     u561:
+   318  000086  EF3F  F001         	goto	l36
+   319  00008A                     u560:
    320  00008A                     
-   321                           ;main.c: 169:                     LATD--;
+   321                           ;main.c: 29:                     LATD--;
    322  00008A  068C               	decf	140,f,c	;volatile
    323  00008C                     
-   324                           ;main.c: 170:                     state = dNormal;
+   324                           ;main.c: 30:                     state = dNormal;
    325  00008C  0E04               	movlw	4
    326  00008E  6E17               	movwf	main@state^0,c
-   327  000090  EF3F  F001         	goto	l1241
-   328  000094                     l1169:
+   327  000090  EF3F  F001         	goto	l1311
+   328  000094                     l1239:
    329                           
-   330                           ;main.c: 174:                 if (iCount == 0) {
+   330                           ;main.c: 34:                 if (iCount == 0) {
    331  000094  500B               	movf	_iCount^0,w,c
    332  000096  100C               	iorwf	(_iCount+1)^0,w,c
    333  000098  A4D8               	btfss	status,2,c
-   334  00009A  EF51  F000         	goto	u581
-   335  00009E  EF53  F000         	goto	u580
-   336  0000A2                     u581:
-   337  0000A2  EF55  F000         	goto	l1173
-   338  0000A6                     u580:
+   334  00009A  EF51  F000         	goto	u571
+   335  00009E  EF53  F000         	goto	u570
+   336  0000A2                     u571:
+   337  0000A2  EF55  F000         	goto	l1243
+   338  0000A6                     u570:
    339  0000A6                     
-   340                           ;main.c: 175:                     state = init;
+   340                           ;main.c: 35:                     state = init;
    341  0000A6  0E00               	movlw	0
    342  0000A8  6E17               	movwf	main@state^0,c
-   343  0000AA                     l1173:
+   343  0000AA                     l1243:
    344                           
-   345                           ;main.c: 177:                 if (countSlow > 0) {
+   345                           ;main.c: 37:                 if (countSlow > 0) {
    346  0000AA  BE08               	btfsc	(_countSlow+1)^0,7,c
-   347  0000AC  EF60  F000         	goto	u591
+   347  0000AC  EF60  F000         	goto	u581
    348  0000B0  5008               	movf	(_countSlow+1)^0,w,c
-   349  0000B2  E108               	bnz	u590
+   349  0000B2  E108               	bnz	u580
    350  0000B4  0407               	decf	_countSlow^0,w,c
    351  0000B6  A0D8               	btfss	status,0,c
-   352  0000B8  EF60  F000         	goto	u591
-   353  0000BC  EF62  F000         	goto	u590
-   354  0000C0                     u591:
-   355  0000C0  EF3F  F001         	goto	l101
-   356  0000C4                     u590:
+   352  0000B8  EF60  F000         	goto	u581
+   353  0000BC  EF62  F000         	goto	u580
+   354  0000C0                     u581:
+   355  0000C0  EF3F  F001         	goto	l36
+   356  0000C4                     u580:
    357  0000C4                     
-   358                           ;main.c: 178:                     changeSlow = 1;
+   358                           ;main.c: 38:                     changeSlow = 1;
    359  0000C4  0E00               	movlw	0
    360  0000C6  6E04               	movwf	(_changeSlow+1)^0,c
    361  0000C8  0E01               	movlw	1
    362  0000CA  6E03               	movwf	_changeSlow^0,c
    363                           
-   364                           ;main.c: 179:                     state = iSlow;
+   364                           ;main.c: 39:                     state = iSlow;
    365  0000CC  0E03               	movlw	3
    366  0000CE  6E17               	movwf	main@state^0,c
-   367  0000D0  EF3F  F001         	goto	l1241
-   368  0000D4                     l1177:
+   367  0000D0  EF3F  F001         	goto	l1311
+   368  0000D4                     l1247:
    369                           
-   370                           ;main.c: 183:                 if (iCount == 0) {
+   370                           ;main.c: 43:                 if (iCount == 0) {
    371  0000D4  500B               	movf	_iCount^0,w,c
    372  0000D6  100C               	iorwf	(_iCount+1)^0,w,c
    373  0000D8  A4D8               	btfss	status,2,c
-   374  0000DA  EF71  F000         	goto	u601
-   375  0000DE  EF73  F000         	goto	u600
-   376  0000E2                     u601:
-   377  0000E2  EF75  F000         	goto	l1181
-   378  0000E6                     u600:
+   374  0000DA  EF71  F000         	goto	u591
+   375  0000DE  EF73  F000         	goto	u590
+   376  0000E2                     u591:
+   377  0000E2  EF75  F000         	goto	l1251
+   378  0000E6                     u590:
    379  0000E6                     
-   380                           ;main.c: 184:                     state = init;
+   380                           ;main.c: 44:                     state = init;
    381  0000E6  0E00               	movlw	0
    382  0000E8  6E17               	movwf	main@state^0,c
-   383  0000EA                     l1181:
+   383  0000EA                     l1251:
    384                           
-   385                           ;main.c: 186:                 if (changeSlow == 1) {
+   385                           ;main.c: 46:                 if (changeSlow == 1) {
    386  0000EA  0403               	decf	_changeSlow^0,w,c
    387  0000EC  1004               	iorwf	(_changeSlow+1)^0,w,c
    388  0000EE  A4D8               	btfss	status,2,c
-   389  0000F0  EF7C  F000         	goto	u611
-   390  0000F4  EF7E  F000         	goto	u610
-   391  0000F8                     u611:
-   392  0000F8  EF83  F000         	goto	l1187
-   393  0000FC                     u610:
+   389  0000F0  EF7C  F000         	goto	u601
+   390  0000F4  EF7E  F000         	goto	u600
+   391  0000F8                     u601:
+   392  0000F8  EF83  F000         	goto	l1257
+   393  0000FC                     u600:
    394  0000FC                     
-   395                           ;main.c: 187:                     LATD++;
+   395                           ;main.c: 47:                     LATD++;
    396  0000FC  2A8C               	incf	140,f,c	;volatile
    397  0000FE                     
-   398                           ;main.c: 188:                     changeSlow = 0;
+   398                           ;main.c: 48:                     changeSlow = 0;
    399  0000FE  0E00               	movlw	0
    400  000100  6E04               	movwf	(_changeSlow+1)^0,c
    401  000102  0E00               	movlw	0
    402  000104  6E03               	movwf	_changeSlow^0,c
-   403  000106                     l1187:
+   403  000106                     l1257:
    404                           
-   405                           ;main.c: 190:                 if (countFast > 0) {
+   405                           ;main.c: 50:                 if (countFast > 0) {
    406  000106  BE06               	btfsc	(_countFast+1)^0,7,c
-   407  000108  EF8E  F000         	goto	u621
+   407  000108  EF8E  F000         	goto	u611
    408  00010C  5006               	movf	(_countFast+1)^0,w,c
-   409  00010E  E108               	bnz	u620
+   409  00010E  E108               	bnz	u610
    410  000110  0405               	decf	_countFast^0,w,c
    411  000112  A0D8               	btfss	status,0,c
-   412  000114  EF8E  F000         	goto	u621
-   413  000118  EF90  F000         	goto	u620
-   414  00011C                     u621:
-   415  00011C  EF3F  F001         	goto	l101
-   416  000120                     u620:
+   412  000114  EF8E  F000         	goto	u611
+   413  000118  EF90  F000         	goto	u610
+   414  00011C                     u611:
+   415  00011C  EF3F  F001         	goto	l36
+   416  000120                     u610:
    417  000120                     
-   418                           ;main.c: 191:                     changeFast = 1;
+   418                           ;main.c: 51:                     changeFast = 1;
    419  000120  0E00               	movlw	0
    420  000122  6E02               	movwf	(_changeFast+1)^0,c
    421  000124  0E01               	movlw	1
    422  000126  6E01               	movwf	_changeFast^0,c
    423                           
-   424                           ;main.c: 192:                     state = iFast;
+   424                           ;main.c: 52:                     state = iFast;
    425  000128  0E02               	movlw	2
    426  00012A  6E17               	movwf	main@state^0,c
-   427  00012C  EF3F  F001         	goto	l1241
-   428  000130                     l1191:
+   427  00012C  EF3F  F001         	goto	l1311
+   428  000130                     l1261:
    429                           
-   430                           ;main.c: 196:                 if (iCount == 0) {
+   430                           ;main.c: 56:                 if (iCount == 0) {
    431  000130  500B               	movf	_iCount^0,w,c
    432  000132  100C               	iorwf	(_iCount+1)^0,w,c
    433  000134  A4D8               	btfss	status,2,c
-   434  000136  EF9F  F000         	goto	u631
-   435  00013A  EFA1  F000         	goto	u630
-   436  00013E                     u631:
-   437  00013E  EFA3  F000         	goto	l1195
-   438  000142                     u630:
+   434  000136  EF9F  F000         	goto	u621
+   435  00013A  EFA1  F000         	goto	u620
+   436  00013E                     u621:
+   437  00013E  EFA3  F000         	goto	l1265
+   438  000142                     u620:
    439  000142                     
-   440                           ;main.c: 197:                     state = init;
+   440                           ;main.c: 57:                     state = init;
    441  000142  0E00               	movlw	0
    442  000144  6E17               	movwf	main@state^0,c
-   443  000146                     l1195:
+   443  000146                     l1265:
    444                           
-   445                           ;main.c: 199:                 if (changeFast == 1) {
+   445                           ;main.c: 59:                 if (changeFast == 1) {
    446  000146  0401               	decf	_changeFast^0,w,c
    447  000148  1002               	iorwf	(_changeFast+1)^0,w,c
    448  00014A  A4D8               	btfss	status,2,c
-   449  00014C  EFAA  F000         	goto	u641
-   450  000150  EFAC  F000         	goto	u640
-   451  000154                     u641:
-   452  000154  EF3F  F001         	goto	l101
-   453  000158                     u640:
+   449  00014C  EFAA  F000         	goto	u631
+   450  000150  EFAC  F000         	goto	u630
+   451  000154                     u631:
+   452  000154  EF3F  F001         	goto	l36
+   453  000158                     u630:
    454  000158                     
-   455                           ;main.c: 200:                     LATD++;
+   455                           ;main.c: 60:                     LATD++;
    456  000158  2A8C               	incf	140,f,c	;volatile
-   457  00015A                     l1199:
+   457  00015A                     l1269:
    458                           
-   459                           ;main.c: 201:                     changeFast = 0;
+   459                           ;main.c: 61:                     changeFast = 0;
    460  00015A  0E00               	movlw	0
    461  00015C  6E02               	movwf	(_changeFast+1)^0,c
    462  00015E  0E00               	movlw	0
    463  000160  6E01               	movwf	_changeFast^0,c
-   464  000162  EF3F  F001         	goto	l1241
-   465  000166                     l1201:
+   464  000162  EF3F  F001         	goto	l1311
+   465  000166                     l1271:
    466                           
-   467                           ;main.c: 205:                 if (dCount == 0 || iCount > 0) {
+   467                           ;main.c: 65:                 if (dCount == 0 || iCount > 0) {
    468  000166  5009               	movf	_dCount^0,w,c
    469  000168  100A               	iorwf	(_dCount+1)^0,w,c
    470  00016A  B4D8               	btfsc	status,2,c
-   471  00016C  EFBA  F000         	goto	u651
-   472  000170  EFBC  F000         	goto	u650
-   473  000174                     u651:
-   474  000174  EFC9  F000         	goto	l1205
-   475  000178                     u650:
+   471  00016C  EFBA  F000         	goto	u641
+   472  000170  EFBC  F000         	goto	u640
+   473  000174                     u641:
+   474  000174  EFC9  F000         	goto	l1275
+   475  000178                     u640:
    476  000178  BE0C               	btfsc	(_iCount+1)^0,7,c
-   477  00017A  EFC7  F000         	goto	u661
+   477  00017A  EFC7  F000         	goto	u651
    478  00017E  500C               	movf	(_iCount+1)^0,w,c
-   479  000180  E108               	bnz	u660
+   479  000180  E108               	bnz	u650
    480  000182  040B               	decf	_iCount^0,w,c
    481  000184  A0D8               	btfss	status,0,c
-   482  000186  EFC7  F000         	goto	u661
-   483  00018A  EFC9  F000         	goto	u660
-   484  00018E                     u661:
-   485  00018E  EFCB  F000         	goto	l1207
-   486  000192                     u660:
-   487  000192                     l1205:
+   482  000186  EFC7  F000         	goto	u651
+   483  00018A  EFC9  F000         	goto	u650
+   484  00018E                     u651:
+   485  00018E  EFCB  F000         	goto	l1277
+   486  000192                     u650:
+   487  000192                     l1275:
    488                           
-   489                           ;main.c: 206:                     state = init;
+   489                           ;main.c: 66:                     state = init;
    490  000192  0E00               	movlw	0
    491  000194  6E17               	movwf	main@state^0,c
-   492  000196                     l1207:
+   492  000196                     l1277:
    493                           
-   494                           ;main.c: 208:                 if (countSlow > 0) {
+   494                           ;main.c: 68:                 if (countSlow > 0) {
    495  000196  BE08               	btfsc	(_countSlow+1)^0,7,c
-   496  000198  EFD6  F000         	goto	u671
+   496  000198  EFD6  F000         	goto	u661
    497  00019C  5008               	movf	(_countSlow+1)^0,w,c
-   498  00019E  E108               	bnz	u670
+   498  00019E  E108               	bnz	u660
    499  0001A0  0407               	decf	_countSlow^0,w,c
    500  0001A2  A0D8               	btfss	status,0,c
-   501  0001A4  EFD6  F000         	goto	u671
-   502  0001A8  EFD8  F000         	goto	u670
-   503  0001AC                     u671:
-   504  0001AC  EF3F  F001         	goto	l101
-   505  0001B0                     u670:
+   501  0001A4  EFD6  F000         	goto	u661
+   502  0001A8  EFD8  F000         	goto	u660
+   503  0001AC                     u661:
+   504  0001AC  EF3F  F001         	goto	l36
+   505  0001B0                     u660:
    506  0001B0                     
-   507                           ;main.c: 209:                     changeSlow = 1;
+   507                           ;main.c: 69:                     changeSlow = 1;
    508  0001B0  0E00               	movlw	0
    509  0001B2  6E04               	movwf	(_changeSlow+1)^0,c
    510  0001B4  0E01               	movlw	1
    511  0001B6  6E03               	movwf	_changeSlow^0,c
    512                           
-   513                           ;main.c: 210:                     state = dSlow;
+   513                           ;main.c: 70:                     state = dSlow;
    514  0001B8  0E06               	movlw	6
    515  0001BA  6E17               	movwf	main@state^0,c
-   516  0001BC  EF3F  F001         	goto	l1241
-   517  0001C0                     l1211:
+   516  0001BC  EF3F  F001         	goto	l1311
+   517  0001C0                     l1281:
    518                           
-   519                           ;main.c: 214:                 if (dCount == 0 || iCount > 0) {
+   519                           ;main.c: 74:                 if (dCount == 0 || iCount > 0) {
    520  0001C0  5009               	movf	_dCount^0,w,c
    521  0001C2  100A               	iorwf	(_dCount+1)^0,w,c
    522  0001C4  B4D8               	btfsc	status,2,c
-   523  0001C6  EFE7  F000         	goto	u681
-   524  0001CA  EFE9  F000         	goto	u680
-   525  0001CE                     u681:
-   526  0001CE  EFF6  F000         	goto	l1215
-   527  0001D2                     u680:
+   523  0001C6  EFE7  F000         	goto	u671
+   524  0001CA  EFE9  F000         	goto	u670
+   525  0001CE                     u671:
+   526  0001CE  EFF6  F000         	goto	l1285
+   527  0001D2                     u670:
    528  0001D2  BE0C               	btfsc	(_iCount+1)^0,7,c
-   529  0001D4  EFF4  F000         	goto	u691
+   529  0001D4  EFF4  F000         	goto	u681
    530  0001D8  500C               	movf	(_iCount+1)^0,w,c
-   531  0001DA  E108               	bnz	u690
+   531  0001DA  E108               	bnz	u680
    532  0001DC  040B               	decf	_iCount^0,w,c
    533  0001DE  A0D8               	btfss	status,0,c
-   534  0001E0  EFF4  F000         	goto	u691
-   535  0001E4  EFF6  F000         	goto	u690
-   536  0001E8                     u691:
-   537  0001E8  EFF8  F000         	goto	l1217
-   538  0001EC                     u690:
-   539  0001EC                     l1215:
+   534  0001E0  EFF4  F000         	goto	u681
+   535  0001E4  EFF6  F000         	goto	u680
+   536  0001E8                     u681:
+   537  0001E8  EFF8  F000         	goto	l1287
+   538  0001EC                     u680:
+   539  0001EC                     l1285:
    540                           
-   541                           ;main.c: 215:                     state = init;
+   541                           ;main.c: 75:                     state = init;
    542  0001EC  0E00               	movlw	0
    543  0001EE  6E17               	movwf	main@state^0,c
-   544  0001F0                     l1217:
+   544  0001F0                     l1287:
    545                           
-   546                           ;main.c: 217:                 if (changeSlow == 1) {
+   546                           ;main.c: 77:                 if (changeSlow == 1) {
    547  0001F0  0403               	decf	_changeSlow^0,w,c
    548  0001F2  1004               	iorwf	(_changeSlow+1)^0,w,c
    549  0001F4  A4D8               	btfss	status,2,c
-   550  0001F6  EFFF  F000         	goto	u701
-   551  0001FA  EF01  F001         	goto	u700
-   552  0001FE                     u701:
-   553  0001FE  EF06  F001         	goto	l1223
-   554  000202                     u700:
+   550  0001F6  EFFF  F000         	goto	u691
+   551  0001FA  EF01  F001         	goto	u690
+   552  0001FE                     u691:
+   553  0001FE  EF06  F001         	goto	l1293
+   554  000202                     u690:
    555  000202                     
-   556                           ;main.c: 218:                     LATD--;
+   556                           ;main.c: 78:                     LATD--;
    557  000202  068C               	decf	140,f,c	;volatile
    558  000204                     
-   559                           ;main.c: 219:                     changeSlow = 0;
+   559                           ;main.c: 79:                     changeSlow = 0;
    560  000204  0E00               	movlw	0
    561  000206  6E04               	movwf	(_changeSlow+1)^0,c
    562  000208  0E00               	movlw	0
    563  00020A  6E03               	movwf	_changeSlow^0,c
-   564  00020C                     l1223:
+   564  00020C                     l1293:
    565                           
-   566                           ;main.c: 221:                 if (countFast > 0) {
+   566                           ;main.c: 81:                 if (countFast > 0) {
    567  00020C  BE06               	btfsc	(_countFast+1)^0,7,c
-   568  00020E  EF11  F001         	goto	u711
+   568  00020E  EF11  F001         	goto	u701
    569  000212  5006               	movf	(_countFast+1)^0,w,c
-   570  000214  E108               	bnz	u710
+   570  000214  E108               	bnz	u700
    571  000216  0405               	decf	_countFast^0,w,c
    572  000218  A0D8               	btfss	status,0,c
-   573  00021A  EF11  F001         	goto	u711
-   574  00021E  EF13  F001         	goto	u710
-   575  000222                     u711:
-   576  000222  EF3F  F001         	goto	l101
-   577  000226                     u710:
+   573  00021A  EF11  F001         	goto	u701
+   574  00021E  EF13  F001         	goto	u700
+   575  000222                     u701:
+   576  000222  EF3F  F001         	goto	l36
+   577  000226                     u700:
    578  000226                     
-   579                           ;main.c: 222:                     changeFast = 1;
+   579                           ;main.c: 82:                     changeFast = 1;
    580  000226  0E00               	movlw	0
    581  000228  6E02               	movwf	(_changeFast+1)^0,c
    582  00022A  0E01               	movlw	1
    583  00022C  6E01               	movwf	_changeFast^0,c
    584                           
-   585                           ;main.c: 223:                     state = dFast;
+   585                           ;main.c: 83:                     state = dFast;
    586  00022E  0E05               	movlw	5
    587  000230  6E17               	movwf	main@state^0,c
-   588  000232  EF3F  F001         	goto	l1241
-   589  000236                     l1227:
+   588  000232  EF3F  F001         	goto	l1311
+   589  000236                     l1297:
    590                           
-   591                           ;main.c: 227:                 if (dCount == 0 || iCount > 0) {
+   591                           ;main.c: 87:                 if (dCount == 0 || iCount > 0) {
    592  000236  5009               	movf	_dCount^0,w,c
    593  000238  100A               	iorwf	(_dCount+1)^0,w,c
    594  00023A  B4D8               	btfsc	status,2,c
-   595  00023C  EF22  F001         	goto	u721
-   596  000240  EF24  F001         	goto	u720
-   597  000244                     u721:
-   598  000244  EF31  F001         	goto	l1231
-   599  000248                     u720:
+   595  00023C  EF22  F001         	goto	u711
+   596  000240  EF24  F001         	goto	u710
+   597  000244                     u711:
+   598  000244  EF31  F001         	goto	l1301
+   599  000248                     u710:
    600  000248  BE0C               	btfsc	(_iCount+1)^0,7,c
-   601  00024A  EF2F  F001         	goto	u731
+   601  00024A  EF2F  F001         	goto	u721
    602  00024E  500C               	movf	(_iCount+1)^0,w,c
-   603  000250  E108               	bnz	u730
+   603  000250  E108               	bnz	u720
    604  000252  040B               	decf	_iCount^0,w,c
    605  000254  A0D8               	btfss	status,0,c
-   606  000256  EF2F  F001         	goto	u731
-   607  00025A  EF31  F001         	goto	u730
-   608  00025E                     u731:
-   609  00025E  EF33  F001         	goto	l1233
-   610  000262                     u730:
-   611  000262                     l1231:
+   606  000256  EF2F  F001         	goto	u721
+   607  00025A  EF31  F001         	goto	u720
+   608  00025E                     u721:
+   609  00025E  EF33  F001         	goto	l1303
+   610  000262                     u720:
+   611  000262                     l1301:
    612                           
-   613                           ;main.c: 228:                     state = init;
+   613                           ;main.c: 88:                     state = init;
    614  000262  0E00               	movlw	0
    615  000264  6E17               	movwf	main@state^0,c
-   616  000266                     l1233:
+   616  000266                     l1303:
    617                           
-   618                           ;main.c: 230:                 if (changeFast == 1) {
+   618                           ;main.c: 90:                 if (changeFast == 1) {
    619  000266  0401               	decf	_changeFast^0,w,c
    620  000268  1002               	iorwf	(_changeFast+1)^0,w,c
    621  00026A  A4D8               	btfss	status,2,c
-   622  00026C  EF3A  F001         	goto	u741
-   623  000270  EF3C  F001         	goto	u740
-   624  000274                     u741:
-   625  000274  EF3F  F001         	goto	l101
-   626  000278                     u740:
+   622  00026C  EF3A  F001         	goto	u731
+   623  000270  EF3C  F001         	goto	u730
+   624  000274                     u731:
+   625  000274  EF3F  F001         	goto	l36
+   626  000278                     u730:
    627  000278                     
-   628                           ;main.c: 231:                     LATD--;
+   628                           ;main.c: 91:                     LATD--;
    629  000278  068C               	decf	140,f,c	;volatile
-   630  00027A  EFAD  F000         	goto	l1199
-   631  00027E                     l101:
-   632  00027E                     l1241:
+   630  00027A  EFAD  F000         	goto	l1269
+   631  00027E                     l36:
+   632  00027E                     l1311:
    633  00027E  5017               	movf	main@state^0,w,c
    634  000280  6E15               	movwf	??_main^0,c
    635  000282  6A16               	clrf	(??_main+1)^0,c
@@ -665,9 +665,9 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    644  000284  5016               	movf	(??_main+1)^0,w,c
    645  000286  0A00               	xorlw	0	; case 0
    646  000288  B4D8               	btfsc	status,2,c
-   647  00028A  EF49  F001         	goto	l1251
-   648  00028E  EF3F  F001         	goto	l1241
-   649  000292                     l1251:
+   647  00028A  EF49  F001         	goto	l1329
+   648  00028E  EF3F  F001         	goto	l1311
+   649  000292                     l1329:
    650                           
    651                           ; Switch size 1, requested type "simple"
    652                           ; Number of cases is 7, Range of values is 0 to 6
@@ -678,33 +678,33 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    657  000292  5015               	movf	??_main^0,w,c
    658  000294  0A00               	xorlw	0	; case 0
    659  000296  B4D8               	btfsc	status,2,c
-   660  000298  EF15  F000         	goto	l1153
+   660  000298  EF15  F000         	goto	l1223
    661  00029C  0A01               	xorlw	1	; case 1
    662  00029E  B4D8               	btfsc	status,2,c
-   663  0002A0  EF4A  F000         	goto	l1169
+   663  0002A0  EF4A  F000         	goto	l1239
    664  0002A4  0A03               	xorlw	3	; case 2
    665  0002A6  B4D8               	btfsc	status,2,c
-   666  0002A8  EF98  F000         	goto	l1191
+   666  0002A8  EF98  F000         	goto	l1261
    667  0002AC  0A01               	xorlw	1	; case 3
    668  0002AE  B4D8               	btfsc	status,2,c
-   669  0002B0  EF6A  F000         	goto	l1177
+   669  0002B0  EF6A  F000         	goto	l1247
    670  0002B4  0A07               	xorlw	7	; case 4
    671  0002B6  B4D8               	btfsc	status,2,c
-   672  0002B8  EFB3  F000         	goto	l1201
+   672  0002B8  EFB3  F000         	goto	l1271
    673  0002BC  0A01               	xorlw	1	; case 5
    674  0002BE  B4D8               	btfsc	status,2,c
-   675  0002C0  EF1B  F001         	goto	l1227
+   675  0002C0  EF1B  F001         	goto	l1297
    676  0002C4  0A03               	xorlw	3	; case 6
    677  0002C6  B4D8               	btfsc	status,2,c
-   678  0002C8  EFE0  F000         	goto	l1211
-   679  0002CC  EF3F  F001         	goto	l1241
+   678  0002C8  EFE0  F000         	goto	l1281
+   679  0002CC  EF3F  F001         	goto	l1311
    680  0002D0  EF07  F000         	goto	start
    681  0002D4                     __end_of_main:
    682                           	opt callstack 0
    683                           
    684 ;; *************** function _timerInitialize *****************
    685 ;; Defined at:
-   686 ;;		line 49 in file "main.c"
+   686 ;;		line 8 in file "system.c"
    687 ;; Parameters:    Size  Location     Type
    688 ;;		None
    689 ;; Auto vars:     Size  Location     Type
@@ -743,17 +743,17 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    717  000592                     _timerInitialize:
    718                           	opt callstack 26
    719  000592                     
-   720                           ;main.c: 51:     INTCONbits.TMR0IE = 1;
+   720                           ;system.c: 10:     INTCONbits.TMR0IE = 1;
    721  000592  8AF2               	bsf	242,5,c	;volatile
    722                           
-   723                           ;main.c: 52:     INTCONbits.GIE = 1;
+   723                           ;system.c: 11:     INTCONbits.GIE = 1;
    724  000594  8EF2               	bsf	242,7,c	;volatile
    725  000596                     
-   726                           ;main.c: 53:     T0CON = 0b11000110;
+   726                           ;system.c: 12:     T0CON = 0b11000110;
    727  000596  0EC6               	movlw	198
    728  000598  6ED5               	movwf	213,c	;volatile
    729  00059A                     
-   730                           ;main.c: 54:     TMR0L = defineTMR0Register();
+   730                           ;system.c: 13:     TMR0L = defineTMR0Register();
    731  00059A  ECD2  F002         	call	_defineTMR0Register	;wreg free
    732  00059E  5013               	movf	?_defineTMR0Register^0,w,c
    733  0005A0  6ED6               	movwf	214,c	;volatile
@@ -763,7 +763,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    737                           
    738 ;; *************** function _defineTMR0Register *****************
    739 ;; Defined at:
-   740 ;;		line 45 in file "main.c"
+   740 ;;		line 3 in file "clock.c"
    741 ;; Parameters:    Size  Location     Type
    742 ;;		None
    743 ;; Auto vars:     Size  Location     Type
@@ -802,7 +802,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    771  0005A4                     _defineTMR0Register:
    772                           	opt callstack 26
    773  0005A4                     
-   774                           ;main.c: 46:     return 256 - (10 * 2000) / (int)128;
+   774                           ;clock.c: 4:     return 256 - (10 * 2000) / (int)128;
    775  0005A4  0E00               	movlw	0
    776  0005A6  6E14               	movwf	(?_defineTMR0Register+1)^0,c
    777  0005A8  0E64               	movlw	100
@@ -813,7 +813,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    782                           
    783 ;; *************** function _oscillationInitialize *****************
    784 ;; Defined at:
-   785 ;;		line 40 in file "main.c"
+   785 ;;		line 3 in file "system.c"
    786 ;; Parameters:    Size  Location     Type
    787 ;;		None
    788 ;; Auto vars:     Size  Location     Type
@@ -852,11 +852,11 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    816  0005AE                     _oscillationInitialize:
    817                           	opt callstack 27
    818  0005AE                     
-   819                           ;main.c: 41:     OSCCON = 0b01110111;
+   819                           ;system.c: 4:     OSCCON = 0b01110111;
    820  0005AE  0E77               	movlw	119
    821  0005B0  6ED3               	movwf	211,c	;volatile
    822                           
-   823                           ;main.c: 42:     OSCTUNE = 0b00001111;
+   823                           ;system.c: 5:     OSCTUNE = 0b00001111;
    824  0005B2  0E0F               	movlw	15
    825  0005B4  6E9B               	movwf	155,c	;volatile
    826  0005B6  0012               	return		;funcret
@@ -865,7 +865,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    829                           
    830 ;; *************** function _ledInitialize *****************
    831 ;; Defined at:
-   832 ;;		line 63 in file "main.c"
+   832 ;;		line 22 in file "system.c"
    833 ;; Parameters:    Size  Location     Type
    834 ;;		None
    835 ;; Auto vars:     Size  Location     Type
@@ -904,11 +904,11 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    863  0005B8                     _ledInitialize:
    864                           	opt callstack 27
    865  0005B8                     
-   866                           ;main.c: 64:     TRISD = 0x00;
+   866                           ;system.c: 23:     TRISD = 0x00;
    867  0005B8  0E00               	movlw	0
    868  0005BA  6E95               	movwf	149,c	;volatile
    869                           
-   870                           ;main.c: 65:     LATD = 0x00;
+   870                           ;system.c: 24:     LATD = 0x00;
    871  0005BC  0E00               	movlw	0
    872  0005BE  6E8C               	movwf	140,c	;volatile
    873  0005C0  0012               	return		;funcret
@@ -917,7 +917,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    876                           
    877 ;; *************** function _buttonInitialize *****************
    878 ;; Defined at:
-   879 ;;		line 57 in file "main.c"
+   879 ;;		line 16 in file "system.c"
    880 ;; Parameters:    Size  Location     Type
    881 ;;		None
    882 ;; Auto vars:     Size  Location     Type
@@ -956,13 +956,13 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    910  0005C2                     _buttonInitialize:
    911                           	opt callstack 27
    912  0005C2                     
-   913                           ;main.c: 58:     TRISAbits.TRISA5 = 1;
+   913                           ;system.c: 17:     TRISAbits.TRISA5 = 1;
    914  0005C2  8A92               	bsf	146,5,c	;volatile
    915                           
-   916                           ;main.c: 59:     TRISBbits.TRISB0 = 1;
+   916                           ;system.c: 18:     TRISBbits.TRISB0 = 1;
    917  0005C4  8093               	bsf	147,0,c	;volatile
    918  0005C6                     
-   919                           ;main.c: 60:     ADCON1 = 0b00001111;
+   919                           ;system.c: 19:     ADCON1 = 0b00001111;
    920  0005C6  0E0F               	movlw	15
    921  0005C8  6EC1               	movwf	193,c	;volatile
    922  0005CA  0012               	return		;funcret
@@ -971,7 +971,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    925                           
    926 ;; *************** function _deviceInterrupt *****************
    927 ;; Defined at:
-   928 ;;		line 143 in file "main.c"
+   928 ;;		line 7 in file "clock.c"
    929 ;; Parameters:    Size  Location     Type
    930 ;;		None
    931 ;; Auto vars:     Size  Location     Type
@@ -1022,25 +1022,25 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    971                           	opt callstack 26
    972  000570  0006               	pop		; remove dummy address from shadow register refresh
    973  000572                     
-   974                           ;main.c: 145:     if (INTCONbits.TMR0IF == 1) {
+   974                           ;clock.c: 9:     if (INTCONbits.TMR0IF == 1) {
    975  000572  A4F2               	btfss	242,2,c	;volatile
-   976  000574  EFBE  F002         	goto	i2u54_41
-   977  000578  EFC0  F002         	goto	i2u54_40
-   978  00057C                     i2u54_41:
-   979  00057C  EFC7  F002         	goto	i2l95
-   980  000580                     i2u54_40:
+   976  000574  EFBE  F002         	goto	i2u74_41
+   977  000578  EFC0  F002         	goto	i2u74_40
+   978  00057C                     i2u74_41:
+   979  00057C  EFC7  F002         	goto	i2l213
+   980  000580                     i2u74_40:
    981  000580                     
-   982                           ;main.c: 146:         INTCONbits.TMR0IF = 0;
+   982                           ;clock.c: 10:         INTCONbits.TMR0IF = 0;
    983  000580  94F2               	bcf	242,2,c	;volatile
    984  000582                     
-   985                           ;main.c: 147:         TMR0L = defineTMR0Register();
+   985                           ;clock.c: 11:         TMR0L = defineTMR0Register();
    986  000582  ECE6  F002         	call	i2_defineTMR0Register	;wreg free
    987  000586  500D               	movf	?i2_defineTMR0Register^0,w,c
    988  000588  6ED6               	movwf	214,c	;volatile
    989  00058A                     
-   990                           ;main.c: 148:         button();
+   990                           ;clock.c: 12:         button();
    991  00058A  EC6A  F001         	call	_button	;wreg free
-   992  00058E                     i2l95:
+   992  00058E                     i2l213:
    993  00058E  921C               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
    994  000590  0011               	retfie		f
    995  000592                     __end_of_deviceInterrupt:
@@ -1048,7 +1048,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    997                           
    998 ;; *************** function i2_defineTMR0Register *****************
    999 ;; Defined at:
-  1000 ;;		line 45 in file "main.c"
+  1000 ;;		line 3 in file "clock.c"
   1001 ;; Parameters:    Size  Location     Type
   1002 ;;		None
   1003 ;; Auto vars:     Size  Location     Type
@@ -1086,7 +1086,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1030  0005CC                     i2_defineTMR0Register:
   1031                           	opt callstack 27
   1032  0005CC                     
-  1033                           ;main.c: 46:     return 256 - (10 * 2000) / (int)128;
+  1033                           ;clock.c: 4:     return 256 - (10 * 2000) / (int)128;
   1034  0005CC  0E00               	movlw	0
   1035  0005CE  6E0E               	movwf	(?i2_defineTMR0Register+1)^0,c
   1036  0005D0  0E64               	movlw	100
@@ -1097,7 +1097,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1041                           
   1042 ;; *************** function _button *****************
   1043 ;; Defined at:
-  1044 ;;		line 96 in file "main.c"
+  1044 ;;		line 31 in file "button.c"
   1045 ;; Parameters:    Size  Location     Type
   1046 ;;		None
   1047 ;; Auto vars:     Size  Location     Type
@@ -1138,31 +1138,31 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1077  0002D4                     _button:
   1078                           	opt callstack 26
   1079  0002D4                     
-  1080                           ;main.c: 97:     int iButton = readIButton();
+  1080                           ;button.c: 32:     int iButton = readIButton();
   1081  0002D4  EC4D  F002         	call	_readIButton	;wreg free
   1082  0002D8  C00D  F00F         	movff	?_readIButton,button@iButton
   1083  0002DC  C00E  F010         	movff	?_readIButton+1,button@iButton+1
   1084                           
-  1085                           ;main.c: 98:     int dButton = readDButton();
+  1085                           ;button.c: 33:     int dButton = readDButton();
   1086  0002E0  EC75  F002         	call	_readDButton	;wreg free
   1087  0002E4  C00D  F011         	movff	?_readDButton,button@dButton
   1088  0002E8  C00E  F012         	movff	?_readDButton+1,button@dButton+1
   1089  0002EC                     
-  1090                           ;main.c: 99:     if (iButton == 1) {
+  1090                           ;button.c: 34:     if (iButton == 1) {
   1091  0002EC  040F               	decf	button@iButton^0,w,c
   1092  0002EE  1010               	iorwf	(button@iButton+1)^0,w,c
   1093  0002F0  A4D8               	btfss	status,2,c
   1094  0002F2  EF7D  F001         	goto	i2u42_41
   1095  0002F6  EF7F  F001         	goto	i2u42_40
   1096  0002FA                     i2u42_41:
-  1097  0002FA  EFCF  F001         	goto	i2l1111
+  1097  0002FA  EFCF  F001         	goto	i2l1189
   1098  0002FE                     i2u42_40:
   1099  0002FE                     
-  1100                           ;main.c: 100:         iCount++;
+  1100                           ;button.c: 35:         iCount++;
   1101  0002FE  4A0B               	infsnz	_iCount^0,f,c
   1102  000300  2A0C               	incf	(_iCount+1)^0,f,c
   1103  000302                     
-  1104                           ;main.c: 101:         if (iCount > 1000 / 10) {
+  1104                           ;button.c: 36:         if (iCount > 1000 / 10) {
   1105  000302  BE0C               	btfsc	(_iCount+1)^0,7,c
   1106  000304  EF8D  F001         	goto	i2u43_41
   1107  000308  500C               	movf	(_iCount+1)^0,w,c
@@ -1173,14 +1173,14 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1112  000312  EF8D  F001         	goto	i2u43_41
   1113  000316  EF8F  F001         	goto	i2u43_40
   1114  00031A                     i2u43_41:
-  1115  00031A  EFA7  F001         	goto	i2l1103
+  1115  00031A  EFA7  F001         	goto	i2l1181
   1116  00031E                     i2u43_40:
   1117  00031E                     
-  1118                           ;main.c: 102:             countSlow++;
+  1118                           ;button.c: 37:             countSlow++;
   1119  00031E  4A07               	infsnz	_countSlow^0,f,c
   1120  000320  2A08               	incf	(_countSlow+1)^0,f,c
   1121  000322                     
-  1122                           ;main.c: 103:             if (countSlow > 500 / 10) {
+  1122                           ;button.c: 38:             if (countSlow > 500 / 10) {
   1123  000322  BE08               	btfsc	(_countSlow+1)^0,7,c
   1124  000324  EF9D  F001         	goto	i2u44_41
   1125  000328  5008               	movf	(_countSlow+1)^0,w,c
@@ -1191,23 +1191,23 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1130  000332  EF9D  F001         	goto	i2u44_41
   1131  000336  EF9F  F001         	goto	i2u44_40
   1132  00033A                     i2u44_41:
-  1133  00033A  EFA7  F001         	goto	i2l1103
+  1133  00033A  EFA7  F001         	goto	i2l1181
   1134  00033E                     i2u44_40:
   1135  00033E                     
-  1136                           ;main.c: 104:                 changeSlow = 1;
+  1136                           ;button.c: 39:                 changeSlow = 1;
   1137  00033E  0E00               	movlw	0
   1138  000340  6E04               	movwf	(_changeSlow+1)^0,c
   1139  000342  0E01               	movlw	1
   1140  000344  6E03               	movwf	_changeSlow^0,c
   1141                           
-  1142                           ;main.c: 105:                 countSlow = 0;
+  1142                           ;button.c: 40:                 countSlow = 0;
   1143  000346  0E00               	movlw	0
   1144  000348  6E08               	movwf	(_countSlow+1)^0,c
   1145  00034A  0E00               	movlw	0
   1146  00034C  6E07               	movwf	_countSlow^0,c
-  1147  00034E                     i2l1103:
+  1147  00034E                     i2l1181:
   1148                           
-  1149                           ;main.c: 108:         if (iCount > 3000 / 10) {
+  1149                           ;button.c: 43:         if (iCount > 3000 / 10) {
   1150  00034E  BE0C               	btfsc	(_iCount+1)^0,7,c
   1151  000350  EFB3  F001         	goto	i2u45_41
   1152  000354  0E2D               	movlw	45
@@ -1218,14 +1218,14 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1157  00035E  EFB3  F001         	goto	i2u45_41
   1158  000362  EFB5  F001         	goto	i2u45_40
   1159  000366                     i2u45_41:
-  1160  000366  EF4C  F002         	goto	i2l89
+  1160  000366  EF4C  F002         	goto	i2l178
   1161  00036A                     i2u45_40:
   1162  00036A                     
-  1163                           ;main.c: 109:             countFast++;
+  1163                           ;button.c: 44:             countFast++;
   1164  00036A  4A05               	infsnz	_countFast^0,f,c
   1165  00036C  2A06               	incf	(_countFast+1)^0,f,c
   1166  00036E                     
-  1167                           ;main.c: 110:             if (countFast > 100 / 10) {
+  1167                           ;button.c: 45:             if (countFast > 100 / 10) {
   1168  00036E  BE06               	btfsc	(_countFast+1)^0,7,c
   1169  000370  EFC3  F001         	goto	i2u46_41
   1170  000374  5006               	movf	(_countFast+1)^0,w,c
@@ -1236,37 +1236,37 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1175  00037E  EFC3  F001         	goto	i2u46_41
   1176  000382  EFC5  F001         	goto	i2u46_40
   1177  000386                     i2u46_41:
-  1178  000386  EF4C  F002         	goto	i2l89
+  1178  000386  EF4C  F002         	goto	i2l178
   1179  00038A                     i2u46_40:
-  1180  00038A                     i2l1109:
+  1180  00038A                     i2l1187:
   1181                           
-  1182                           ;main.c: 111:                 changeFast = 1;
+  1182                           ;button.c: 46:                 changeFast = 1;
   1183  00038A  0E00               	movlw	0
   1184  00038C  6E02               	movwf	(_changeFast+1)^0,c
   1185  00038E  0E01               	movlw	1
   1186  000390  6E01               	movwf	_changeFast^0,c
   1187                           
-  1188                           ;main.c: 112:                 countFast = 0;
+  1188                           ;button.c: 47:                 countFast = 0;
   1189  000392  0E00               	movlw	0
   1190  000394  6E06               	movwf	(_countFast+1)^0,c
   1191  000396  0E00               	movlw	0
   1192  000398  6E05               	movwf	_countFast^0,c
-  1193  00039A  EF4C  F002         	goto	i2l89
-  1194  00039E                     i2l1111:
+  1193  00039A  EF4C  F002         	goto	i2l178
+  1194  00039E                     i2l1189:
   1195  00039E  0411               	decf	button@dButton^0,w,c
   1196  0003A0  1012               	iorwf	(button@dButton+1)^0,w,c
   1197  0003A2  A4D8               	btfss	status,2,c
   1198  0003A4  EFD6  F001         	goto	i2u47_41
   1199  0003A8  EFD8  F001         	goto	i2u47_40
   1200  0003AC                     i2u47_41:
-  1201  0003AC  EF20  F002         	goto	i2l1131
+  1201  0003AC  EF20  F002         	goto	i2l1209
   1202  0003B0                     i2u47_40:
   1203  0003B0                     
-  1204                           ;main.c: 117:         dCount++;
+  1204                           ;button.c: 52:         dCount++;
   1205  0003B0  4A09               	infsnz	_dCount^0,f,c
   1206  0003B2  2A0A               	incf	(_dCount+1)^0,f,c
   1207  0003B4                     
-  1208                           ;main.c: 118:         if (dCount > 1000 / 10) {
+  1208                           ;button.c: 53:         if (dCount > 1000 / 10) {
   1209  0003B4  BE0A               	btfsc	(_dCount+1)^0,7,c
   1210  0003B6  EFE6  F001         	goto	i2u48_41
   1211  0003BA  500A               	movf	(_dCount+1)^0,w,c
@@ -1277,14 +1277,14 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1216  0003C4  EFE6  F001         	goto	i2u48_41
   1217  0003C8  EFE8  F001         	goto	i2u48_40
   1218  0003CC                     i2u48_41:
-  1219  0003CC  EF00  F002         	goto	i2l1123
+  1219  0003CC  EF00  F002         	goto	i2l1201
   1220  0003D0                     i2u48_40:
   1221  0003D0                     
-  1222                           ;main.c: 119:             countSlow++;
+  1222                           ;button.c: 54:             countSlow++;
   1223  0003D0  4A07               	infsnz	_countSlow^0,f,c
   1224  0003D2  2A08               	incf	(_countSlow+1)^0,f,c
   1225  0003D4                     
-  1226                           ;main.c: 120:             if (countSlow > 500 / 10) {
+  1226                           ;button.c: 55:             if (countSlow > 500 / 10) {
   1227  0003D4  BE08               	btfsc	(_countSlow+1)^0,7,c
   1228  0003D6  EFF6  F001         	goto	i2u49_41
   1229  0003DA  5008               	movf	(_countSlow+1)^0,w,c
@@ -1295,23 +1295,23 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1234  0003E4  EFF6  F001         	goto	i2u49_41
   1235  0003E8  EFF8  F001         	goto	i2u49_40
   1236  0003EC                     i2u49_41:
-  1237  0003EC  EF00  F002         	goto	i2l1123
+  1237  0003EC  EF00  F002         	goto	i2l1201
   1238  0003F0                     i2u49_40:
   1239  0003F0                     
-  1240                           ;main.c: 121:                 changeSlow = 1;
+  1240                           ;button.c: 56:                 changeSlow = 1;
   1241  0003F0  0E00               	movlw	0
   1242  0003F2  6E04               	movwf	(_changeSlow+1)^0,c
   1243  0003F4  0E01               	movlw	1
   1244  0003F6  6E03               	movwf	_changeSlow^0,c
   1245                           
-  1246                           ;main.c: 122:                 countSlow = 0;
+  1246                           ;button.c: 57:                 countSlow = 0;
   1247  0003F8  0E00               	movlw	0
   1248  0003FA  6E08               	movwf	(_countSlow+1)^0,c
   1249  0003FC  0E00               	movlw	0
   1250  0003FE  6E07               	movwf	_countSlow^0,c
-  1251  000400                     i2l1123:
+  1251  000400                     i2l1201:
   1252                           
-  1253                           ;main.c: 125:         if (dCount > 3000 / 10) {
+  1253                           ;button.c: 60:         if (dCount > 3000 / 10) {
   1254  000400  BE0A               	btfsc	(_dCount+1)^0,7,c
   1255  000402  EF0C  F002         	goto	i2u50_41
   1256  000406  0E2D               	movlw	45
@@ -1322,14 +1322,14 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1261  000410  EF0C  F002         	goto	i2u50_41
   1262  000414  EF0E  F002         	goto	i2u50_40
   1263  000418                     i2u50_41:
-  1264  000418  EF4C  F002         	goto	i2l89
+  1264  000418  EF4C  F002         	goto	i2l178
   1265  00041C                     i2u50_40:
   1266  00041C                     
-  1267                           ;main.c: 126:             countFast++;
+  1267                           ;button.c: 61:             countFast++;
   1268  00041C  4A05               	infsnz	_countFast^0,f,c
   1269  00041E  2A06               	incf	(_countFast+1)^0,f,c
   1270  000420                     
-  1271                           ;main.c: 127:             if (countFast > 100 / 10) {
+  1271                           ;button.c: 62:             if (countFast > 100 / 10) {
   1272  000420  BE06               	btfsc	(_countFast+1)^0,7,c
   1273  000422  EF1C  F002         	goto	i2u51_41
   1274  000426  5006               	movf	(_countFast+1)^0,w,c
@@ -1340,10 +1340,10 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1279  000430  EF1C  F002         	goto	i2u51_41
   1280  000434  EF1E  F002         	goto	i2u51_40
   1281  000438                     i2u51_41:
-  1282  000438  EF4C  F002         	goto	i2l89
+  1282  000438  EF4C  F002         	goto	i2l178
   1283  00043C                     i2u51_40:
-  1284  00043C  EFC5  F001         	goto	i2l1109
-  1285  000440                     i2l1131:
+  1284  00043C  EFC5  F001         	goto	i2l1187
+  1285  000440                     i2l1209:
   1286  000440  0E02               	movlw	2
   1287  000442  180F               	xorwf	button@iButton^0,w,c
   1288  000444  1010               	iorwf	(button@iButton+1)^0,w,c
@@ -1351,7 +1351,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1290  000448  EF28  F002         	goto	i2u52_41
   1291  00044C  EF2A  F002         	goto	i2u52_40
   1292  000450                     i2u52_41:
-  1293  000450  EF34  F002         	goto	i2l1135
+  1293  000450  EF34  F002         	goto	i2l1213
   1294  000454                     i2u52_40:
   1295  000454  0E02               	movlw	2
   1296  000456  1811               	xorwf	button@dButton^0,w,c
@@ -1360,53 +1360,53 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1299  00045C  EF32  F002         	goto	i2u53_41
   1300  000460  EF34  F002         	goto	i2u53_40
   1301  000464                     i2u53_41:
-  1302  000464  EF4C  F002         	goto	i2l89
+  1302  000464  EF4C  F002         	goto	i2l178
   1303  000468                     i2u53_40:
-  1304  000468                     i2l1135:
+  1304  000468                     i2l1213:
   1305                           
-  1306                           ;main.c: 134:         iCount = 0;
+  1306                           ;button.c: 69:         iCount = 0;
   1307  000468  0E00               	movlw	0
   1308  00046A  6E0C               	movwf	(_iCount+1)^0,c
   1309  00046C  0E00               	movlw	0
   1310  00046E  6E0B               	movwf	_iCount^0,c
   1311                           
-  1312                           ;main.c: 135:         dCount = 0;
+  1312                           ;button.c: 70:         dCount = 0;
   1313  000470  0E00               	movlw	0
   1314  000472  6E0A               	movwf	(_dCount+1)^0,c
   1315  000474  0E00               	movlw	0
   1316  000476  6E09               	movwf	_dCount^0,c
   1317                           
-  1318                           ;main.c: 136:         countFast = 0;
+  1318                           ;button.c: 71:         countFast = 0;
   1319  000478  0E00               	movlw	0
   1320  00047A  6E06               	movwf	(_countFast+1)^0,c
   1321  00047C  0E00               	movlw	0
   1322  00047E  6E05               	movwf	_countFast^0,c
   1323                           
-  1324                           ;main.c: 137:         changeFast = 0;
+  1324                           ;button.c: 72:         changeFast = 0;
   1325  000480  0E00               	movlw	0
   1326  000482  6E02               	movwf	(_changeFast+1)^0,c
   1327  000484  0E00               	movlw	0
   1328  000486  6E01               	movwf	_changeFast^0,c
   1329                           
-  1330                           ;main.c: 138:         countSlow = 0;
+  1330                           ;button.c: 73:         countSlow = 0;
   1331  000488  0E00               	movlw	0
   1332  00048A  6E08               	movwf	(_countSlow+1)^0,c
   1333  00048C  0E00               	movlw	0
   1334  00048E  6E07               	movwf	_countSlow^0,c
   1335                           
-  1336                           ;main.c: 139:         changeSlow = 0;
+  1336                           ;button.c: 74:         changeSlow = 0;
   1337  000490  0E00               	movlw	0
   1338  000492  6E04               	movwf	(_changeSlow+1)^0,c
   1339  000494  0E00               	movlw	0
   1340  000496  6E03               	movwf	_changeSlow^0,c
-  1341  000498                     i2l89:
+  1341  000498                     i2l178:
   1342  000498  0012               	return		;funcret
   1343  00049A                     __end_of_button:
   1344                           	opt callstack 0
   1345                           
   1346 ;; *************** function _readIButton *****************
   1347 ;; Defined at:
-  1348 ;;		line 68 in file "main.c"
+  1348 ;;		line 3 in file "button.c"
   1349 ;; Parameters:    Size  Location     Type
   1350 ;;		None
   1351 ;; Auto vars:     Size  Location     Type
@@ -1444,63 +1444,63 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1378  00049A                     _readIButton:
   1379                           	opt callstack 26
   1380  00049A                     
-  1381                           ;main.c: 69:     firstReadRA5 = secondReadRA5;
+  1381                           ;button.c: 4:     firstReadRA5 = secondReadRA5;
   1382  00049A  C01A  F01B         	movff	_secondReadRA5,_firstReadRA5
   1383  00049E                     
-  1384                           ;main.c: 70:     secondReadRA5 = PORTAbits.RA5;
+  1384                           ;button.c: 5:     secondReadRA5 = PORTAbits.RA5;
   1385  00049E  0E00               	movlw	0
   1386  0004A0  BA80               	btfsc	128,5,c	;volatile
   1387  0004A2  0E01               	movlw	1
   1388  0004A4  6E1A               	movwf	_secondReadRA5^0,c
   1389  0004A6                     
-  1390                           ;main.c: 71:     if (firstReadRA5 == secondReadRA5) {
+  1390                           ;button.c: 6:     if (firstReadRA5 == secondReadRA5) {
   1391  0004A6  501A               	movf	_secondReadRA5^0,w,c
   1392  0004A8  181B               	xorwf	_firstReadRA5^0,w,c
   1393  0004AA  A4D8               	btfss	status,2,c
   1394  0004AC  EF5A  F002         	goto	i2u38_41
   1395  0004B0  EF5C  F002         	goto	i2u38_40
   1396  0004B4                     i2u38_41:
-  1397  0004B4  EF70  F002         	goto	i2l1057
+  1397  0004B4  EF70  F002         	goto	i2l1135
   1398  0004B8                     i2u38_40:
   1399  0004B8                     
-  1400                           ;main.c: 72:         if (firstReadRA5 == 0) {
+  1400                           ;button.c: 7:         if (firstReadRA5 == 0) {
   1401  0004B8  501B               	movf	_firstReadRA5^0,w,c
   1402  0004BA  A4D8               	btfss	status,2,c
   1403  0004BC  EF62  F002         	goto	i2u39_41
   1404  0004C0  EF64  F002         	goto	i2u39_40
   1405  0004C4                     i2u39_41:
-  1406  0004C4  EF6A  F002         	goto	i2l1053
+  1406  0004C4  EF6A  F002         	goto	i2l1131
   1407  0004C8                     i2u39_40:
   1408  0004C8                     
-  1409                           ;main.c: 73:             return 1;
+  1409                           ;button.c: 8:             return 1;
   1410  0004C8  0E00               	movlw	0
   1411  0004CA  6E0E               	movwf	(?_readIButton+1)^0,c
   1412  0004CC  0E01               	movlw	1
   1413  0004CE  6E0D               	movwf	?_readIButton^0,c
-  1414  0004D0  EF74  F002         	goto	i2l64
-  1415  0004D4                     i2l1053:
+  1414  0004D0  EF74  F002         	goto	i2l153
+  1415  0004D4                     i2l1131:
   1416                           
-  1417                           ;main.c: 76:             return 2;
+  1417                           ;button.c: 11:             return 2;
   1418  0004D4  0E00               	movlw	0
   1419  0004D6  6E0E               	movwf	(?_readIButton+1)^0,c
   1420  0004D8  0E02               	movlw	2
   1421  0004DA  6E0D               	movwf	?_readIButton^0,c
-  1422  0004DC  EF74  F002         	goto	i2l64
-  1423  0004E0                     i2l1057:
+  1422  0004DC  EF74  F002         	goto	i2l153
+  1423  0004E0                     i2l1135:
   1424                           
-  1425                           ;main.c: 79:    return 0;
+  1425                           ;button.c: 14:    return 0;
   1426  0004E0  0E00               	movlw	0
   1427  0004E2  6E0E               	movwf	(?_readIButton+1)^0,c
   1428  0004E4  0E00               	movlw	0
   1429  0004E6  6E0D               	movwf	?_readIButton^0,c
-  1430  0004E8                     i2l64:
+  1430  0004E8                     i2l153:
   1431  0004E8  0012               	return		;funcret
   1432  0004EA                     __end_of_readIButton:
   1433                           	opt callstack 0
   1434                           
   1435 ;; *************** function _readDButton *****************
   1436 ;; Defined at:
-  1437 ;;		line 82 in file "main.c"
+  1437 ;;		line 17 in file "button.c"
   1438 ;; Parameters:    Size  Location     Type
   1439 ;;		None
   1440 ;; Auto vars:     Size  Location     Type
@@ -1538,56 +1538,56 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1467  0004EA                     _readDButton:
   1468                           	opt callstack 26
   1469  0004EA                     
-  1470                           ;main.c: 83:     firstReadRB0 = secondReadRB0;
+  1470                           ;button.c: 18:     firstReadRB0 = secondReadRB0;
   1471  0004EA  C018  F019         	movff	_secondReadRB0,_firstReadRB0
   1472  0004EE                     
-  1473                           ;main.c: 84:     secondReadRB0 = PORTBbits.RB0;
+  1473                           ;button.c: 19:     secondReadRB0 = PORTBbits.RB0;
   1474  0004EE  0E00               	movlw	0
   1475  0004F0  B081               	btfsc	129,0,c	;volatile
   1476  0004F2  0E01               	movlw	1
   1477  0004F4  6E18               	movwf	_secondReadRB0^0,c
   1478  0004F6                     
-  1479                           ;main.c: 85:     if (firstReadRB0 == secondReadRB0) {
+  1479                           ;button.c: 20:     if (firstReadRB0 == secondReadRB0) {
   1480  0004F6  5018               	movf	_secondReadRB0^0,w,c
   1481  0004F8  1819               	xorwf	_firstReadRB0^0,w,c
   1482  0004FA  A4D8               	btfss	status,2,c
   1483  0004FC  EF82  F002         	goto	i2u40_41
   1484  000500  EF84  F002         	goto	i2u40_40
   1485  000504                     i2u40_41:
-  1486  000504  EF98  F002         	goto	i2l1079
+  1486  000504  EF98  F002         	goto	i2l1157
   1487  000508                     i2u40_40:
   1488  000508                     
-  1489                           ;main.c: 86:         if (firstReadRB0 == 0) {
+  1489                           ;button.c: 21:         if (firstReadRB0 == 0) {
   1490  000508  5019               	movf	_firstReadRB0^0,w,c
   1491  00050A  A4D8               	btfss	status,2,c
   1492  00050C  EF8A  F002         	goto	i2u41_41
   1493  000510  EF8C  F002         	goto	i2u41_40
   1494  000514                     i2u41_41:
-  1495  000514  EF92  F002         	goto	i2l1075
+  1495  000514  EF92  F002         	goto	i2l1153
   1496  000518                     i2u41_40:
   1497  000518                     
-  1498                           ;main.c: 87:             return 1;
+  1498                           ;button.c: 22:             return 1;
   1499  000518  0E00               	movlw	0
   1500  00051A  6E0E               	movwf	(?_readDButton+1)^0,c
   1501  00051C  0E01               	movlw	1
   1502  00051E  6E0D               	movwf	?_readDButton^0,c
-  1503  000520  EF9C  F002         	goto	i2l70
-  1504  000524                     i2l1075:
+  1503  000520  EF9C  F002         	goto	i2l159
+  1504  000524                     i2l1153:
   1505                           
-  1506                           ;main.c: 90:             return 2;
+  1506                           ;button.c: 25:             return 2;
   1507  000524  0E00               	movlw	0
   1508  000526  6E0E               	movwf	(?_readDButton+1)^0,c
   1509  000528  0E02               	movlw	2
   1510  00052A  6E0D               	movwf	?_readDButton^0,c
-  1511  00052C  EF9C  F002         	goto	i2l70
-  1512  000530                     i2l1079:
+  1511  00052C  EF9C  F002         	goto	i2l159
+  1512  000530                     i2l1157:
   1513                           
-  1514                           ;main.c: 93:     return 0;
+  1514                           ;button.c: 28:     return 0;
   1515  000530  0E00               	movlw	0
   1516  000532  6E0E               	movwf	(?_readDButton+1)^0,c
   1517  000534  0E00               	movlw	0
   1518  000536  6E0D               	movwf	?_readDButton^0,c
-  1519  000538                     i2l70:
+  1519  000538                     i2l159:
   1520  000538  0012               	return		;funcret
   1521  00053A                     __end_of_readDButton:
   1522                           	opt callstack 0
@@ -1924,71 +1924,71 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Mon Sep 16 10:49:40 2019
+Symbol Table                                                                                   Sat Sep 21 08:53:50 2019
 
-                            l50 05AC                              l53 05A2                              l47 05B6  
-                            l56 05CA                              l59 05C0     __size_of_defineTMR0Register 000A  
-               ??_ledInitialize 0013                             l101 027E                             l871 05B8  
-                           l867 05C2                             l859 05AE                             l869 05C6  
-                           u600 00E6                             u601 00E2                             u610 00FC  
-                           u611 00F8                             u700 0202                             u620 0120  
-                           u701 01FE                             u621 011C                             u710 0226  
-                           u630 0142                             u550 0054                             u711 0222  
-                           u631 013E                             u551 0050                             u720 0248  
-                           u640 0158                             u560 0070                             u721 0244  
-                           u641 0154                             u561 006C                             u730 0262  
-                           u650 0178                             u570 008A                             u731 025E  
-                           u651 0174                             u571 0086                             u740 0278  
-                           u660 0192                             u580 00A6                             u741 0274  
-                           u661 018E                             u581 00A2                             u670 01B0  
-                           u590 00C4                             u671 01AC                             u591 00C0  
-                           u680 01D2                             u681 01CE                             u690 01EC  
-                           u691 01E8                             wreg 000FE8            i2_defineTMR0Register 05CC  
-                  __CFG_LVP$OFF 000000                    __CFG_WDT$OFF 000000                            l1201 0166  
-                          l1035 05A4                            l1211 01C0                            l1203 0178  
-                          l1221 0204                            l1213 01D2                            l1205 0192  
-                          l1231 0262                            l1223 020C                            l1215 01EC  
-                          l1207 0196                            l1151 0022                            l1233 0266  
-                          l1225 0226                            l1217 01F0                            l1209 01B0  
-                          l1161 005E                            l1153 002A                            l1241 027E  
-                          l1083 0592                            l1251 0292                            l1235 0278  
-                          l1227 0236                            l1219 0202                            l1171 00A6  
-                          l1163 0070                            l1155 003A                            l1085 0596  
-                          l1229 0248                            l1181 00EA                            l1173 00AA  
-                          l1165 008A                            l1157 0054                            l1149 0012  
-                          l1087 059A                            l1191 0130                            l1183 00FC  
-                          l1175 00C4                            l1167 008C                            l1159 0056  
-                          l1193 0142                            l1185 00FE                            l1177 00D4  
-                          l1169 0094                            l1195 0146                            l1187 0106  
-                          l1179 00E6                            l1197 0158                            l1189 0120  
-                          l1199 015A                            _LATD 000F8C                            i2l50 05D4  
-                          i2l70 0538                            i2l64 04E8                            i2l95 058E  
-                          i2l89 0498                            _main 0012                            fsr1l 000FE1  
-                          btemp 001C                    ?_readDButton 000D                            start 000E  
-                 __CFG_IESO$OFF 000000                    ?_readIButton 000D                   __CFG_MCLRE$ON 000000  
-                  ___param_bank 000000                 _deviceInterrupt 0008                           ?_main 000D  
-                         _T0CON 000FD5                           _TMR0L 000FD6                           _TRISD 000F95  
+                            l36 027E     __size_of_defineTMR0Register 000A                 ??_ledInitialize 0013  
+                           l121 05CA                             l115 05B6                             l124 05C0  
+                           l118 05A2                             l207 05AC                             l945 05C2  
+                           l937 05AE                             l947 05C6                             l949 05B8  
+                           u600 00FC                             u601 00F8                             u610 0120  
+                           u611 011C                             u700 0226                             u620 0142  
+                           u540 0054                             u701 0222                             u621 013E  
+                           u541 0050                             u710 0248                             u630 0158  
+                           u550 0070                             u711 0244                             u631 0154  
+                           u551 006C                             u720 0262                             u640 0178  
+                           u560 008A                             u721 025E                             u641 0174  
+                           u561 0086                             u730 0278                             u650 0192  
+                           u570 00A6                             u731 0274                             u651 018E  
+                           u571 00A2                             u660 01B0                             u580 00C4  
+                           u661 01AC                             u581 00C0                             u670 01D2  
+                           u590 00E6                             u671 01CE                             u591 00E2  
+                           u680 01EC                             u681 01E8                             u690 0202  
+                           u691 01FE                             wreg 000FE8            i2_defineTMR0Register 05CC  
+                  __CFG_LVP$OFF 000000                    __CFG_WDT$OFF 000000                            l1113 05A4  
+                          l1301 0262                            l1221 0022                            l1303 0266  
+                          l1231 005E                            l1223 002A                            l1311 027E  
+                          l1161 0592                            l1305 0278                            l1241 00A6  
+                          l1233 0070                            l1225 003A                            l1163 0596  
+                          l1251 00EA                            l1243 00AA                            l1235 008A  
+                          l1227 0054                            l1219 0012                            l1165 059A  
+                          l1261 0130                            l1253 00FC                            l1245 00C4  
+                          l1237 008C                            l1229 0056                            l1271 0166  
+                          l1263 0142                            l1255 00FE                            l1247 00D4  
+                          l1239 0094                            l1329 0292                            l1281 01C0  
+                          l1273 0178                            l1265 0146                            l1257 0106  
+                          l1249 00E6                            l1291 0204                            l1283 01D2  
+                          l1275 0192                            l1267 0158                            l1259 0120  
+                          l1293 020C                            l1285 01EC                            l1277 0196  
+                          l1269 015A                            l1295 0226                            l1287 01F0  
+                          l1279 01B0                            l1297 0236                            l1289 0202  
+                          l1299 0248                            _LATD 000F8C                            _main 0012  
+                          fsr1l 000FE1                            btemp 001C                    ?_readDButton 000D  
+                          start 000E                   __CFG_IESO$OFF 000000                    ?_readIButton 000D  
+                 __CFG_MCLRE$ON 000000                    ___param_bank 000000                 _deviceInterrupt 0008  
+                         ?_main 000D                           _T0CON 000FD5                           i2l213 058E  
+                         i2l207 05D4                           i2l153 04E8                           i2l159 0538  
+                         i2l178 0498                           _TMR0L 000FD6                           _TRISD 000F95  
                  __CFG_PWRT$OFF 000000           ?i2_defineTMR0Register 000D                  __CFG_FCMEN$OFF 000000  
 __size_of_oscillationInitialize 000A   __end_of_oscillationInitialize 05B8                  __CFG_BOREN$OFF 000000  
                          tablat 000FF5                           ttemp5 001D                           ttemp6 0020  
                          ttemp7 0024                           status 000FD8               ??_timerInitialize 0015  
                          wtemp8 001D                 __initialization 053A                    __end_of_main 02D4  
                 __CFG_OSC$HSPLL 000000                          ??_main 0015                   __activetblptr 000003  
-                        _ADCON1 000FC1                          i2l1101 033E                          i2l1103 034E  
-                        i2l1111 039E                          i2l1041 049E                          i2l1121 03F0  
-                        i2l1113 03B0                          i2l1105 036A                          i2l1043 04A6  
-                        i2l1123 0400                          i2l1115 03B4                          i2l1131 0440  
-                        i2l1107 036E                          i2l1061 04EA                          i2l1053 04D4  
-                        i2l1045 04B8                          i2l1133 0454                          i2l1125 041C  
-                        i2l1117 03D0                          i2l1109 038A                          i2l1141 0572  
-                        i2l1063 04EE                          i2l1047 04C8                          i2l1039 049A  
-                        i2l1135 0468                          i2l1127 0420                          i2l1119 03D4  
-                        i2l1143 0580                          i2l1065 04F6                          i2l1057 04E0  
-                        i2l1137 05CC                          i2l1145 0582                          i2l1075 0524  
-                        i2l1067 0508                          i2l1091 02EC                          i2l1147 058A  
-                        i2l1069 0518                          i2l1093 02FE                          i2l1079 0530  
-                        i2l1095 0302                          i2l1097 031E                          i2l1089 02D4  
-                        i2l1099 0322                          _OSCCON 000FD3         __end_of_deviceInterrupt 0592  
+                        _ADCON1 000FC1                          i2l1121 04A6                          i2l1201 0400  
+                        i2l1131 04D4                          i2l1123 04B8                          i2l1211 0454  
+                        i2l1203 041C                          i2l1141 04EE                          i2l1125 04C8  
+                        i2l1117 049A                          i2l1213 0468                          i2l1205 0420  
+                        i2l1143 04F6                          i2l1135 04E0                          i2l1119 049E  
+                        i2l1215 05CC                          i2l1153 0524                          i2l1145 0508  
+                        i2l1209 0440                          i2l1321 0582                          i2l1147 0518  
+                        i2l1139 04EA                          i2l1171 02FE                          i2l1323 058A  
+                        i2l1157 0530                          i2l1181 034E                          i2l1173 0302  
+                        i2l1317 0572                          i2l1191 03B0                          i2l1183 036A  
+                        i2l1175 031E                          i2l1167 02D4                          i2l1319 0580  
+                        i2l1193 03B4                          i2l1185 036E                          i2l1177 0322  
+                        i2l1169 02EC                          i2l1195 03D0                          i2l1187 038A  
+                        i2l1179 033E                          i2l1197 03D4                          i2l1189 039E  
+                        i2l1199 03F0                          _OSCCON 000FD3         __end_of_deviceInterrupt 0592  
                 __CFG_XINST$OFF 000000                          _dCount 0009                          _iCount 000B  
                         _button 02D4                          clear_0 0560       __size_of_buttonInitialize 000A  
         ??i2_defineTMR0Register 000F                    __pdataCOMRAM 0018                          tblptrh 000FF7  
@@ -2004,11 +2004,11 @@ __size_of_oscillationInitialize 000A   __end_of_oscillationInitialize 05B8      
                        i2u52_40 0454                         i2u44_40 033E                         i2u52_41 0450  
                        i2u44_41 033A                         i2u53_40 0468                         i2u45_40 036A  
                        i2u53_41 0464                         i2u45_41 0366                         i2u38_40 04B8  
-                       i2u46_40 038A                         i2u54_40 0580                         i2u38_41 04B4  
-                       i2u46_41 0386                         i2u54_41 057C                         _OSCTUNE 000F9B  
-                       i2u39_40 04C8                         i2u47_40 03B0                         i2u39_41 04C4  
-                       i2u47_41 03AC                         i2u48_40 03D0                         i2u48_41 03CC  
-                       i2u49_40 03F0                         i2u49_41 03EC                         __Hparam 0000  
+                       i2u46_40 038A                         i2u38_41 04B4                         i2u46_41 0386  
+                       _OSCTUNE 000F9B                         i2u39_40 04C8                         i2u47_40 03B0  
+                       i2u39_41 04C4                         i2u47_41 03AC                         i2u48_40 03D0  
+                       i2u48_41 03CC                         i2u49_40 03F0                         i2u49_41 03EC  
+                       i2u74_40 0580                         i2u74_41 057C                         __Hparam 0000  
                        __Lparam 0000                _buttonInitialize 05C2                         __pcinit 053A  
                __size_of_button 01C6                         __ramtop 1000                         __ptext0 0012  
                        __ptext1 0592                         __ptext2 05A4                         __ptext3 05AE  

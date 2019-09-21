@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "button.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,13 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
-
-
-
+# 1 "button.c" 2
+# 1 "./button.h" 1
+# 15 "./button.h"
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7773,15 +7769,17 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 2 3
-# 8 "main.c" 2
+# 16 "./button.h" 2
 
-# 1 "./system.h" 1
-# 17 "./system.h"
 # 1 "./clock.h" 1
 # 17 "./clock.h"
 # 1 "./button.h" 1
-# 17 "./button.h"
-# 1 "./clock.h" 1
+# 18 "./clock.h" 2
+
+
+
+void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+int defineTMR0Register(void);
 # 18 "./button.h" 2
 
 
@@ -7803,117 +7801,79 @@ char secondReadRB0 = 1;
 int readIButton(void);
 int readDButton (void);
 void button (void);
-# 18 "./clock.h" 2
+# 2 "button.c" 2
 
-
-
-void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
-int defineTMR0Register(void);
-# 18 "./system.h" 2
-
-
-#pragma config OSC = HSPLL
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-#pragma config PWRT = OFF
-#pragma config BOREN = OFF
-#pragma config WDT = OFF
-#pragma config MCLRE = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-
-
-void oscillationInitialize(void);
-void timerInitialize(void);
-void buttonInitialize(void);
-void ledInitialize(void);
-# 10 "main.c" 2
-
-
-void main(void) {
-    enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-    oscillationInitialize();
-    timerInitialize();
-    buttonInitialize();
-    ledInitialize();
-    state = init;
-    while (1) {
-        switch (state) {
-            case init:
-                countFast = 0;
-                countSlow = 0;
-                if (iCount > 0) {
-                    LATD++;
-                    state = iNormal;
-                }
-                else if (iCount == 0 && dCount > 0) {
-                    LATD--;
-                    state = dNormal;
-                }
-                break;
-            case iNormal:
-                if (iCount == 0) {
-                    state = init;
-                }
-                if (countSlow > 0) {
-                    changeSlow = 1;
-                    state = iSlow;
-                }
-                break;
-            case iSlow:
-                if (iCount == 0) {
-                    state = init;
-                }
-                if (changeSlow == 1) {
-                    LATD++;
-                    changeSlow = 0;
-                }
-                if (countFast > 0) {
-                    changeFast = 1;
-                    state = iFast;
-                }
-                break;
-            case iFast:
-                if (iCount == 0) {
-                    state = init;
-                }
-                if (changeFast == 1) {
-                    LATD++;
-                    changeFast = 0;
-                }
-                break;
-            case dNormal:
-                if (dCount == 0 || iCount > 0) {
-                    state = init;
-                }
-                if (countSlow > 0) {
-                    changeSlow = 1;
-                    state = dSlow;
-                }
-                break;
-            case dSlow:
-                if (dCount == 0 || iCount > 0) {
-                    state = init;
-                }
-                if (changeSlow == 1) {
-                    LATD--;
-                    changeSlow = 0;
-                }
-                if (countFast > 0) {
-                    changeFast = 1;
-                    state = dFast;
-                }
-                break;
-            case dFast:
-                if (dCount == 0 || iCount > 0) {
-                    state = init;
-                }
-                if (changeFast == 1) {
-                    LATD--;
-                    changeFast = 0;
-                }
-                break;
+int readIButton(void) {
+    firstReadRA5 = secondReadRA5;
+    secondReadRA5 = PORTAbits.RA5;
+    if (firstReadRA5 == secondReadRA5) {
+        if (firstReadRA5 == 0) {
+            return 1;
+        }
+        else {
+            return 2;
         }
     }
-    return;
+   return 0;
+}
+
+int readDButton (void) {
+    firstReadRB0 = secondReadRB0;
+    secondReadRB0 = PORTBbits.RB0;
+    if (firstReadRB0 == secondReadRB0) {
+        if (firstReadRB0 == 0) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    }
+    return 0;
+}
+
+void button (void) {
+    int iButton = readIButton();
+    int dButton = readDButton();
+    if (iButton == 1) {
+        iCount++;
+        if (iCount > 1000 / 10) {
+            countSlow++;
+            if (countSlow > 500 / 10) {
+                changeSlow = 1;
+                countSlow = 0;
+            }
+        }
+        if (iCount > 3000 / 10) {
+            countFast++;
+            if (countFast > 100 / 10) {
+                changeFast = 1;
+                countFast = 0;
+            }
+        }
+    }
+    else if (dButton == 1) {
+        dCount++;
+        if (dCount > 1000 / 10) {
+            countSlow++;
+            if (countSlow > 500 / 10) {
+                changeSlow = 1;
+                countSlow = 0;
+            }
+        }
+        if (dCount > 3000 / 10) {
+            countFast++;
+            if (countFast > 100 / 10) {
+                changeFast = 1;
+                countFast = 0;
+            }
+        }
+    }
+    else if (iButton == 2 || dButton == 2) {
+        iCount = 0;
+        dCount = 0;
+        countFast = 0;
+        changeFast = 0;
+        countSlow = 0;
+        changeSlow = 0;
+    }
 }

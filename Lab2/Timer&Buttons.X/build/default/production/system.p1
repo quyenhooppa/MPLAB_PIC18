@@ -1,18 +1,75 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"13 main.c
-[; ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-[c E4564 0 1 2 3 4 5 6 .. ]
-[n E4564 State init iNormal iFast iSlow dNormal dFast dSlow  ]
-"31 ./system.h
-[v _oscillationInitialize `(v ~T0 @X0 0 ef ]
-"32
-[v _timerInitialize `(v ~T0 @X0 0 ef ]
-"33
-[v _buttonInitialize `(v ~T0 @X0 0 ef ]
-"34
-[v _ledInitialize `(v ~T0 @X0 0 ef ]
-"4815 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
+"12474 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12474: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
+[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
+"7383
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 7383: extern volatile unsigned char OSCTUNE __attribute__((address(0xF9B)));
+[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
+"13118
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13118:     struct {
+[s S494 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S494 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"13128
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13128:     struct {
+[s S495 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S495 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"13138
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13138:     struct {
+[s S496 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S496 . . GIEL GIEH ]
+"13117
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13117: typedef union {
+[u S493 `S494 1 `S495 1 `S496 1 ]
+[n S493 . . . . ]
+"13144
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13144: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS493 ~T0 @X0 0 e@4082 ]
+"12557
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12557: extern volatile unsigned char T0CON __attribute__((address(0xFD5)));
+[v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
+"12640
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12640: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
+"22 ./clock.h
+[; ;./clock.h: 22: int defineTMR0Register(void);
+[v _defineTMR0Register `(i ~T0 @X0 0 ef ]
+"5468 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5468:     struct {
+[s S212 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S212 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"5478
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5478:     struct {
+[s S213 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S213 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"5467
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5467: typedef union {
+[u S211 `S212 1 `S213 1 ]
+[n S211 . . . ]
+"5489
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5489: extern volatile TRISAbits_t TRISAbits __attribute__((address(0xF92)));
+[v _TRISAbits `VS211 ~T0 @X0 0 e@3986 ]
+"5690
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5690:     struct {
+[s S218 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S218 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+"5700
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5700:     struct {
+[s S219 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S219 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"5689
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5689: typedef union {
+[u S217 `S218 1 `S219 1 ]
+[n S217 . . . ]
+"5711
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5711: extern volatile TRISBbits_t TRISBbits __attribute__((address(0xF93)));
+[v _TRISBbits `VS217 ~T0 @X0 0 e@3987 ]
+"10174
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 10174: extern volatile unsigned char ADCON1 __attribute__((address(0xFC1)));
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"6123
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 6123: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"4815
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 4815: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
 [v _LATD `Vuc ~T0 @X0 0 e@3980 ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
@@ -687,319 +744,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LVP = OFF ]
 "28
 [p x XINST = OFF ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"12 main.c
-[; ;main.c: 12: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"3 system.c
+[; ;system.c: 3: void oscillationInitialize(void) {
+[v _oscillationInitialize `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _oscillationInitialize ]
 [f ]
-"13
-[; ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-[v _state `E4564 ~T0 @X0 1 a ]
-"14
-[; ;main.c: 14:     oscillationInitialize();
-[e ( _oscillationInitialize ..  ]
-"15
-[; ;main.c: 15:     timerInitialize();
-[e ( _timerInitialize ..  ]
-"16
-[; ;main.c: 16:     buttonInitialize();
-[e ( _buttonInitialize ..  ]
-"17
-[; ;main.c: 17:     ledInitialize();
-[e ( _ledInitialize ..  ]
-"18
-[; ;main.c: 18:     state = init;
-[e = _state . `E4564 0 ]
-"19
-[; ;main.c: 19:     while (1) {
-[e :U 503 ]
-{
-"20
-[; ;main.c: 20:         switch (state) {
-[e $U 506  ]
-{
-"21
-[; ;main.c: 21:             case init:
-[e :U 507 ]
-"22
-[; ;main.c: 22:                 countFast = 0;
-[e = _countFast -> 0 `i ]
-"23
-[; ;main.c: 23:                 countSlow = 0;
-[e = _countSlow -> 0 `i ]
-"24
-[; ;main.c: 24:                 if (iCount > 0) {
-[e $ ! > _iCount -> 0 `i 508  ]
-{
-"25
-[; ;main.c: 25:                     LATD++;
-[e ++ _LATD -> -> 1 `i `Vuc ]
-"26
-[; ;main.c: 26:                     state = iNormal;
-[e = _state . `E4564 1 ]
-"27
-[; ;main.c: 27:                 }
-}
-[e $U 509  ]
-"28
-[; ;main.c: 28:                 else if (iCount == 0 && dCount > 0) {
-[e :U 508 ]
-[e $ ! && == _iCount -> 0 `i > _dCount -> 0 `i 510  ]
-{
-"29
-[; ;main.c: 29:                     LATD--;
-[e -- _LATD -> -> 1 `i `Vuc ]
-"30
-[; ;main.c: 30:                     state = dNormal;
-[e = _state . `E4564 4 ]
-"31
-[; ;main.c: 31:                 }
-}
-[e :U 510 ]
-[e :U 509 ]
-"32
-[; ;main.c: 32:                 break;
-[e $U 505  ]
-"33
-[; ;main.c: 33:             case iNormal:
-[e :U 511 ]
-"34
-[; ;main.c: 34:                 if (iCount == 0) {
-[e $ ! == _iCount -> 0 `i 512  ]
-{
-"35
-[; ;main.c: 35:                     state = init;
-[e = _state . `E4564 0 ]
-"36
-[; ;main.c: 36:                 }
-}
-[e :U 512 ]
-"37
-[; ;main.c: 37:                 if (countSlow > 0) {
-[e $ ! > _countSlow -> 0 `i 513  ]
-{
-"38
-[; ;main.c: 38:                     changeSlow = 1;
-[e = _changeSlow -> 1 `i ]
-"39
-[; ;main.c: 39:                     state = iSlow;
-[e = _state . `E4564 3 ]
-"40
-[; ;main.c: 40:                 }
-}
-[e :U 513 ]
-"41
-[; ;main.c: 41:                 break;
-[e $U 505  ]
-"42
-[; ;main.c: 42:             case iSlow:
-[e :U 514 ]
-"43
-[; ;main.c: 43:                 if (iCount == 0) {
-[e $ ! == _iCount -> 0 `i 515  ]
-{
-"44
-[; ;main.c: 44:                     state = init;
-[e = _state . `E4564 0 ]
-"45
-[; ;main.c: 45:                 }
-}
-[e :U 515 ]
-"46
-[; ;main.c: 46:                 if (changeSlow == 1) {
-[e $ ! == _changeSlow -> 1 `i 516  ]
-{
-"47
-[; ;main.c: 47:                     LATD++;
-[e ++ _LATD -> -> 1 `i `Vuc ]
-"48
-[; ;main.c: 48:                     changeSlow = 0;
-[e = _changeSlow -> 0 `i ]
-"49
-[; ;main.c: 49:                 }
-}
-[e :U 516 ]
-"50
-[; ;main.c: 50:                 if (countFast > 0) {
-[e $ ! > _countFast -> 0 `i 517  ]
-{
-"51
-[; ;main.c: 51:                     changeFast = 1;
-[e = _changeFast -> 1 `i ]
-"52
-[; ;main.c: 52:                     state = iFast;
-[e = _state . `E4564 2 ]
-"53
-[; ;main.c: 53:                 }
-}
-[e :U 517 ]
-"54
-[; ;main.c: 54:                 break;
-[e $U 505  ]
-"55
-[; ;main.c: 55:             case iFast:
-[e :U 518 ]
-"56
-[; ;main.c: 56:                 if (iCount == 0) {
-[e $ ! == _iCount -> 0 `i 519  ]
-{
-"57
-[; ;main.c: 57:                     state = init;
-[e = _state . `E4564 0 ]
-"58
-[; ;main.c: 58:                 }
-}
-[e :U 519 ]
-"59
-[; ;main.c: 59:                 if (changeFast == 1) {
-[e $ ! == _changeFast -> 1 `i 520  ]
-{
-"60
-[; ;main.c: 60:                     LATD++;
-[e ++ _LATD -> -> 1 `i `Vuc ]
-"61
-[; ;main.c: 61:                     changeFast = 0;
-[e = _changeFast -> 0 `i ]
-"62
-[; ;main.c: 62:                 }
-}
-[e :U 520 ]
-"63
-[; ;main.c: 63:                 break;
-[e $U 505  ]
-"64
-[; ;main.c: 64:             case dNormal:
-[e :U 521 ]
-"65
-[; ;main.c: 65:                 if (dCount == 0 || iCount > 0) {
-[e $ ! || == _dCount -> 0 `i > _iCount -> 0 `i 522  ]
-{
-"66
-[; ;main.c: 66:                     state = init;
-[e = _state . `E4564 0 ]
-"67
-[; ;main.c: 67:                 }
-}
-[e :U 522 ]
-"68
-[; ;main.c: 68:                 if (countSlow > 0) {
-[e $ ! > _countSlow -> 0 `i 523  ]
-{
-"69
-[; ;main.c: 69:                     changeSlow = 1;
-[e = _changeSlow -> 1 `i ]
-"70
-[; ;main.c: 70:                     state = dSlow;
-[e = _state . `E4564 6 ]
-"71
-[; ;main.c: 71:                 }
-}
-[e :U 523 ]
-"72
-[; ;main.c: 72:                 break;
-[e $U 505  ]
-"73
-[; ;main.c: 73:             case dSlow:
-[e :U 524 ]
-"74
-[; ;main.c: 74:                 if (dCount == 0 || iCount > 0) {
-[e $ ! || == _dCount -> 0 `i > _iCount -> 0 `i 525  ]
-{
-"75
-[; ;main.c: 75:                     state = init;
-[e = _state . `E4564 0 ]
-"76
-[; ;main.c: 76:                 }
-}
-[e :U 525 ]
-"77
-[; ;main.c: 77:                 if (changeSlow == 1) {
-[e $ ! == _changeSlow -> 1 `i 526  ]
-{
-"78
-[; ;main.c: 78:                     LATD--;
-[e -- _LATD -> -> 1 `i `Vuc ]
-"79
-[; ;main.c: 79:                     changeSlow = 0;
-[e = _changeSlow -> 0 `i ]
-"80
-[; ;main.c: 80:                 }
-}
-[e :U 526 ]
-"81
-[; ;main.c: 81:                 if (countFast > 0) {
-[e $ ! > _countFast -> 0 `i 527  ]
-{
-"82
-[; ;main.c: 82:                     changeFast = 1;
-[e = _changeFast -> 1 `i ]
-"83
-[; ;main.c: 83:                     state = dFast;
-[e = _state . `E4564 5 ]
-"84
-[; ;main.c: 84:                 }
-}
-[e :U 527 ]
-"85
-[; ;main.c: 85:                 break;
-[e $U 505  ]
-"86
-[; ;main.c: 86:             case dFast:
-[e :U 528 ]
-"87
-[; ;main.c: 87:                 if (dCount == 0 || iCount > 0) {
-[e $ ! || == _dCount -> 0 `i > _iCount -> 0 `i 529  ]
-{
-"88
-[; ;main.c: 88:                     state = init;
-[e = _state . `E4564 0 ]
-"89
-[; ;main.c: 89:                 }
-}
-[e :U 529 ]
-"90
-[; ;main.c: 90:                 if (changeFast == 1) {
-[e $ ! == _changeFast -> 1 `i 530  ]
-{
-"91
-[; ;main.c: 91:                     LATD--;
-[e -- _LATD -> -> 1 `i `Vuc ]
-"92
-[; ;main.c: 92:                     changeFast = 0;
-[e = _changeFast -> 0 `i ]
-"93
-[; ;main.c: 93:                 }
-}
-[e :U 530 ]
-"94
-[; ;main.c: 94:                 break;
-[e $U 505  ]
-"95
-[; ;main.c: 95:         }
-}
-[e $U 505  ]
-[e :U 506 ]
-[e [\ -> _state `ui , $ -> . `E4564 0 `ui 507
- , $ -> . `E4564 1 `ui 511
- , $ -> . `E4564 3 `ui 514
- , $ -> . `E4564 2 `ui 518
- , $ -> . `E4564 4 `ui 521
- , $ -> . `E4564 6 `ui 524
- , $ -> . `E4564 5 `ui 528
- 505 ]
-[e :U 505 ]
-"96
-[; ;main.c: 96:     }
-}
-[e :U 502 ]
-[e $U 503  ]
-[e :U 504 ]
-"97
-[; ;main.c: 97:     return;
-[e $UE 501  ]
-"98
-[; ;main.c: 98: }
+"4
+[; ;system.c: 4:     OSCCON = 0b01110111;
+[e = _OSCCON -> -> 119 `i `uc ]
+"5
+[; ;system.c: 5:     OSCTUNE = 0b00001111;
+[e = _OSCTUNE -> -> 15 `i `uc ]
+"6
+[; ;system.c: 6: }
 [e :UE 501 ]
+}
+"8
+[; ;system.c: 8: void timerInitialize(void) {
+[v _timerInitialize `(v ~T0 @X0 1 ef ]
+{
+[e :U _timerInitialize ]
+[f ]
+"10
+[; ;system.c: 10:     INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"11
+[; ;system.c: 11:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"12
+[; ;system.c: 12:     T0CON = 0b11000110;
+[e = _T0CON -> -> 198 `i `uc ]
+"13
+[; ;system.c: 13:     TMR0L = defineTMR0Register();
+[e = _TMR0L -> ( _defineTMR0Register ..  `uc ]
+"14
+[; ;system.c: 14: }
+[e :UE 502 ]
+}
+"16
+[; ;system.c: 16: void buttonInitialize(void) {
+[v _buttonInitialize `(v ~T0 @X0 1 ef ]
+{
+[e :U _buttonInitialize ]
+[f ]
+"17
+[; ;system.c: 17:     TRISAbits.TRISA5 = 1;
+[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+"18
+[; ;system.c: 18:     TRISBbits.TRISB0 = 1;
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
+"19
+[; ;system.c: 19:     ADCON1 = 0b00001111;
+[e = _ADCON1 -> -> 15 `i `uc ]
+"20
+[; ;system.c: 20: }
+[e :UE 503 ]
+}
+"22
+[; ;system.c: 22: void ledInitialize(void) {
+[v _ledInitialize `(v ~T0 @X0 1 ef ]
+{
+[e :U _ledInitialize ]
+[f ]
+"23
+[; ;system.c: 23:     TRISD = 0x00;
+[e = _TRISD -> -> 0 `i `uc ]
+"24
+[; ;system.c: 24:     LATD = 0x00;
+[e = _LATD -> -> 0 `i `uc ]
+"25
+[; ;system.c: 25: }
+[e :UE 504 ]
 }
