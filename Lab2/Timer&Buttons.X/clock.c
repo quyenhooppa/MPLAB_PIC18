@@ -1,7 +1,7 @@
 #include "clock.h"
 
 int defineTMR0Register(void) {
-    return 256 - (CLOCK * 2000) / (int)128; 
+    return 256 * 256 - (CLOCK * 250) / (int)4; 
 }
 
 void __interrupt () deviceInterrupt(void) {
