@@ -4,7 +4,7 @@
 void modifyHour (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 1 && countPressed > 0) {
+            if (changeModePressed == 0 && countPressed > 0) {
                 hr++;
                 stModify = iNor;
             }
@@ -36,7 +36,7 @@ void modifyHour (void) {
 void modifyMinute (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 1 && countPressed > 0) {
+            if (changeModePressed == 0 && countPressed > 0) {
                 min++;
                 stModify = iNor;
             }
@@ -68,7 +68,7 @@ void modifyMinute (void) {
 void modifySecond (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 1 && countPressed > 0) {
+            if (changeModePressed == 0 && countPressed > 0) {
                 sec++;
                 stModify = iNor;
             }
@@ -97,7 +97,76 @@ void modifySecond (void) {
     }
 }
 
-void displayModify (void) {
+void displayModHour (void) {
+    mCURSOR_LINE1;
+    LCDPutStr(" MODIFIES HOUR ");
+    mCURSOR_LINE2;
+    if (count10ms >= (PERIOD/4)) {
+        count10ms = 0;
+            if (blink == 0) { 
+                LCDPutChar(' ');
+                LCDPutChar(' ');
+            } else {
+                LCDPutChar(hr/10+'0');
+                LCDPutChar(hr%10+'0');
+            }
+            blink = (blink + 1) % 2;
+    }
+    LCDPutChar(':');
+    LCDPutChar(min/10+'0');
+    LCDPutChar(min%10+'0');
+    LCDPutChar(':');
+    LCDPutChar(sec/10+'0');
+    LCDPutChar(sec%10+'0');
+}
+
+void displayModMinute (void) {
+    mCURSOR_LINE1;
+    LCDPutStr("MODIFIES MINUTE");
+    mCURSOR_LINE2;
+    LCDPutChar(hr/10+'0');
+    LCDPutChar(hr%10+'0');
+    LCDPutChar(':');
+    if (count10ms >= (PERIOD/4)) {
+        count10ms = 0;
+            if (blink == 0) { 
+                LCDPutChar(' ');
+                LCDPutChar(' ');
+            } else {
+                LCDPutChar(min/10+'0');
+                LCDPutChar(min%10+'0');
+            }
+            blink = (blink + 1) % 2;
+    }
+    LCDPutChar(':');
+    LCDPutChar(sec/10+'0');
+    LCDPutChar(sec%10+'0');
+}
+
+void displayModSecond (void) {
+    mCURSOR_LINE1;
+    LCDPutStr("MODIFIES MINUTE");
+    mCURSOR_LINE2;
+    LCDPutChar(hr/10+'0');
+    LCDPutChar(hr%10+'0');
+    LCDPutChar(':');
+    LCDPutChar(min/10+'0');
+    LCDPutChar(min%10+'0');
+    LCDPutChar(':');
+    if (count10ms >= (PERIOD/4)) {
+        count10ms = 0;
+            if (blink == 0) { 
+                LCDPutChar(' ');
+                LCDPutChar(' ');
+            } else {
+                LCDPutChar(sec/10+'0');
+                LCDPutChar(sec%10+'0');
+            }
+            blink = (blink + 1) % 2;
+    }
+}
+
+/*void displayModify (void) {
     switch (state) {
         case norClk:
             break;
@@ -105,7 +174,7 @@ void displayModify (void) {
             mCURSOR_LINE1;
             LCDPutStr(" MODIFIES HOUR ");
             mCURSOR_LINE2;
-            if ((count10ms % (PERIOD / 2)) == 0) {
+            if ((count10ms % 10) == 0) {
                 if (blink == 0) { 
                     LCDPutChar(' ');
                     LCDPutChar(' ');
@@ -130,7 +199,7 @@ void displayModify (void) {
             LCDPutChar(hr/10+'0');
             LCDPutChar(hr%10+'0');
             LCDPutChar(':');
-            if ((count10ms % (PERIOD / 2)) == 0) {
+            if ((count10ms % 10) == 0) {
                 if (blink == 0) { 
                     LCDPutChar(' ');
                     LCDPutChar(' ');
@@ -147,7 +216,7 @@ void displayModify (void) {
             break;
         case modSec:
             mCURSOR_LINE1;
-            LCDPutStr("MODIFIES MINUTE");
+            LCDPutStr("MODIFIES SECOND");
             mCURSOR_LINE2;
             LCDPutChar(hr/10+'0');
             LCDPutChar(hr%10+'0');
@@ -155,7 +224,7 @@ void displayModify (void) {
             LCDPutChar(min/10+'0');
             LCDPutChar(min%10+'0');
             LCDPutChar(':');
-            if ((count10ms % (PERIOD / 2)) == 0) {
+            if ((count10ms % 10) == 0) {
                 if (blink == 0) { 
                     LCDPutChar(' ');
                     LCDPutChar(' ');
@@ -170,4 +239,4 @@ void displayModify (void) {
         case stpWatch:
             break;
     }
-}
+}*/

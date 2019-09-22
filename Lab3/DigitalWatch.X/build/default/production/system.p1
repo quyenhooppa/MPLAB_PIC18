@@ -27,15 +27,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12557
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12557: extern volatile unsigned char T0CON __attribute__((address(0xFD5)));
 [v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
-"12647
-[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12647: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
 "12640
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12640: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-"12633
-[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12633: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
-[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
 "5468
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5468:     struct {
 [s S212 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -69,6 +63,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "10174
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 10174: extern volatile unsigned char ADCON1 __attribute__((address(0xFC1)));
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"6123
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 6123: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"4815
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 4815: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
+[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -681,68 +681,79 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LVP = OFF ]
 "27
 [p x XINST = OFF ]
-"30
-[v _timer0ReloadVal `Vum ~T0 @X0 1 e ]
 "3 system.c
 [; ;system.c: 3: void oscillationInitialize (void) {
 [v _oscillationInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _oscillationInitialize ]
 [f ]
-"4
-[; ;system.c: 4:     OSCCON = 0b01000111;
-[e = _OSCCON -> -> 71 `i `uc ]
 "5
-[; ;system.c: 5:     OSCTUNE = 0b00001111;
-[e = _OSCTUNE -> -> 15 `i `uc ]
+[; ;system.c: 5:     OSCCON = 0b01110111;
+[e = _OSCCON -> -> 119 `i `uc ]
 "6
-[; ;system.c: 6: }
+[; ;system.c: 6:     OSCTUNE = 0b00001111;
+[e = _OSCTUNE -> -> 15 `i `uc ]
+"7
+[; ;system.c: 7: }
 [e :UE 501 ]
 }
-"8
-[; ;system.c: 8: void timerInitialize (void) {
+"9
+[; ;system.c: 9: void timerInitialize (void) {
 [v _timerInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerInitialize ]
 [f ]
-"9
-[; ;system.c: 9:     INTCONbits.GIE = 1;
+"10
+[; ;system.c: 10:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"11
-[; ;system.c: 11:     INTCONbits.TMR0IE = 1;
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "12
-[; ;system.c: 12:     T0CON = 0b10000001;
-[e = _T0CON -> -> 129 `i `uc ]
-"14
-[; ;system.c: 14:     TMR0H = 0xFD;
-[e = _TMR0H -> -> 253 `i `uc ]
+[; ;system.c: 12:     INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"13
+[; ;system.c: 13:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "15
-[; ;system.c: 15:     TMR0L = 0x8F;
-[e = _TMR0L -> -> 143 `i `uc ]
-"16
-[; ;system.c: 16:     timer0ReloadVal = TMR0;
-[e = _timer0ReloadVal -> _TMR0 `um ]
-"17
-[; ;system.c: 17: }
+[; ;system.c: 15:     T0CON = 0b11000110;
+[e = _T0CON -> -> 198 `i `uc ]
+"18
+[; ;system.c: 18:     TMR0L = 100;
+[e = _TMR0L -> -> 100 `i `uc ]
+"20
+[; ;system.c: 20: }
 [e :UE 502 ]
 }
-"19
-[; ;system.c: 19: void buttonInitialize (void) {
+"22
+[; ;system.c: 22: void buttonInitialize (void) {
 [v _buttonInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _buttonInitialize ]
 [f ]
-"20
-[; ;system.c: 20:     TRISAbits.TRISA5 = 1;
-[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
-"21
-[; ;system.c: 21:     TRISBbits.TRISB0 = 1;
-[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"22
-[; ;system.c: 22:     ADCON1 = 0b00001111;
-[e = _ADCON1 -> -> 15 `i `uc ]
 "23
-[; ;system.c: 23: }
+[; ;system.c: 23:     TRISAbits.TRISA5 = 1;
+[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+"24
+[; ;system.c: 24:     TRISBbits.TRISB0 = 1;
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
+"25
+[; ;system.c: 25:     ADCON1 = 0b00001111;
+[e = _ADCON1 -> -> 15 `i `uc ]
+"26
+[; ;system.c: 26: }
 [e :UE 503 ]
+}
+"28
+[; ;system.c: 28: void ledInitialize(void) {
+[v _ledInitialize `(v ~T0 @X0 1 ef ]
+{
+[e :U _ledInitialize ]
+[f ]
+"29
+[; ;system.c: 29:     TRISD = 0x00;
+[e = _TRISD -> -> 0 `i `uc ]
+"30
+[; ;system.c: 30:     LATD = 0x00;
+[e = _LATD -> -> 0 `i `uc ]
+"31
+[; ;system.c: 31: }
+[e :UE 504 ]
 }

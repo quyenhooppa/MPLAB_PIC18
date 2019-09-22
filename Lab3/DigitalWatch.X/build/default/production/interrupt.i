@@ -7869,11 +7869,12 @@ typedef uint32_t uint_fast32_t;
 #pragma config XINST = OFF
 
 
-volatile uint24_t timer0ReloadVal;
+
 
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
+void ledInitialize(void);
 # 20 "./interrupt.h" 2
 # 1 "./button.h" 1
 # 17 "./button.h"
@@ -7911,23 +7912,24 @@ char secondReadRB0 = 1;
 int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
-
-enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 21 "./interrupt.h" 2
 
 int count10ms = 0;
 int timerFlag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 2 "interrupt.c" 2
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void) {
     if (INTCONbits.TMR0IF == 1 && INTCONbits.TMR0IE == 1) {
         INTCONbits.TMR0IF = 0;
 
-        TMR0H = (timer0ReloadVal << 16);
-        TMR0L = (uint8_t)timer0ReloadVal;
+
+        TMR0L = 100;
         count10ms++;
+
         timerFlag = 1;
         button();
     }

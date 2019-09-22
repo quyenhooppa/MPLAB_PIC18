@@ -7876,11 +7876,12 @@ typedef uint32_t uint_fast32_t;
 #pragma config XINST = OFF
 
 
-volatile uint24_t timer0ReloadVal;
+
 
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
+void ledInitialize(void);
 # 20 "./interrupt.h" 2
 # 1 "./button.h" 1
 # 17 "./button.h"
@@ -7918,14 +7919,14 @@ char secondReadRB0 = 1;
 int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
-
-enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 21 "./interrupt.h" 2
 
 int count10ms = 0;
 int timerFlag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 11 "main.c" 2
 # 1 "./stateClock.h" 1
 # 19 "./stateClock.h"
@@ -7939,11 +7940,15 @@ void displayClock (void);
 # 1 "./statesModify.h" 1
 # 17 "./statesModify.h"
 int blink = 0;
+int count = 0;
 
 void modifyHour (void);
 void modifyMinute (void);
 void modifySecond (void);
 void displayModify (void);
+void displayModHour (void);
+void displayModMinute (void);
+void displayModSecond (void);
 
 enum st{init, iNor, iAuto} stModify;
 # 13 "main.c" 2
@@ -7962,51 +7967,69 @@ void main(void) {
     oscillationInitialize();
     timerInitialize();
     buttonInitialize();
+    ledInitialize();
     LCDInit();
     state = norClk;
     stModify = init;
-    switch (state) {
-        case norClk:
-            norClock();
-            while (state == norClk) displayClock();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = modHr;
-            }
-            break;
-        case modHr:
-            modifyHour();
-            displayModify();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = modMin;
-            }
-            break;
-        case modMin:
-            modifyMinute();
-            displayModify();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = modSec;
-            }
-            break;
-        case modSec:
-            modifySecond();
-            displayModify();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = stpWatch;
-            }
-            break;
-        case stpWatch:
-            norClock();
-            stopWatch();
-            displayStpWatch();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = norClk;
-            }
-            break;
+    while (1)
+    {
+        switch (state) {
+            case norClk:
+                miliSecSTW = 0;
+                secSTW = 0;
+                minSTW = 0;
+                norClock();
+                displayClock();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = modHr;
+                    blink = 0;
+                    count10ms = 0;
+                }
+                break;
+            case modHr:
+                modifyHour();
+
+                displayModHour();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = modMin;
+                    blink = 0;
+                    count10ms = 0;
+                }
+                break;
+            case modMin:
+                modifyMinute();
+
+                displayModMinute();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = modSec;
+                    blink = 0;
+                    count10ms = 0;
+                }
+                break;
+            case modSec:
+                modifySecond();
+
+                displayModSecond();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = stpWatch;
+                    run = 0;
+                    count10ms = 0;
+                }
+                break;
+            case stpWatch:
+                norClock();
+                stopWatch();
+                displayStpWatch();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = norClk;
+                }
+                break;
+        }
     }
     return;
 }

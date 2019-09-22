@@ -1,8 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"35 ./button.h
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4600 0 1 2 3 4 .. ]
-[n E4600 State norClk modHr modMin modSec stpWatch  ]
 "2649 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2649:     struct {
 [s S118 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -703,9 +699,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"35
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4600 ~T0 @X0 1 e ]
 "3 button.c
 [; ;button.c: 3: int readRA5Button(void) {
 [v _readRA5Button `(i ~T0 @X0 1 ef ]

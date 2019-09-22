@@ -27,7 +27,7 @@ extern "C" {
 #pragma config 	XINST = OFF
 #endif
 
-volatile uint24_t timer0ReloadVal;    
+//volatile uint24_t timer0ReloadVal;    
     
 void oscillationInitialize (void);
 void timerInitialize (void);

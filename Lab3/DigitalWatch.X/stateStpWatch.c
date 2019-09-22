@@ -8,6 +8,7 @@ void stopWatch (void) {
             minSTW = 0;
         }
         run = (run + 1) % 2;
+        timerFlag = 0;
     }
     if (run == 1) {
         if (timerFlag == 1) {

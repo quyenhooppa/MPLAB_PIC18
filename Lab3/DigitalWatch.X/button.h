@@ -32,8 +32,6 @@ int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
 
-enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-
 #ifdef	__cplusplus
 }
 #endif

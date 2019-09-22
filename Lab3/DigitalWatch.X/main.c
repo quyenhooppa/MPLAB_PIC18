@@ -24,35 +24,49 @@ void main(void) {
     {
         switch (state) {
             case norClk:
+                miliSecSTW = 0;
+                secSTW = 0;
+                minSTW = 0;
                 norClock();
-                while (state == norClk) displayClock();
+                displayClock();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = modHr;
+                    blink = 0;
+                    count10ms = 0;
                 }
                 break;
             case modHr:
                 modifyHour();
-                displayModify();
+                //displayModify
+                displayModHour();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = modMin;
+                    blink = 0;
+                    count10ms = 0;
                 }
                 break;
             case modMin:
                 modifyMinute();
-                displayModify();
+                //displayModify();
+                displayModMinute();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = modSec;
+                    blink = 0;
+                    count10ms = 0;
                 }
                 break;
             case modSec:
                 modifySecond();
-                displayModify();
+                //displayModify();
+                displayModSecond();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = stpWatch;
+                    run = 0;
+                    count10ms = 0;
                 }
                 break; 
             case stpWatch:

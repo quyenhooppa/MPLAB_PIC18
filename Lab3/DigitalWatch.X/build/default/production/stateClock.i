@@ -7871,11 +7871,12 @@ typedef uint32_t uint_fast32_t;
 #pragma config XINST = OFF
 
 
-volatile uint24_t timer0ReloadVal;
+
 
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
+void ledInitialize(void);
 # 20 "./interrupt.h" 2
 # 1 "./button.h" 1
 # 17 "./button.h"
@@ -7913,14 +7914,14 @@ char secondReadRB0 = 1;
 int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
-
-enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 21 "./interrupt.h" 2
 
 int count10ms = 0;
 int timerFlag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 18 "./stateClock.h" 2
 
 int sec = 0;
@@ -7932,33 +7933,37 @@ void displayClock (void);
 # 2 "stateClock.c" 2
 
 void norClock (void) {
-    if (count10ms >= 100) {
-        count10ms = 0;
-        sec++;
-        if (sec >= 60) {
-            sec = 0;
-            min++;
+
+        if (count10ms >= 100) {
+            count10ms = 0;
+            sec++;
+            if (sec >= 60) {
+                sec = 0;
+                min++;
+            }
+            if (min >= 60) {
+                min = 0;
+                hr++;
+            }
+            if (hr >= 24) {
+                hr = 0;
+            }
         }
-        if (min >= 60) {
-            min = 0;
-            hr++;
-        }
-        if (hr >= 24) {
-            hr = 0;
-        }
-    }
+
 }
 
 void displayClock (void) {
-    LCDPutInst(0x80);
-    LCDPutStr("  NORMAL CLOCK  ");
-    LCDPutInst(0xC0);
-    LCDPutChar(hr/10+'0');
-    LCDPutChar(hr%10+'0');
-    LCDPutChar(':');
-    LCDPutChar(min/10+'0');
-    LCDPutChar(min%10+'0');
-    LCDPutChar(':');
-    LCDPutChar(sec/10+'0');
-    LCDPutChar(sec%10+'0');
+
+        LCDPutInst(0x80);
+        LCDPutStr("  NORMAL CLOCK  ");
+        LCDPutInst(0xC0);
+        LCDPutChar(hr/10+'0');
+        LCDPutChar(hr%10+'0');
+        LCDPutChar(':');
+        LCDPutChar(min/10+'0');
+        LCDPutChar(min%10+'0');
+        LCDPutChar(':');
+        LCDPutChar(sec/10+'0');
+        LCDPutChar(sec%10+'0');
+
 }

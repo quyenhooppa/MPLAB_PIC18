@@ -7891,8 +7891,6 @@ char secondReadRB0 = 1;
 int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
-
-enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 2 "button.c" 2
 
 int readRA5Button(void) {

@@ -7873,11 +7873,12 @@ typedef uint32_t uint_fast32_t;
 #pragma config XINST = OFF
 
 
-volatile uint24_t timer0ReloadVal;
+
 
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
+void ledInitialize(void);
 # 20 "./interrupt.h" 2
 # 1 "./button.h" 1
 # 17 "./button.h"
@@ -7915,14 +7916,14 @@ char secondReadRB0 = 1;
 int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
-
-enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 21 "./interrupt.h" 2
 
 int count10ms = 0;
 int timerFlag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 18 "./stateClock.h" 2
 
 int sec = 0;
@@ -7934,11 +7935,15 @@ void displayClock (void);
 # 16 "./statesModify.h" 2
 
 int blink = 0;
+int count = 0;
 
 void modifyHour (void);
 void modifyMinute (void);
 void modifySecond (void);
 void displayModify (void);
+void displayModHour (void);
+void displayModMinute (void);
+void displayModSecond (void);
 
 enum st{init, iNor, iAuto} stModify;
 # 2 "statesModify.c" 2
@@ -7947,7 +7952,7 @@ enum st{init, iNor, iAuto} stModify;
 void modifyHour (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 1 && countPressed > 0) {
+            if (changeModePressed == 0 && countPressed > 0) {
                 hr++;
                 stModify = iNor;
             }
@@ -7979,7 +7984,7 @@ void modifyHour (void) {
 void modifyMinute (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 1 && countPressed > 0) {
+            if (changeModePressed == 0 && countPressed > 0) {
                 min++;
                 stModify = iNor;
             }
@@ -8011,7 +8016,7 @@ void modifyMinute (void) {
 void modifySecond (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 1 && countPressed > 0) {
+            if (changeModePressed == 0 && countPressed > 0) {
                 sec++;
                 stModify = iNor;
             }
@@ -8040,77 +8045,71 @@ void modifySecond (void) {
     }
 }
 
-void displayModify (void) {
-    switch (state) {
-        case norClk:
-            break;
-        case modHr:
-            LCDPutInst(0x80);
-            LCDPutStr(" MODIFIES HOUR ");
-            LCDPutInst(0xC0);
-            if ((count10ms % (20 / 2)) == 0) {
-                if (blink == 0) {
-                    LCDPutChar(' ');
-                    LCDPutChar(' ');
-                }
-                else {
-                    LCDPutChar(hr/10+'0');
-                    LCDPutChar(hr%10+'0');
-                }
-                blink = (blink + 1) % 2;
+void displayModHour (void) {
+    LCDPutInst(0x80);
+    LCDPutStr(" MODIFIES HOUR ");
+    LCDPutInst(0xC0);
+    if (count10ms >= (20/4)) {
+        count10ms = 0;
+            if (blink == 0) {
+                LCDPutChar(' ');
+                LCDPutChar(' ');
+            } else {
+                LCDPutChar(hr/10+'0');
+                LCDPutChar(hr%10+'0');
             }
-            LCDPutChar(':');
-            LCDPutChar(min/10+'0');
-            LCDPutChar(min%10+'0');
-            LCDPutChar(':');
-            LCDPutChar(sec/10+'0');
-            LCDPutChar(sec%10+'0');
-            break;
-        case modMin:
-            LCDPutInst(0x80);
-            LCDPutStr("MODIFIES MINUTE");
-            LCDPutInst(0xC0);
-            LCDPutChar(hr/10+'0');
-            LCDPutChar(hr%10+'0');
-            LCDPutChar(':');
-            if ((count10ms % (20 / 2)) == 0) {
-                if (blink == 0) {
-                    LCDPutChar(' ');
-                    LCDPutChar(' ');
-                }
-                else {
-                    LCDPutChar(min/10+'0');
-                    LCDPutChar(min%10+'0');
-                }
-                blink = (blink + 1) % 2;
+            blink = (blink + 1) % 2;
+    }
+    LCDPutChar(':');
+    LCDPutChar(min/10+'0');
+    LCDPutChar(min%10+'0');
+    LCDPutChar(':');
+    LCDPutChar(sec/10+'0');
+    LCDPutChar(sec%10+'0');
+}
+
+void displayModMinute (void) {
+    LCDPutInst(0x80);
+    LCDPutStr("MODIFIES MINUTE");
+    LCDPutInst(0xC0);
+    LCDPutChar(hr/10+'0');
+    LCDPutChar(hr%10+'0');
+    LCDPutChar(':');
+    if (count10ms >= (20/4)) {
+        count10ms = 0;
+            if (blink == 0) {
+                LCDPutChar(' ');
+                LCDPutChar(' ');
+            } else {
+                LCDPutChar(min/10+'0');
+                LCDPutChar(min%10+'0');
             }
-            LCDPutChar(':');
-            LCDPutChar(sec/10+'0');
-            LCDPutChar(sec%10+'0');
-            break;
-        case modSec:
-            LCDPutInst(0x80);
-            LCDPutStr("MODIFIES MINUTE");
-            LCDPutInst(0xC0);
-            LCDPutChar(hr/10+'0');
-            LCDPutChar(hr%10+'0');
-            LCDPutChar(':');
-            LCDPutChar(min/10+'0');
-            LCDPutChar(min%10+'0');
-            LCDPutChar(':');
-            if ((count10ms % (20 / 2)) == 0) {
-                if (blink == 0) {
-                    LCDPutChar(' ');
-                    LCDPutChar(' ');
-                }
-                else {
-                    LCDPutChar(sec/10+'0');
-                    LCDPutChar(sec%10+'0');
-                }
-                blink = (blink + 1) % 2;
+            blink = (blink + 1) % 2;
+    }
+    LCDPutChar(':');
+    LCDPutChar(sec/10+'0');
+    LCDPutChar(sec%10+'0');
+}
+
+void displayModSecond (void) {
+    LCDPutInst(0x80);
+    LCDPutStr("MODIFIES MINUTE");
+    LCDPutInst(0xC0);
+    LCDPutChar(hr/10+'0');
+    LCDPutChar(hr%10+'0');
+    LCDPutChar(':');
+    LCDPutChar(min/10+'0');
+    LCDPutChar(min%10+'0');
+    LCDPutChar(':');
+    if (count10ms >= (20/4)) {
+        count10ms = 0;
+            if (blink == 0) {
+                LCDPutChar(' ');
+                LCDPutChar(' ');
+            } else {
+                LCDPutChar(sec/10+'0');
+                LCDPutChar(sec%10+'0');
             }
-            break;
-        case stpWatch:
-            break;
+            blink = (blink + 1) % 2;
     }
 }

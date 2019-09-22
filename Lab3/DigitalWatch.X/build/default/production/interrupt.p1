@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"35 ./button.h
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4604 0 1 2 3 4 .. ]
-[n E4604 State norClk modHr modMin modSec stpWatch  ]
+"27 ./interrupt.h
+[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4607 0 1 2 3 4 .. ]
+[n E4607 State norClk modHr modMin modSec stpWatch  ]
 [t ~ __interrupt . k ]
 [t T111 __interrupt ]
 "13118 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
@@ -24,9 +24,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13144
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13144: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS493 ~T0 @X0 0 e@4082 ]
-"12647
-[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12647: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
 "12640
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12640: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
@@ -645,8 +642,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LVP = OFF ]
 "27
 [p x XINST = OFF ]
-"30
-[v _timer0ReloadVal `Vum ~T0 @X0 1 e ]
 "21 ./button.h
 [; ;./button.h: 21: int countPressed = 0;
 [v _countPressed `i ~T0 @X0 1 e ]
@@ -695,9 +690,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"35
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4604 ~T0 @X0 1 e ]
 "22 ./interrupt.h
 [; ;./interrupt.h: 22: int count10ms = 0;
 [v _count10ms `i ~T0 @X0 1 e ]
@@ -710,6 +702,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"27
+[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4607 ~T0 @X0 1 e ]
 [v $root$_deviceInterrupt `(v ~T0 @X0 0 e ]
 "3 interrupt.c
 [; ;interrupt.c: 3: void __attribute__((picinterrupt(("")))) deviceInterrupt(void) {
@@ -724,26 +719,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5
 [; ;interrupt.c: 5:         INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"7
-[; ;interrupt.c: 7:         TMR0H = (timer0ReloadVal << 16);
-[e = _TMR0H -> << _timer0ReloadVal -> 16 `i `uc ]
 "8
-[; ;interrupt.c: 8:         TMR0L = (uint8_t)timer0ReloadVal;
-[e = _TMR0L -> _timer0ReloadVal `uc ]
+[; ;interrupt.c: 8:         TMR0L = 100;
+[e = _TMR0L -> -> 100 `i `uc ]
 "9
 [; ;interrupt.c: 9:         count10ms++;
 [e ++ _count10ms -> 1 `i ]
-"10
-[; ;interrupt.c: 10:         timerFlag = 1;
-[e = _timerFlag -> 1 `i ]
 "11
-[; ;interrupt.c: 11:         button();
-[e ( _button ..  ]
+[; ;interrupt.c: 11:         timerFlag = 1;
+[e = _timerFlag -> 1 `i ]
 "12
-[; ;interrupt.c: 12:     }
+[; ;interrupt.c: 12:         button();
+[e ( _button ..  ]
+"13
+[; ;interrupt.c: 13:     }
 }
 [e :U 502 ]
-"13
-[; ;interrupt.c: 13: }
+"14
+[; ;interrupt.c: 14: }
 [e :UE 501 ]
 }

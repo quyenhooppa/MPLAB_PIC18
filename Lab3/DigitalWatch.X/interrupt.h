@@ -22,7 +22,9 @@ extern "C" {
 int count10ms = 0;    
 int timerFlag = 0;
 
-void __interrupt () deviceInterrupt(void);    
+void __interrupt () deviceInterrupt(void);  
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 
 #ifdef	__cplusplus
 }

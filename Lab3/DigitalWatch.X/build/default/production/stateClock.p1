@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"35 ./button.h
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4604 0 1 2 3 4 .. ]
-[n E4604 State norClk modHr modMin modSec stpWatch  ]
+"27 ./interrupt.h
+[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4607 0 1 2 3 4 .. ]
+[n E4607 State norClk modHr modMin modSec stpWatch  ]
 "126 ./BBSPI_LCD.h
 [; ;./BBSPI_LCD.h: 126:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
@@ -624,8 +624,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LVP = OFF ]
 "27
 [p x XINST = OFF ]
-"30
-[v _timer0ReloadVal `Vum ~T0 @X0 1 e ]
 "21 ./button.h
 [; ;./button.h: 21: int countPressed = 0;
 [v _countPressed `i ~T0 @X0 1 e ]
@@ -674,9 +672,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"35
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4604 ~T0 @X0 1 e ]
 "22 ./interrupt.h
 [; ;./interrupt.h: 22: int count10ms = 0;
 [v _count10ms `i ~T0 @X0 1 e ]
@@ -689,6 +684,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"27
+[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4607 ~T0 @X0 1 e ]
 "19 ./stateClock.h
 [; ;./stateClock.h: 19: int sec = 0;
 [v _sec `i ~T0 @X0 1 e ]
@@ -713,104 +711,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _norClock ]
 [f ]
-"4
-[; ;stateClock.c: 4:     if (count10ms >= 100) {
+"5
+[; ;stateClock.c: 5:         if (count10ms >= 100) {
 [e $ ! >= _count10ms -> 100 `i 502  ]
 {
-"5
-[; ;stateClock.c: 5:         count10ms = 0;
-[e = _count10ms -> 0 `i ]
 "6
-[; ;stateClock.c: 6:         sec++;
-[e ++ _sec -> 1 `i ]
+[; ;stateClock.c: 6:             count10ms = 0;
+[e = _count10ms -> 0 `i ]
 "7
-[; ;stateClock.c: 7:         if (sec >= 60) {
+[; ;stateClock.c: 7:             sec++;
+[e ++ _sec -> 1 `i ]
+"8
+[; ;stateClock.c: 8:             if (sec >= 60) {
 [e $ ! >= _sec -> 60 `i 503  ]
 {
-"8
-[; ;stateClock.c: 8:             sec = 0;
-[e = _sec -> 0 `i ]
 "9
-[; ;stateClock.c: 9:             min++;
-[e ++ _min -> 1 `i ]
+[; ;stateClock.c: 9:                 sec = 0;
+[e = _sec -> 0 `i ]
 "10
-[; ;stateClock.c: 10:         }
+[; ;stateClock.c: 10:                 min++;
+[e ++ _min -> 1 `i ]
+"11
+[; ;stateClock.c: 11:             }
 }
 [e :U 503 ]
-"11
-[; ;stateClock.c: 11:         if (min >= 60) {
+"12
+[; ;stateClock.c: 12:             if (min >= 60) {
 [e $ ! >= _min -> 60 `i 504  ]
 {
-"12
-[; ;stateClock.c: 12:             min = 0;
-[e = _min -> 0 `i ]
 "13
-[; ;stateClock.c: 13:             hr++;
-[e ++ _hr -> 1 `i ]
+[; ;stateClock.c: 13:                 min = 0;
+[e = _min -> 0 `i ]
 "14
-[; ;stateClock.c: 14:         }
+[; ;stateClock.c: 14:                 hr++;
+[e ++ _hr -> 1 `i ]
+"15
+[; ;stateClock.c: 15:             }
 }
 [e :U 504 ]
-"15
-[; ;stateClock.c: 15:         if (hr >= 24) {
+"16
+[; ;stateClock.c: 16:             if (hr >= 24) {
 [e $ ! >= _hr -> 24 `i 505  ]
 {
-"16
-[; ;stateClock.c: 16:             hr = 0;
-[e = _hr -> 0 `i ]
 "17
-[; ;stateClock.c: 17:         }
+[; ;stateClock.c: 17:                 hr = 0;
+[e = _hr -> 0 `i ]
+"18
+[; ;stateClock.c: 18:             }
 }
 [e :U 505 ]
-"18
-[; ;stateClock.c: 18:     }
+"19
+[; ;stateClock.c: 19:         }
 }
 [e :U 502 ]
-"19
-[; ;stateClock.c: 19: }
+"21
+[; ;stateClock.c: 21: }
 [e :UE 501 ]
 }
-"21
-[; ;stateClock.c: 21: void displayClock (void) {
+"23
+[; ;stateClock.c: 23: void displayClock (void) {
 [v _displayClock `(v ~T0 @X0 1 ef ]
 {
 [e :U _displayClock ]
 [f ]
-"22
-[; ;stateClock.c: 22:     LCDPutInst(0x80);
-[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
-"23
-[; ;stateClock.c: 23:     LCDPutStr("  NORMAL CLOCK  ");
-[e ( _LCDPutStr (1 :s 1C ]
-"24
-[; ;stateClock.c: 24:     LCDPutInst(0xC0);
-[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
 "25
-[; ;stateClock.c: 25:     LCDPutChar(hr/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateClock.c: 25:         LCDPutInst(0x80);
+[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
 "26
-[; ;stateClock.c: 26:     LCDPutChar(hr%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateClock.c: 26:         LCDPutStr("  NORMAL CLOCK  ");
+[e ( _LCDPutStr (1 :s 1C ]
 "27
-[; ;stateClock.c: 27:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+[; ;stateClock.c: 27:         LCDPutInst(0xC0);
+[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
 "28
-[; ;stateClock.c: 28:     LCDPutChar(min/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateClock.c: 28:         LCDPutChar(hr/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
 "29
-[; ;stateClock.c: 29:     LCDPutChar(min%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateClock.c: 29:         LCDPutChar(hr%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
 "30
-[; ;stateClock.c: 30:     LCDPutChar(':');
+[; ;stateClock.c: 30:         LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
 "31
-[; ;stateClock.c: 31:     LCDPutChar(sec/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateClock.c: 31:         LCDPutChar(min/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
 "32
-[; ;stateClock.c: 32:     LCDPutChar(sec%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateClock.c: 32:         LCDPutChar(min%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
 "33
-[; ;stateClock.c: 33: }
+[; ;stateClock.c: 33:         LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"34
+[; ;stateClock.c: 34:         LCDPutChar(sec/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
+"35
+[; ;stateClock.c: 35:         LCDPutChar(sec%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
+"37
+[; ;stateClock.c: 37: }
 [e :UE 506 ]
 }
 [a 1C 32 32 78 79 82 77 65 76 32 67 76 79 67 75 32 32 0 ]

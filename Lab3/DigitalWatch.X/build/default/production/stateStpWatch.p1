@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"35 ./button.h
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4604 0 1 2 3 4 .. ]
-[n E4604 State norClk modHr modMin modSec stpWatch  ]
+"27 ./interrupt.h
+[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4607 0 1 2 3 4 .. ]
+[n E4607 State norClk modHr modMin modSec stpWatch  ]
 "126 ./BBSPI_LCD.h
 [; ;./BBSPI_LCD.h: 126:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
@@ -624,8 +624,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LVP = OFF ]
 "27
 [p x XINST = OFF ]
-"30
-[v _timer0ReloadVal `Vum ~T0 @X0 1 e ]
 "21 ./button.h
 [; ;./button.h: 21: int countPressed = 0;
 [v _countPressed `i ~T0 @X0 1 e ]
@@ -674,9 +672,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"35
-[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4604 ~T0 @X0 1 e ]
 "22 ./interrupt.h
 [; ;./interrupt.h: 22: int count10ms = 0;
 [v _count10ms `i ~T0 @X0 1 e ]
@@ -689,6 +684,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"27
+[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4607 ~T0 @X0 1 e ]
 "17 ./stateStpWatch.h
 [; ;./stateStpWatch.h: 17: int run = 0;
 [v _run `i ~T0 @X0 1 e ]
@@ -744,115 +742,118 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;stateStpWatch.c: 10:         run = (run + 1) % 2;
 [e = _run % + _run -> 1 `i -> 2 `i ]
 "11
-[; ;stateStpWatch.c: 11:     }
+[; ;stateStpWatch.c: 11:         timerFlag = 0;
+[e = _timerFlag -> 0 `i ]
+"12
+[; ;stateStpWatch.c: 12:     }
 }
 [e :U 502 ]
-"12
-[; ;stateStpWatch.c: 12:     if (run == 1) {
+"13
+[; ;stateStpWatch.c: 13:     if (run == 1) {
 [e $ ! == _run -> 1 `i 504  ]
 {
-"13
-[; ;stateStpWatch.c: 13:         if (timerFlag == 1) {
+"14
+[; ;stateStpWatch.c: 14:         if (timerFlag == 1) {
 [e $ ! == _timerFlag -> 1 `i 505  ]
 {
-"14
-[; ;stateStpWatch.c: 14:             miliSecSTW++;
-[e ++ _miliSecSTW -> 1 `i ]
 "15
-[; ;stateStpWatch.c: 15:             if (miliSecSTW >= 100) {
+[; ;stateStpWatch.c: 15:             miliSecSTW++;
+[e ++ _miliSecSTW -> 1 `i ]
+"16
+[; ;stateStpWatch.c: 16:             if (miliSecSTW >= 100) {
 [e $ ! >= _miliSecSTW -> 100 `i 506  ]
 {
-"16
-[; ;stateStpWatch.c: 16:                 miliSecSTW = 0;
-[e = _miliSecSTW -> 0 `i ]
 "17
-[; ;stateStpWatch.c: 17:                 secSTW++;
-[e ++ _secSTW -> 1 `i ]
+[; ;stateStpWatch.c: 17:                 miliSecSTW = 0;
+[e = _miliSecSTW -> 0 `i ]
 "18
-[; ;stateStpWatch.c: 18:             }
+[; ;stateStpWatch.c: 18:                 secSTW++;
+[e ++ _secSTW -> 1 `i ]
+"19
+[; ;stateStpWatch.c: 19:             }
 }
 [e :U 506 ]
-"19
-[; ;stateStpWatch.c: 19:             if (secSTW >= 60) {
+"20
+[; ;stateStpWatch.c: 20:             if (secSTW >= 60) {
 [e $ ! >= _secSTW -> 60 `i 507  ]
 {
-"20
-[; ;stateStpWatch.c: 20:                 secSTW = 0;
-[e = _secSTW -> 0 `i ]
 "21
-[; ;stateStpWatch.c: 21:                 minSTW++;
-[e ++ _minSTW -> 1 `i ]
+[; ;stateStpWatch.c: 21:                 secSTW = 0;
+[e = _secSTW -> 0 `i ]
 "22
-[; ;stateStpWatch.c: 22:             }
+[; ;stateStpWatch.c: 22:                 minSTW++;
+[e ++ _minSTW -> 1 `i ]
+"23
+[; ;stateStpWatch.c: 23:             }
 }
 [e :U 507 ]
-"23
-[; ;stateStpWatch.c: 23:             if (minSTW >= 60) {
+"24
+[; ;stateStpWatch.c: 24:             if (minSTW >= 60) {
 [e $ ! >= _minSTW -> 60 `i 508  ]
 {
-"24
-[; ;stateStpWatch.c: 24:                 minSTW = 0;
-[e = _minSTW -> 0 `i ]
 "25
-[; ;stateStpWatch.c: 25:             }
+[; ;stateStpWatch.c: 25:                 minSTW = 0;
+[e = _minSTW -> 0 `i ]
+"26
+[; ;stateStpWatch.c: 26:             }
 }
 [e :U 508 ]
-"26
-[; ;stateStpWatch.c: 26:             timerFlag = 0;
-[e = _timerFlag -> 0 `i ]
 "27
-[; ;stateStpWatch.c: 27:         }
+[; ;stateStpWatch.c: 27:             timerFlag = 0;
+[e = _timerFlag -> 0 `i ]
+"28
+[; ;stateStpWatch.c: 28:         }
 }
 [e :U 505 ]
-"28
-[; ;stateStpWatch.c: 28:     }
+"29
+[; ;stateStpWatch.c: 29:     }
 }
 [e :U 504 ]
-"29
-[; ;stateStpWatch.c: 29: }
+"30
+[; ;stateStpWatch.c: 30: }
 [e :UE 501 ]
 }
-"31
-[; ;stateStpWatch.c: 31: void displayStpWatch (void) {
+"32
+[; ;stateStpWatch.c: 32: void displayStpWatch (void) {
 [v _displayStpWatch `(v ~T0 @X0 1 ef ]
 {
 [e :U _displayStpWatch ]
 [f ]
-"32
-[; ;stateStpWatch.c: 32:     LCDPutInst(0x80);
-[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
 "33
-[; ;stateStpWatch.c: 33:     LCDPutStr("   STOP WATCH   ");
-[e ( _LCDPutStr (1 :s 1C ]
+[; ;stateStpWatch.c: 33:     LCDPutInst(0x80);
+[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
 "34
-[; ;stateStpWatch.c: 34:     LCDPutInst(0xC0);
-[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
+[; ;stateStpWatch.c: 34:     LCDPutStr("   STOP WATCH   ");
+[e ( _LCDPutStr (1 :s 1C ]
 "35
-[; ;stateStpWatch.c: 35:     LCDPutChar(minSTW/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _minSTW -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateStpWatch.c: 35:     LCDPutInst(0xC0);
+[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
 "36
-[; ;stateStpWatch.c: 36:     LCDPutChar(minSTW%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _minSTW -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateStpWatch.c: 36:     LCDPutChar(minSTW/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _minSTW -> 10 `i `ui -> 48 `ui `uc ]
 "37
-[; ;stateStpWatch.c: 37:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+[; ;stateStpWatch.c: 37:     LCDPutChar(minSTW%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _minSTW -> 10 `i `ui -> 48 `ui `uc ]
 "38
-[; ;stateStpWatch.c: 38:     LCDPutChar(secSTW/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _secSTW -> 10 `i `ui -> 48 `ui `uc ]
-"39
-[; ;stateStpWatch.c: 39:     LCDPutChar(secSTW%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _secSTW -> 10 `i `ui -> 48 `ui `uc ]
-"40
-[; ;stateStpWatch.c: 40:     LCDPutChar(':');
+[; ;stateStpWatch.c: 38:     LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"39
+[; ;stateStpWatch.c: 39:     LCDPutChar(secSTW/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _secSTW -> 10 `i `ui -> 48 `ui `uc ]
+"40
+[; ;stateStpWatch.c: 40:     LCDPutChar(secSTW%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _secSTW -> 10 `i `ui -> 48 `ui `uc ]
 "41
-[; ;stateStpWatch.c: 41:     LCDPutChar(miliSecSTW/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateStpWatch.c: 41:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
 "42
-[; ;stateStpWatch.c: 42:     LCDPutChar(miliSecSTW%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateStpWatch.c: 42:     LCDPutChar(miliSecSTW/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
 "43
-[; ;stateStpWatch.c: 43: }
+[; ;stateStpWatch.c: 43:     LCDPutChar(miliSecSTW%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+"44
+[; ;stateStpWatch.c: 44: }
 [e :UE 509 ]
 }
 [a 1C 32 32 32 83 84 79 80 32 87 65 84 67 72 32 32 32 0 ]
