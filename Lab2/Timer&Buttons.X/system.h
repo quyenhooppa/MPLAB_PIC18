@@ -14,6 +14,7 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
+#include "clock.h"  
     
 #ifdef _18F8722
 #pragma config  OSC = HSPLL
@@ -25,7 +26,7 @@ extern "C" {
 #pragma config 	MCLRE = ON
 #pragma config 	LVP = OFF
 #pragma config 	XINST = OFF
-#endif   
+#endif      
     
 void oscillationInitialize(void);
 void timerInitialize(void);

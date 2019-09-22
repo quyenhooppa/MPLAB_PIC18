@@ -16,7 +16,8 @@ void timerInitialize(void) {
     //16-bit register, internal oscilation, prescale 1:4
     //timer0ReloadVal = (uint24_t)defineTMR0Register();
     //TMR0H = (timer0ReloadVal << 16);
-    TMR0L = defineTMR0Register();
+    timer0Register = defineTMR0Register();
+    TMR0L = timer0Register;
 }
 
 void buttonInitialize(void) {

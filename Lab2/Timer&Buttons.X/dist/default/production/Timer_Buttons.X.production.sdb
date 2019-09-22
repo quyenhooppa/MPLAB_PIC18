@@ -4,7 +4,7 @@
 [d chip 18F8722 ]
 [d frameptr 4065 ]
 "13 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
-[e E4562 State `uc
+[e E4595 State `uc
 init 0
 iNormal 1
 iFast 2
@@ -45,7 +45,6 @@ dSlow 6
 [v _button button `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
 [v _defineTMR0Register defineTMR0Register `(i  1 e 2 0 ]
-[v i2_defineTMR0Register defineTMR0Register `(i  1 e 2 0 ]
 "7
 [v _deviceInterrupt deviceInterrupt `IIH(v  1 e 1 0 ]
 "12 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
@@ -54,31 +53,33 @@ dSlow 6
 [v _oscillationInitialize oscillationInitialize `(v  1 e 1 0 ]
 "9
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]
-"22
+"23
 [v _buttonInitialize buttonInitialize `(v  1 e 1 0 ]
-"28
-[v _ledInitialize ledInitialize `(v  1 e 1 0 ]
-"25 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.h
-[v _iCount iCount `i  1 e 2 0 ]
-"26
-[v _dCount dCount `i  1 e 2 0 ]
-"27
-[v _countSlow countSlow `i  1 e 2 0 ]
-"28
-[v _countFast countFast `i  1 e 2 0 ]
 "29
+[v _ledInitialize ledInitialize `(v  1 e 1 0 ]
+"24 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.h
+[v _iCount iCount `i  1 e 2 0 ]
+"25
+[v _dCount dCount `i  1 e 2 0 ]
+"26
+[v _countSlow countSlow `i  1 e 2 0 ]
+"27
+[v _countFast countFast `i  1 e 2 0 ]
+"28
 [v _changeSlow changeSlow `i  1 e 2 0 ]
-"30
+"29
 [v _changeFast changeFast `i  1 e 2 0 ]
-"31
+"30
 [v _firstReadRA5 firstReadRA5 `uc  1 e 1 0 ]
-"32
+"31
 [v _secondReadRA5 secondReadRA5 `uc  1 e 1 0 ]
-"33
+"32
 [v _firstReadRB0 firstReadRB0 `uc  1 e 1 0 ]
-"34
+"33
 [v _secondReadRB0 secondReadRB0 `uc  1 e 1 0 ]
-[s S131 . 1 `uc 1 RA0 1 0 :1:0 
+"21 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.h
+[v _timer0Register timer0Register `i  1 e 2 0 ]
+[s S132 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -88,29 +89,29 @@ dSlow 6
 `uc 1 RA7 1 0 :1:7 
 ]
 "2684 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
-[s S250 . 1 `uc 1 . 1 0 :2:0 
+[s S262 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 T0CKI 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S256 . 1 `uc 1 AN0 1 0 :1:0 
+[s S268 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 AN4 1 0 :1:5 
 ]
-[s S263 . 1 `uc 1 . 1 0 :5:0 
+[s S275 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S266 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S278 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 `uc 1 . 1 0 :6:1 
 `uc 1 RJPU 1 0 :1:7 
 ]
-[u S270 . 1 `S131 1 . 1 0 `S250 1 . 1 0 `S256 1 . 1 0 `S263 1 . 1 0 `S266 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES270  1 e 1 @3968 ]
-[s S171 . 1 `uc 1 RB0 1 0 :1:0 
+[u S282 . 1 `S132 1 . 1 0 `S262 1 . 1 0 `S268 1 . 1 0 `S275 1 . 1 0 `S278 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES282  1 e 1 @3968 ]
+[s S172 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -120,7 +121,7 @@ dSlow 6
 `uc 1 RB7 1 0 :1:7 
 ]
 "2833
-[s S315 . 1 `uc 1 INT0 1 0 :1:0 
+[s S327 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 INT3 1 0 :1:3 
@@ -129,24 +130,24 @@ dSlow 6
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S324 . 1 `uc 1 FLT0 1 0 :1:0 
+[s S336 . 1 `uc 1 FLT0 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 ECCP2 1 0 :1:3 
 ]
-[s S328 . 1 `uc 1 . 1 0 :3:0 
+[s S340 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2 1 0 :1:3 
 ]
-[s S331 . 1 `uc 1 . 1 0 :3:0 
+[s S343 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 P2A 1 0 :1:3 
 ]
-[s S334 . 1 `uc 1 . 1 0 :3:0 
+[s S346 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S337 . 1 `S171 1 . 1 0 `S315 1 . 1 0 `S324 1 . 1 0 `S328 1 . 1 0 `S331 1 . 1 0 `S334 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES337  1 e 1 @3969 ]
+[u S349 . 1 `S172 1 . 1 0 `S327 1 . 1 0 `S336 1 . 1 0 `S340 1 . 1 0 `S343 1 . 1 0 `S346 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES349  1 e 1 @3969 ]
 "4815
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S122 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S123 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -156,9 +157,9 @@ dSlow 6
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "5489
-[u S140 . 1 `S122 1 . 1 0 `S131 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES140  1 e 1 @3986 ]
-[s S162 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S141 . 1 `S123 1 . 1 0 `S132 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES141  1 e 1 @3986 ]
+[s S163 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -168,8 +169,8 @@ dSlow 6
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "5711
-[u S180 . 1 `S162 1 . 1 0 `S171 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES180  1 e 1 @3987 ]
+[u S181 . 1 `S163 1 . 1 0 `S172 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES181  1 e 1 @3987 ]
 "6123
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "7383
@@ -182,7 +183,7 @@ dSlow 6
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
 "12640
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
-[s S67 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S68 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -192,7 +193,7 @@ dSlow 6
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "13144
-[s S76 . 1 `uc 1 . 1 0 :1:0 
+[s S77 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -201,23 +202,23 @@ dSlow 6
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S85 . 1 `uc 1 . 1 0 :6:0 
+[s S86 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S89 . 1 `S67 1 . 1 0 `S76 1 . 1 0 `S85 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES89  1 e 1 @4082 ]
+[u S90 . 1 `S68 1 . 1 0 `S77 1 . 1 0 `S86 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES90  1 e 1 @4082 ]
 "12 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "13
-[v main@state state `E4562  1 a 1 10 ]
+[v main@state state `E4595  1 a 1 10 ]
 "98
 } 0
 "9 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]
 {
-"20
+"21
 } 0
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
 [v _defineTMR0Register defineTMR0Register `(i  1 e 2 0 ]
@@ -229,25 +230,20 @@ dSlow 6
 {
 "7
 } 0
-"28
+"29
 [v _ledInitialize ledInitialize `(v  1 e 1 0 ]
 {
-"31
+"32
 } 0
-"22
+"23
 [v _buttonInitialize buttonInitialize `(v  1 e 1 0 ]
 {
-"26
+"27
 } 0
 "7 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
 [v _deviceInterrupt deviceInterrupt `IIH(v  1 e 1 0 ]
 {
 "14
-} 0
-"3
-[v i2_defineTMR0Register defineTMR0Register `(i  1 e 2 0 ]
-{
-"5
 } 0
 "31 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
 [v _button button `(v  1 e 1 0 ]

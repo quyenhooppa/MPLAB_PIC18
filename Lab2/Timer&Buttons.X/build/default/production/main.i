@@ -7776,7 +7776,119 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 8 "main.c" 2
 
 # 1 "./system.h" 1
-# 19 "./system.h"
+# 17 "./system.h"
+# 1 "./clock.h" 1
+# 17 "./clock.h"
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
+# 22 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
+# 127 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 23 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 140 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+# 18 "./clock.h" 2
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdbool.h" 1 3
+# 19 "./clock.h" 2
+# 1 "./button.h" 1
+# 24 "./button.h"
+int iCount = 0;
+int dCount = 0;
+int countSlow = 0;
+int countFast = 0;
+int changeSlow = 0;
+int changeFast = 0;
+char firstReadRA5 = 1;
+char secondReadRA5 = 1;
+char firstReadRB0 = 1;
+char secondReadRB0 = 1;
+
+int readIButton(void);
+int readDButton (void);
+void button (void);
+# 20 "./clock.h" 2
+
+int timer0Register = 0;
+
+void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+int defineTMR0Register(void);
+# 18 "./system.h" 2
+
+
 #pragma config OSC = HSPLL
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -7793,23 +7905,7 @@ void timerInitialize(void);
 void buttonInitialize(void);
 void ledInitialize(void);
 # 10 "main.c" 2
-# 1 "./button.h" 1
-# 25 "./button.h"
-int iCount = 0;
-int dCount = 0;
-int countSlow = 0;
-int countFast = 0;
-int changeSlow = 0;
-int changeFast = 0;
-char firstReadRA5 = 1;
-char secondReadRA5 = 1;
-char firstReadRB0 = 1;
-char secondReadRB0 = 1;
 
-int readIButton(void);
-int readDButton (void);
-void button (void);
-# 11 "main.c" 2
 
 void main(void) {
     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;

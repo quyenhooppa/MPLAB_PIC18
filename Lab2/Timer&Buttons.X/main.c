@@ -8,7 +8,6 @@
 #include <pic18f8722.h>
 #include "system.h"
 #include "button.h"
-#include "clock.h"
 
 void main(void) {
     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;

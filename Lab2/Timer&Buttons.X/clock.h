@@ -17,9 +17,9 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 #include "button.h"
-#include "system.h"
 
-    
+int timer0Register = 0;
+
 void __interrupt () deviceInterrupt(void);
 int defineTMR0Register(void);
 

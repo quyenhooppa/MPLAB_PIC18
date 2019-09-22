@@ -7857,7 +7857,7 @@ typedef uint32_t uint_fast32_t;
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdbool.h" 1 3
 # 19 "./clock.h" 2
 # 1 "./button.h" 1
-# 25 "./button.h"
+# 24 "./button.h"
 int iCount = 0;
 int dCount = 0;
 int countSlow = 0;
@@ -7873,25 +7873,8 @@ int readIButton(void);
 int readDButton (void);
 void button (void);
 # 20 "./clock.h" 2
-# 1 "./system.h" 1
-# 19 "./system.h"
-#pragma config OSC = HSPLL
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-#pragma config PWRT = OFF
-#pragma config BOREN = OFF
-#pragma config WDT = OFF
-#pragma config MCLRE = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
 
-
-void oscillationInitialize(void);
-void timerInitialize(void);
-void buttonInitialize(void);
-void ledInitialize(void);
-# 21 "./clock.h" 2
-
+int timer0Register = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
 int defineTMR0Register(void);
@@ -7905,7 +7888,7 @@ void __attribute__((picinterrupt(("")))) deviceInterrupt(void) {
 
     if (INTCONbits.TMR0IF == 1 && INTCONbits.TMR0IE == 1) {
         INTCONbits.TMR0IF = 0;
-        TMR0L = defineTMR0Register();
+        TMR0L = timer0Register;
         button();
     }
 }

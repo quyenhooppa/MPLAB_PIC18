@@ -23,8 +23,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12640
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12640: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-"38 ./button.h
-[; ;./button.h: 38: void button (void);
+"37 ./button.h
+[; ;./button.h: 37: void button (void);
 [v _button `(v ~T0 @X0 0 ef ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -620,84 +620,72 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"25 ./button.h
-[; ;./button.h: 25: int iCount = 0;
+"24 ./button.h
+[; ;./button.h: 24: int iCount = 0;
 [v _iCount `i ~T0 @X0 1 e ]
 [i _iCount
 -> 0 `i
 ]
-"26
-[; ;./button.h: 26: int dCount = 0;
+"25
+[; ;./button.h: 25: int dCount = 0;
 [v _dCount `i ~T0 @X0 1 e ]
 [i _dCount
 -> 0 `i
 ]
-"27
-[; ;./button.h: 27: int countSlow = 0;
+"26
+[; ;./button.h: 26: int countSlow = 0;
 [v _countSlow `i ~T0 @X0 1 e ]
 [i _countSlow
 -> 0 `i
 ]
-"28
-[; ;./button.h: 28: int countFast = 0;
+"27
+[; ;./button.h: 27: int countFast = 0;
 [v _countFast `i ~T0 @X0 1 e ]
 [i _countFast
 -> 0 `i
 ]
-"29
-[; ;./button.h: 29: int changeSlow = 0;
+"28
+[; ;./button.h: 28: int changeSlow = 0;
 [v _changeSlow `i ~T0 @X0 1 e ]
 [i _changeSlow
 -> 0 `i
 ]
-"30
-[; ;./button.h: 30: int changeFast = 0;
+"29
+[; ;./button.h: 29: int changeFast = 0;
 [v _changeFast `i ~T0 @X0 1 e ]
 [i _changeFast
 -> 0 `i
 ]
-"31
-[; ;./button.h: 31: char firstReadRA5 = 1;
+"30
+[; ;./button.h: 30: char firstReadRA5 = 1;
 [v _firstReadRA5 `uc ~T0 @X0 1 e ]
 [i _firstReadRA5
 -> -> 1 `i `uc
 ]
-"32
-[; ;./button.h: 32: char secondReadRA5 = 1;
+"31
+[; ;./button.h: 31: char secondReadRA5 = 1;
 [v _secondReadRA5 `uc ~T0 @X0 1 e ]
 [i _secondReadRA5
 -> -> 1 `i `uc
 ]
-"33
-[; ;./button.h: 33: char firstReadRB0 = 1;
+"32
+[; ;./button.h: 32: char firstReadRB0 = 1;
 [v _firstReadRB0 `uc ~T0 @X0 1 e ]
 [i _firstReadRB0
 -> -> 1 `i `uc
 ]
-"34
-[; ;./button.h: 34: char secondReadRB0 = 1;
+"33
+[; ;./button.h: 33: char secondReadRB0 = 1;
 [v _secondReadRB0 `uc ~T0 @X0 1 e ]
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"19 ./system.h
-[p x OSC = HSPLL ]
-"20
-[p x FCMEN = OFF ]
-"21
-[p x IESO = OFF ]
-"22
-[p x PWRT = OFF ]
-"23
-[p x BOREN = OFF ]
-"24
-[p x WDT = OFF ]
-"25
-[p x MCLRE = ON ]
-"26
-[p x LVP = OFF ]
-"27
-[p x XINST = OFF ]
+"21 ./clock.h
+[; ;./clock.h: 21: int timer0Register = 0;
+[v _timer0Register `i ~T0 @X0 1 e ]
+[i _timer0Register
+-> 0 `i
+]
 "3 clock.c
 [; ;clock.c: 3: int defineTMR0Register(void) {
 [v _defineTMR0Register `(i ~T0 @X0 1 ef ]
@@ -727,8 +715,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;clock.c: 10:         INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "11
-[; ;clock.c: 11:         TMR0L = defineTMR0Register();
-[e = _TMR0L -> ( _defineTMR0Register ..  `uc ]
+[; ;clock.c: 11:         TMR0L = timer0Register;
+[e = _TMR0L -> _timer0Register `uc ]
 "12
 [; ;clock.c: 12:         button();
 [e ( _button ..  ]

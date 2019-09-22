@@ -2,15 +2,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "13 main.c
 [; ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-[c E4562 0 1 2 3 4 5 6 .. ]
-[n E4562 State init iNormal iFast iSlow dNormal dFast dSlow  ]
-"30 ./system.h
+[c E4595 0 1 2 3 4 5 6 .. ]
+[n E4595 State init iNormal iFast iSlow dNormal dFast dSlow  ]
+"31 ./system.h
 [v _oscillationInitialize `(v ~T0 @X0 0 ef ]
-"31
-[v _timerInitialize `(v ~T0 @X0 0 ef ]
 "32
-[v _buttonInitialize `(v ~T0 @X0 0 ef ]
+[v _timerInitialize `(v ~T0 @X0 0 ef ]
 "33
+[v _buttonInitialize `(v ~T0 @X0 0 ef ]
+"34
 [v _ledInitialize `(v ~T0 @X0 0 ef ]
 "4815 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 4815: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
@@ -609,84 +609,90 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"19 ./system.h
-[p x OSC = HSPLL ]
-"20
-[p x FCMEN = OFF ]
-"21
-[p x IESO = OFF ]
-"22
-[p x PWRT = OFF ]
-"23
-[p x BOREN = OFF ]
-"24
-[p x WDT = OFF ]
-"25
-[p x MCLRE = ON ]
-"26
-[p x LVP = OFF ]
-"27
-[p x XINST = OFF ]
-"25 ./button.h
-[; ;./button.h: 25: int iCount = 0;
+"24 ./button.h
+[; ;./button.h: 24: int iCount = 0;
 [v _iCount `i ~T0 @X0 1 e ]
 [i _iCount
 -> 0 `i
 ]
-"26
-[; ;./button.h: 26: int dCount = 0;
+"25
+[; ;./button.h: 25: int dCount = 0;
 [v _dCount `i ~T0 @X0 1 e ]
 [i _dCount
 -> 0 `i
 ]
-"27
-[; ;./button.h: 27: int countSlow = 0;
+"26
+[; ;./button.h: 26: int countSlow = 0;
 [v _countSlow `i ~T0 @X0 1 e ]
 [i _countSlow
 -> 0 `i
 ]
-"28
-[; ;./button.h: 28: int countFast = 0;
+"27
+[; ;./button.h: 27: int countFast = 0;
 [v _countFast `i ~T0 @X0 1 e ]
 [i _countFast
 -> 0 `i
 ]
-"29
-[; ;./button.h: 29: int changeSlow = 0;
+"28
+[; ;./button.h: 28: int changeSlow = 0;
 [v _changeSlow `i ~T0 @X0 1 e ]
 [i _changeSlow
 -> 0 `i
 ]
-"30
-[; ;./button.h: 30: int changeFast = 0;
+"29
+[; ;./button.h: 29: int changeFast = 0;
 [v _changeFast `i ~T0 @X0 1 e ]
 [i _changeFast
 -> 0 `i
 ]
-"31
-[; ;./button.h: 31: char firstReadRA5 = 1;
+"30
+[; ;./button.h: 30: char firstReadRA5 = 1;
 [v _firstReadRA5 `uc ~T0 @X0 1 e ]
 [i _firstReadRA5
 -> -> 1 `i `uc
 ]
-"32
-[; ;./button.h: 32: char secondReadRA5 = 1;
+"31
+[; ;./button.h: 31: char secondReadRA5 = 1;
 [v _secondReadRA5 `uc ~T0 @X0 1 e ]
 [i _secondReadRA5
 -> -> 1 `i `uc
 ]
-"33
-[; ;./button.h: 33: char firstReadRB0 = 1;
+"32
+[; ;./button.h: 32: char firstReadRB0 = 1;
 [v _firstReadRB0 `uc ~T0 @X0 1 e ]
 [i _firstReadRB0
 -> -> 1 `i `uc
 ]
-"34
-[; ;./button.h: 34: char secondReadRB0 = 1;
+"33
+[; ;./button.h: 33: char secondReadRB0 = 1;
 [v _secondReadRB0 `uc ~T0 @X0 1 e ]
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
+"21 ./clock.h
+[; ;./clock.h: 21: int timer0Register = 0;
+[v _timer0Register `i ~T0 @X0 1 e ]
+[i _timer0Register
+-> 0 `i
+]
+"20 ./system.h
+[p x OSC = HSPLL ]
+"21
+[p x FCMEN = OFF ]
+"22
+[p x IESO = OFF ]
+"23
+[p x PWRT = OFF ]
+"24
+[p x BOREN = OFF ]
+"25
+[p x WDT = OFF ]
+"26
+[p x MCLRE = ON ]
+"27
+[p x LVP = OFF ]
+"28
+[p x XINST = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "12 main.c
 [; ;main.c: 12: void main(void) {
@@ -696,7 +702,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "13
 [; ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-[v _state `E4562 ~T0 @X0 1 a ]
+[v _state `E4595 ~T0 @X0 1 a ]
 "14
 [; ;main.c: 14:     oscillationInitialize();
 [e ( _oscillationInitialize ..  ]
@@ -711,7 +717,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ledInitialize ..  ]
 "18
 [; ;main.c: 18:     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "19
 [; ;main.c: 19:     while (1) {
 [e :U 503 ]
@@ -738,7 +744,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _LATD -> -> 1 `i `Vuc ]
 "26
 [; ;main.c: 26:                     state = iNormal;
-[e = _state . `E4562 1 ]
+[e = _state . `E4595 1 ]
 "27
 [; ;main.c: 27:                 }
 }
@@ -753,7 +759,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e -- _LATD -> -> 1 `i `Vuc ]
 "30
 [; ;main.c: 30:                     state = dNormal;
-[e = _state . `E4562 4 ]
+[e = _state . `E4595 4 ]
 "31
 [; ;main.c: 31:                 }
 }
@@ -771,7 +777,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "35
 [; ;main.c: 35:                     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "36
 [; ;main.c: 36:                 }
 }
@@ -785,7 +791,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _changeSlow -> 1 `i ]
 "39
 [; ;main.c: 39:                     state = iSlow;
-[e = _state . `E4562 3 ]
+[e = _state . `E4595 3 ]
 "40
 [; ;main.c: 40:                 }
 }
@@ -802,7 +808,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "44
 [; ;main.c: 44:                     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "45
 [; ;main.c: 45:                 }
 }
@@ -830,7 +836,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _changeFast -> 1 `i ]
 "52
 [; ;main.c: 52:                     state = iFast;
-[e = _state . `E4562 2 ]
+[e = _state . `E4595 2 ]
 "53
 [; ;main.c: 53:                 }
 }
@@ -847,7 +853,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "57
 [; ;main.c: 57:                     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "58
 [; ;main.c: 58:                 }
 }
@@ -878,7 +884,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "66
 [; ;main.c: 66:                     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "67
 [; ;main.c: 67:                 }
 }
@@ -892,7 +898,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _changeSlow -> 1 `i ]
 "70
 [; ;main.c: 70:                     state = dSlow;
-[e = _state . `E4562 6 ]
+[e = _state . `E4595 6 ]
 "71
 [; ;main.c: 71:                 }
 }
@@ -909,7 +915,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "75
 [; ;main.c: 75:                     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "76
 [; ;main.c: 76:                 }
 }
@@ -937,7 +943,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _changeFast -> 1 `i ]
 "83
 [; ;main.c: 83:                     state = dFast;
-[e = _state . `E4562 5 ]
+[e = _state . `E4595 5 ]
 "84
 [; ;main.c: 84:                 }
 }
@@ -954,7 +960,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "88
 [; ;main.c: 88:                     state = init;
-[e = _state . `E4562 0 ]
+[e = _state . `E4595 0 ]
 "89
 [; ;main.c: 89:                 }
 }
@@ -981,13 +987,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 505  ]
 [e :U 506 ]
-[e [\ -> _state `ui , $ -> . `E4562 0 `ui 507
- , $ -> . `E4562 1 `ui 511
- , $ -> . `E4562 3 `ui 514
- , $ -> . `E4562 2 `ui 518
- , $ -> . `E4562 4 `ui 521
- , $ -> . `E4562 6 `ui 524
- , $ -> . `E4562 5 `ui 528
+[e [\ -> _state `ui , $ -> . `E4595 0 `ui 507
+ , $ -> . `E4595 1 `ui 511
+ , $ -> . `E4595 3 `ui 514
+ , $ -> . `E4595 2 `ui 518
+ , $ -> . `E4595 4 `ui 521
+ , $ -> . `E4595 6 `ui 524
+ , $ -> . `E4595 5 `ui 528
  505 ]
 [e :U 505 ]
 "96
