@@ -22,3 +22,7 @@ void buttonInitialize (void) {
     ADCON1 = 0b00001111;
 }
 
+void ledInitialize(void) {
+    TRISD = 0x00;
+    LATD = 0x00;
+}

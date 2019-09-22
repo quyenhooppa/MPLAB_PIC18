@@ -7776,8 +7776,6 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 2 3
 # 9 "main.c" 2
 
-# 1 "./stateClock.h" 1
-# 17 "./stateClock.h"
 # 1 "./interrupt.h" 1
 # 17 "./interrupt.h"
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
@@ -7928,15 +7926,16 @@ int count10ms = 0;
 int timerFlag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
-# 18 "./stateClock.h" 2
-
+# 11 "main.c" 2
+# 1 "./stateClock.h" 1
+# 19 "./stateClock.h"
 int sec = 0;
 int min = 0;
 int hr = 0;
 
 void norClock (void);
 void displayClock (void);
-# 11 "main.c" 2
+# 12 "main.c" 2
 # 1 "./statesModify.h" 1
 # 17 "./statesModify.h"
 int blink = 0;
@@ -7947,7 +7946,7 @@ void modifySecond (void);
 void displayModify (void);
 
 enum st{init, iNor, iAuto} stModify;
-# 12 "main.c" 2
+# 13 "main.c" 2
 # 1 "./stateStpWatch.h" 1
 # 17 "./stateStpWatch.h"
 int run = 0;
@@ -7957,7 +7956,7 @@ int miliSecSTW = 0;
 
 void stopWatch (void);
 void displayStpWatch (void);
-# 13 "main.c" 2
+# 14 "main.c" 2
 
 void main(void) {
     oscillationInitialize();
@@ -7969,7 +7968,7 @@ void main(void) {
     switch (state) {
         case norClk:
             norClock();
-            displayClock();
+            while (state == norClk) displayClock();
             if (changeModePressed == 1) {
                 changeModePressed = 0;
                 state = modHr;

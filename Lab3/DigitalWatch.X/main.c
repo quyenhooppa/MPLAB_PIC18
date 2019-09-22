@@ -16,51 +16,55 @@ void main(void) {
     oscillationInitialize();
     timerInitialize();
     buttonInitialize();
+    ledInitialize();
     LCDInit();
     state = norClk;
     stModify = init;
-    switch (state) {
-        case norClk:
-            norClock();
-            displayClock();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = modHr;
-            }
-            break;
-        case modHr:
-            modifyHour();
-            displayModify();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = modMin;
-            }
-            break;
-        case modMin:
-            modifyMinute();
-            displayModify();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = modSec;
-            }
-            break;
-        case modSec:
-            modifySecond();
-            displayModify();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = stpWatch;
-            }
-            break; 
-        case stpWatch:
-            norClock();
-            stopWatch();
-            displayStpWatch();
-            if (changeModePressed == 1) {
-                changeModePressed = 0;
-                state = norClk;
-            }
-            break;
+    while (1)
+    {
+        switch (state) {
+            case norClk:
+                norClock();
+                while (state == norClk) displayClock();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = modHr;
+                }
+                break;
+            case modHr:
+                modifyHour();
+                displayModify();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = modMin;
+                }
+                break;
+            case modMin:
+                modifyMinute();
+                displayModify();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = modSec;
+                }
+                break;
+            case modSec:
+                modifySecond();
+                displayModify();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = stpWatch;
+                }
+                break; 
+            case stpWatch:
+                norClock();
+                stopWatch();
+                displayStpWatch();
+                if (changeModePressed == 1) {
+                    changeModePressed = 0;
+                    state = norClk;
+                }
+                break;
+        }
     }
     return;
 }

@@ -243,7 +243,7 @@ dSlow 6
 "7 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
 [v _deviceInterrupt deviceInterrupt `IIH(v  1 e 1 0 ]
 {
-"14
+"15
 } 0
 "31 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
 [v _button button `(v  1 e 1 0 ]

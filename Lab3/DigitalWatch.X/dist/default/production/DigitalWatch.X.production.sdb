@@ -112,7 +112,7 @@ stpWatch 4
 [v _button button `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.c
 [v _deviceInterrupt deviceInterrupt `IIH(v  1 e 1 0 ]
-"14 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
+"15 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
 [v _main main `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateClock.c
 [v _norClock norClock `(v  1 e 1 0 ]
@@ -412,10 +412,10 @@ stpWatch 4
 ]
 [u S132 . 1 `S110 1 . 1 0 `S119 1 . 1 0 `S128 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES132  1 e 1 @4082 ]
-"14 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
+"15 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"65
+"66
 } 0
 "8 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]

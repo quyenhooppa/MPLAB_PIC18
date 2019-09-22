@@ -770,183 +770,188 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"14 main.c
-[; ;main.c: 14: void main(void) {
+"15 main.c
+[; ;main.c: 15: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"15
-[; ;main.c: 15:     oscillationInitialize();
-[e ( _oscillationInitialize ..  ]
 "16
-[; ;main.c: 16:     timerInitialize();
-[e ( _timerInitialize ..  ]
+[; ;main.c: 16:     oscillationInitialize();
+[e ( _oscillationInitialize ..  ]
 "17
-[; ;main.c: 17:     buttonInitialize();
-[e ( _buttonInitialize ..  ]
+[; ;main.c: 17:     timerInitialize();
+[e ( _timerInitialize ..  ]
 "18
-[; ;main.c: 18:     LCDInit();
-[e ( _LCDInit ..  ]
+[; ;main.c: 18:     buttonInitialize();
+[e ( _buttonInitialize ..  ]
 "19
-[; ;main.c: 19:     state = norClk;
-[e = _state . `E4604 0 ]
+[; ;main.c: 19:     LCDInit();
+[e ( _LCDInit ..  ]
 "20
-[; ;main.c: 20:     stModify = init;
-[e = _stModify . `E4624 0 ]
+[; ;main.c: 20:     state = norClk;
+[e = _state . `E4604 0 ]
 "21
-[; ;main.c: 21:     switch (state) {
+[; ;main.c: 21:     stModify = init;
+[e = _stModify . `E4624 0 ]
+"22
+[; ;main.c: 22:     switch (state) {
 [e $U 503  ]
 {
-"22
-[; ;main.c: 22:         case norClk:
-[e :U 504 ]
 "23
-[; ;main.c: 23:             norClock();
-[e ( _norClock ..  ]
+[; ;main.c: 23:         case norClk:
+[e :U 504 ]
 "24
-[; ;main.c: 24:             displayClock();
-[e ( _displayClock ..  ]
-"25
-[; ;main.c: 25:             if (changeModePressed == 1) {
-[e $ ! == _changeModePressed -> 1 `i 505  ]
-{
-"26
-[; ;main.c: 26:                 changeModePressed = 0;
-[e = _changeModePressed -> 0 `i ]
-"27
-[; ;main.c: 27:                 state = modHr;
-[e = _state . `E4604 1 ]
-"28
-[; ;main.c: 28:             }
-}
-[e :U 505 ]
-"29
-[; ;main.c: 29:             break;
-[e $U 502  ]
-"30
-[; ;main.c: 30:         case modHr:
-[e :U 506 ]
-"31
-[; ;main.c: 31:             modifyHour();
-[e ( _modifyHour ..  ]
-"32
-[; ;main.c: 32:             displayModify();
-[e ( _displayModify ..  ]
-"33
-[; ;main.c: 33:             if (changeModePressed == 1) {
-[e $ ! == _changeModePressed -> 1 `i 507  ]
-{
-"34
-[; ;main.c: 34:                 changeModePressed = 0;
-[e = _changeModePressed -> 0 `i ]
-"35
-[; ;main.c: 35:                 state = modMin;
-[e = _state . `E4604 2 ]
-"36
-[; ;main.c: 36:             }
-}
-[e :U 507 ]
-"37
-[; ;main.c: 37:             break;
-[e $U 502  ]
-"38
-[; ;main.c: 38:         case modMin:
-[e :U 508 ]
-"39
-[; ;main.c: 39:             modifyMinute();
-[e ( _modifyMinute ..  ]
-"40
-[; ;main.c: 40:             displayModify();
-[e ( _displayModify ..  ]
-"41
-[; ;main.c: 41:             if (changeModePressed == 1) {
-[e $ ! == _changeModePressed -> 1 `i 509  ]
-{
-"42
-[; ;main.c: 42:                 changeModePressed = 0;
-[e = _changeModePressed -> 0 `i ]
-"43
-[; ;main.c: 43:                 state = modSec;
-[e = _state . `E4604 3 ]
-"44
-[; ;main.c: 44:             }
-}
-[e :U 509 ]
-"45
-[; ;main.c: 45:             break;
-[e $U 502  ]
-"46
-[; ;main.c: 46:         case modSec:
-[e :U 510 ]
-"47
-[; ;main.c: 47:             modifySecond();
-[e ( _modifySecond ..  ]
-"48
-[; ;main.c: 48:             displayModify();
-[e ( _displayModify ..  ]
-"49
-[; ;main.c: 49:             if (changeModePressed == 1) {
-[e $ ! == _changeModePressed -> 1 `i 511  ]
-{
-"50
-[; ;main.c: 50:                 changeModePressed = 0;
-[e = _changeModePressed -> 0 `i ]
-"51
-[; ;main.c: 51:                 state = stpWatch;
-[e = _state . `E4604 4 ]
-"52
-[; ;main.c: 52:             }
-}
-[e :U 511 ]
-"53
-[; ;main.c: 53:             break;
-[e $U 502  ]
-"54
-[; ;main.c: 54:         case stpWatch:
-[e :U 512 ]
-"55
-[; ;main.c: 55:             norClock();
+[; ;main.c: 24:             norClock();
 [e ( _norClock ..  ]
-"56
-[; ;main.c: 56:             stopWatch();
-[e ( _stopWatch ..  ]
-"57
-[; ;main.c: 57:             displayStpWatch();
-[e ( _displayStpWatch ..  ]
-"58
-[; ;main.c: 58:             if (changeModePressed == 1) {
-[e $ ! == _changeModePressed -> 1 `i 513  ]
+"25
+[; ;main.c: 25:             while (state == norClk) displayClock();
+[e $U 505  ]
+[e :U 506 ]
+[e ( _displayClock ..  ]
+[e :U 505 ]
+[e $ == -> _state `ui -> . `E4604 0 `ui 506  ]
+[e :U 507 ]
+"26
+[; ;main.c: 26:             if (changeModePressed == 1) {
+[e $ ! == _changeModePressed -> 1 `i 508  ]
 {
-"59
-[; ;main.c: 59:                 changeModePressed = 0;
+"27
+[; ;main.c: 27:                 changeModePressed = 0;
 [e = _changeModePressed -> 0 `i ]
-"60
-[; ;main.c: 60:                 state = norClk;
-[e = _state . `E4604 0 ]
-"61
-[; ;main.c: 61:             }
+"28
+[; ;main.c: 28:                 state = modHr;
+[e = _state . `E4604 1 ]
+"29
+[; ;main.c: 29:             }
 }
-[e :U 513 ]
-"62
-[; ;main.c: 62:             break;
+[e :U 508 ]
+"30
+[; ;main.c: 30:             break;
 [e $U 502  ]
+"31
+[; ;main.c: 31:         case modHr:
+[e :U 509 ]
+"32
+[; ;main.c: 32:             modifyHour();
+[e ( _modifyHour ..  ]
+"33
+[; ;main.c: 33:             displayModify();
+[e ( _displayModify ..  ]
+"34
+[; ;main.c: 34:             if (changeModePressed == 1) {
+[e $ ! == _changeModePressed -> 1 `i 510  ]
+{
+"35
+[; ;main.c: 35:                 changeModePressed = 0;
+[e = _changeModePressed -> 0 `i ]
+"36
+[; ;main.c: 36:                 state = modMin;
+[e = _state . `E4604 2 ]
+"37
+[; ;main.c: 37:             }
+}
+[e :U 510 ]
+"38
+[; ;main.c: 38:             break;
+[e $U 502  ]
+"39
+[; ;main.c: 39:         case modMin:
+[e :U 511 ]
+"40
+[; ;main.c: 40:             modifyMinute();
+[e ( _modifyMinute ..  ]
+"41
+[; ;main.c: 41:             displayModify();
+[e ( _displayModify ..  ]
+"42
+[; ;main.c: 42:             if (changeModePressed == 1) {
+[e $ ! == _changeModePressed -> 1 `i 512  ]
+{
+"43
+[; ;main.c: 43:                 changeModePressed = 0;
+[e = _changeModePressed -> 0 `i ]
+"44
+[; ;main.c: 44:                 state = modSec;
+[e = _state . `E4604 3 ]
+"45
+[; ;main.c: 45:             }
+}
+[e :U 512 ]
+"46
+[; ;main.c: 46:             break;
+[e $U 502  ]
+"47
+[; ;main.c: 47:         case modSec:
+[e :U 513 ]
+"48
+[; ;main.c: 48:             modifySecond();
+[e ( _modifySecond ..  ]
+"49
+[; ;main.c: 49:             displayModify();
+[e ( _displayModify ..  ]
+"50
+[; ;main.c: 50:             if (changeModePressed == 1) {
+[e $ ! == _changeModePressed -> 1 `i 514  ]
+{
+"51
+[; ;main.c: 51:                 changeModePressed = 0;
+[e = _changeModePressed -> 0 `i ]
+"52
+[; ;main.c: 52:                 state = stpWatch;
+[e = _state . `E4604 4 ]
+"53
+[; ;main.c: 53:             }
+}
+[e :U 514 ]
+"54
+[; ;main.c: 54:             break;
+[e $U 502  ]
+"55
+[; ;main.c: 55:         case stpWatch:
+[e :U 515 ]
+"56
+[; ;main.c: 56:             norClock();
+[e ( _norClock ..  ]
+"57
+[; ;main.c: 57:             stopWatch();
+[e ( _stopWatch ..  ]
+"58
+[; ;main.c: 58:             displayStpWatch();
+[e ( _displayStpWatch ..  ]
+"59
+[; ;main.c: 59:             if (changeModePressed == 1) {
+[e $ ! == _changeModePressed -> 1 `i 516  ]
+{
+"60
+[; ;main.c: 60:                 changeModePressed = 0;
+[e = _changeModePressed -> 0 `i ]
+"61
+[; ;main.c: 61:                 state = norClk;
+[e = _state . `E4604 0 ]
+"62
+[; ;main.c: 62:             }
+}
+[e :U 516 ]
 "63
-[; ;main.c: 63:     }
+[; ;main.c: 63:             break;
+[e $U 502  ]
+"64
+[; ;main.c: 64:     }
 }
 [e $U 502  ]
 [e :U 503 ]
 [e [\ -> _state `ui , $ -> . `E4604 0 `ui 504
- , $ -> . `E4604 1 `ui 506
- , $ -> . `E4604 2 `ui 508
- , $ -> . `E4604 3 `ui 510
- , $ -> . `E4604 4 `ui 512
+ , $ -> . `E4604 1 `ui 509
+ , $ -> . `E4604 2 `ui 511
+ , $ -> . `E4604 3 `ui 513
+ , $ -> . `E4604 4 `ui 515
  502 ]
 [e :U 502 ]
-"64
-[; ;main.c: 64:     return;
-[e $UE 501  ]
 "65
-[; ;main.c: 65: }
+[; ;main.c: 65:     return;
+[e $UE 501  ]
+"66
+[; ;main.c: 66: }
 [e :UE 501 ]
 }

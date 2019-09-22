@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Sun Sep 22 18:22:39 2019
+                                                                                               Sun Sep 22 21:34:39 2019
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F8722
@@ -1052,7 +1052,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   1001                           ;clock.c: 11:         TMR0L = timer0Register;
   1002  000590  C01C  FFD6         	movff	_timer0Register,4054	;volatile
   1003  000594                     
-  1004                           ;clock.c: 12:         button();
+  1004                           ;clock.c: 13:         button();
   1005  000594  EC6A  F001         	call	_button	;wreg free
   1006  000598                     i2l219:
   1007  000598  921E               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
@@ -1884,7 +1884,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Sun Sep 22 18:22:39 2019
+Symbol Table                                                                                   Sun Sep 22 21:34:39 2019
 
                             l38 027E     __size_of_defineTMR0Register 000A                 ??_ledInitialize 0013  
                            l122 05B6                             l125 05DE                             l213 05C0  
