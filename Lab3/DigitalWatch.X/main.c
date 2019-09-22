@@ -7,6 +7,7 @@
 
 #include <xc.h>
 #include <pic18f8722.h>
+#include "interrupt.h"
 #include "stateClock.h"
 #include "statesModify.h"
 #include "stateStpWatch.h"
@@ -15,6 +16,7 @@ void main(void) {
     oscillationInitialize();
     timerInitialize();
     buttonInitialize();
+    LCDInit();
     state = norClk;
     stModify = init;
     switch (state) {

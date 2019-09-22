@@ -1,9 +1,7 @@
-#include <pic18f8722.h>
-
 #include "clock.h"
 
 int defineTMR0Register(void) {
-    return 256 * 256 - (CLOCK * 250) / (int)4; 
+    return 256 - (CLOCK * 2000) / (int)128; 
 }
 
 void __interrupt () deviceInterrupt(void) {

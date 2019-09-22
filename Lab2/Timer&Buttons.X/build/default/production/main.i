@@ -7776,42 +7776,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 8 "main.c" 2
 
 # 1 "./system.h" 1
-# 17 "./system.h"
-# 1 "./clock.h" 1
-# 17 "./clock.h"
-# 1 "./button.h" 1
-# 17 "./button.h"
-# 1 "./clock.h" 1
-# 18 "./button.h" 2
-
-
-
-
-
-
-int iCount = 0;
-int dCount = 0;
-int countSlow = 0;
-int countFast = 0;
-int changeSlow = 0;
-int changeFast = 0;
-char firstReadRA5 = 1;
-char secondReadRA5 = 1;
-char firstReadRB0 = 1;
-char secondReadRB0 = 1;
-
-int readIButton(void);
-int readDButton (void);
-void button (void);
-# 18 "./clock.h" 2
-
-
-
-void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
-int defineTMR0Register(void);
-# 18 "./system.h" 2
-
-
+# 19 "./system.h"
 #pragma config OSC = HSPLL
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -7828,7 +7793,23 @@ void timerInitialize(void);
 void buttonInitialize(void);
 void ledInitialize(void);
 # 10 "main.c" 2
+# 1 "./button.h" 1
+# 25 "./button.h"
+int iCount = 0;
+int dCount = 0;
+int countSlow = 0;
+int countFast = 0;
+int changeSlow = 0;
+int changeFast = 0;
+char firstReadRA5 = 1;
+char secondReadRA5 = 1;
+char firstReadRB0 = 1;
+char secondReadRB0 = 1;
 
+int readIButton(void);
+int readDButton (void);
+void button (void);
+# 11 "main.c" 2
 
 void main(void) {
     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;

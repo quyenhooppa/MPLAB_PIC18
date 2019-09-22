@@ -13,9 +13,9 @@ extern "C" {
 #endif
 
 #include <xc.h>
-#include <pic18f8722.h>
-#include "clock.h" 
+#include <pic18f8722.h> 
     
+#define CLOCK 10 //clock oscillate (ms)    
 #define SHORTER 1000 
 #define LONGER 3000
 #define SLOWER 500 

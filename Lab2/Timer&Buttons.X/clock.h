@@ -14,9 +14,11 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
+#include <stdint.h>
+#include <stdbool.h>
 #include "button.h"
+#include "system.h"
 
-#define CLOCK 10 //clock oscillate (ms)
     
 void __interrupt () deviceInterrupt(void);
 int defineTMR0Register(void);

@@ -651,62 +651,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"24 ./button.h
-[; ;./button.h: 24: int iCount = 0;
+"25 ./button.h
+[; ;./button.h: 25: int iCount = 0;
 [v _iCount `i ~T0 @X0 1 e ]
 [i _iCount
 -> 0 `i
 ]
-"25
-[; ;./button.h: 25: int dCount = 0;
+"26
+[; ;./button.h: 26: int dCount = 0;
 [v _dCount `i ~T0 @X0 1 e ]
 [i _dCount
 -> 0 `i
 ]
-"26
-[; ;./button.h: 26: int countSlow = 0;
+"27
+[; ;./button.h: 27: int countSlow = 0;
 [v _countSlow `i ~T0 @X0 1 e ]
 [i _countSlow
 -> 0 `i
 ]
-"27
-[; ;./button.h: 27: int countFast = 0;
+"28
+[; ;./button.h: 28: int countFast = 0;
 [v _countFast `i ~T0 @X0 1 e ]
 [i _countFast
 -> 0 `i
 ]
-"28
-[; ;./button.h: 28: int changeSlow = 0;
+"29
+[; ;./button.h: 29: int changeSlow = 0;
 [v _changeSlow `i ~T0 @X0 1 e ]
 [i _changeSlow
 -> 0 `i
 ]
-"29
-[; ;./button.h: 29: int changeFast = 0;
+"30
+[; ;./button.h: 30: int changeFast = 0;
 [v _changeFast `i ~T0 @X0 1 e ]
 [i _changeFast
 -> 0 `i
 ]
-"30
-[; ;./button.h: 30: char firstReadRA5 = 1;
+"31
+[; ;./button.h: 31: char firstReadRA5 = 1;
 [v _firstReadRA5 `uc ~T0 @X0 1 e ]
 [i _firstReadRA5
 -> -> 1 `i `uc
 ]
-"31
-[; ;./button.h: 31: char secondReadRA5 = 1;
+"32
+[; ;./button.h: 32: char secondReadRA5 = 1;
 [v _secondReadRA5 `uc ~T0 @X0 1 e ]
 [i _secondReadRA5
 -> -> 1 `i `uc
 ]
-"32
-[; ;./button.h: 32: char firstReadRB0 = 1;
+"33
+[; ;./button.h: 33: char firstReadRB0 = 1;
 [v _firstReadRB0 `uc ~T0 @X0 1 e ]
 [i _firstReadRB0
 -> -> 1 `i `uc
 ]
-"33
-[; ;./button.h: 33: char secondReadRB0 = 1;
+"34
+[; ;./button.h: 34: char secondReadRB0 = 1;
 [v _secondReadRB0 `uc ~T0 @X0 1 e ]
 [i _secondReadRB0
 -> -> 1 `i `uc

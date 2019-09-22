@@ -7963,6 +7963,7 @@ void main(void) {
     oscillationInitialize();
     timerInitialize();
     buttonInitialize();
+    LCDInit();
     state = norClk;
     stModify = init;
     switch (state) {
