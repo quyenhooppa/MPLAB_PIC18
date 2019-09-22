@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Sat Sep 21 08:53:50 2019
+                                                                                               Sun Sep 22 00:16:46 2019
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F8722
@@ -73,20 +73,20 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     59                           ; SFR Addresses
     60  0000                     
     61                           	psect	idataCOMRAM
-    62  0005D6                     __pidataCOMRAM:
+    62  0005E6                     __pidataCOMRAM:
     63                           	opt callstack 0
     64                           
     65                           ;initializer for _secondReadRB0
-    66  0005D6  01                 	db	1
+    66  0005E6  01                 	db	1
     67                           
     68                           ;initializer for _firstReadRB0
-    69  0005D7  01                 	db	1
+    69  0005E7  01                 	db	1
     70                           
     71                           ;initializer for _secondReadRA5
-    72  0005D8  01                 	db	1
+    72  0005E8  01                 	db	1
     73                           
     74                           ;initializer for _firstReadRA5
-    75  0005D9  01                 	db	1
+    75  0005E9  01                 	db	1
     76  0000                     _PORTBbits	set	3969
     77  0000                     _PORTAbits	set	3968
     78  0000                     _TRISD	set	3989
@@ -112,7 +112,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     98                           
     99                           ; Initialize objects allocated to COMRAM (4 bytes)
    100                           ; load TBLPTR registers with __pidataCOMRAM
-   101  00053A  0ED6               	movlw	low __pidataCOMRAM
+   101  00053A  0EE6               	movlw	low __pidataCOMRAM
    102  00053C  6EF6               	movwf	tblptrl,c
    103  00053E  0E05               	movlw	high __pidataCOMRAM
    104  000540  6EF7               	movwf	tblptrh,c
@@ -266,22 +266,22 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    247  000012                     
    248                           ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;;m
       +                          ain.c: 14:     oscillationInitialize();
-   249  000012  ECD7  F002         	call	_oscillationInitialize	;wreg free
+   249  000012  ECDF  F002         	call	_oscillationInitialize	;wreg free
    250                           
    251                           ;main.c: 15:     timerInitialize();
-   252  000016  ECC9  F002         	call	_timerInitialize	;wreg free
+   252  000016  ECD0  F002         	call	_timerInitialize	;wreg free
    253                           
    254                           ;main.c: 16:     buttonInitialize();
-   255  00001A  ECE1  F002         	call	_buttonInitialize	;wreg free
+   255  00001A  ECE9  F002         	call	_buttonInitialize	;wreg free
    256                           
    257                           ;main.c: 17:     ledInitialize();
-   258  00001E  ECDC  F002         	call	_ledInitialize	;wreg free
+   258  00001E  ECE4  F002         	call	_ledInitialize	;wreg free
    259  000022                     
    260                           ;main.c: 18:     state = init;
    261  000022  0E00               	movlw	0
    262  000024  6E17               	movwf	main@state^0,c
-   263  000026  EF3F  F001         	goto	l1311
-   264  00002A                     l1223:
+   263  000026  EF3F  F001         	goto	l1313
+   264  00002A                     l1225:
    265                           
    266                           ;main.c: 22:                 countFast = 0;
    267  00002A  0E00               	movlw	0
@@ -297,16 +297,16 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    277  00003A                     
    278                           ;main.c: 24:                 if (iCount > 0) {
    279  00003A  BE0C               	btfsc	(_iCount+1)^0,7,c
-   280  00003C  EF28  F000         	goto	u541
+   280  00003C  EF28  F000         	goto	u551
    281  000040  500C               	movf	(_iCount+1)^0,w,c
-   282  000042  E108               	bnz	u540
+   282  000042  E108               	bnz	u550
    283  000044  040B               	decf	_iCount^0,w,c
    284  000046  A0D8               	btfss	status,0,c
-   285  000048  EF28  F000         	goto	u541
-   286  00004C  EF2A  F000         	goto	u540
-   287  000050                     u541:
-   288  000050  EF2F  F000         	goto	l1231
-   289  000054                     u540:
+   285  000048  EF28  F000         	goto	u551
+   286  00004C  EF2A  F000         	goto	u550
+   287  000050                     u551:
+   288  000050  EF2F  F000         	goto	l1233
+   289  000054                     u550:
    290  000054                     
    291                           ;main.c: 25:                     LATD++;
    292  000054  2A8C               	incf	140,f,c	;volatile
@@ -316,27 +316,27 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    296  000058  6E17               	movwf	main@state^0,c
    297                           
    298                           ;main.c: 27:                 }
-   299  00005A  EF3F  F001         	goto	l1311
-   300  00005E                     l1231:
+   299  00005A  EF3F  F001         	goto	l1313
+   300  00005E                     l1233:
    301  00005E  500B               	movf	_iCount^0,w,c
    302  000060  100C               	iorwf	(_iCount+1)^0,w,c
    303  000062  A4D8               	btfss	status,2,c
-   304  000064  EF36  F000         	goto	u551
-   305  000068  EF38  F000         	goto	u550
-   306  00006C                     u551:
+   304  000064  EF36  F000         	goto	u561
+   305  000068  EF38  F000         	goto	u560
+   306  00006C                     u561:
    307  00006C  EF3F  F001         	goto	l36
-   308  000070                     u550:
+   308  000070                     u560:
    309  000070  BE0A               	btfsc	(_dCount+1)^0,7,c
-   310  000072  EF43  F000         	goto	u561
+   310  000072  EF43  F000         	goto	u571
    311  000076  500A               	movf	(_dCount+1)^0,w,c
-   312  000078  E108               	bnz	u560
+   312  000078  E108               	bnz	u570
    313  00007A  0409               	decf	_dCount^0,w,c
    314  00007C  A0D8               	btfss	status,0,c
-   315  00007E  EF43  F000         	goto	u561
-   316  000082  EF45  F000         	goto	u560
-   317  000086                     u561:
+   315  00007E  EF43  F000         	goto	u571
+   316  000082  EF45  F000         	goto	u570
+   317  000086                     u571:
    318  000086  EF3F  F001         	goto	l36
-   319  00008A                     u560:
+   319  00008A                     u570:
    320  00008A                     
    321                           ;main.c: 29:                     LATD--;
    322  00008A  068C               	decf	140,f,c	;volatile
@@ -344,36 +344,36 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    324                           ;main.c: 30:                     state = dNormal;
    325  00008C  0E04               	movlw	4
    326  00008E  6E17               	movwf	main@state^0,c
-   327  000090  EF3F  F001         	goto	l1311
-   328  000094                     l1239:
+   327  000090  EF3F  F001         	goto	l1313
+   328  000094                     l1241:
    329                           
    330                           ;main.c: 34:                 if (iCount == 0) {
    331  000094  500B               	movf	_iCount^0,w,c
    332  000096  100C               	iorwf	(_iCount+1)^0,w,c
    333  000098  A4D8               	btfss	status,2,c
-   334  00009A  EF51  F000         	goto	u571
-   335  00009E  EF53  F000         	goto	u570
-   336  0000A2                     u571:
-   337  0000A2  EF55  F000         	goto	l1243
-   338  0000A6                     u570:
+   334  00009A  EF51  F000         	goto	u581
+   335  00009E  EF53  F000         	goto	u580
+   336  0000A2                     u581:
+   337  0000A2  EF55  F000         	goto	l1245
+   338  0000A6                     u580:
    339  0000A6                     
    340                           ;main.c: 35:                     state = init;
    341  0000A6  0E00               	movlw	0
    342  0000A8  6E17               	movwf	main@state^0,c
-   343  0000AA                     l1243:
+   343  0000AA                     l1245:
    344                           
    345                           ;main.c: 37:                 if (countSlow > 0) {
    346  0000AA  BE08               	btfsc	(_countSlow+1)^0,7,c
-   347  0000AC  EF60  F000         	goto	u581
+   347  0000AC  EF60  F000         	goto	u591
    348  0000B0  5008               	movf	(_countSlow+1)^0,w,c
-   349  0000B2  E108               	bnz	u580
+   349  0000B2  E108               	bnz	u590
    350  0000B4  0407               	decf	_countSlow^0,w,c
    351  0000B6  A0D8               	btfss	status,0,c
-   352  0000B8  EF60  F000         	goto	u581
-   353  0000BC  EF62  F000         	goto	u580
-   354  0000C0                     u581:
+   352  0000B8  EF60  F000         	goto	u591
+   353  0000BC  EF62  F000         	goto	u590
+   354  0000C0                     u591:
    355  0000C0  EF3F  F001         	goto	l36
-   356  0000C4                     u580:
+   356  0000C4                     u590:
    357  0000C4                     
    358                           ;main.c: 38:                     changeSlow = 1;
    359  0000C4  0E00               	movlw	0
@@ -384,33 +384,33 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    364                           ;main.c: 39:                     state = iSlow;
    365  0000CC  0E03               	movlw	3
    366  0000CE  6E17               	movwf	main@state^0,c
-   367  0000D0  EF3F  F001         	goto	l1311
-   368  0000D4                     l1247:
+   367  0000D0  EF3F  F001         	goto	l1313
+   368  0000D4                     l1249:
    369                           
    370                           ;main.c: 43:                 if (iCount == 0) {
    371  0000D4  500B               	movf	_iCount^0,w,c
    372  0000D6  100C               	iorwf	(_iCount+1)^0,w,c
    373  0000D8  A4D8               	btfss	status,2,c
-   374  0000DA  EF71  F000         	goto	u591
-   375  0000DE  EF73  F000         	goto	u590
-   376  0000E2                     u591:
-   377  0000E2  EF75  F000         	goto	l1251
-   378  0000E6                     u590:
+   374  0000DA  EF71  F000         	goto	u601
+   375  0000DE  EF73  F000         	goto	u600
+   376  0000E2                     u601:
+   377  0000E2  EF75  F000         	goto	l1253
+   378  0000E6                     u600:
    379  0000E6                     
    380                           ;main.c: 44:                     state = init;
    381  0000E6  0E00               	movlw	0
    382  0000E8  6E17               	movwf	main@state^0,c
-   383  0000EA                     l1251:
+   383  0000EA                     l1253:
    384                           
    385                           ;main.c: 46:                 if (changeSlow == 1) {
    386  0000EA  0403               	decf	_changeSlow^0,w,c
    387  0000EC  1004               	iorwf	(_changeSlow+1)^0,w,c
    388  0000EE  A4D8               	btfss	status,2,c
-   389  0000F0  EF7C  F000         	goto	u601
-   390  0000F4  EF7E  F000         	goto	u600
-   391  0000F8                     u601:
-   392  0000F8  EF83  F000         	goto	l1257
-   393  0000FC                     u600:
+   389  0000F0  EF7C  F000         	goto	u611
+   390  0000F4  EF7E  F000         	goto	u610
+   391  0000F8                     u611:
+   392  0000F8  EF83  F000         	goto	l1259
+   393  0000FC                     u610:
    394  0000FC                     
    395                           ;main.c: 47:                     LATD++;
    396  0000FC  2A8C               	incf	140,f,c	;volatile
@@ -420,20 +420,20 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    400  000100  6E04               	movwf	(_changeSlow+1)^0,c
    401  000102  0E00               	movlw	0
    402  000104  6E03               	movwf	_changeSlow^0,c
-   403  000106                     l1257:
+   403  000106                     l1259:
    404                           
    405                           ;main.c: 50:                 if (countFast > 0) {
    406  000106  BE06               	btfsc	(_countFast+1)^0,7,c
-   407  000108  EF8E  F000         	goto	u611
+   407  000108  EF8E  F000         	goto	u621
    408  00010C  5006               	movf	(_countFast+1)^0,w,c
-   409  00010E  E108               	bnz	u610
+   409  00010E  E108               	bnz	u620
    410  000110  0405               	decf	_countFast^0,w,c
    411  000112  A0D8               	btfss	status,0,c
-   412  000114  EF8E  F000         	goto	u611
-   413  000118  EF90  F000         	goto	u610
-   414  00011C                     u611:
+   412  000114  EF8E  F000         	goto	u621
+   413  000118  EF90  F000         	goto	u620
+   414  00011C                     u621:
    415  00011C  EF3F  F001         	goto	l36
-   416  000120                     u610:
+   416  000120                     u620:
    417  000120                     
    418                           ;main.c: 51:                     changeFast = 1;
    419  000120  0E00               	movlw	0
@@ -444,85 +444,85 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    424                           ;main.c: 52:                     state = iFast;
    425  000128  0E02               	movlw	2
    426  00012A  6E17               	movwf	main@state^0,c
-   427  00012C  EF3F  F001         	goto	l1311
-   428  000130                     l1261:
+   427  00012C  EF3F  F001         	goto	l1313
+   428  000130                     l1263:
    429                           
    430                           ;main.c: 56:                 if (iCount == 0) {
    431  000130  500B               	movf	_iCount^0,w,c
    432  000132  100C               	iorwf	(_iCount+1)^0,w,c
    433  000134  A4D8               	btfss	status,2,c
-   434  000136  EF9F  F000         	goto	u621
-   435  00013A  EFA1  F000         	goto	u620
-   436  00013E                     u621:
-   437  00013E  EFA3  F000         	goto	l1265
-   438  000142                     u620:
+   434  000136  EF9F  F000         	goto	u631
+   435  00013A  EFA1  F000         	goto	u630
+   436  00013E                     u631:
+   437  00013E  EFA3  F000         	goto	l1267
+   438  000142                     u630:
    439  000142                     
    440                           ;main.c: 57:                     state = init;
    441  000142  0E00               	movlw	0
    442  000144  6E17               	movwf	main@state^0,c
-   443  000146                     l1265:
+   443  000146                     l1267:
    444                           
    445                           ;main.c: 59:                 if (changeFast == 1) {
    446  000146  0401               	decf	_changeFast^0,w,c
    447  000148  1002               	iorwf	(_changeFast+1)^0,w,c
    448  00014A  A4D8               	btfss	status,2,c
-   449  00014C  EFAA  F000         	goto	u631
-   450  000150  EFAC  F000         	goto	u630
-   451  000154                     u631:
+   449  00014C  EFAA  F000         	goto	u641
+   450  000150  EFAC  F000         	goto	u640
+   451  000154                     u641:
    452  000154  EF3F  F001         	goto	l36
-   453  000158                     u630:
+   453  000158                     u640:
    454  000158                     
    455                           ;main.c: 60:                     LATD++;
    456  000158  2A8C               	incf	140,f,c	;volatile
-   457  00015A                     l1269:
+   457  00015A                     l1271:
    458                           
    459                           ;main.c: 61:                     changeFast = 0;
    460  00015A  0E00               	movlw	0
    461  00015C  6E02               	movwf	(_changeFast+1)^0,c
    462  00015E  0E00               	movlw	0
    463  000160  6E01               	movwf	_changeFast^0,c
-   464  000162  EF3F  F001         	goto	l1311
-   465  000166                     l1271:
+   464  000162  EF3F  F001         	goto	l1313
+   465  000166                     l1273:
    466                           
    467                           ;main.c: 65:                 if (dCount == 0 || iCount > 0) {
    468  000166  5009               	movf	_dCount^0,w,c
    469  000168  100A               	iorwf	(_dCount+1)^0,w,c
    470  00016A  B4D8               	btfsc	status,2,c
-   471  00016C  EFBA  F000         	goto	u641
-   472  000170  EFBC  F000         	goto	u640
-   473  000174                     u641:
-   474  000174  EFC9  F000         	goto	l1275
-   475  000178                     u640:
+   471  00016C  EFBA  F000         	goto	u651
+   472  000170  EFBC  F000         	goto	u650
+   473  000174                     u651:
+   474  000174  EFC9  F000         	goto	l1277
+   475  000178                     u650:
    476  000178  BE0C               	btfsc	(_iCount+1)^0,7,c
-   477  00017A  EFC7  F000         	goto	u651
+   477  00017A  EFC7  F000         	goto	u661
    478  00017E  500C               	movf	(_iCount+1)^0,w,c
-   479  000180  E108               	bnz	u650
+   479  000180  E108               	bnz	u660
    480  000182  040B               	decf	_iCount^0,w,c
    481  000184  A0D8               	btfss	status,0,c
-   482  000186  EFC7  F000         	goto	u651
-   483  00018A  EFC9  F000         	goto	u650
-   484  00018E                     u651:
-   485  00018E  EFCB  F000         	goto	l1277
-   486  000192                     u650:
-   487  000192                     l1275:
+   482  000186  EFC7  F000         	goto	u661
+   483  00018A  EFC9  F000         	goto	u660
+   484  00018E                     u661:
+   485  00018E  EFCB  F000         	goto	l1279
+   486  000192                     u660:
+   487  000192                     l1277:
    488                           
    489                           ;main.c: 66:                     state = init;
    490  000192  0E00               	movlw	0
    491  000194  6E17               	movwf	main@state^0,c
-   492  000196                     l1277:
+   492  000196                     l1279:
    493                           
    494                           ;main.c: 68:                 if (countSlow > 0) {
    495  000196  BE08               	btfsc	(_countSlow+1)^0,7,c
-   496  000198  EFD6  F000         	goto	u661
+   496  000198  EFD6  F000         	goto	u671
    497  00019C  5008               	movf	(_countSlow+1)^0,w,c
-   498  00019E  E108               	bnz	u660
+   498  00019E  E108               	bnz	u670
    499  0001A0  0407               	decf	_countSlow^0,w,c
    500  0001A2  A0D8               	btfss	status,0,c
-   501  0001A4  EFD6  F000         	goto	u661
-   502  0001A8  EFD8  F000         	goto	u660
-   503  0001AC                     u661:
+   501  0001A4  EFD6  F000         	goto	u671
+   502  0001A8  EFD8  F000         	goto	u670
+   503  0001AC                     u671:
    504  0001AC  EF3F  F001         	goto	l36
-   505  0001B0                     u660:
+   505  0001B0                     u670:
    506  0001B0                     
    507                           ;main.c: 69:                     changeSlow = 1;
    508  0001B0  0E00               	movlw	0
@@ -533,45 +533,45 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    513                           ;main.c: 70:                     state = dSlow;
    514  0001B8  0E06               	movlw	6
    515  0001BA  6E17               	movwf	main@state^0,c
-   516  0001BC  EF3F  F001         	goto	l1311
-   517  0001C0                     l1281:
+   516  0001BC  EF3F  F001         	goto	l1313
+   517  0001C0                     l1283:
    518                           
    519                           ;main.c: 74:                 if (dCount == 0 || iCount > 0) {
    520  0001C0  5009               	movf	_dCount^0,w,c
    521  0001C2  100A               	iorwf	(_dCount+1)^0,w,c
    522  0001C4  B4D8               	btfsc	status,2,c
-   523  0001C6  EFE7  F000         	goto	u671
-   524  0001CA  EFE9  F000         	goto	u670
-   525  0001CE                     u671:
-   526  0001CE  EFF6  F000         	goto	l1285
-   527  0001D2                     u670:
+   523  0001C6  EFE7  F000         	goto	u681
+   524  0001CA  EFE9  F000         	goto	u680
+   525  0001CE                     u681:
+   526  0001CE  EFF6  F000         	goto	l1287
+   527  0001D2                     u680:
    528  0001D2  BE0C               	btfsc	(_iCount+1)^0,7,c
-   529  0001D4  EFF4  F000         	goto	u681
+   529  0001D4  EFF4  F000         	goto	u691
    530  0001D8  500C               	movf	(_iCount+1)^0,w,c
-   531  0001DA  E108               	bnz	u680
+   531  0001DA  E108               	bnz	u690
    532  0001DC  040B               	decf	_iCount^0,w,c
    533  0001DE  A0D8               	btfss	status,0,c
-   534  0001E0  EFF4  F000         	goto	u681
-   535  0001E4  EFF6  F000         	goto	u680
-   536  0001E8                     u681:
-   537  0001E8  EFF8  F000         	goto	l1287
-   538  0001EC                     u680:
-   539  0001EC                     l1285:
+   534  0001E0  EFF4  F000         	goto	u691
+   535  0001E4  EFF6  F000         	goto	u690
+   536  0001E8                     u691:
+   537  0001E8  EFF8  F000         	goto	l1289
+   538  0001EC                     u690:
+   539  0001EC                     l1287:
    540                           
    541                           ;main.c: 75:                     state = init;
    542  0001EC  0E00               	movlw	0
    543  0001EE  6E17               	movwf	main@state^0,c
-   544  0001F0                     l1287:
+   544  0001F0                     l1289:
    545                           
    546                           ;main.c: 77:                 if (changeSlow == 1) {
    547  0001F0  0403               	decf	_changeSlow^0,w,c
    548  0001F2  1004               	iorwf	(_changeSlow+1)^0,w,c
    549  0001F4  A4D8               	btfss	status,2,c
-   550  0001F6  EFFF  F000         	goto	u691
-   551  0001FA  EF01  F001         	goto	u690
-   552  0001FE                     u691:
-   553  0001FE  EF06  F001         	goto	l1293
-   554  000202                     u690:
+   550  0001F6  EFFF  F000         	goto	u701
+   551  0001FA  EF01  F001         	goto	u700
+   552  0001FE                     u701:
+   553  0001FE  EF06  F001         	goto	l1295
+   554  000202                     u700:
    555  000202                     
    556                           ;main.c: 78:                     LATD--;
    557  000202  068C               	decf	140,f,c	;volatile
@@ -581,20 +581,20 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    561  000206  6E04               	movwf	(_changeSlow+1)^0,c
    562  000208  0E00               	movlw	0
    563  00020A  6E03               	movwf	_changeSlow^0,c
-   564  00020C                     l1293:
+   564  00020C                     l1295:
    565                           
    566                           ;main.c: 81:                 if (countFast > 0) {
    567  00020C  BE06               	btfsc	(_countFast+1)^0,7,c
-   568  00020E  EF11  F001         	goto	u701
+   568  00020E  EF11  F001         	goto	u711
    569  000212  5006               	movf	(_countFast+1)^0,w,c
-   570  000214  E108               	bnz	u700
+   570  000214  E108               	bnz	u710
    571  000216  0405               	decf	_countFast^0,w,c
    572  000218  A0D8               	btfss	status,0,c
-   573  00021A  EF11  F001         	goto	u701
-   574  00021E  EF13  F001         	goto	u700
-   575  000222                     u701:
+   573  00021A  EF11  F001         	goto	u711
+   574  00021E  EF13  F001         	goto	u710
+   575  000222                     u711:
    576  000222  EF3F  F001         	goto	l36
-   577  000226                     u700:
+   577  000226                     u710:
    578  000226                     
    579                           ;main.c: 82:                     changeFast = 1;
    580  000226  0E00               	movlw	0
@@ -605,51 +605,51 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    585                           ;main.c: 83:                     state = dFast;
    586  00022E  0E05               	movlw	5
    587  000230  6E17               	movwf	main@state^0,c
-   588  000232  EF3F  F001         	goto	l1311
-   589  000236                     l1297:
+   588  000232  EF3F  F001         	goto	l1313
+   589  000236                     l1299:
    590                           
    591                           ;main.c: 87:                 if (dCount == 0 || iCount > 0) {
    592  000236  5009               	movf	_dCount^0,w,c
    593  000238  100A               	iorwf	(_dCount+1)^0,w,c
    594  00023A  B4D8               	btfsc	status,2,c
-   595  00023C  EF22  F001         	goto	u711
-   596  000240  EF24  F001         	goto	u710
-   597  000244                     u711:
-   598  000244  EF31  F001         	goto	l1301
-   599  000248                     u710:
+   595  00023C  EF22  F001         	goto	u721
+   596  000240  EF24  F001         	goto	u720
+   597  000244                     u721:
+   598  000244  EF31  F001         	goto	l1303
+   599  000248                     u720:
    600  000248  BE0C               	btfsc	(_iCount+1)^0,7,c
-   601  00024A  EF2F  F001         	goto	u721
+   601  00024A  EF2F  F001         	goto	u731
    602  00024E  500C               	movf	(_iCount+1)^0,w,c
-   603  000250  E108               	bnz	u720
+   603  000250  E108               	bnz	u730
    604  000252  040B               	decf	_iCount^0,w,c
    605  000254  A0D8               	btfss	status,0,c
-   606  000256  EF2F  F001         	goto	u721
-   607  00025A  EF31  F001         	goto	u720
-   608  00025E                     u721:
-   609  00025E  EF33  F001         	goto	l1303
-   610  000262                     u720:
-   611  000262                     l1301:
+   606  000256  EF2F  F001         	goto	u731
+   607  00025A  EF31  F001         	goto	u730
+   608  00025E                     u731:
+   609  00025E  EF33  F001         	goto	l1305
+   610  000262                     u730:
+   611  000262                     l1303:
    612                           
    613                           ;main.c: 88:                     state = init;
    614  000262  0E00               	movlw	0
    615  000264  6E17               	movwf	main@state^0,c
-   616  000266                     l1303:
+   616  000266                     l1305:
    617                           
    618                           ;main.c: 90:                 if (changeFast == 1) {
    619  000266  0401               	decf	_changeFast^0,w,c
    620  000268  1002               	iorwf	(_changeFast+1)^0,w,c
    621  00026A  A4D8               	btfss	status,2,c
-   622  00026C  EF3A  F001         	goto	u731
-   623  000270  EF3C  F001         	goto	u730
-   624  000274                     u731:
+   622  00026C  EF3A  F001         	goto	u741
+   623  000270  EF3C  F001         	goto	u740
+   624  000274                     u741:
    625  000274  EF3F  F001         	goto	l36
-   626  000278                     u730:
+   626  000278                     u740:
    627  000278                     
    628                           ;main.c: 91:                     LATD--;
    629  000278  068C               	decf	140,f,c	;volatile
-   630  00027A  EFAD  F000         	goto	l1269
+   630  00027A  EFAD  F000         	goto	l1271
    631  00027E                     l36:
-   632  00027E                     l1311:
+   632  00027E                     l1313:
    633  00027E  5017               	movf	main@state^0,w,c
    634  000280  6E15               	movwf	??_main^0,c
    635  000282  6A16               	clrf	(??_main+1)^0,c
@@ -665,9 +665,9 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    644  000284  5016               	movf	(??_main+1)^0,w,c
    645  000286  0A00               	xorlw	0	; case 0
    646  000288  B4D8               	btfsc	status,2,c
-   647  00028A  EF49  F001         	goto	l1329
-   648  00028E  EF3F  F001         	goto	l1311
-   649  000292                     l1329:
+   647  00028A  EF49  F001         	goto	l1333
+   648  00028E  EF3F  F001         	goto	l1313
+   649  000292                     l1333:
    650                           
    651                           ; Switch size 1, requested type "simple"
    652                           ; Number of cases is 7, Range of values is 0 to 6
@@ -678,33 +678,33 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    657  000292  5015               	movf	??_main^0,w,c
    658  000294  0A00               	xorlw	0	; case 0
    659  000296  B4D8               	btfsc	status,2,c
-   660  000298  EF15  F000         	goto	l1223
+   660  000298  EF15  F000         	goto	l1225
    661  00029C  0A01               	xorlw	1	; case 1
    662  00029E  B4D8               	btfsc	status,2,c
-   663  0002A0  EF4A  F000         	goto	l1239
+   663  0002A0  EF4A  F000         	goto	l1241
    664  0002A4  0A03               	xorlw	3	; case 2
    665  0002A6  B4D8               	btfsc	status,2,c
-   666  0002A8  EF98  F000         	goto	l1261
+   666  0002A8  EF98  F000         	goto	l1263
    667  0002AC  0A01               	xorlw	1	; case 3
    668  0002AE  B4D8               	btfsc	status,2,c
-   669  0002B0  EF6A  F000         	goto	l1247
+   669  0002B0  EF6A  F000         	goto	l1249
    670  0002B4  0A07               	xorlw	7	; case 4
    671  0002B6  B4D8               	btfsc	status,2,c
-   672  0002B8  EFB3  F000         	goto	l1271
+   672  0002B8  EFB3  F000         	goto	l1273
    673  0002BC  0A01               	xorlw	1	; case 5
    674  0002BE  B4D8               	btfsc	status,2,c
-   675  0002C0  EF1B  F001         	goto	l1297
+   675  0002C0  EF1B  F001         	goto	l1299
    676  0002C4  0A03               	xorlw	3	; case 6
    677  0002C6  B4D8               	btfsc	status,2,c
-   678  0002C8  EFE0  F000         	goto	l1281
-   679  0002CC  EF3F  F001         	goto	l1311
+   678  0002C8  EFE0  F000         	goto	l1283
+   679  0002CC  EF3F  F001         	goto	l1313
    680  0002D0  EF07  F000         	goto	start
    681  0002D4                     __end_of_main:
    682                           	opt callstack 0
    683                           
    684 ;; *************** function _timerInitialize *****************
    685 ;; Defined at:
-   686 ;;		line 8 in file "system.c"
+   686 ;;		line 9 in file "system.c"
    687 ;; Parameters:    Size  Location     Type
    688 ;;		None
    689 ;; Auto vars:     Size  Location     Type
@@ -738,908 +738,917 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    712 ;;
    713                           
    714                           	psect	text1
-   715  000592                     __ptext1:
+   715  0005A0                     __ptext1:
    716                           	opt callstack 0
-   717  000592                     _timerInitialize:
+   717  0005A0                     _timerInitialize:
    718                           	opt callstack 26
-   719  000592                     
-   720                           ;system.c: 10:     INTCONbits.TMR0IE = 1;
-   721  000592  8AF2               	bsf	242,5,c	;volatile
+   719  0005A0                     
+   720                           ;system.c: 11:     INTCONbits.TMR0IE = 1;
+   721  0005A0  8AF2               	bsf	242,5,c	;volatile
    722                           
-   723                           ;system.c: 11:     INTCONbits.GIE = 1;
-   724  000594  8EF2               	bsf	242,7,c	;volatile
-   725  000596                     
-   726                           ;system.c: 12:     T0CON = 0b11000110;
-   727  000596  0EC6               	movlw	198
-   728  000598  6ED5               	movwf	213,c	;volatile
-   729  00059A                     
-   730                           ;system.c: 13:     TMR0L = defineTMR0Register();
-   731  00059A  ECD2  F002         	call	_defineTMR0Register	;wreg free
-   732  00059E  5013               	movf	?_defineTMR0Register^0,w,c
-   733  0005A0  6ED6               	movwf	214,c	;volatile
-   734  0005A2  0012               	return		;funcret
-   735  0005A4                     __end_of_timerInitialize:
-   736                           	opt callstack 0
-   737                           
-   738 ;; *************** function _defineTMR0Register *****************
-   739 ;; Defined at:
-   740 ;;		line 3 in file "clock.c"
-   741 ;; Parameters:    Size  Location     Type
-   742 ;;		None
-   743 ;; Auto vars:     Size  Location     Type
-   744 ;;		None
-   745 ;; Return value:  Size  Location     Type
-   746 ;;                  2    6[COMRAM] int 
-   747 ;; Registers used:
-   748 ;;		wreg, status,2
-   749 ;; Tracked objects:
-   750 ;;		On entry : 0/0
-   751 ;;		On exit  : 0/0
-   752 ;;		Unchanged: 0/0
-   753 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   723                           ;system.c: 12:     INTCONbits.GIE = 1;
+   724  0005A2  8EF2               	bsf	242,7,c	;volatile
+   725                           
+   726                           ;system.c: 13:     INTCONbits.TMR0IF = 0;
+   727  0005A4  94F2               	bcf	242,2,c	;volatile
+   728  0005A6                     
+   729                           ;system.c: 15:     T0CON = 0b10000001;
+   730  0005A6  0E81               	movlw	129
+   731  0005A8  6ED5               	movwf	213,c	;volatile
+   732  0005AA                     
+   733                           ;system.c: 16:     TMR0L = defineTMR0Register();
+   734  0005AA  ECDA  F002         	call	_defineTMR0Register	;wreg free
+   735  0005AE  5013               	movf	?_defineTMR0Register^0,w,c
+   736  0005B0  6ED6               	movwf	214,c	;volatile
+   737  0005B2  0012               	return		;funcret
+   738  0005B4                     __end_of_timerInitialize:
+   739                           	opt callstack 0
+   740                           
+   741 ;; *************** function _defineTMR0Register *****************
+   742 ;; Defined at:
+   743 ;;		line 5 in file "clock.c"
+   744 ;; Parameters:    Size  Location     Type
+   745 ;;		None
+   746 ;; Auto vars:     Size  Location     Type
+   747 ;;		None
+   748 ;; Return value:  Size  Location     Type
+   749 ;;                  2    6[COMRAM] int 
+   750 ;; Registers used:
+   751 ;;		wreg, status,2
+   752 ;; Tracked objects:
+   753 ;;		On entry : 0/0
+   754 ;;		On exit  : 0/0
+   755 ;;		Unchanged: 0/0
+   756 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   754 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+   757 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   755 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   758 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   756 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   759 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   757 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+   760 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   758 ;;Total ram usage:        2 bytes
-   759 ;; Hardware stack levels used:    1
-   760 ;; Hardware stack levels required when called:    3
-   761 ;; This function calls:
-   762 ;;		Nothing
-   763 ;; This function is called by:
-   764 ;;		_timerInitialize
-   765 ;; This function uses a non-reentrant model
-   766 ;;
-   767                           
-   768                           	psect	text2
-   769  0005A4                     __ptext2:
-   770                           	opt callstack 0
-   771  0005A4                     _defineTMR0Register:
-   772                           	opt callstack 26
-   773  0005A4                     
-   774                           ;clock.c: 4:     return 256 - (10 * 2000) / (int)128;
-   775  0005A4  0E00               	movlw	0
-   776  0005A6  6E14               	movwf	(?_defineTMR0Register+1)^0,c
-   777  0005A8  0E64               	movlw	100
-   778  0005AA  6E13               	movwf	?_defineTMR0Register^0,c
-   779  0005AC  0012               	return		;funcret
-   780  0005AE                     __end_of_defineTMR0Register:
-   781                           	opt callstack 0
-   782                           
-   783 ;; *************** function _oscillationInitialize *****************
-   784 ;; Defined at:
-   785 ;;		line 3 in file "system.c"
-   786 ;; Parameters:    Size  Location     Type
-   787 ;;		None
-   788 ;; Auto vars:     Size  Location     Type
-   789 ;;		None
-   790 ;; Return value:  Size  Location     Type
-   791 ;;                  1    wreg      void 
-   792 ;; Registers used:
-   793 ;;		wreg, status,2
-   794 ;; Tracked objects:
-   795 ;;		On entry : 0/0
-   796 ;;		On exit  : 0/0
-   797 ;;		Unchanged: 0/0
-   798 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   761 ;;Total ram usage:        2 bytes
+   762 ;; Hardware stack levels used:    1
+   763 ;; Hardware stack levels required when called:    3
+   764 ;; This function calls:
+   765 ;;		Nothing
+   766 ;; This function is called by:
+   767 ;;		_timerInitialize
+   768 ;; This function uses a non-reentrant model
+   769 ;;
+   770                           
+   771                           	psect	text2
+   772  0005B4                     __ptext2:
+   773                           	opt callstack 0
+   774  0005B4                     _defineTMR0Register:
+   775                           	opt callstack 26
+   776  0005B4                     
+   777                           ;clock.c: 6:     return 256 * 256 - (10 * 250) / (int)4;
+   778  0005B4  0EFD               	movlw	253
+   779  0005B6  6E14               	movwf	(?_defineTMR0Register+1)^0,c
+   780  0005B8  0E8F               	movlw	143
+   781  0005BA  6E13               	movwf	?_defineTMR0Register^0,c
+   782  0005BC  0012               	return		;funcret
+   783  0005BE                     __end_of_defineTMR0Register:
+   784                           	opt callstack 0
+   785                           
+   786 ;; *************** function _oscillationInitialize *****************
+   787 ;; Defined at:
+   788 ;;		line 3 in file "system.c"
+   789 ;; Parameters:    Size  Location     Type
+   790 ;;		None
+   791 ;; Auto vars:     Size  Location     Type
+   792 ;;		None
+   793 ;; Return value:  Size  Location     Type
+   794 ;;                  1    wreg      void 
+   795 ;; Registers used:
+   796 ;;		wreg, status,2
+   797 ;; Tracked objects:
+   798 ;;		On entry : 0/0
+   799 ;;		On exit  : 0/0
+   800 ;;		Unchanged: 0/0
+   801 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   799 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   802 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   800 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   803 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   801 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   804 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   802 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   805 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   803 ;;Total ram usage:        0 bytes
-   804 ;; Hardware stack levels used:    1
-   805 ;; Hardware stack levels required when called:    3
-   806 ;; This function calls:
-   807 ;;		Nothing
-   808 ;; This function is called by:
-   809 ;;		_main
-   810 ;; This function uses a non-reentrant model
-   811 ;;
-   812                           
-   813                           	psect	text3
-   814  0005AE                     __ptext3:
-   815                           	opt callstack 0
-   816  0005AE                     _oscillationInitialize:
-   817                           	opt callstack 27
-   818  0005AE                     
-   819                           ;system.c: 4:     OSCCON = 0b01110111;
-   820  0005AE  0E77               	movlw	119
-   821  0005B0  6ED3               	movwf	211,c	;volatile
-   822                           
-   823                           ;system.c: 5:     OSCTUNE = 0b00001111;
-   824  0005B2  0E0F               	movlw	15
-   825  0005B4  6E9B               	movwf	155,c	;volatile
-   826  0005B6  0012               	return		;funcret
-   827  0005B8                     __end_of_oscillationInitialize:
-   828                           	opt callstack 0
-   829                           
-   830 ;; *************** function _ledInitialize *****************
-   831 ;; Defined at:
-   832 ;;		line 22 in file "system.c"
-   833 ;; Parameters:    Size  Location     Type
-   834 ;;		None
-   835 ;; Auto vars:     Size  Location     Type
-   836 ;;		None
-   837 ;; Return value:  Size  Location     Type
-   838 ;;                  1    wreg      void 
-   839 ;; Registers used:
-   840 ;;		wreg, status,2
-   841 ;; Tracked objects:
-   842 ;;		On entry : 0/0
-   843 ;;		On exit  : 0/0
-   844 ;;		Unchanged: 0/0
-   845 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   806 ;;Total ram usage:        0 bytes
+   807 ;; Hardware stack levels used:    1
+   808 ;; Hardware stack levels required when called:    3
+   809 ;; This function calls:
+   810 ;;		Nothing
+   811 ;; This function is called by:
+   812 ;;		_main
+   813 ;; This function uses a non-reentrant model
+   814 ;;
+   815                           
+   816                           	psect	text3
+   817  0005BE                     __ptext3:
+   818                           	opt callstack 0
+   819  0005BE                     _oscillationInitialize:
+   820                           	opt callstack 27
+   821  0005BE                     
+   822                           ;system.c: 5:     OSCCON = 0b01000111;
+   823  0005BE  0E47               	movlw	71
+   824  0005C0  6ED3               	movwf	211,c	;volatile
+   825                           
+   826                           ;system.c: 6:     OSCTUNE = 0b00001111;
+   827  0005C2  0E0F               	movlw	15
+   828  0005C4  6E9B               	movwf	155,c	;volatile
+   829  0005C6  0012               	return		;funcret
+   830  0005C8                     __end_of_oscillationInitialize:
+   831                           	opt callstack 0
+   832                           
+   833 ;; *************** function _ledInitialize *****************
+   834 ;; Defined at:
+   835 ;;		line 25 in file "system.c"
+   836 ;; Parameters:    Size  Location     Type
+   837 ;;		None
+   838 ;; Auto vars:     Size  Location     Type
+   839 ;;		None
+   840 ;; Return value:  Size  Location     Type
+   841 ;;                  1    wreg      void 
+   842 ;; Registers used:
+   843 ;;		wreg, status,2
+   844 ;; Tracked objects:
+   845 ;;		On entry : 0/0
+   846 ;;		On exit  : 0/0
+   847 ;;		Unchanged: 0/0
+   848 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   846 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   849 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   847 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   850 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   848 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   851 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   849 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   852 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   850 ;;Total ram usage:        0 bytes
-   851 ;; Hardware stack levels used:    1
-   852 ;; Hardware stack levels required when called:    3
-   853 ;; This function calls:
-   854 ;;		Nothing
-   855 ;; This function is called by:
-   856 ;;		_main
-   857 ;; This function uses a non-reentrant model
-   858 ;;
-   859                           
-   860                           	psect	text4
-   861  0005B8                     __ptext4:
-   862                           	opt callstack 0
-   863  0005B8                     _ledInitialize:
-   864                           	opt callstack 27
-   865  0005B8                     
-   866                           ;system.c: 23:     TRISD = 0x00;
-   867  0005B8  0E00               	movlw	0
-   868  0005BA  6E95               	movwf	149,c	;volatile
-   869                           
-   870                           ;system.c: 24:     LATD = 0x00;
-   871  0005BC  0E00               	movlw	0
-   872  0005BE  6E8C               	movwf	140,c	;volatile
-   873  0005C0  0012               	return		;funcret
-   874  0005C2                     __end_of_ledInitialize:
-   875                           	opt callstack 0
-   876                           
-   877 ;; *************** function _buttonInitialize *****************
-   878 ;; Defined at:
-   879 ;;		line 16 in file "system.c"
-   880 ;; Parameters:    Size  Location     Type
-   881 ;;		None
-   882 ;; Auto vars:     Size  Location     Type
-   883 ;;		None
-   884 ;; Return value:  Size  Location     Type
-   885 ;;                  1    wreg      void 
-   886 ;; Registers used:
-   887 ;;		wreg, status,2
-   888 ;; Tracked objects:
-   889 ;;		On entry : 0/0
-   890 ;;		On exit  : 0/0
-   891 ;;		Unchanged: 0/0
-   892 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   853 ;;Total ram usage:        0 bytes
+   854 ;; Hardware stack levels used:    1
+   855 ;; Hardware stack levels required when called:    3
+   856 ;; This function calls:
+   857 ;;		Nothing
+   858 ;; This function is called by:
+   859 ;;		_main
+   860 ;; This function uses a non-reentrant model
+   861 ;;
+   862                           
+   863                           	psect	text4
+   864  0005C8                     __ptext4:
+   865                           	opt callstack 0
+   866  0005C8                     _ledInitialize:
+   867                           	opt callstack 27
+   868  0005C8                     
+   869                           ;system.c: 26:     TRISD = 0x00;
+   870  0005C8  0E00               	movlw	0
+   871  0005CA  6E95               	movwf	149,c	;volatile
+   872                           
+   873                           ;system.c: 27:     LATD = 0x00;
+   874  0005CC  0E00               	movlw	0
+   875  0005CE  6E8C               	movwf	140,c	;volatile
+   876  0005D0  0012               	return		;funcret
+   877  0005D2                     __end_of_ledInitialize:
+   878                           	opt callstack 0
+   879                           
+   880 ;; *************** function _buttonInitialize *****************
+   881 ;; Defined at:
+   882 ;;		line 19 in file "system.c"
+   883 ;; Parameters:    Size  Location     Type
+   884 ;;		None
+   885 ;; Auto vars:     Size  Location     Type
+   886 ;;		None
+   887 ;; Return value:  Size  Location     Type
+   888 ;;                  1    wreg      void 
+   889 ;; Registers used:
+   890 ;;		wreg, status,2
+   891 ;; Tracked objects:
+   892 ;;		On entry : 0/0
+   893 ;;		On exit  : 0/0
+   894 ;;		Unchanged: 0/0
+   895 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   893 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   896 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   894 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   897 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   895 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   898 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   896 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   899 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   897 ;;Total ram usage:        0 bytes
-   898 ;; Hardware stack levels used:    1
-   899 ;; Hardware stack levels required when called:    3
-   900 ;; This function calls:
-   901 ;;		Nothing
-   902 ;; This function is called by:
-   903 ;;		_main
-   904 ;; This function uses a non-reentrant model
-   905 ;;
-   906                           
-   907                           	psect	text5
-   908  0005C2                     __ptext5:
-   909                           	opt callstack 0
-   910  0005C2                     _buttonInitialize:
-   911                           	opt callstack 27
-   912  0005C2                     
-   913                           ;system.c: 17:     TRISAbits.TRISA5 = 1;
-   914  0005C2  8A92               	bsf	146,5,c	;volatile
-   915                           
-   916                           ;system.c: 18:     TRISBbits.TRISB0 = 1;
-   917  0005C4  8093               	bsf	147,0,c	;volatile
-   918  0005C6                     
-   919                           ;system.c: 19:     ADCON1 = 0b00001111;
-   920  0005C6  0E0F               	movlw	15
-   921  0005C8  6EC1               	movwf	193,c	;volatile
-   922  0005CA  0012               	return		;funcret
-   923  0005CC                     __end_of_buttonInitialize:
-   924                           	opt callstack 0
-   925                           
-   926 ;; *************** function _deviceInterrupt *****************
-   927 ;; Defined at:
-   928 ;;		line 7 in file "clock.c"
-   929 ;; Parameters:    Size  Location     Type
-   930 ;;		None
-   931 ;; Auto vars:     Size  Location     Type
-   932 ;;		None
-   933 ;; Return value:  Size  Location     Type
-   934 ;;                  1    wreg      void 
-   935 ;; Registers used:
-   936 ;;		wreg, status,2, status,0, cstack
-   937 ;; Tracked objects:
-   938 ;;		On entry : 0/0
-   939 ;;		On exit  : 0/0
-   940 ;;		Unchanged: 0/0
-   941 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   900 ;;Total ram usage:        0 bytes
+   901 ;; Hardware stack levels used:    1
+   902 ;; Hardware stack levels required when called:    3
+   903 ;; This function calls:
+   904 ;;		Nothing
+   905 ;; This function is called by:
+   906 ;;		_main
+   907 ;; This function uses a non-reentrant model
+   908 ;;
+   909                           
+   910                           	psect	text5
+   911  0005D2                     __ptext5:
+   912                           	opt callstack 0
+   913  0005D2                     _buttonInitialize:
+   914                           	opt callstack 27
+   915  0005D2                     
+   916                           ;system.c: 20:     TRISAbits.TRISA5 = 1;
+   917  0005D2  8A92               	bsf	146,5,c	;volatile
+   918                           
+   919                           ;system.c: 21:     TRISBbits.TRISB0 = 1;
+   920  0005D4  8093               	bsf	147,0,c	;volatile
+   921  0005D6                     
+   922                           ;system.c: 22:     ADCON1 = 0b00001111;
+   923  0005D6  0E0F               	movlw	15
+   924  0005D8  6EC1               	movwf	193,c	;volatile
+   925  0005DA  0012               	return		;funcret
+   926  0005DC                     __end_of_buttonInitialize:
+   927                           	opt callstack 0
+   928                           
+   929 ;; *************** function _deviceInterrupt *****************
+   930 ;; Defined at:
+   931 ;;		line 9 in file "clock.c"
+   932 ;; Parameters:    Size  Location     Type
+   933 ;;		None
+   934 ;; Auto vars:     Size  Location     Type
+   935 ;;		None
+   936 ;; Return value:  Size  Location     Type
+   937 ;;                  1    wreg      void 
+   938 ;; Registers used:
+   939 ;;		wreg, status,2, status,0, cstack
+   940 ;; Tracked objects:
+   941 ;;		On entry : 0/0
+   942 ;;		On exit  : 0/0
+   943 ;;		Unchanged: 0/0
+   944 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   942 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   945 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   943 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   946 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   944 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   947 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   945 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   948 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   946 ;;Total ram usage:        0 bytes
-   947 ;; Hardware stack levels used:    1
-   948 ;; Hardware stack levels required when called:    2
-   949 ;; This function calls:
-   950 ;;		_button
-   951 ;;		i2_defineTMR0Register
-   952 ;; This function is called by:
-   953 ;;		Interrupt level 2
-   954 ;; This function uses a non-reentrant model
-   955 ;;
-   956                           
-   957                           	psect	intcode
-   958  000008                     __pintcode:
-   959                           	opt callstack 0
-   960  000008                     _deviceInterrupt:
-   961                           	opt callstack 26
-   962                           
-   963                           ;incstack = 0
-   964  000008  821C               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
-   965  00000A  EDB8  F002         	call	int_func,f	;refresh shadow registers
-   966                           
-   967                           	psect	intcode_body
-   968  000570                     __pintcode_body:
-   969                           	opt callstack 26
-   970  000570                     int_func:
-   971                           	opt callstack 26
-   972  000570  0006               	pop		; remove dummy address from shadow register refresh
-   973  000572                     
-   974                           ;clock.c: 9:     if (INTCONbits.TMR0IF == 1) {
-   975  000572  A4F2               	btfss	242,2,c	;volatile
-   976  000574  EFBE  F002         	goto	i2u74_41
-   977  000578  EFC0  F002         	goto	i2u74_40
-   978  00057C                     i2u74_41:
-   979  00057C  EFC7  F002         	goto	i2l213
-   980  000580                     i2u74_40:
-   981  000580                     
-   982                           ;clock.c: 10:         INTCONbits.TMR0IF = 0;
-   983  000580  94F2               	bcf	242,2,c	;volatile
-   984  000582                     
-   985                           ;clock.c: 11:         TMR0L = defineTMR0Register();
-   986  000582  ECE6  F002         	call	i2_defineTMR0Register	;wreg free
-   987  000586  500D               	movf	?i2_defineTMR0Register^0,w,c
-   988  000588  6ED6               	movwf	214,c	;volatile
-   989  00058A                     
-   990                           ;clock.c: 12:         button();
-   991  00058A  EC6A  F001         	call	_button	;wreg free
-   992  00058E                     i2l213:
-   993  00058E  921C               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   994  000590  0011               	retfie		f
-   995  000592                     __end_of_deviceInterrupt:
-   996                           	opt callstack 0
-   997                           
-   998 ;; *************** function i2_defineTMR0Register *****************
-   999 ;; Defined at:
-  1000 ;;		line 3 in file "clock.c"
-  1001 ;; Parameters:    Size  Location     Type
-  1002 ;;		None
-  1003 ;; Auto vars:     Size  Location     Type
-  1004 ;;		None
-  1005 ;; Return value:  Size  Location     Type
-  1006 ;;                  2    0[COMRAM] int 
-  1007 ;; Registers used:
-  1008 ;;		wreg, status,2
-  1009 ;; Tracked objects:
-  1010 ;;		On entry : 0/0
-  1011 ;;		On exit  : 0/0
-  1012 ;;		Unchanged: 0/0
-  1013 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   949 ;;Total ram usage:        0 bytes
+   950 ;; Hardware stack levels used:    1
+   951 ;; Hardware stack levels required when called:    2
+   952 ;; This function calls:
+   953 ;;		_button
+   954 ;;		i2_defineTMR0Register
+   955 ;; This function is called by:
+   956 ;;		Interrupt level 2
+   957 ;; This function uses a non-reentrant model
+   958 ;;
+   959                           
+   960                           	psect	intcode
+   961  000008                     __pintcode:
+   962                           	opt callstack 0
+   963  000008                     _deviceInterrupt:
+   964                           	opt callstack 26
+   965                           
+   966                           ;incstack = 0
+   967  000008  821C               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+   968  00000A  EDB8  F002         	call	int_func,f	;refresh shadow registers
+   969                           
+   970                           	psect	intcode_body
+   971  000570                     __pintcode_body:
+   972                           	opt callstack 26
+   973  000570                     int_func:
+   974                           	opt callstack 26
+   975  000570  0006               	pop		; remove dummy address from shadow register refresh
+   976  000572                     
+   977                           ;clock.c: 11:     if (INTCONbits.TMR0IF == 1 && INTCONbits.TMR0IE == 1) {
+   978  000572  A4F2               	btfss	242,2,c	;volatile
+   979  000574  EFBE  F002         	goto	i2u75_41
+   980  000578  EFC0  F002         	goto	i2u75_40
+   981  00057C                     i2u75_41:
+   982  00057C  EFCE  F002         	goto	i2l213
+   983  000580                     i2u75_40:
+   984  000580  AAF2               	btfss	242,5,c	;volatile
+   985  000582  EFC5  F002         	goto	i2u76_41
+   986  000586  EFC7  F002         	goto	i2u76_40
+   987  00058A                     i2u76_41:
+   988  00058A  EFCE  F002         	goto	i2l213
+   989  00058E                     i2u76_40:
+   990  00058E                     
+   991                           ;clock.c: 12:         INTCONbits.TMR0IF = 0;
+   992  00058E  94F2               	bcf	242,2,c	;volatile
+   993  000590                     
+   994                           ;clock.c: 13:         TMR0L = defineTMR0Register();
+   995  000590  ECEE  F002         	call	i2_defineTMR0Register	;wreg free
+   996  000594  500D               	movf	?i2_defineTMR0Register^0,w,c
+   997  000596  6ED6               	movwf	214,c	;volatile
+   998  000598                     
+   999                           ;clock.c: 14:         button();
+  1000  000598  EC6A  F001         	call	_button	;wreg free
+  1001  00059C                     i2l213:
+  1002  00059C  921C               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1003  00059E  0011               	retfie		f
+  1004  0005A0                     __end_of_deviceInterrupt:
+  1005                           	opt callstack 0
+  1006                           
+  1007 ;; *************** function i2_defineTMR0Register *****************
+  1008 ;; Defined at:
+  1009 ;;		line 5 in file "clock.c"
+  1010 ;; Parameters:    Size  Location     Type
+  1011 ;;		None
+  1012 ;; Auto vars:     Size  Location     Type
+  1013 ;;		None
+  1014 ;; Return value:  Size  Location     Type
+  1015 ;;                  2    0[COMRAM] int 
+  1016 ;; Registers used:
+  1017 ;;		wreg, status,2
+  1018 ;; Tracked objects:
+  1019 ;;		On entry : 0/0
+  1020 ;;		On exit  : 0/0
+  1021 ;;		Unchanged: 0/0
+  1022 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  1014 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1023 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1015 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1024 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1016 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1025 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1017 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1026 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1018 ;;Total ram usage:        2 bytes
-  1019 ;; Hardware stack levels used:    1
-  1020 ;; This function calls:
-  1021 ;;		Nothing
-  1022 ;; This function is called by:
-  1023 ;;		_deviceInterrupt
-  1024 ;; This function uses a non-reentrant model
-  1025 ;;
-  1026                           
-  1027                           	psect	text7
-  1028  0005CC                     __ptext7:
-  1029                           	opt callstack 0
-  1030  0005CC                     i2_defineTMR0Register:
-  1031                           	opt callstack 27
-  1032  0005CC                     
-  1033                           ;clock.c: 4:     return 256 - (10 * 2000) / (int)128;
-  1034  0005CC  0E00               	movlw	0
-  1035  0005CE  6E0E               	movwf	(?i2_defineTMR0Register+1)^0,c
-  1036  0005D0  0E64               	movlw	100
-  1037  0005D2  6E0D               	movwf	?i2_defineTMR0Register^0,c
-  1038  0005D4  0012               	return		;funcret
-  1039  0005D6                     __end_ofi2_defineTMR0Register:
-  1040                           	opt callstack 0
-  1041                           
-  1042 ;; *************** function _button *****************
-  1043 ;; Defined at:
-  1044 ;;		line 31 in file "button.c"
-  1045 ;; Parameters:    Size  Location     Type
-  1046 ;;		None
-  1047 ;; Auto vars:     Size  Location     Type
-  1048 ;;  dButton         2    4[COMRAM] int 
-  1049 ;;  iButton         2    2[COMRAM] int 
-  1050 ;; Return value:  Size  Location     Type
-  1051 ;;                  1    wreg      void 
-  1052 ;; Registers used:
-  1053 ;;		wreg, status,2, status,0, cstack
-  1054 ;; Tracked objects:
-  1055 ;;		On entry : 0/0
-  1056 ;;		On exit  : 0/0
-  1057 ;;		Unchanged: 0/0
-  1058 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1027 ;;Total ram usage:        2 bytes
+  1028 ;; Hardware stack levels used:    1
+  1029 ;; This function calls:
+  1030 ;;		Nothing
+  1031 ;; This function is called by:
+  1032 ;;		_deviceInterrupt
+  1033 ;; This function uses a non-reentrant model
+  1034 ;;
+  1035                           
+  1036                           	psect	text7
+  1037  0005DC                     __ptext7:
+  1038                           	opt callstack 0
+  1039  0005DC                     i2_defineTMR0Register:
+  1040                           	opt callstack 27
+  1041  0005DC                     
+  1042                           ;clock.c: 6:     return 256 * 256 - (10 * 250) / (int)4;
+  1043  0005DC  0EFD               	movlw	253
+  1044  0005DE  6E0E               	movwf	(?i2_defineTMR0Register+1)^0,c
+  1045  0005E0  0E8F               	movlw	143
+  1046  0005E2  6E0D               	movwf	?i2_defineTMR0Register^0,c
+  1047  0005E4  0012               	return		;funcret
+  1048  0005E6                     __end_ofi2_defineTMR0Register:
+  1049                           	opt callstack 0
+  1050                           
+  1051 ;; *************** function _button *****************
+  1052 ;; Defined at:
+  1053 ;;		line 31 in file "button.c"
+  1054 ;; Parameters:    Size  Location     Type
+  1055 ;;		None
+  1056 ;; Auto vars:     Size  Location     Type
+  1057 ;;  dButton         2    4[COMRAM] int 
+  1058 ;;  iButton         2    2[COMRAM] int 
+  1059 ;; Return value:  Size  Location     Type
+  1060 ;;                  1    wreg      void 
+  1061 ;; Registers used:
+  1062 ;;		wreg, status,2, status,0, cstack
+  1063 ;; Tracked objects:
+  1064 ;;		On entry : 0/0
+  1065 ;;		On exit  : 0/0
+  1066 ;;		Unchanged: 0/0
+  1067 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  1059 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1068 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1060 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+  1069 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1061 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1070 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1062 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
+  1071 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1063 ;;Total ram usage:        4 bytes
-  1064 ;; Hardware stack levels used:    1
-  1065 ;; Hardware stack levels required when called:    1
-  1066 ;; This function calls:
-  1067 ;;		_readDButton
-  1068 ;;		_readIButton
-  1069 ;; This function is called by:
-  1070 ;;		_deviceInterrupt
-  1071 ;; This function uses a non-reentrant model
-  1072 ;;
-  1073                           
-  1074                           	psect	text8
-  1075  0002D4                     __ptext8:
-  1076                           	opt callstack 0
-  1077  0002D4                     _button:
-  1078                           	opt callstack 26
-  1079  0002D4                     
-  1080                           ;button.c: 32:     int iButton = readIButton();
-  1081  0002D4  EC4D  F002         	call	_readIButton	;wreg free
-  1082  0002D8  C00D  F00F         	movff	?_readIButton,button@iButton
-  1083  0002DC  C00E  F010         	movff	?_readIButton+1,button@iButton+1
-  1084                           
-  1085                           ;button.c: 33:     int dButton = readDButton();
-  1086  0002E0  EC75  F002         	call	_readDButton	;wreg free
-  1087  0002E4  C00D  F011         	movff	?_readDButton,button@dButton
-  1088  0002E8  C00E  F012         	movff	?_readDButton+1,button@dButton+1
-  1089  0002EC                     
-  1090                           ;button.c: 34:     if (iButton == 1) {
-  1091  0002EC  040F               	decf	button@iButton^0,w,c
-  1092  0002EE  1010               	iorwf	(button@iButton+1)^0,w,c
-  1093  0002F0  A4D8               	btfss	status,2,c
-  1094  0002F2  EF7D  F001         	goto	i2u42_41
-  1095  0002F6  EF7F  F001         	goto	i2u42_40
-  1096  0002FA                     i2u42_41:
-  1097  0002FA  EFCF  F001         	goto	i2l1189
-  1098  0002FE                     i2u42_40:
-  1099  0002FE                     
-  1100                           ;button.c: 35:         iCount++;
-  1101  0002FE  4A0B               	infsnz	_iCount^0,f,c
-  1102  000300  2A0C               	incf	(_iCount+1)^0,f,c
-  1103  000302                     
-  1104                           ;button.c: 36:         if (iCount > 1000 / 10) {
-  1105  000302  BE0C               	btfsc	(_iCount+1)^0,7,c
-  1106  000304  EF8D  F001         	goto	i2u43_41
-  1107  000308  500C               	movf	(_iCount+1)^0,w,c
-  1108  00030A  E109               	bnz	i2u43_40
-  1109  00030C  0E65               	movlw	101
-  1110  00030E  5C0B               	subwf	_iCount^0,w,c
-  1111  000310  A0D8               	btfss	status,0,c
-  1112  000312  EF8D  F001         	goto	i2u43_41
-  1113  000316  EF8F  F001         	goto	i2u43_40
-  1114  00031A                     i2u43_41:
-  1115  00031A  EFA7  F001         	goto	i2l1181
-  1116  00031E                     i2u43_40:
-  1117  00031E                     
-  1118                           ;button.c: 37:             countSlow++;
-  1119  00031E  4A07               	infsnz	_countSlow^0,f,c
-  1120  000320  2A08               	incf	(_countSlow+1)^0,f,c
-  1121  000322                     
-  1122                           ;button.c: 38:             if (countSlow > 500 / 10) {
-  1123  000322  BE08               	btfsc	(_countSlow+1)^0,7,c
-  1124  000324  EF9D  F001         	goto	i2u44_41
-  1125  000328  5008               	movf	(_countSlow+1)^0,w,c
-  1126  00032A  E109               	bnz	i2u44_40
-  1127  00032C  0E33               	movlw	51
-  1128  00032E  5C07               	subwf	_countSlow^0,w,c
-  1129  000330  A0D8               	btfss	status,0,c
-  1130  000332  EF9D  F001         	goto	i2u44_41
-  1131  000336  EF9F  F001         	goto	i2u44_40
-  1132  00033A                     i2u44_41:
-  1133  00033A  EFA7  F001         	goto	i2l1181
-  1134  00033E                     i2u44_40:
-  1135  00033E                     
-  1136                           ;button.c: 39:                 changeSlow = 1;
-  1137  00033E  0E00               	movlw	0
-  1138  000340  6E04               	movwf	(_changeSlow+1)^0,c
-  1139  000342  0E01               	movlw	1
-  1140  000344  6E03               	movwf	_changeSlow^0,c
-  1141                           
-  1142                           ;button.c: 40:                 countSlow = 0;
-  1143  000346  0E00               	movlw	0
-  1144  000348  6E08               	movwf	(_countSlow+1)^0,c
-  1145  00034A  0E00               	movlw	0
-  1146  00034C  6E07               	movwf	_countSlow^0,c
-  1147  00034E                     i2l1181:
-  1148                           
-  1149                           ;button.c: 43:         if (iCount > 3000 / 10) {
-  1150  00034E  BE0C               	btfsc	(_iCount+1)^0,7,c
-  1151  000350  EFB3  F001         	goto	i2u45_41
-  1152  000354  0E2D               	movlw	45
-  1153  000356  5C0B               	subwf	_iCount^0,w,c
-  1154  000358  0E01               	movlw	1
-  1155  00035A  580C               	subwfb	(_iCount+1)^0,w,c
-  1156  00035C  A0D8               	btfss	status,0,c
-  1157  00035E  EFB3  F001         	goto	i2u45_41
-  1158  000362  EFB5  F001         	goto	i2u45_40
-  1159  000366                     i2u45_41:
-  1160  000366  EF4C  F002         	goto	i2l178
-  1161  00036A                     i2u45_40:
-  1162  00036A                     
-  1163                           ;button.c: 44:             countFast++;
-  1164  00036A  4A05               	infsnz	_countFast^0,f,c
-  1165  00036C  2A06               	incf	(_countFast+1)^0,f,c
-  1166  00036E                     
-  1167                           ;button.c: 45:             if (countFast > 100 / 10) {
-  1168  00036E  BE06               	btfsc	(_countFast+1)^0,7,c
-  1169  000370  EFC3  F001         	goto	i2u46_41
-  1170  000374  5006               	movf	(_countFast+1)^0,w,c
-  1171  000376  E109               	bnz	i2u46_40
-  1172  000378  0E0B               	movlw	11
-  1173  00037A  5C05               	subwf	_countFast^0,w,c
-  1174  00037C  A0D8               	btfss	status,0,c
-  1175  00037E  EFC3  F001         	goto	i2u46_41
-  1176  000382  EFC5  F001         	goto	i2u46_40
-  1177  000386                     i2u46_41:
-  1178  000386  EF4C  F002         	goto	i2l178
-  1179  00038A                     i2u46_40:
-  1180  00038A                     i2l1187:
-  1181                           
-  1182                           ;button.c: 46:                 changeFast = 1;
-  1183  00038A  0E00               	movlw	0
-  1184  00038C  6E02               	movwf	(_changeFast+1)^0,c
-  1185  00038E  0E01               	movlw	1
-  1186  000390  6E01               	movwf	_changeFast^0,c
-  1187                           
-  1188                           ;button.c: 47:                 countFast = 0;
-  1189  000392  0E00               	movlw	0
-  1190  000394  6E06               	movwf	(_countFast+1)^0,c
-  1191  000396  0E00               	movlw	0
-  1192  000398  6E05               	movwf	_countFast^0,c
-  1193  00039A  EF4C  F002         	goto	i2l178
-  1194  00039E                     i2l1189:
-  1195  00039E  0411               	decf	button@dButton^0,w,c
-  1196  0003A0  1012               	iorwf	(button@dButton+1)^0,w,c
-  1197  0003A2  A4D8               	btfss	status,2,c
-  1198  0003A4  EFD6  F001         	goto	i2u47_41
-  1199  0003A8  EFD8  F001         	goto	i2u47_40
-  1200  0003AC                     i2u47_41:
-  1201  0003AC  EF20  F002         	goto	i2l1209
-  1202  0003B0                     i2u47_40:
-  1203  0003B0                     
-  1204                           ;button.c: 52:         dCount++;
-  1205  0003B0  4A09               	infsnz	_dCount^0,f,c
-  1206  0003B2  2A0A               	incf	(_dCount+1)^0,f,c
-  1207  0003B4                     
-  1208                           ;button.c: 53:         if (dCount > 1000 / 10) {
-  1209  0003B4  BE0A               	btfsc	(_dCount+1)^0,7,c
-  1210  0003B6  EFE6  F001         	goto	i2u48_41
-  1211  0003BA  500A               	movf	(_dCount+1)^0,w,c
-  1212  0003BC  E109               	bnz	i2u48_40
-  1213  0003BE  0E65               	movlw	101
-  1214  0003C0  5C09               	subwf	_dCount^0,w,c
-  1215  0003C2  A0D8               	btfss	status,0,c
-  1216  0003C4  EFE6  F001         	goto	i2u48_41
-  1217  0003C8  EFE8  F001         	goto	i2u48_40
-  1218  0003CC                     i2u48_41:
-  1219  0003CC  EF00  F002         	goto	i2l1201
-  1220  0003D0                     i2u48_40:
-  1221  0003D0                     
-  1222                           ;button.c: 54:             countSlow++;
-  1223  0003D0  4A07               	infsnz	_countSlow^0,f,c
-  1224  0003D2  2A08               	incf	(_countSlow+1)^0,f,c
-  1225  0003D4                     
-  1226                           ;button.c: 55:             if (countSlow > 500 / 10) {
-  1227  0003D4  BE08               	btfsc	(_countSlow+1)^0,7,c
-  1228  0003D6  EFF6  F001         	goto	i2u49_41
-  1229  0003DA  5008               	movf	(_countSlow+1)^0,w,c
-  1230  0003DC  E109               	bnz	i2u49_40
-  1231  0003DE  0E33               	movlw	51
-  1232  0003E0  5C07               	subwf	_countSlow^0,w,c
-  1233  0003E2  A0D8               	btfss	status,0,c
-  1234  0003E4  EFF6  F001         	goto	i2u49_41
-  1235  0003E8  EFF8  F001         	goto	i2u49_40
-  1236  0003EC                     i2u49_41:
-  1237  0003EC  EF00  F002         	goto	i2l1201
-  1238  0003F0                     i2u49_40:
-  1239  0003F0                     
-  1240                           ;button.c: 56:                 changeSlow = 1;
-  1241  0003F0  0E00               	movlw	0
-  1242  0003F2  6E04               	movwf	(_changeSlow+1)^0,c
-  1243  0003F4  0E01               	movlw	1
-  1244  0003F6  6E03               	movwf	_changeSlow^0,c
-  1245                           
-  1246                           ;button.c: 57:                 countSlow = 0;
-  1247  0003F8  0E00               	movlw	0
-  1248  0003FA  6E08               	movwf	(_countSlow+1)^0,c
-  1249  0003FC  0E00               	movlw	0
-  1250  0003FE  6E07               	movwf	_countSlow^0,c
-  1251  000400                     i2l1201:
-  1252                           
-  1253                           ;button.c: 60:         if (dCount > 3000 / 10) {
-  1254  000400  BE0A               	btfsc	(_dCount+1)^0,7,c
-  1255  000402  EF0C  F002         	goto	i2u50_41
-  1256  000406  0E2D               	movlw	45
-  1257  000408  5C09               	subwf	_dCount^0,w,c
-  1258  00040A  0E01               	movlw	1
-  1259  00040C  580A               	subwfb	(_dCount+1)^0,w,c
-  1260  00040E  A0D8               	btfss	status,0,c
-  1261  000410  EF0C  F002         	goto	i2u50_41
-  1262  000414  EF0E  F002         	goto	i2u50_40
-  1263  000418                     i2u50_41:
-  1264  000418  EF4C  F002         	goto	i2l178
-  1265  00041C                     i2u50_40:
-  1266  00041C                     
-  1267                           ;button.c: 61:             countFast++;
-  1268  00041C  4A05               	infsnz	_countFast^0,f,c
-  1269  00041E  2A06               	incf	(_countFast+1)^0,f,c
-  1270  000420                     
-  1271                           ;button.c: 62:             if (countFast > 100 / 10) {
-  1272  000420  BE06               	btfsc	(_countFast+1)^0,7,c
-  1273  000422  EF1C  F002         	goto	i2u51_41
-  1274  000426  5006               	movf	(_countFast+1)^0,w,c
-  1275  000428  E109               	bnz	i2u51_40
-  1276  00042A  0E0B               	movlw	11
-  1277  00042C  5C05               	subwf	_countFast^0,w,c
-  1278  00042E  A0D8               	btfss	status,0,c
-  1279  000430  EF1C  F002         	goto	i2u51_41
-  1280  000434  EF1E  F002         	goto	i2u51_40
-  1281  000438                     i2u51_41:
-  1282  000438  EF4C  F002         	goto	i2l178
-  1283  00043C                     i2u51_40:
-  1284  00043C  EFC5  F001         	goto	i2l1187
-  1285  000440                     i2l1209:
-  1286  000440  0E02               	movlw	2
-  1287  000442  180F               	xorwf	button@iButton^0,w,c
-  1288  000444  1010               	iorwf	(button@iButton+1)^0,w,c
-  1289  000446  B4D8               	btfsc	status,2,c
-  1290  000448  EF28  F002         	goto	i2u52_41
-  1291  00044C  EF2A  F002         	goto	i2u52_40
-  1292  000450                     i2u52_41:
-  1293  000450  EF34  F002         	goto	i2l1213
-  1294  000454                     i2u52_40:
-  1295  000454  0E02               	movlw	2
-  1296  000456  1811               	xorwf	button@dButton^0,w,c
-  1297  000458  1012               	iorwf	(button@dButton+1)^0,w,c
-  1298  00045A  A4D8               	btfss	status,2,c
-  1299  00045C  EF32  F002         	goto	i2u53_41
-  1300  000460  EF34  F002         	goto	i2u53_40
-  1301  000464                     i2u53_41:
-  1302  000464  EF4C  F002         	goto	i2l178
-  1303  000468                     i2u53_40:
-  1304  000468                     i2l1213:
-  1305                           
-  1306                           ;button.c: 69:         iCount = 0;
-  1307  000468  0E00               	movlw	0
-  1308  00046A  6E0C               	movwf	(_iCount+1)^0,c
-  1309  00046C  0E00               	movlw	0
-  1310  00046E  6E0B               	movwf	_iCount^0,c
-  1311                           
-  1312                           ;button.c: 70:         dCount = 0;
-  1313  000470  0E00               	movlw	0
-  1314  000472  6E0A               	movwf	(_dCount+1)^0,c
-  1315  000474  0E00               	movlw	0
-  1316  000476  6E09               	movwf	_dCount^0,c
-  1317                           
-  1318                           ;button.c: 71:         countFast = 0;
-  1319  000478  0E00               	movlw	0
-  1320  00047A  6E06               	movwf	(_countFast+1)^0,c
-  1321  00047C  0E00               	movlw	0
-  1322  00047E  6E05               	movwf	_countFast^0,c
-  1323                           
-  1324                           ;button.c: 72:         changeFast = 0;
-  1325  000480  0E00               	movlw	0
-  1326  000482  6E02               	movwf	(_changeFast+1)^0,c
-  1327  000484  0E00               	movlw	0
-  1328  000486  6E01               	movwf	_changeFast^0,c
-  1329                           
-  1330                           ;button.c: 73:         countSlow = 0;
-  1331  000488  0E00               	movlw	0
-  1332  00048A  6E08               	movwf	(_countSlow+1)^0,c
-  1333  00048C  0E00               	movlw	0
-  1334  00048E  6E07               	movwf	_countSlow^0,c
-  1335                           
-  1336                           ;button.c: 74:         changeSlow = 0;
-  1337  000490  0E00               	movlw	0
-  1338  000492  6E04               	movwf	(_changeSlow+1)^0,c
-  1339  000494  0E00               	movlw	0
-  1340  000496  6E03               	movwf	_changeSlow^0,c
-  1341  000498                     i2l178:
-  1342  000498  0012               	return		;funcret
-  1343  00049A                     __end_of_button:
-  1344                           	opt callstack 0
-  1345                           
-  1346 ;; *************** function _readIButton *****************
-  1347 ;; Defined at:
-  1348 ;;		line 3 in file "button.c"
-  1349 ;; Parameters:    Size  Location     Type
-  1350 ;;		None
-  1351 ;; Auto vars:     Size  Location     Type
-  1352 ;;		None
-  1353 ;; Return value:  Size  Location     Type
-  1354 ;;                  2    0[COMRAM] int 
-  1355 ;; Registers used:
-  1356 ;;		wreg, status,2, status,0
-  1357 ;; Tracked objects:
-  1358 ;;		On entry : 0/0
-  1359 ;;		On exit  : 0/0
-  1360 ;;		Unchanged: 0/0
-  1361 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1072 ;;Total ram usage:        4 bytes
+  1073 ;; Hardware stack levels used:    1
+  1074 ;; Hardware stack levels required when called:    1
+  1075 ;; This function calls:
+  1076 ;;		_readDButton
+  1077 ;;		_readIButton
+  1078 ;; This function is called by:
+  1079 ;;		_deviceInterrupt
+  1080 ;; This function uses a non-reentrant model
+  1081 ;;
+  1082                           
+  1083                           	psect	text8
+  1084  0002D4                     __ptext8:
+  1085                           	opt callstack 0
+  1086  0002D4                     _button:
+  1087                           	opt callstack 26
+  1088  0002D4                     
+  1089                           ;button.c: 32:     int iButton = readIButton();
+  1090  0002D4  EC4D  F002         	call	_readIButton	;wreg free
+  1091  0002D8  C00D  F00F         	movff	?_readIButton,button@iButton
+  1092  0002DC  C00E  F010         	movff	?_readIButton+1,button@iButton+1
+  1093                           
+  1094                           ;button.c: 33:     int dButton = readDButton();
+  1095  0002E0  EC75  F002         	call	_readDButton	;wreg free
+  1096  0002E4  C00D  F011         	movff	?_readDButton,button@dButton
+  1097  0002E8  C00E  F012         	movff	?_readDButton+1,button@dButton+1
+  1098  0002EC                     
+  1099                           ;button.c: 34:     if (iButton == 1) {
+  1100  0002EC  040F               	decf	button@iButton^0,w,c
+  1101  0002EE  1010               	iorwf	(button@iButton+1)^0,w,c
+  1102  0002F0  A4D8               	btfss	status,2,c
+  1103  0002F2  EF7D  F001         	goto	i2u43_41
+  1104  0002F6  EF7F  F001         	goto	i2u43_40
+  1105  0002FA                     i2u43_41:
+  1106  0002FA  EFCF  F001         	goto	i2l1191
+  1107  0002FE                     i2u43_40:
+  1108  0002FE                     
+  1109                           ;button.c: 35:         iCount++;
+  1110  0002FE  4A0B               	infsnz	_iCount^0,f,c
+  1111  000300  2A0C               	incf	(_iCount+1)^0,f,c
+  1112  000302                     
+  1113                           ;button.c: 36:         if (iCount > 1000 / 10) {
+  1114  000302  BE0C               	btfsc	(_iCount+1)^0,7,c
+  1115  000304  EF8D  F001         	goto	i2u44_41
+  1116  000308  500C               	movf	(_iCount+1)^0,w,c
+  1117  00030A  E109               	bnz	i2u44_40
+  1118  00030C  0E65               	movlw	101
+  1119  00030E  5C0B               	subwf	_iCount^0,w,c
+  1120  000310  A0D8               	btfss	status,0,c
+  1121  000312  EF8D  F001         	goto	i2u44_41
+  1122  000316  EF8F  F001         	goto	i2u44_40
+  1123  00031A                     i2u44_41:
+  1124  00031A  EFA7  F001         	goto	i2l1183
+  1125  00031E                     i2u44_40:
+  1126  00031E                     
+  1127                           ;button.c: 37:             countSlow++;
+  1128  00031E  4A07               	infsnz	_countSlow^0,f,c
+  1129  000320  2A08               	incf	(_countSlow+1)^0,f,c
+  1130  000322                     
+  1131                           ;button.c: 38:             if (countSlow > 500 / 10) {
+  1132  000322  BE08               	btfsc	(_countSlow+1)^0,7,c
+  1133  000324  EF9D  F001         	goto	i2u45_41
+  1134  000328  5008               	movf	(_countSlow+1)^0,w,c
+  1135  00032A  E109               	bnz	i2u45_40
+  1136  00032C  0E33               	movlw	51
+  1137  00032E  5C07               	subwf	_countSlow^0,w,c
+  1138  000330  A0D8               	btfss	status,0,c
+  1139  000332  EF9D  F001         	goto	i2u45_41
+  1140  000336  EF9F  F001         	goto	i2u45_40
+  1141  00033A                     i2u45_41:
+  1142  00033A  EFA7  F001         	goto	i2l1183
+  1143  00033E                     i2u45_40:
+  1144  00033E                     
+  1145                           ;button.c: 39:                 changeSlow = 1;
+  1146  00033E  0E00               	movlw	0
+  1147  000340  6E04               	movwf	(_changeSlow+1)^0,c
+  1148  000342  0E01               	movlw	1
+  1149  000344  6E03               	movwf	_changeSlow^0,c
+  1150                           
+  1151                           ;button.c: 40:                 countSlow = 0;
+  1152  000346  0E00               	movlw	0
+  1153  000348  6E08               	movwf	(_countSlow+1)^0,c
+  1154  00034A  0E00               	movlw	0
+  1155  00034C  6E07               	movwf	_countSlow^0,c
+  1156  00034E                     i2l1183:
+  1157                           
+  1158                           ;button.c: 43:         if (iCount > 3000 / 10) {
+  1159  00034E  BE0C               	btfsc	(_iCount+1)^0,7,c
+  1160  000350  EFB3  F001         	goto	i2u46_41
+  1161  000354  0E2D               	movlw	45
+  1162  000356  5C0B               	subwf	_iCount^0,w,c
+  1163  000358  0E01               	movlw	1
+  1164  00035A  580C               	subwfb	(_iCount+1)^0,w,c
+  1165  00035C  A0D8               	btfss	status,0,c
+  1166  00035E  EFB3  F001         	goto	i2u46_41
+  1167  000362  EFB5  F001         	goto	i2u46_40
+  1168  000366                     i2u46_41:
+  1169  000366  EF4C  F002         	goto	i2l178
+  1170  00036A                     i2u46_40:
+  1171  00036A                     
+  1172                           ;button.c: 44:             countFast++;
+  1173  00036A  4A05               	infsnz	_countFast^0,f,c
+  1174  00036C  2A06               	incf	(_countFast+1)^0,f,c
+  1175  00036E                     
+  1176                           ;button.c: 45:             if (countFast > 100 / 10) {
+  1177  00036E  BE06               	btfsc	(_countFast+1)^0,7,c
+  1178  000370  EFC3  F001         	goto	i2u47_41
+  1179  000374  5006               	movf	(_countFast+1)^0,w,c
+  1180  000376  E109               	bnz	i2u47_40
+  1181  000378  0E0B               	movlw	11
+  1182  00037A  5C05               	subwf	_countFast^0,w,c
+  1183  00037C  A0D8               	btfss	status,0,c
+  1184  00037E  EFC3  F001         	goto	i2u47_41
+  1185  000382  EFC5  F001         	goto	i2u47_40
+  1186  000386                     i2u47_41:
+  1187  000386  EF4C  F002         	goto	i2l178
+  1188  00038A                     i2u47_40:
+  1189  00038A                     i2l1189:
+  1190                           
+  1191                           ;button.c: 46:                 changeFast = 1;
+  1192  00038A  0E00               	movlw	0
+  1193  00038C  6E02               	movwf	(_changeFast+1)^0,c
+  1194  00038E  0E01               	movlw	1
+  1195  000390  6E01               	movwf	_changeFast^0,c
+  1196                           
+  1197                           ;button.c: 47:                 countFast = 0;
+  1198  000392  0E00               	movlw	0
+  1199  000394  6E06               	movwf	(_countFast+1)^0,c
+  1200  000396  0E00               	movlw	0
+  1201  000398  6E05               	movwf	_countFast^0,c
+  1202  00039A  EF4C  F002         	goto	i2l178
+  1203  00039E                     i2l1191:
+  1204  00039E  0411               	decf	button@dButton^0,w,c
+  1205  0003A0  1012               	iorwf	(button@dButton+1)^0,w,c
+  1206  0003A2  A4D8               	btfss	status,2,c
+  1207  0003A4  EFD6  F001         	goto	i2u48_41
+  1208  0003A8  EFD8  F001         	goto	i2u48_40
+  1209  0003AC                     i2u48_41:
+  1210  0003AC  EF20  F002         	goto	i2l1211
+  1211  0003B0                     i2u48_40:
+  1212  0003B0                     
+  1213                           ;button.c: 52:         dCount++;
+  1214  0003B0  4A09               	infsnz	_dCount^0,f,c
+  1215  0003B2  2A0A               	incf	(_dCount+1)^0,f,c
+  1216  0003B4                     
+  1217                           ;button.c: 53:         if (dCount > 1000 / 10) {
+  1218  0003B4  BE0A               	btfsc	(_dCount+1)^0,7,c
+  1219  0003B6  EFE6  F001         	goto	i2u49_41
+  1220  0003BA  500A               	movf	(_dCount+1)^0,w,c
+  1221  0003BC  E109               	bnz	i2u49_40
+  1222  0003BE  0E65               	movlw	101
+  1223  0003C0  5C09               	subwf	_dCount^0,w,c
+  1224  0003C2  A0D8               	btfss	status,0,c
+  1225  0003C4  EFE6  F001         	goto	i2u49_41
+  1226  0003C8  EFE8  F001         	goto	i2u49_40
+  1227  0003CC                     i2u49_41:
+  1228  0003CC  EF00  F002         	goto	i2l1203
+  1229  0003D0                     i2u49_40:
+  1230  0003D0                     
+  1231                           ;button.c: 54:             countSlow++;
+  1232  0003D0  4A07               	infsnz	_countSlow^0,f,c
+  1233  0003D2  2A08               	incf	(_countSlow+1)^0,f,c
+  1234  0003D4                     
+  1235                           ;button.c: 55:             if (countSlow > 500 / 10) {
+  1236  0003D4  BE08               	btfsc	(_countSlow+1)^0,7,c
+  1237  0003D6  EFF6  F001         	goto	i2u50_41
+  1238  0003DA  5008               	movf	(_countSlow+1)^0,w,c
+  1239  0003DC  E109               	bnz	i2u50_40
+  1240  0003DE  0E33               	movlw	51
+  1241  0003E0  5C07               	subwf	_countSlow^0,w,c
+  1242  0003E2  A0D8               	btfss	status,0,c
+  1243  0003E4  EFF6  F001         	goto	i2u50_41
+  1244  0003E8  EFF8  F001         	goto	i2u50_40
+  1245  0003EC                     i2u50_41:
+  1246  0003EC  EF00  F002         	goto	i2l1203
+  1247  0003F0                     i2u50_40:
+  1248  0003F0                     
+  1249                           ;button.c: 56:                 changeSlow = 1;
+  1250  0003F0  0E00               	movlw	0
+  1251  0003F2  6E04               	movwf	(_changeSlow+1)^0,c
+  1252  0003F4  0E01               	movlw	1
+  1253  0003F6  6E03               	movwf	_changeSlow^0,c
+  1254                           
+  1255                           ;button.c: 57:                 countSlow = 0;
+  1256  0003F8  0E00               	movlw	0
+  1257  0003FA  6E08               	movwf	(_countSlow+1)^0,c
+  1258  0003FC  0E00               	movlw	0
+  1259  0003FE  6E07               	movwf	_countSlow^0,c
+  1260  000400                     i2l1203:
+  1261                           
+  1262                           ;button.c: 60:         if (dCount > 3000 / 10) {
+  1263  000400  BE0A               	btfsc	(_dCount+1)^0,7,c
+  1264  000402  EF0C  F002         	goto	i2u51_41
+  1265  000406  0E2D               	movlw	45
+  1266  000408  5C09               	subwf	_dCount^0,w,c
+  1267  00040A  0E01               	movlw	1
+  1268  00040C  580A               	subwfb	(_dCount+1)^0,w,c
+  1269  00040E  A0D8               	btfss	status,0,c
+  1270  000410  EF0C  F002         	goto	i2u51_41
+  1271  000414  EF0E  F002         	goto	i2u51_40
+  1272  000418                     i2u51_41:
+  1273  000418  EF4C  F002         	goto	i2l178
+  1274  00041C                     i2u51_40:
+  1275  00041C                     
+  1276                           ;button.c: 61:             countFast++;
+  1277  00041C  4A05               	infsnz	_countFast^0,f,c
+  1278  00041E  2A06               	incf	(_countFast+1)^0,f,c
+  1279  000420                     
+  1280                           ;button.c: 62:             if (countFast > 100 / 10) {
+  1281  000420  BE06               	btfsc	(_countFast+1)^0,7,c
+  1282  000422  EF1C  F002         	goto	i2u52_41
+  1283  000426  5006               	movf	(_countFast+1)^0,w,c
+  1284  000428  E109               	bnz	i2u52_40
+  1285  00042A  0E0B               	movlw	11
+  1286  00042C  5C05               	subwf	_countFast^0,w,c
+  1287  00042E  A0D8               	btfss	status,0,c
+  1288  000430  EF1C  F002         	goto	i2u52_41
+  1289  000434  EF1E  F002         	goto	i2u52_40
+  1290  000438                     i2u52_41:
+  1291  000438  EF4C  F002         	goto	i2l178
+  1292  00043C                     i2u52_40:
+  1293  00043C  EFC5  F001         	goto	i2l1189
+  1294  000440                     i2l1211:
+  1295  000440  0E02               	movlw	2
+  1296  000442  180F               	xorwf	button@iButton^0,w,c
+  1297  000444  1010               	iorwf	(button@iButton+1)^0,w,c
+  1298  000446  B4D8               	btfsc	status,2,c
+  1299  000448  EF28  F002         	goto	i2u53_41
+  1300  00044C  EF2A  F002         	goto	i2u53_40
+  1301  000450                     i2u53_41:
+  1302  000450  EF34  F002         	goto	i2l1215
+  1303  000454                     i2u53_40:
+  1304  000454  0E02               	movlw	2
+  1305  000456  1811               	xorwf	button@dButton^0,w,c
+  1306  000458  1012               	iorwf	(button@dButton+1)^0,w,c
+  1307  00045A  A4D8               	btfss	status,2,c
+  1308  00045C  EF32  F002         	goto	i2u54_41
+  1309  000460  EF34  F002         	goto	i2u54_40
+  1310  000464                     i2u54_41:
+  1311  000464  EF4C  F002         	goto	i2l178
+  1312  000468                     i2u54_40:
+  1313  000468                     i2l1215:
+  1314                           
+  1315                           ;button.c: 69:         iCount = 0;
+  1316  000468  0E00               	movlw	0
+  1317  00046A  6E0C               	movwf	(_iCount+1)^0,c
+  1318  00046C  0E00               	movlw	0
+  1319  00046E  6E0B               	movwf	_iCount^0,c
+  1320                           
+  1321                           ;button.c: 70:         dCount = 0;
+  1322  000470  0E00               	movlw	0
+  1323  000472  6E0A               	movwf	(_dCount+1)^0,c
+  1324  000474  0E00               	movlw	0
+  1325  000476  6E09               	movwf	_dCount^0,c
+  1326                           
+  1327                           ;button.c: 71:         countFast = 0;
+  1328  000478  0E00               	movlw	0
+  1329  00047A  6E06               	movwf	(_countFast+1)^0,c
+  1330  00047C  0E00               	movlw	0
+  1331  00047E  6E05               	movwf	_countFast^0,c
+  1332                           
+  1333                           ;button.c: 72:         changeFast = 0;
+  1334  000480  0E00               	movlw	0
+  1335  000482  6E02               	movwf	(_changeFast+1)^0,c
+  1336  000484  0E00               	movlw	0
+  1337  000486  6E01               	movwf	_changeFast^0,c
+  1338                           
+  1339                           ;button.c: 73:         countSlow = 0;
+  1340  000488  0E00               	movlw	0
+  1341  00048A  6E08               	movwf	(_countSlow+1)^0,c
+  1342  00048C  0E00               	movlw	0
+  1343  00048E  6E07               	movwf	_countSlow^0,c
+  1344                           
+  1345                           ;button.c: 74:         changeSlow = 0;
+  1346  000490  0E00               	movlw	0
+  1347  000492  6E04               	movwf	(_changeSlow+1)^0,c
+  1348  000494  0E00               	movlw	0
+  1349  000496  6E03               	movwf	_changeSlow^0,c
+  1350  000498                     i2l178:
+  1351  000498  0012               	return		;funcret
+  1352  00049A                     __end_of_button:
+  1353                           	opt callstack 0
+  1354                           
+  1355 ;; *************** function _readIButton *****************
+  1356 ;; Defined at:
+  1357 ;;		line 3 in file "button.c"
+  1358 ;; Parameters:    Size  Location     Type
+  1359 ;;		None
+  1360 ;; Auto vars:     Size  Location     Type
+  1361 ;;		None
+  1362 ;; Return value:  Size  Location     Type
+  1363 ;;                  2    0[COMRAM] int 
+  1364 ;; Registers used:
+  1365 ;;		wreg, status,2, status,0
+  1366 ;; Tracked objects:
+  1367 ;;		On entry : 0/0
+  1368 ;;		On exit  : 0/0
+  1369 ;;		Unchanged: 0/0
+  1370 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  1362 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1371 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1363 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1372 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1364 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1373 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1365 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1374 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1366 ;;Total ram usage:        2 bytes
-  1367 ;; Hardware stack levels used:    1
-  1368 ;; This function calls:
-  1369 ;;		Nothing
-  1370 ;; This function is called by:
-  1371 ;;		_button
-  1372 ;; This function uses a non-reentrant model
-  1373 ;;
-  1374                           
-  1375                           	psect	text9
-  1376  00049A                     __ptext9:
-  1377                           	opt callstack 0
-  1378  00049A                     _readIButton:
-  1379                           	opt callstack 26
-  1380  00049A                     
-  1381                           ;button.c: 4:     firstReadRA5 = secondReadRA5;
-  1382  00049A  C01A  F01B         	movff	_secondReadRA5,_firstReadRA5
-  1383  00049E                     
-  1384                           ;button.c: 5:     secondReadRA5 = PORTAbits.RA5;
-  1385  00049E  0E00               	movlw	0
-  1386  0004A0  BA80               	btfsc	128,5,c	;volatile
-  1387  0004A2  0E01               	movlw	1
-  1388  0004A4  6E1A               	movwf	_secondReadRA5^0,c
-  1389  0004A6                     
-  1390                           ;button.c: 6:     if (firstReadRA5 == secondReadRA5) {
-  1391  0004A6  501A               	movf	_secondReadRA5^0,w,c
-  1392  0004A8  181B               	xorwf	_firstReadRA5^0,w,c
-  1393  0004AA  A4D8               	btfss	status,2,c
-  1394  0004AC  EF5A  F002         	goto	i2u38_41
-  1395  0004B0  EF5C  F002         	goto	i2u38_40
-  1396  0004B4                     i2u38_41:
-  1397  0004B4  EF70  F002         	goto	i2l1135
-  1398  0004B8                     i2u38_40:
-  1399  0004B8                     
-  1400                           ;button.c: 7:         if (firstReadRA5 == 0) {
-  1401  0004B8  501B               	movf	_firstReadRA5^0,w,c
-  1402  0004BA  A4D8               	btfss	status,2,c
-  1403  0004BC  EF62  F002         	goto	i2u39_41
-  1404  0004C0  EF64  F002         	goto	i2u39_40
-  1405  0004C4                     i2u39_41:
-  1406  0004C4  EF6A  F002         	goto	i2l1131
-  1407  0004C8                     i2u39_40:
-  1408  0004C8                     
-  1409                           ;button.c: 8:             return 1;
-  1410  0004C8  0E00               	movlw	0
-  1411  0004CA  6E0E               	movwf	(?_readIButton+1)^0,c
-  1412  0004CC  0E01               	movlw	1
-  1413  0004CE  6E0D               	movwf	?_readIButton^0,c
-  1414  0004D0  EF74  F002         	goto	i2l153
-  1415  0004D4                     i2l1131:
-  1416                           
-  1417                           ;button.c: 11:             return 2;
-  1418  0004D4  0E00               	movlw	0
-  1419  0004D6  6E0E               	movwf	(?_readIButton+1)^0,c
-  1420  0004D8  0E02               	movlw	2
-  1421  0004DA  6E0D               	movwf	?_readIButton^0,c
-  1422  0004DC  EF74  F002         	goto	i2l153
-  1423  0004E0                     i2l1135:
-  1424                           
-  1425                           ;button.c: 14:    return 0;
-  1426  0004E0  0E00               	movlw	0
-  1427  0004E2  6E0E               	movwf	(?_readIButton+1)^0,c
-  1428  0004E4  0E00               	movlw	0
-  1429  0004E6  6E0D               	movwf	?_readIButton^0,c
-  1430  0004E8                     i2l153:
-  1431  0004E8  0012               	return		;funcret
-  1432  0004EA                     __end_of_readIButton:
-  1433                           	opt callstack 0
-  1434                           
-  1435 ;; *************** function _readDButton *****************
-  1436 ;; Defined at:
-  1437 ;;		line 17 in file "button.c"
-  1438 ;; Parameters:    Size  Location     Type
-  1439 ;;		None
-  1440 ;; Auto vars:     Size  Location     Type
-  1441 ;;		None
-  1442 ;; Return value:  Size  Location     Type
-  1443 ;;                  2    0[COMRAM] int 
-  1444 ;; Registers used:
-  1445 ;;		wreg, status,2, status,0
-  1446 ;; Tracked objects:
-  1447 ;;		On entry : 0/0
-  1448 ;;		On exit  : 0/0
-  1449 ;;		Unchanged: 0/0
-  1450 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1375 ;;Total ram usage:        2 bytes
+  1376 ;; Hardware stack levels used:    1
+  1377 ;; This function calls:
+  1378 ;;		Nothing
+  1379 ;; This function is called by:
+  1380 ;;		_button
+  1381 ;; This function uses a non-reentrant model
+  1382 ;;
+  1383                           
+  1384                           	psect	text9
+  1385  00049A                     __ptext9:
+  1386                           	opt callstack 0
+  1387  00049A                     _readIButton:
+  1388                           	opt callstack 26
+  1389  00049A                     
+  1390                           ;button.c: 4:     firstReadRA5 = secondReadRA5;
+  1391  00049A  C01A  F01B         	movff	_secondReadRA5,_firstReadRA5
+  1392  00049E                     
+  1393                           ;button.c: 5:     secondReadRA5 = PORTAbits.RA5;
+  1394  00049E  0E00               	movlw	0
+  1395  0004A0  BA80               	btfsc	128,5,c	;volatile
+  1396  0004A2  0E01               	movlw	1
+  1397  0004A4  6E1A               	movwf	_secondReadRA5^0,c
+  1398  0004A6                     
+  1399                           ;button.c: 6:     if (firstReadRA5 == secondReadRA5) {
+  1400  0004A6  501A               	movf	_secondReadRA5^0,w,c
+  1401  0004A8  181B               	xorwf	_firstReadRA5^0,w,c
+  1402  0004AA  A4D8               	btfss	status,2,c
+  1403  0004AC  EF5A  F002         	goto	i2u39_41
+  1404  0004B0  EF5C  F002         	goto	i2u39_40
+  1405  0004B4                     i2u39_41:
+  1406  0004B4  EF70  F002         	goto	i2l1137
+  1407  0004B8                     i2u39_40:
+  1408  0004B8                     
+  1409                           ;button.c: 7:         if (firstReadRA5 == 0) {
+  1410  0004B8  501B               	movf	_firstReadRA5^0,w,c
+  1411  0004BA  A4D8               	btfss	status,2,c
+  1412  0004BC  EF62  F002         	goto	i2u40_41
+  1413  0004C0  EF64  F002         	goto	i2u40_40
+  1414  0004C4                     i2u40_41:
+  1415  0004C4  EF6A  F002         	goto	i2l1133
+  1416  0004C8                     i2u40_40:
+  1417  0004C8                     
+  1418                           ;button.c: 8:             return 1;
+  1419  0004C8  0E00               	movlw	0
+  1420  0004CA  6E0E               	movwf	(?_readIButton+1)^0,c
+  1421  0004CC  0E01               	movlw	1
+  1422  0004CE  6E0D               	movwf	?_readIButton^0,c
+  1423  0004D0  EF74  F002         	goto	i2l153
+  1424  0004D4                     i2l1133:
+  1425                           
+  1426                           ;button.c: 11:             return 2;
+  1427  0004D4  0E00               	movlw	0
+  1428  0004D6  6E0E               	movwf	(?_readIButton+1)^0,c
+  1429  0004D8  0E02               	movlw	2
+  1430  0004DA  6E0D               	movwf	?_readIButton^0,c
+  1431  0004DC  EF74  F002         	goto	i2l153
+  1432  0004E0                     i2l1137:
+  1433                           
+  1434                           ;button.c: 14:    return 0;
+  1435  0004E0  0E00               	movlw	0
+  1436  0004E2  6E0E               	movwf	(?_readIButton+1)^0,c
+  1437  0004E4  0E00               	movlw	0
+  1438  0004E6  6E0D               	movwf	?_readIButton^0,c
+  1439  0004E8                     i2l153:
+  1440  0004E8  0012               	return		;funcret
+  1441  0004EA                     __end_of_readIButton:
+  1442                           	opt callstack 0
+  1443                           
+  1444 ;; *************** function _readDButton *****************
+  1445 ;; Defined at:
+  1446 ;;		line 17 in file "button.c"
+  1447 ;; Parameters:    Size  Location     Type
+  1448 ;;		None
+  1449 ;; Auto vars:     Size  Location     Type
+  1450 ;;		None
+  1451 ;; Return value:  Size  Location     Type
+  1452 ;;                  2    0[COMRAM] int 
+  1453 ;; Registers used:
+  1454 ;;		wreg, status,2, status,0
+  1455 ;; Tracked objects:
+  1456 ;;		On entry : 0/0
+  1457 ;;		On exit  : 0/0
+  1458 ;;		Unchanged: 0/0
+  1459 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  1451 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1460 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1452 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1461 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1453 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1462 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1454 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1463 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1455 ;;Total ram usage:        2 bytes
-  1456 ;; Hardware stack levels used:    1
-  1457 ;; This function calls:
-  1458 ;;		Nothing
-  1459 ;; This function is called by:
-  1460 ;;		_button
-  1461 ;; This function uses a non-reentrant model
-  1462 ;;
-  1463                           
-  1464                           	psect	text10
-  1465  0004EA                     __ptext10:
-  1466                           	opt callstack 0
-  1467  0004EA                     _readDButton:
-  1468                           	opt callstack 26
-  1469  0004EA                     
-  1470                           ;button.c: 18:     firstReadRB0 = secondReadRB0;
-  1471  0004EA  C018  F019         	movff	_secondReadRB0,_firstReadRB0
-  1472  0004EE                     
-  1473                           ;button.c: 19:     secondReadRB0 = PORTBbits.RB0;
-  1474  0004EE  0E00               	movlw	0
-  1475  0004F0  B081               	btfsc	129,0,c	;volatile
-  1476  0004F2  0E01               	movlw	1
-  1477  0004F4  6E18               	movwf	_secondReadRB0^0,c
-  1478  0004F6                     
-  1479                           ;button.c: 20:     if (firstReadRB0 == secondReadRB0) {
-  1480  0004F6  5018               	movf	_secondReadRB0^0,w,c
-  1481  0004F8  1819               	xorwf	_firstReadRB0^0,w,c
-  1482  0004FA  A4D8               	btfss	status,2,c
-  1483  0004FC  EF82  F002         	goto	i2u40_41
-  1484  000500  EF84  F002         	goto	i2u40_40
-  1485  000504                     i2u40_41:
-  1486  000504  EF98  F002         	goto	i2l1157
-  1487  000508                     i2u40_40:
-  1488  000508                     
-  1489                           ;button.c: 21:         if (firstReadRB0 == 0) {
-  1490  000508  5019               	movf	_firstReadRB0^0,w,c
-  1491  00050A  A4D8               	btfss	status,2,c
-  1492  00050C  EF8A  F002         	goto	i2u41_41
-  1493  000510  EF8C  F002         	goto	i2u41_40
-  1494  000514                     i2u41_41:
-  1495  000514  EF92  F002         	goto	i2l1153
-  1496  000518                     i2u41_40:
-  1497  000518                     
-  1498                           ;button.c: 22:             return 1;
-  1499  000518  0E00               	movlw	0
-  1500  00051A  6E0E               	movwf	(?_readDButton+1)^0,c
-  1501  00051C  0E01               	movlw	1
-  1502  00051E  6E0D               	movwf	?_readDButton^0,c
-  1503  000520  EF9C  F002         	goto	i2l159
-  1504  000524                     i2l1153:
-  1505                           
-  1506                           ;button.c: 25:             return 2;
-  1507  000524  0E00               	movlw	0
-  1508  000526  6E0E               	movwf	(?_readDButton+1)^0,c
-  1509  000528  0E02               	movlw	2
-  1510  00052A  6E0D               	movwf	?_readDButton^0,c
-  1511  00052C  EF9C  F002         	goto	i2l159
-  1512  000530                     i2l1157:
-  1513                           
-  1514                           ;button.c: 28:     return 0;
-  1515  000530  0E00               	movlw	0
-  1516  000532  6E0E               	movwf	(?_readDButton+1)^0,c
-  1517  000534  0E00               	movlw	0
-  1518  000536  6E0D               	movwf	?_readDButton^0,c
-  1519  000538                     i2l159:
-  1520  000538  0012               	return		;funcret
-  1521  00053A                     __end_of_readDButton:
-  1522                           	opt callstack 0
-  1523  0000                     
-  1524                           	psect	rparam
-  1525  0000                     
-  1526                           	psect	temp
-  1527  00001C                     btemp:
-  1528                           	opt callstack 0
-  1529  00001C                     	ds	1
-  1530  0000                     int$flags	set	btemp
-  1531  0000                     wtemp8	set	btemp+1
-  1532  0000                     ttemp5	set	btemp+1
-  1533  0000                     ttemp6	set	btemp+4
-  1534  0000                     ttemp7	set	btemp+8
-  1535                           tosu	equ	0xFFF
-  1536                           tosh	equ	0xFFE
-  1537                           tosl	equ	0xFFD
-  1538                           stkptr	equ	0xFFC
-  1539                           pclatu	equ	0xFFB
-  1540                           pclath	equ	0xFFA
-  1541                           pcl	equ	0xFF9
-  1542                           tblptru	equ	0xFF8
-  1543                           tblptrh	equ	0xFF7
-  1544                           tblptrl	equ	0xFF6
-  1545                           tablat	equ	0xFF5
-  1546                           prodh	equ	0xFF4
-  1547                           prodl	equ	0xFF3
-  1548                           indf0	equ	0xFEF
-  1549                           postinc0	equ	0xFEE
-  1550                           postdec0	equ	0xFED
-  1551                           preinc0	equ	0xFEC
-  1552                           plusw0	equ	0xFEB
-  1553                           fsr0h	equ	0xFEA
-  1554                           fsr0l	equ	0xFE9
-  1555                           wreg	equ	0xFE8
-  1556                           indf1	equ	0xFE7
-  1557                           postinc1	equ	0xFE6
-  1558                           postdec1	equ	0xFE5
-  1559                           preinc1	equ	0xFE4
-  1560                           plusw1	equ	0xFE3
-  1561                           fsr1h	equ	0xFE2
-  1562                           fsr1l	equ	0xFE1
-  1563                           bsr	equ	0xFE0
-  1564                           indf2	equ	0xFDF
-  1565                           postinc2	equ	0xFDE
-  1566                           postdec2	equ	0xFDD
-  1567                           preinc2	equ	0xFDC
-  1568                           plusw2	equ	0xFDB
-  1569                           fsr2h	equ	0xFDA
-  1570                           fsr2l	equ	0xFD9
-  1571                           status	equ	0xFD8
+  1464 ;;Total ram usage:        2 bytes
+  1465 ;; Hardware stack levels used:    1
+  1466 ;; This function calls:
+  1467 ;;		Nothing
+  1468 ;; This function is called by:
+  1469 ;;		_button
+  1470 ;; This function uses a non-reentrant model
+  1471 ;;
+  1472                           
+  1473                           	psect	text10
+  1474  0004EA                     __ptext10:
+  1475                           	opt callstack 0
+  1476  0004EA                     _readDButton:
+  1477                           	opt callstack 26
+  1478  0004EA                     
+  1479                           ;button.c: 18:     firstReadRB0 = secondReadRB0;
+  1480  0004EA  C018  F019         	movff	_secondReadRB0,_firstReadRB0
+  1481  0004EE                     
+  1482                           ;button.c: 19:     secondReadRB0 = PORTBbits.RB0;
+  1483  0004EE  0E00               	movlw	0
+  1484  0004F0  B081               	btfsc	129,0,c	;volatile
+  1485  0004F2  0E01               	movlw	1
+  1486  0004F4  6E18               	movwf	_secondReadRB0^0,c
+  1487  0004F6                     
+  1488                           ;button.c: 20:     if (firstReadRB0 == secondReadRB0) {
+  1489  0004F6  5018               	movf	_secondReadRB0^0,w,c
+  1490  0004F8  1819               	xorwf	_firstReadRB0^0,w,c
+  1491  0004FA  A4D8               	btfss	status,2,c
+  1492  0004FC  EF82  F002         	goto	i2u41_41
+  1493  000500  EF84  F002         	goto	i2u41_40
+  1494  000504                     i2u41_41:
+  1495  000504  EF98  F002         	goto	i2l1159
+  1496  000508                     i2u41_40:
+  1497  000508                     
+  1498                           ;button.c: 21:         if (firstReadRB0 == 0) {
+  1499  000508  5019               	movf	_firstReadRB0^0,w,c
+  1500  00050A  A4D8               	btfss	status,2,c
+  1501  00050C  EF8A  F002         	goto	i2u42_41
+  1502  000510  EF8C  F002         	goto	i2u42_40
+  1503  000514                     i2u42_41:
+  1504  000514  EF92  F002         	goto	i2l1155
+  1505  000518                     i2u42_40:
+  1506  000518                     
+  1507                           ;button.c: 22:             return 1;
+  1508  000518  0E00               	movlw	0
+  1509  00051A  6E0E               	movwf	(?_readDButton+1)^0,c
+  1510  00051C  0E01               	movlw	1
+  1511  00051E  6E0D               	movwf	?_readDButton^0,c
+  1512  000520  EF9C  F002         	goto	i2l159
+  1513  000524                     i2l1155:
+  1514                           
+  1515                           ;button.c: 25:             return 2;
+  1516  000524  0E00               	movlw	0
+  1517  000526  6E0E               	movwf	(?_readDButton+1)^0,c
+  1518  000528  0E02               	movlw	2
+  1519  00052A  6E0D               	movwf	?_readDButton^0,c
+  1520  00052C  EF9C  F002         	goto	i2l159
+  1521  000530                     i2l1159:
+  1522                           
+  1523                           ;button.c: 28:     return 0;
+  1524  000530  0E00               	movlw	0
+  1525  000532  6E0E               	movwf	(?_readDButton+1)^0,c
+  1526  000534  0E00               	movlw	0
+  1527  000536  6E0D               	movwf	?_readDButton^0,c
+  1528  000538                     i2l159:
+  1529  000538  0012               	return		;funcret
+  1530  00053A                     __end_of_readDButton:
+  1531                           	opt callstack 0
+  1532  0000                     
+  1533                           	psect	rparam
+  1534  0000                     
+  1535                           	psect	temp
+  1536  00001C                     btemp:
+  1537                           	opt callstack 0
+  1538  00001C                     	ds	1
+  1539  0000                     int$flags	set	btemp
+  1540  0000                     wtemp8	set	btemp+1
+  1541  0000                     ttemp5	set	btemp+1
+  1542  0000                     ttemp6	set	btemp+4
+  1543  0000                     ttemp7	set	btemp+8
+  1544                           tosu	equ	0xFFF
+  1545                           tosh	equ	0xFFE
+  1546                           tosl	equ	0xFFD
+  1547                           stkptr	equ	0xFFC
+  1548                           pclatu	equ	0xFFB
+  1549                           pclath	equ	0xFFA
+  1550                           pcl	equ	0xFF9
+  1551                           tblptru	equ	0xFF8
+  1552                           tblptrh	equ	0xFF7
+  1553                           tblptrl	equ	0xFF6
+  1554                           tablat	equ	0xFF5
+  1555                           prodh	equ	0xFF4
+  1556                           prodl	equ	0xFF3
+  1557                           indf0	equ	0xFEF
+  1558                           postinc0	equ	0xFEE
+  1559                           postdec0	equ	0xFED
+  1560                           preinc0	equ	0xFEC
+  1561                           plusw0	equ	0xFEB
+  1562                           fsr0h	equ	0xFEA
+  1563                           fsr0l	equ	0xFE9
+  1564                           wreg	equ	0xFE8
+  1565                           indf1	equ	0xFE7
+  1566                           postinc1	equ	0xFE6
+  1567                           postdec1	equ	0xFE5
+  1568                           preinc1	equ	0xFE4
+  1569                           plusw1	equ	0xFE3
+  1570                           fsr1h	equ	0xFE2
+  1571                           fsr1l	equ	0xFE1
+  1572                           bsr	equ	0xFE0
+  1573                           indf2	equ	0xFDF
+  1574                           postinc2	equ	0xFDE
+  1575                           postdec2	equ	0xFDD
+  1576                           preinc2	equ	0xFDC
+  1577                           plusw2	equ	0xFDB
+  1578                           fsr2h	equ	0xFDA
+  1579                           fsr2l	equ	0xFD9
+  1580                           status	equ	0xFD8
 
 
 Data Sizes:
@@ -1924,112 +1933,113 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Sat Sep 21 08:53:50 2019
+Symbol Table                                                                                   Sun Sep 22 00:16:46 2019
 
                             l36 027E     __size_of_defineTMR0Register 000A                 ??_ledInitialize 0013  
-                           l121 05CA                             l115 05B6                             l124 05C0  
-                           l118 05A2                             l207 05AC                             l945 05C2  
-                           l937 05AE                             l947 05C6                             l949 05B8  
-                           u600 00FC                             u601 00F8                             u610 0120  
-                           u611 011C                             u700 0226                             u620 0142  
-                           u540 0054                             u701 0222                             u621 013E  
-                           u541 0050                             u710 0248                             u630 0158  
-                           u550 0070                             u711 0244                             u631 0154  
-                           u551 006C                             u720 0262                             u640 0178  
-                           u560 008A                             u721 025E                             u641 0174  
-                           u561 0086                             u730 0278                             u650 0192  
-                           u570 00A6                             u731 0274                             u651 018E  
-                           u571 00A2                             u660 01B0                             u580 00C4  
-                           u661 01AC                             u581 00C0                             u670 01D2  
-                           u590 00E6                             u671 01CE                             u591 00E2  
-                           u680 01EC                             u681 01E8                             u690 0202  
-                           u691 01FE                             wreg 000FE8            i2_defineTMR0Register 05CC  
-                  __CFG_LVP$OFF 000000                    __CFG_WDT$OFF 000000                            l1113 05A4  
-                          l1301 0262                            l1221 0022                            l1303 0266  
-                          l1231 005E                            l1223 002A                            l1311 027E  
-                          l1161 0592                            l1305 0278                            l1241 00A6  
-                          l1233 0070                            l1225 003A                            l1163 0596  
-                          l1251 00EA                            l1243 00AA                            l1235 008A  
-                          l1227 0054                            l1219 0012                            l1165 059A  
-                          l1261 0130                            l1253 00FC                            l1245 00C4  
-                          l1237 008C                            l1229 0056                            l1271 0166  
-                          l1263 0142                            l1255 00FE                            l1247 00D4  
-                          l1239 0094                            l1329 0292                            l1281 01C0  
-                          l1273 0178                            l1265 0146                            l1257 0106  
-                          l1249 00E6                            l1291 0204                            l1283 01D2  
-                          l1275 0192                            l1267 0158                            l1259 0120  
-                          l1293 020C                            l1285 01EC                            l1277 0196  
-                          l1269 015A                            l1295 0226                            l1287 01F0  
-                          l1279 01B0                            l1297 0236                            l1289 0202  
-                          l1299 0248                            _LATD 000F8C                            _main 0012  
+                           l121 05DA                             l115 05C6                             l124 05D0  
+                           l118 05B2                             l207 05BC                             l945 05D2  
+                           l937 05BE                             l947 05D6                             l949 05C8  
+                           u600 00E6                             u601 00E2                             u610 00FC  
+                           u611 00F8                             u700 0202                             u620 0120  
+                           u701 01FE                             u621 011C                             u710 0226  
+                           u630 0142                             u550 0054                             u711 0222  
+                           u631 013E                             u551 0050                             u720 0248  
+                           u640 0158                             u560 0070                             u721 0244  
+                           u641 0154                             u561 006C                             u730 0262  
+                           u650 0178                             u570 008A                             u731 025E  
+                           u651 0174                             u571 0086                             u740 0278  
+                           u660 0192                             u580 00A6                             u741 0274  
+                           u661 018E                             u581 00A2                             u670 01B0  
+                           u590 00C4                             u671 01AC                             u591 00C0  
+                           u680 01D2                             u681 01CE                             u690 01EC  
+                           u691 01E8                             wreg 000FE8            i2_defineTMR0Register 05DC  
+                  __CFG_LVP$OFF 000000                    __CFG_WDT$OFF 000000                            l1115 05B4  
+                          l1301 0248                            l1221 0012                            l1303 0262  
+                          l1231 0056                            l1223 0022                            l1305 0266  
+                          l1241 0094                            l1233 005E                            l1225 002A  
+                          l1313 027E                            l1163 05A0                            l1307 0278  
+                          l1251 00E6                            l1243 00A6                            l1235 0070  
+                          l1227 003A                            l1165 05A6                            l1333 0292  
+                          l1261 0120                            l1253 00EA                            l1245 00AA  
+                          l1237 008A                            l1229 0054                            l1167 05AA  
+                          l1271 015A                            l1263 0130                            l1255 00FC  
+                          l1247 00C4                            l1239 008C                            l1281 01B0  
+                          l1273 0166                            l1265 0142                            l1257 00FE  
+                          l1249 00D4                            l1291 0202                            l1283 01C0  
+                          l1275 0178                            l1267 0146                            l1259 0106  
+                          l1293 0204                            l1285 01D2                            l1277 0192  
+                          l1269 0158                            l1295 020C                            l1287 01EC  
+                          l1279 0196                            l1297 0226                            l1289 01F0  
+                          l1299 0236                            _LATD 000F8C                            _main 0012  
                           fsr1l 000FE1                            btemp 001C                    ?_readDButton 000D  
                           start 000E                   __CFG_IESO$OFF 000000                    ?_readIButton 000D  
                  __CFG_MCLRE$ON 000000                    ___param_bank 000000                 _deviceInterrupt 0008  
-                         ?_main 000D                           _T0CON 000FD5                           i2l213 058E  
-                         i2l207 05D4                           i2l153 04E8                           i2l159 0538  
+                         ?_main 000D                           _T0CON 000FD5                           i2l213 059C  
+                         i2l207 05E4                           i2l153 04E8                           i2l159 0538  
                          i2l178 0498                           _TMR0L 000FD6                           _TRISD 000F95  
                  __CFG_PWRT$OFF 000000           ?i2_defineTMR0Register 000D                  __CFG_FCMEN$OFF 000000  
-__size_of_oscillationInitialize 000A   __end_of_oscillationInitialize 05B8                  __CFG_BOREN$OFF 000000  
+__size_of_oscillationInitialize 000A   __end_of_oscillationInitialize 05C8                  __CFG_BOREN$OFF 000000  
                          tablat 000FF5                           ttemp5 001D                           ttemp6 0020  
                          ttemp7 0024                           status 000FD8               ??_timerInitialize 0015  
                          wtemp8 001D                 __initialization 053A                    __end_of_main 02D4  
                 __CFG_OSC$HSPLL 000000                          ??_main 0015                   __activetblptr 000003  
-                        _ADCON1 000FC1                          i2l1121 04A6                          i2l1201 0400  
-                        i2l1131 04D4                          i2l1123 04B8                          i2l1211 0454  
-                        i2l1203 041C                          i2l1141 04EE                          i2l1125 04C8  
-                        i2l1117 049A                          i2l1213 0468                          i2l1205 0420  
-                        i2l1143 04F6                          i2l1135 04E0                          i2l1119 049E  
-                        i2l1215 05CC                          i2l1153 0524                          i2l1145 0508  
-                        i2l1209 0440                          i2l1321 0582                          i2l1147 0518  
-                        i2l1139 04EA                          i2l1171 02FE                          i2l1323 058A  
-                        i2l1157 0530                          i2l1181 034E                          i2l1173 0302  
-                        i2l1317 0572                          i2l1191 03B0                          i2l1183 036A  
-                        i2l1175 031E                          i2l1167 02D4                          i2l1319 0580  
-                        i2l1193 03B4                          i2l1185 036E                          i2l1177 0322  
-                        i2l1169 02EC                          i2l1195 03D0                          i2l1187 038A  
-                        i2l1179 033E                          i2l1197 03D4                          i2l1189 039E  
-                        i2l1199 03F0                          _OSCCON 000FD3         __end_of_deviceInterrupt 0592  
-                __CFG_XINST$OFF 000000                          _dCount 0009                          _iCount 000B  
-                        _button 02D4                          clear_0 0560       __size_of_buttonInitialize 000A  
-        ??i2_defineTMR0Register 000F                    __pdataCOMRAM 0018                          tblptrh 000FF7  
-                        tblptrl 000FF6                          tblptru 000FF8                      __accesstop 0060  
-       __end_of__initialization 0566                   ___rparam_used 000001            __size_of_readDButton 0050  
-                __pcstackCOMRAM 000D            __size_of_readIButton 0050                      _changeFast 0001  
-                    _changeSlow 0003                ?_deviceInterrupt 000D      __end_of_defineTMR0Register 05AE  
-                       ?_button 000D           __end_of_ledInitialize 05C2                 _timerInitialize 0592  
-                       i2u40_40 0508                         i2u40_41 0504                         i2u41_40 0518  
-                       i2u41_41 0514                         i2u50_40 041C                         i2u42_40 02FE  
-                       i2u50_41 0418                         i2u42_41 02FA                         i2u51_40 043C  
-                       i2u43_40 031E                         i2u51_41 0438                         i2u43_41 031A  
-                       i2u52_40 0454                         i2u44_40 033E                         i2u52_41 0450  
-                       i2u44_41 033A                         i2u53_40 0468                         i2u45_40 036A  
-                       i2u53_41 0464                         i2u45_41 0366                         i2u38_40 04B8  
-                       i2u46_40 038A                         i2u38_41 04B4                         i2u46_41 0386  
-                       _OSCTUNE 000F9B                         i2u39_40 04C8                         i2u47_40 03B0  
-                       i2u39_41 04C4                         i2u47_41 03AC                         i2u48_40 03D0  
-                       i2u48_41 03CC                         i2u49_40 03F0                         i2u49_41 03EC  
-                       i2u74_40 0580                         i2u74_41 057C                         __Hparam 0000  
-                       __Lparam 0000                _buttonInitialize 05C2                         __pcinit 053A  
+                        _ADCON1 000FC1                          i2l1121 049E                          i2l1201 03F0  
+                        i2l1123 04A6                          i2l1203 0400                          i2l1211 0440  
+                        i2l1141 04EA                          i2l1133 04D4                          i2l1125 04B8  
+                        i2l1213 0454                          i2l1205 041C                          i2l1143 04EE  
+                        i2l1127 04C8                          i2l1119 049A                          i2l1215 0468  
+                        i2l1207 0420                          i2l1145 04F6                          i2l1137 04E0  
+                        i2l1217 05DC                          i2l1321 0580                          i2l1155 0524  
+                        i2l1147 0508                          i2l1171 02EC                          i2l1323 058E  
+                        i2l1149 0518                          i2l1181 033E                          i2l1173 02FE  
+                        i2l1325 0590                          i2l1159 0530                          i2l1183 034E  
+                        i2l1175 0302                          i2l1191 039E                          i2l1327 0598  
+                        i2l1319 0572                          i2l1193 03B0                          i2l1185 036A  
+                        i2l1177 031E                          i2l1169 02D4                          i2l1195 03B4  
+                        i2l1187 036E                          i2l1179 0322                          i2l1197 03D0  
+                        i2l1189 038A                          i2l1199 03D4                          _OSCCON 000FD3  
+       __end_of_deviceInterrupt 05A0                  __CFG_XINST$OFF 000000                          _dCount 0009  
+                        _iCount 000B                          _button 02D4                          clear_0 0560  
+     __size_of_buttonInitialize 000A          ??i2_defineTMR0Register 000F                    __pdataCOMRAM 0018  
+                        tblptrh 000FF7                          tblptrl 000FF6                          tblptru 000FF8  
+                    __accesstop 0060         __end_of__initialization 0566                   ___rparam_used 000001  
+          __size_of_readDButton 0050                  __pcstackCOMRAM 000D            __size_of_readIButton 0050  
+                    _changeFast 0001                      _changeSlow 0003                ?_deviceInterrupt 000D  
+    __end_of_defineTMR0Register 05BE                         ?_button 000D           __end_of_ledInitialize 05D2  
+               _timerInitialize 05A0                         i2u40_40 04C8                         i2u40_41 04C4  
+                       i2u41_40 0508                         i2u41_41 0504                         i2u42_40 0518  
+                       i2u50_40 03F0                         i2u42_41 0514                         i2u50_41 03EC  
+                       i2u51_40 041C                         i2u43_40 02FE                         i2u51_41 0418  
+                       i2u43_41 02FA                         i2u52_40 043C                         i2u44_40 031E  
+                       i2u52_41 0438                         i2u44_41 031A                         i2u53_40 0454  
+                       i2u45_40 033E                         i2u53_41 0450                         i2u45_41 033A  
+                       i2u54_40 0468                         i2u46_40 036A                         i2u54_41 0464  
+                       i2u46_41 0366                         _OSCTUNE 000F9B                         i2u39_40 04B8  
+                       i2u47_40 038A                         i2u39_41 04B4                         i2u47_41 0386  
+                       i2u48_40 03B0                         i2u48_41 03AC                         i2u49_40 03D0  
+                       i2u49_41 03CC                         i2u75_40 0580                         i2u75_41 057C  
+                       i2u76_40 058E                         i2u76_41 058A                         __Hparam 0000  
+                       __Lparam 0000                _buttonInitialize 05D2                         __pcinit 053A  
                __size_of_button 01C6                         __ramtop 1000                         __ptext0 0012  
-                       __ptext1 0592                         __ptext2 05A4                         __ptext3 05AE  
-                       __ptext4 05B8                         __ptext5 05C2                         __ptext7 05CC  
+                       __ptext1 05A0                         __ptext2 05B4                         __ptext3 05BE  
+                       __ptext4 05C8                         __ptext5 05D2                         __ptext7 05DC  
                        __ptext8 02D4                         __ptext9 049A                  __pintcode_body 0570  
-          end_of_initialization 0566                         int_func 0570           _oscillationInitialize 05AE  
-                       postdec1 000FE5                         postinc0 000FEE         __end_of_timerInitialize 05A4  
+          end_of_initialization 0566                         int_func 0570           _oscillationInitialize 05BE  
+                       postdec1 000FE5                         postinc0 000FEE         __end_of_timerInitialize 05B4  
                      _PORTAbits 000F80                       _PORTBbits 000F81                       _TRISAbits 000F92  
-                     _TRISBbits 000F93                   __pidataCOMRAM 05D6                    _firstReadRB0 0019  
+                     _TRISBbits 000F93                   __pidataCOMRAM 05E6                    _firstReadRB0 0019  
                   _firstReadRA5 001B                   _secondReadRB0 0018                   _secondReadRA5 001A  
                 __end_of_button 049A             start_initialization 053A   __size_ofi2_defineTMR0Register 000A  
         ?_oscillationInitialize 000D                   ??_readDButton 000F                   ??_readIButton 000F  
                       ??_button 000F                ?_timerInitialize 000D                     __pbssCOMRAM 0001  
-            _defineTMR0Register 05A4        __end_of_buttonInitialize 05CC             ?_defineTMR0Register 0013  
+            _defineTMR0Register 05B4        __end_of_buttonInitialize 05DC             ?_defineTMR0Register 0013  
                      __pintcode 0008             __end_of_readDButton 053A             __end_of_readIButton 04EA  
-      __size_of_deviceInterrupt 058A            ??_defineTMR0Register 0015                       _countFast 0005  
+      __size_of_deviceInterrupt 0598            ??_defineTMR0Register 0015                       _countFast 0005  
                      _countSlow 0007          __size_of_ledInitialize 000A                       main@state 0017  
                      copy_data0 054E                     _readDButton 04EA                     _readIButton 049A  
                       __Hrparam 0000                        __Lrparam 0000                   button@dButton 0011  
-                 _ledInitialize 05B8               ??_deviceInterrupt 0013                   button@iButton 000F  
+                 _ledInitialize 05C8               ??_deviceInterrupt 0013                   button@iButton 000F  
                       __ptext10 04EA         ??_oscillationInitialize 0013                   __size_of_main 02C2  
-  __end_ofi2_defineTMR0Register 05D6                        int$flags 001C                  ?_ledInitialize 000D  
+  __end_ofi2_defineTMR0Register 05E6                        int$flags 001C                  ?_ledInitialize 000D  
                     _INTCONbits 000FF2                        intlevel2 0000               ?_buttonInitialize 000D  
-            ??_buttonInitialize 0013        __size_of_timerInitialize 0012  
+            ??_buttonInitialize 0013        __size_of_timerInitialize 0014  

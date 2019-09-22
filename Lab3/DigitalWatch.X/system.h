@@ -27,9 +27,11 @@ extern "C" {
 #pragma config 	XINST = OFF
 #endif
 
-void oscillationInitialize(void);
-void timerInitialize(void);
-void buttonInitialize(void);
+volatile uint24_t timer0ReloadVal;    
+    
+void oscillationInitialize (void);
+void timerInitialize (void);
+void buttonInitialize (void);
 
 #ifdef	__cplusplus
 }

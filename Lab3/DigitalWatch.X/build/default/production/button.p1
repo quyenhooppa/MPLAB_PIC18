@@ -1,4 +1,66 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"35 ./button.h
+[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4600 0 1 2 3 4 .. ]
+[n E4600 State norClk modHr modMin modSec stpWatch  ]
+"2649 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2649:     struct {
+[s S118 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S118 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"2659
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2659:     struct {
+[s S119 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S119 . . VREFM VREFP T0CKI LVDIN ]
+"2666
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2666:     struct {
+[s S120 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S120 . AN0 AN1 AN2 AN3 . AN4 ]
+"2674
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2674:     struct {
+[s S121 :5 `uc 1 :1 `uc 1 ]
+[n S121 . . HLVDIN ]
+"2678
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2678:     struct {
+[s S122 :1 `uc 1 :6 `uc 1 :1 `uc 1 ]
+[n S122 . ULPWUIN . RJPU ]
+"2648
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2648: typedef union {
+[u S117 `S118 1 `S119 1 `S120 1 `S121 1 `S122 1 ]
+[n S117 . . . . . . ]
+"2684
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2684: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF80)));
+[v _PORTAbits `VS117 ~T0 @X0 0 e@3968 ]
+"2795
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2795:     struct {
+[s S124 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S124 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"2805
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2805:     struct {
+[s S125 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S125 . INT0 INT1 INT2 INT3 KBI0 KBI1 KBI2 KBI3 ]
+"2815
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2815:     struct {
+[s S126 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S126 . FLT0 . ECCP2 ]
+"2820
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2820:     struct {
+[s S127 :3 `uc 1 :1 `uc 1 ]
+[n S127 . . CCP2 ]
+"2824
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2824:     struct {
+[s S128 :3 `uc 1 :1 `uc 1 ]
+[n S128 . . P2A ]
+"2828
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2828:     struct {
+[s S129 :3 `uc 1 :1 `uc 1 ]
+[n S129 . . CCP2_PA2 ]
+"2794
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2794: typedef union {
+[u S123 `S124 1 `S125 1 `S126 1 `S127 1 `S128 1 `S129 1 ]
+[n S123 . . . . . . . ]
+"2833
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 2833: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
+[v _PORTBbits `VS123 ~T0 @X0 0 e@3969 ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -593,3 +655,227 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"21 ./button.h
+[; ;./button.h: 21: int countPressed = 0;
+[v _countPressed `i ~T0 @X0 1 e ]
+[i _countPressed
+-> 0 `i
+]
+"22
+[; ;./button.h: 22: int countAuto= 0;
+[v _countAuto `i ~T0 @X0 1 e ]
+[i _countAuto
+-> 0 `i
+]
+"23
+[; ;./button.h: 23: int changeModePressed = 0;
+[v _changeModePressed `i ~T0 @X0 1 e ]
+[i _changeModePressed
+-> 0 `i
+]
+"24
+[; ;./button.h: 24: int increaseTime = 0;
+[v _increaseTime `i ~T0 @X0 1 e ]
+[i _increaseTime
+-> 0 `i
+]
+"25
+[; ;./button.h: 25: char firstReadRA5 = 1;
+[v _firstReadRA5 `uc ~T0 @X0 1 e ]
+[i _firstReadRA5
+-> -> 1 `i `uc
+]
+"26
+[; ;./button.h: 26: char secondReadRA5 = 1;
+[v _secondReadRA5 `uc ~T0 @X0 1 e ]
+[i _secondReadRA5
+-> -> 1 `i `uc
+]
+"27
+[; ;./button.h: 27: char firstReadRB0 = 1;
+[v _firstReadRB0 `uc ~T0 @X0 1 e ]
+[i _firstReadRB0
+-> -> 1 `i `uc
+]
+"28
+[; ;./button.h: 28: char secondReadRB0 = 1;
+[v _secondReadRB0 `uc ~T0 @X0 1 e ]
+[i _secondReadRB0
+-> -> 1 `i `uc
+]
+"35
+[; ;./button.h: 35: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4600 ~T0 @X0 1 e ]
+"3 button.c
+[; ;button.c: 3: int readRA5Button(void) {
+[v _readRA5Button `(i ~T0 @X0 1 ef ]
+{
+[e :U _readRA5Button ]
+[f ]
+"4
+[; ;button.c: 4:     firstReadRA5 = secondReadRA5;
+[e = _firstReadRA5 _secondReadRA5 ]
+"5
+[; ;button.c: 5:     secondReadRA5 = PORTAbits.RA5;
+[e = _secondReadRA5 -> . . _PORTAbits 0 5 `uc ]
+"6
+[; ;button.c: 6:     int check = 0;
+[v _check `i ~T0 @X0 1 a ]
+[e = _check -> 0 `i ]
+"7
+[; ;button.c: 7:     if (firstReadRA5 == secondReadRA5) {
+[e $ ! == -> _firstReadRA5 `i -> _secondReadRA5 `i 502  ]
+{
+"8
+[; ;button.c: 8:         if (firstReadRA5 == 0) {
+[e $ ! == -> _firstReadRA5 `i -> 0 `i 503  ]
+{
+"9
+[; ;button.c: 9:             check = 1;
+[e = _check -> 1 `i ]
+"10
+[; ;button.c: 10:         }
+}
+[e :U 503 ]
+"11
+[; ;button.c: 11:     }
+}
+[e :U 502 ]
+"12
+[; ;button.c: 12:    return check;
+[e ) _check ]
+[e $UE 501  ]
+"13
+[; ;button.c: 13: }
+[e :UE 501 ]
+}
+"15
+[; ;button.c: 15: int readRB0Button (void) {
+[v _readRB0Button `(i ~T0 @X0 1 ef ]
+{
+[e :U _readRB0Button ]
+[f ]
+"16
+[; ;button.c: 16:     firstReadRB0 = secondReadRB0;
+[e = _firstReadRB0 _secondReadRB0 ]
+"17
+[; ;button.c: 17:     secondReadRB0 = PORTBbits.RB0;
+[e = _secondReadRB0 -> . . _PORTBbits 0 0 `uc ]
+"18
+[; ;button.c: 18:     int check = 0;
+[v _check `i ~T0 @X0 1 a ]
+[e = _check -> 0 `i ]
+"19
+[; ;button.c: 19:     if (firstReadRB0 == secondReadRB0) {
+[e $ ! == -> _firstReadRB0 `i -> _secondReadRB0 `i 505  ]
+{
+"20
+[; ;button.c: 20:         if (firstReadRB0 == 0) {
+[e $ ! == -> _firstReadRB0 `i -> 0 `i 506  ]
+{
+"21
+[; ;button.c: 21:             check = 1;
+[e = _check -> 1 `i ]
+"22
+[; ;button.c: 22:         }
+}
+[e :U 506 ]
+"23
+[; ;button.c: 23:     }
+}
+[e :U 505 ]
+"24
+[; ;button.c: 24:     return check;
+[e ) _check ]
+[e $UE 504  ]
+"25
+[; ;button.c: 25: }
+[e :UE 504 ]
+}
+"27
+[; ;button.c: 27: void button (void) {
+[v _button `(v ~T0 @X0 1 ef ]
+{
+[e :U _button ]
+[f ]
+"28
+[; ;button.c: 28:     int checkRA5 = readRA5Button();
+[v _checkRA5 `i ~T0 @X0 1 a ]
+[e = _checkRA5 ( _readRA5Button ..  ]
+"29
+[; ;button.c: 29:     int checkRB0 = readRB0Button();
+[v _checkRB0 `i ~T0 @X0 1 a ]
+[e = _checkRB0 ( _readRB0Button ..  ]
+"30
+[; ;button.c: 30:     if (checkRA5 == 1) {
+[e $ ! == _checkRA5 -> 1 `i 508  ]
+{
+"31
+[; ;button.c: 31:         changeModePressed = 1;
+[e = _changeModePressed -> 1 `i ]
+"32
+[; ;button.c: 32:     }
+}
+[e $U 509  ]
+"33
+[; ;button.c: 33:     else if (checkRB0 == 1) {
+[e :U 508 ]
+[e $ ! == _checkRB0 -> 1 `i 510  ]
+{
+"34
+[; ;button.c: 34:         countPressed++;
+[e ++ _countPressed -> 1 `i ]
+"35
+[; ;button.c: 35:         if (countPressed >= 100) {
+[e $ ! >= _countPressed -> 100 `i 511  ]
+{
+"36
+[; ;button.c: 36:             countAuto++;
+[e ++ _countAuto -> 1 `i ]
+"37
+[; ;button.c: 37:             if (countAuto > 20) {
+[e $ ! > _countAuto -> 20 `i 512  ]
+{
+"38
+[; ;button.c: 38:                 increaseTime = 1;
+[e = _increaseTime -> 1 `i ]
+"39
+[; ;button.c: 39:                 countAuto = 0;
+[e = _countAuto -> 0 `i ]
+"40
+[; ;button.c: 40:             }
+}
+[e :U 512 ]
+"41
+[; ;button.c: 41:         }
+}
+[e :U 511 ]
+"42
+[; ;button.c: 42:     }
+}
+[e $U 513  ]
+"43
+[; ;button.c: 43:     else {
+[e :U 510 ]
+{
+"44
+[; ;button.c: 44:         countPressed = 0;
+[e = _countPressed -> 0 `i ]
+"45
+[; ;button.c: 45:         countAuto = 0;
+[e = _countAuto -> 0 `i ]
+"46
+[; ;button.c: 46:         changeModePressed = 0;
+[e = _changeModePressed -> 0 `i ]
+"47
+[; ;button.c: 47:         increaseTime = 0;
+[e = _increaseTime -> 0 `i ]
+"48
+[; ;button.c: 48:     }
+}
+[e :U 513 ]
+[e :U 509 ]
+"49
+[; ;button.c: 49: }
+[e :UE 507 ]
+}

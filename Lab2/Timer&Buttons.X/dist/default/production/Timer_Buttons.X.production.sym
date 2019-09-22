@@ -1,12 +1,12 @@
 ?_readDButton D 0 COMRAM 1
 __CFG_XINST$OFF 0 0 ABS 0
 ?_readIButton D 0 COMRAM 1
-_defineTMR0Register 5A4 0 CODE 0
+_defineTMR0Register 5B4 0 CODE 0
 __end_of_readIButton 4EA 0 CODE 0
 __S0 30000E 0 ABS 0
 __S1 1D 0 ABS 0
 __S2 0 0 ABS 0
-__end_of_deviceInterrupt 592 0 CODE 0
+__end_of_deviceInterrupt 5A0 0 CODE 0
 __Hintentry 0 0 ABS 0
 __CFG_PWRT$OFF 0 0 ABS 0
 __Lintentry 0 0 ABS 0
@@ -26,7 +26,7 @@ __Lirdata 0 0 CODE 0
 __HRAM 0 0 ABS 0
 __LRAM 1 0 ABS 0
 _T0CON FD5 0 ABS 0
-i2_defineTMR0Register 5CC 0 CODE 0
+i2_defineTMR0Register 5DC 0 CODE 0
 ttemp5 1D 0 COMRAM 1
 ttemp6 20 0 COMRAM 1
 ttemp7 24 0 COMRAM 1
@@ -64,7 +64,7 @@ __Lramtop 1000 0 RAM 0
 __Hstruct 0 0 COMRAM 1
 __Lstruct 0 0 COMRAM 1
 __Hbigdata 0 0 BIGRAM 1
-_buttonInitialize 5C2 0 CODE 0
+_buttonInitialize 5D2 0 CODE 0
 __Lbigdata 0 0 BIGRAM 1
 __Hmediumconst 0 0 MEDIUMCONST 0
 __Lmediumconst 0 0 MEDIUMCONST 0
@@ -111,7 +111,7 @@ __size_of_buttonInitialize 0 0 ABS 0
 _TRISAbits F92 0 ABS 0
 _countFast 5 0 COMRAM 1
 _TRISBbits F93 0 ABS 0
-__end_of_oscillationInitialize 5B8 0 CODE 0
+__end_of_oscillationInitialize 5C8 0 CODE 0
 _PORTAbits F80 0 ABS 0
 _PORTBbits F81 0 ABS 0
 __Hibigdata 0 0 CODE 0
@@ -150,24 +150,24 @@ __Ltext1 0 0 ABS 0
 __ptext0 12 0 CODE 0
 __Htext2 0 0 ABS 0
 __Ltext2 0 0 ABS 0
-__ptext1 592 0 CODE 0
+__ptext1 5A0 0 CODE 0
 __Htext3 0 0 ABS 0
 __Ltext3 0 0 ABS 0
-__ptext2 5A4 0 CODE 0
+__ptext2 5B4 0 CODE 0
 __Htext4 0 0 ABS 0
 __Ltext4 0 0 ABS 0
-__ptext3 5AE 0 CODE 0
+__ptext3 5BE 0 CODE 0
 __Htext5 0 0 ABS 0
 __Ltext5 0 0 ABS 0
-__ptext4 5B8 0 CODE 0
-__ptext5 5C2 0 CODE 0
+__ptext4 5C8 0 CODE 0
+__ptext5 5D2 0 CODE 0
 __Htext7 0 0 ABS 0
 __Ltext7 0 0 ABS 0
 __HbssCOMRAM 0 0 ABS 0
 __LbssCOMRAM 0 0 ABS 0
 __Htext8 0 0 ABS 0
 __Ltext8 0 0 ABS 0
-__ptext7 5CC 0 CODE 0
+__ptext7 5DC 0 CODE 0
 __pbssCOMRAM 1 0 COMRAM 1
 __Htext9 0 0 ABS 0
 __Ltext9 0 0 ABS 0
@@ -201,7 +201,7 @@ __LcstackCOMRAM 0 0 ABS 0
 __pcstackCOMRAM D 0 COMRAM 1
 __Hspace_1 1D 0 ABS 0
 __Lspace_1 0 0 ABS 0
-_timerInitialize 592 0 CODE 0
+_timerInitialize 5A0 0 CODE 0
 __Hsmallconst 0 0 SMALLCONST 0
 __Lsmallconst 0 0 SMALLCONST 0
 __Hspace_2 0 0 ABS 0
@@ -226,7 +226,7 @@ __Lbank11 0 0 ABS 0
 __CFG_FCMEN$OFF 0 0 ABS 0
 __Hbank12 0 0 ABS 0
 __Lbank12 0 0 ABS 0
-_oscillationInitialize 5AE 0 CODE 0
+_oscillationInitialize 5BE 0 CODE 0
 __Hbank13 0 0 ABS 0
 __Lbank13 0 0 ABS 0
 __Hbank14 0 0 ABS 0
@@ -245,7 +245,7 @@ ___intlo_sp 0 0 STACK 2
 _INTCONbits FF2 0 ABS 0
 __HidataCOMRAM 0 0 ABS 0
 __LidataCOMRAM 0 0 ABS 0
-__pidataCOMRAM 5D6 0 CODE 0
+__pidataCOMRAM 5E6 0 CODE 0
 ?_defineTMR0Register 13 0 COMRAM 1
 __smallconst 0 0 SMALLCONST 0
 __Hreset_vec 4 0 CODE 0
@@ -263,29 +263,29 @@ _firstReadRB0 19 0 COMRAM 1
 __HdataCOMRAM 0 0 ABS 0
 __LdataCOMRAM 0 0 ABS 0
 __pdataCOMRAM 18 0 COMRAM 1
-_ledInitialize 5B8 0 CODE 0
+_ledInitialize 5C8 0 CODE 0
 start_initialization 53A 0 CODE 0
-__end_of_buttonInitialize 5CC 0 CODE 0
-__end_of_timerInitialize 5A4 0 CODE 0
-__end_of_defineTMR0Register 5AE 0 CODE 0
+__end_of_buttonInitialize 5DC 0 CODE 0
+__end_of_timerInitialize 5B4 0 CODE 0
+__end_of_defineTMR0Register 5BE 0 CODE 0
 __CFG_IESO$OFF 0 0 ABS 0
 __CFG_MCLRE$ON 0 0 ABS 0
 __initialization 53A 0 CODE 0
-__end_of_ledInitialize 5C2 0 CODE 0
+__end_of_ledInitialize 5D2 0 CODE 0
 __activetblptr 3 0 ABS 0
-__end_ofi2_defineTMR0Register 5D6 0 CODE 0
+__end_ofi2_defineTMR0Register 5E6 0 CODE 0
 __CFG_WDT$OFF 0 0 ABS 0
 __CFG_LVP$OFF 0 0 ABS 0
 %segments
 reset_vec 0 3 CODE 0 0
-intcode 8 5D9 CODE 8 0
+intcode 8 5E9 CODE 8 0
 config 300000 30000D CONFIG 300000 0
 idloc 200000 200007 IDLOC 200000 0
 bssCOMRAM 1 1C COMRAM 1 1
 %locals
 dist/default/production/Timer_Buttons.X.production.o
 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
-/tmp/xcADCo4jF.s
+/tmp/xc86smvMY.s
 1782 53A 0 CODE 0
 1784 53A 0 CODE 0
 1787 53A 0 CODE 0
@@ -367,47 +367,48 @@ main.c
 91 278 0 CODE 0
 95 27E 0 CODE 0
 system.c
-8 592 0 CODE 0
-10 592 0 CODE 0
-11 594 0 CODE 0
-12 596 0 CODE 0
-13 59A 0 CODE 0
-14 5A2 0 CODE 0
+9 5A0 0 CODE 0
+11 5A0 0 CODE 0
+12 5A2 0 CODE 0
+13 5A4 0 CODE 0
+15 5A6 0 CODE 0
+16 5AA 0 CODE 0
+17 5B2 0 CODE 0
 clock.c
-3 5A4 0 CODE 0
-4 5A4 0 CODE 0
-5 5AC 0 CODE 0
+5 5B4 0 CODE 0
+6 5B4 0 CODE 0
+7 5BC 0 CODE 0
 system.c
-3 5AE 0 CODE 0
-4 5AE 0 CODE 0
-5 5B2 0 CODE 0
-6 5B6 0 CODE 0
+3 5BE 0 CODE 0
+5 5BE 0 CODE 0
+6 5C2 0 CODE 0
+7 5C6 0 CODE 0
 system.c
-22 5B8 0 CODE 0
-23 5B8 0 CODE 0
-24 5BC 0 CODE 0
-25 5C0 0 CODE 0
+25 5C8 0 CODE 0
+26 5C8 0 CODE 0
+27 5CC 0 CODE 0
+28 5D0 0 CODE 0
 system.c
-16 5C2 0 CODE 0
-17 5C2 0 CODE 0
-18 5C4 0 CODE 0
-19 5C6 0 CODE 0
-20 5CA 0 CODE 0
-/tmp/xcADCo4jF.s
-3151 8 0 CODE 0
+19 5D2 0 CODE 0
+20 5D2 0 CODE 0
+21 5D4 0 CODE 0
+22 5D6 0 CODE 0
+23 5DA 0 CODE 0
+/tmp/xc86smvMY.s
+3154 8 0 CODE 0
 clock.c
-7 8 0 CODE 0
+9 8 0 CODE 0
 clock.c
-7 570 0 CODE 0
-9 572 0 CODE 0
-10 580 0 CODE 0
-11 582 0 CODE 0
-12 58A 0 CODE 0
-14 58E 0 CODE 0
+9 570 0 CODE 0
+11 572 0 CODE 0
+12 58E 0 CODE 0
+13 590 0 CODE 0
+14 598 0 CODE 0
+16 59C 0 CODE 0
 clock.c
-3 5CC 0 CODE 0
-4 5CC 0 CODE 0
-5 5D4 0 CODE 0
+5 5DC 0 CODE 0
+6 5DC 0 CODE 0
+7 5E4 0 CODE 0
 button.c
 31 2D4 0 CODE 0
 32 2D4 0 CODE 0

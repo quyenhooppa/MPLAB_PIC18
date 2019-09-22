@@ -19,7 +19,7 @@ extern "C" {
 #include <stdbool.h>
     
 // set up the timing for the LCD delays
-//#define _XTAL_FREQ 10000000                                  // device clock frequency (_XTAL_FREQ) used by XC8 for __delay_ms()
+#define _XTAL_FREQ 10000000                                  // device clock frequency (_XTAL_FREQ) used by XC8 for __delay_ms()
 #define LCD_delay           5                                // ~5mS
 #define LCD_Startup         15                               // ~15mS
 

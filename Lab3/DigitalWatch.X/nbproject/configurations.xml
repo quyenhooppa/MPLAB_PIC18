@@ -7,6 +7,10 @@
       <itemPath>system.h</itemPath>
       <itemPath>button.h</itemPath>
       <itemPath>BBSPI_LCD.h</itemPath>
+      <itemPath>interrupt.h</itemPath>
+      <itemPath>stateClock.h</itemPath>
+      <itemPath>statesModify.h</itemPath>
+      <itemPath>stateStpWatch.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +23,10 @@
       <itemPath>system.c</itemPath>
       <itemPath>button.c</itemPath>
       <itemPath>BBSPI_LCD.c</itemPath>
+      <itemPath>interrupt.c</itemPath>
+      <itemPath>stateClock.c</itemPath>
+      <itemPath>statesModify.c</itemPath>
+      <itemPath>stateStpWatch.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

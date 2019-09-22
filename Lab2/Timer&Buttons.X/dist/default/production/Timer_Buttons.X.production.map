@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/Applications/microchip/xc8/v2.10/pic/dat/en_msgs.txt -cs \
   -h+dist/default/production/Timer_Buttons.X.production.sym \
   --cmf=dist/default/production/Timer_Buttons.X.production.cmf -z -Q18F8722 \
-  -o/tmp/xcuZNMi2Y --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcR5LAeiT --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Timer_Buttons.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=060h-0F5Fh -pstack=STACK -ACODE=00h-01FFFFh \
   -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcjnPUorJ.o dist/default/production/Timer_Buttons.X.production.o 
+  /tmp/xcT9xHPC7.o dist/default/production/Timer_Buttons.X.production.o 
 
 Object code version is 3.11
 
@@ -38,7 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcjnPUorJ.o
+/tmp/xcT9xHPC7.o
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -49,19 +49,19 @@ dist/default/production/Timer_Buttons.X.production.o
                 text10                              4EA      4EA       50        4       0
                 text9                               49A      49A       50        4       0
                 text8                               2D4      2D4      1C6        4       0
-                text7                               5CC      5CC        A        4       0
-                intcode_body                        570      570       22        4       0
-                text5                               5C2      5C2        A        4       0
-                text4                               5B8      5B8        A        4       0
-                text3                               5AE      5AE        A        4       0
-                text2                               5A4      5A4        A        4       0
-                text1                               592      592       12        4       0
+                text7                               5DC      5DC        A        4       0
+                intcode_body                        570      570       30        4       0
+                text5                               5D2      5D2        A        4       0
+                text4                               5C8      5C8        A        4       0
+                text3                               5BE      5BE        A        4       0
+                text2                               5B4      5B4        A        4       0
+                text1                               5A0      5A0       14        4       0
                 text0                                12       12      2C2        4       0
                 cstackCOMRAM                          D        D        B        1       1
                 dataCOMRAM                           18       18        4        1       1
                 bssCOMRAM                             1        1        C        1       1
                 cinit                               53A      53A       36        4       0
-                idataCOMRAM                         5D6      5D6        4        4       0
+                idataCOMRAM                         5E6      5E6        4        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -73,16 +73,16 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text10                              4EA      4EA       50         0
                 text9                               49A      49A       50         0
                 text8                               2D4      2D4      1C6         0
-                text7                               5CC      5CC        A         0
-                intcode_body                        570      570       22         0
-                text5                               5C2      5C2        A         0
-                text4                               5B8      5B8        A         0
-                text3                               5AE      5AE        A         0
-                text2                               5A4      5A4        A         0
-                text1                               592      592       12         0
+                text7                               5DC      5DC        A         0
+                intcode_body                        570      570       30         0
+                text5                               5D2      5D2        A         0
+                text4                               5C8      5C8        A         0
+                text3                               5BE      5BE        A         0
+                text2                               5B4      5B4        A         0
+                text1                               5A0      5A0       14         0
                 text0                                12       12      2C2         0
                 cinit                               53A      53A       36         0
-                idataCOMRAM                         5D6      5D6        4         0
+                idataCOMRAM                         5E6      5E6        4         0
 
         CLASS   CONST          
 
@@ -153,7 +153,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 bssCOMRAM                      000001  00001C  00001D         1       1  COMRAM  
                 idloc                          200000  000008  200008    200000       0  IDLOC   
-                intcode                        000008  0005D2  0005DA         4       0  CODE    
+                intcode                        000008  0005E2  0005EA         4       0  CODE    
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
 
@@ -178,10 +178,10 @@ UNUSED ADDRESS RANGES
         BANK9            000900-0009FF              100
         BIGRAM           00001D-000F5F              F43
         CODE             000004-000007                4
-                         0005DA-01FFFF            1FA26
+                         0005EA-01FFFF            1FA16
         COMRAM           00001D-00005F               43
         CONST            000004-000007                4
-                         0005DA-01FFFF            1FA26
+                         0005EA-01FFFF            1FA16
         EEDATA           F00000-F003FF              400
         MEDIUMCONST      001000-00FFFF             F000
                          011000-01FFFF             F000
@@ -388,33 +388,33 @@ __accesstop                     (abs)        000060
 __activetblptr                  (abs)        000003
 __end_of__initialization        cinit        000566
 __end_of_button                 text8        00049A
-__end_of_buttonInitialize       text5        0005CC
-__end_of_defineTMR0Register     text2        0005AE
-__end_of_deviceInterrupt        intcode_body 000592
-__end_of_ledInitialize          text4        0005C2
+__end_of_buttonInitialize       text5        0005DC
+__end_of_defineTMR0Register     text2        0005BE
+__end_of_deviceInterrupt        intcode_body 0005A0
+__end_of_ledInitialize          text4        0005D2
 __end_of_main                   text0        0002D4
-__end_of_oscillationInitialize  text3        0005B8
+__end_of_oscillationInitialize  text3        0005C8
 __end_of_readDButton            text10       00053A
 __end_of_readIButton            text9        0004EA
-__end_of_timerInitialize        text1        0005A4
-__end_ofi2_defineTMR0Register   text7        0005D6
+__end_of_timerInitialize        text1        0005B4
+__end_ofi2_defineTMR0Register   text7        0005E6
 __initialization                cinit        00053A
 __mediumconst                   mediumconst  000000
 __pbssCOMRAM                    bssCOMRAM    000001
 __pcinit                        cinit        00053A
 __pcstackCOMRAM                 cstackCOMRAM 00000D
 __pdataCOMRAM                   dataCOMRAM   000018
-__pidataCOMRAM                  idataCOMRAM  0005D6
+__pidataCOMRAM                  idataCOMRAM  0005E6
 __pintcode                      intcode      000008
 __pintcode_body                 intcode_body 000570
 __ptext0                        text0        000012
-__ptext1                        text1        000592
+__ptext1                        text1        0005A0
 __ptext10                       text10       0004EA
-__ptext2                        text2        0005A4
-__ptext3                        text3        0005AE
-__ptext4                        text4        0005B8
-__ptext5                        text5        0005C2
-__ptext7                        text7        0005CC
+__ptext2                        text2        0005B4
+__ptext3                        text3        0005BE
+__ptext4                        text4        0005C8
+__ptext5                        text5        0005D2
+__ptext7                        text7        0005DC
 __ptext8                        text8        0002D4
 __ptext9                        text9        00049A
 __ramtop                        ramtop       001000
@@ -431,30 +431,30 @@ __size_of_timerInitialize       (abs)        000000
 __size_ofi2_defineTMR0Register  (abs)        000000
 __smallconst                    smallconst   000000
 _button                         text8        0002D4
-_buttonInitialize               text5        0005C2
+_buttonInitialize               text5        0005D2
 _changeFast                     bssCOMRAM    000001
 _changeSlow                     bssCOMRAM    000003
 _countFast                      bssCOMRAM    000005
 _countSlow                      bssCOMRAM    000007
 _dCount                         bssCOMRAM    000009
-_defineTMR0Register             text2        0005A4
+_defineTMR0Register             text2        0005B4
 _deviceInterrupt                intcode      000008
 _firstReadRA5                   dataCOMRAM   00001B
 _firstReadRB0                   dataCOMRAM   000019
 _iCount                         bssCOMRAM    00000B
-_ledInitialize                  text4        0005B8
+_ledInitialize                  text4        0005C8
 _main                           text0        000012
-_oscillationInitialize          text3        0005AE
+_oscillationInitialize          text3        0005BE
 _readDButton                    text10       0004EA
 _readIButton                    text9        00049A
 _secondReadRA5                  dataCOMRAM   00001A
 _secondReadRB0                  dataCOMRAM   000018
-_timerInitialize                text1        000592
+_timerInitialize                text1        0005A0
 btemp                           temp         00001C
 button@dButton                  cstackCOMRAM 000011
 button@iButton                  cstackCOMRAM 00000F
 end_of_initialization           cinit        000566
-i2_defineTMR0Register           text7        0005CC
+i2_defineTMR0Register           text7        0005DC
 int$flags                       temp         00001C
 int_func                        intcode_body 000570
 intlevel0                       text         000000
@@ -508,7 +508,7 @@ Total ram usage:        3 bytes
 
  *************** function _timerInitialize *****************
  Defined at:
-		line 8 in file "system.c"
+		line 9 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -538,7 +538,7 @@ Total ram usage:        0 bytes
 
  *************** function _defineTMR0Register *****************
  Defined at:
-		line 3 in file "clock.c"
+		line 5 in file "clock.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -598,7 +598,7 @@ Total ram usage:        0 bytes
 
  *************** function _ledInitialize *****************
  Defined at:
-		line 22 in file "system.c"
+		line 25 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -628,7 +628,7 @@ Total ram usage:        0 bytes
 
  *************** function _buttonInitialize *****************
  Defined at:
-		line 16 in file "system.c"
+		line 19 in file "system.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -658,7 +658,7 @@ Total ram usage:        0 bytes
 
  *************** function _deviceInterrupt *****************
  Defined at:
-		line 7 in file "clock.c"
+		line 9 in file "clock.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -689,7 +689,7 @@ Total ram usage:        0 bytes
 
  *************** function i2_defineTMR0Register *****************
  Defined at:
-		line 3 in file "clock.c"
+		line 5 in file "clock.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -818,14 +818,14 @@ button.c
 button.c estimated size: 617
 
 clock.c
-		_deviceInterrupt		CODE           	0008	0000	41
-		_defineTMR0Register		CODE           	05A4	0000	11
+		_deviceInterrupt		CODE           	0008	0000	55
+		_defineTMR0Register		CODE           	05B4	0000	11
 
-clock.c estimated size: 52
+clock.c estimated size: 66
 
 shared
 		__initialization		CODE           	053A	0000	45
-		i2_defineTMR0Register		CODE           	05CC	0000	11
+		i2_defineTMR0Register		CODE           	05DC	0000	11
 
 shared estimated size: 56
 
@@ -835,10 +835,10 @@ main.c
 main.c estimated size: 707
 
 system.c
-		_oscillationInitialize		CODE           	05AE	0000	11
-		_buttonInitialize		CODE           	05C2	0000	11
-		_timerInitialize		CODE           	0592	0000	19
-		_ledInitialize 		CODE           	05B8	0000	11
+		_oscillationInitialize		CODE           	05BE	0000	11
+		_buttonInitialize		CODE           	05D2	0000	11
+		_timerInitialize		CODE           	05A0	0000	21
+		_ledInitialize 		CODE           	05C8	0000	11
 
-system.c estimated size: 52
+system.c estimated size: 54
 

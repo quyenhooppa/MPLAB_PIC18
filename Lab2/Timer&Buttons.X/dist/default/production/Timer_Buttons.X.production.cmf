@@ -13,24 +13,24 @@
 %PSECTS
 $dist/default/production/Timer_Buttons.X.production.o
 cinit CODE 0 53A 53A 36 1
-intcode_body CODE 0 570 570 22 1
+intcode_body CODE 0 570 570 30 1
 text0 CODE 0 12 12 2C2 1
-text1 CODE 0 592 592 12 1
-text2 CODE 0 5A4 5A4 A 1
-text3 CODE 0 5AE 5AE A 1
-text4 CODE 0 5B8 5B8 A 1
-text5 CODE 0 5C2 5C2 A 1
-text7 CODE 0 5CC 5CC A 1
+text1 CODE 0 5A0 5A0 14 1
+text2 CODE 0 5B4 5B4 A 1
+text3 CODE 0 5BE 5BE A 1
+text4 CODE 0 5C8 5C8 A 1
+text5 CODE 0 5D2 5D2 A 1
+text7 CODE 0 5DC 5DC A 1
 text8 CODE 0 2D4 2D4 1C6 1
 text9 CODE 0 49A 49A 50 1
 text10 CODE 0 4EA 4EA 50 1
-idataCOMRAM CODE 0 5D6 5D6 4 1
+idataCOMRAM CODE 0 5E6 5E6 4 1
 cstackCOMRAM COMRAM 1 D D B 1
 temp COMRAM 1 1C 1C 1 1
 intcode CODE 0 8 8 6 1
 dataCOMRAM COMRAM 1 18 18 4 1
 bssCOMRAM COMRAM 1 1 1 C 1
-$/tmp/xcjnPUorJ.o
+$/tmp/xcT9xHPC7.o
 idloc IDLOC 0 200000 200000 8 1
 init CODE 0 E E 4 1
 reset_vec CODE 0 0 0 4 1
@@ -54,11 +54,11 @@ BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
 CONST 4-7 1
-CONST 5DA-1FFFF 1
+CONST 5EA-1FFFF 1
 STACK 60-F5F 1
 SMALLCONST 1000-1FFFF 1
 CODE 4-7 1
-CODE 5DA-1FFFF 1
+CODE 5EA-1FFFF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
@@ -84,8 +84,8 @@ MEDIUMCONST 11000-1FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/Timer_Buttons.X.production.o
-8 intcode CODE >3151:/tmp/xcADCo4jF.s
-8 intcode CODE >7:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+8 intcode CODE >3154:/tmp/xc86smvMY.s
+8 intcode CODE >9:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
 4EA text10 CODE >17:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
 4EA text10 CODE >18:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
 4EE text10 CODE >19:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
@@ -137,37 +137,38 @@ $dist/default/production/Timer_Buttons.X.production.o
 488 text8 CODE >73:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
 490 text8 CODE >74:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
 498 text8 CODE >76:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/button.c
-5CC text7 CODE >3:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-5CC text7 CODE >4:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-5D4 text7 CODE >5:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-570 intcode_body CODE >7:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-572 intcode_body CODE >9:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-580 intcode_body CODE >10:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-582 intcode_body CODE >11:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-58A intcode_body CODE >12:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-58E intcode_body CODE >14:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-5C2 text5 CODE >16:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5C2 text5 CODE >17:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5C4 text5 CODE >18:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5C6 text5 CODE >19:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5CA text5 CODE >20:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5B8 text4 CODE >22:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5B8 text4 CODE >23:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5BC text4 CODE >24:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5C0 text4 CODE >25:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5AE text3 CODE >3:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5AE text3 CODE >4:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5B2 text3 CODE >5:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5B6 text3 CODE >6:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5A4 text2 CODE >3:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-5A4 text2 CODE >4:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-5AC text2 CODE >5:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
-592 text1 CODE >8:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-592 text1 CODE >10:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-594 text1 CODE >11:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-596 text1 CODE >12:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-59A text1 CODE >13:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
-5A2 text1 CODE >14:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5DC text7 CODE >5:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+5DC text7 CODE >6:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+5E4 text7 CODE >7:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+570 intcode_body CODE >9:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+572 intcode_body CODE >11:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+58E intcode_body CODE >12:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+590 intcode_body CODE >13:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+598 intcode_body CODE >14:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+59C intcode_body CODE >16:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+5D2 text5 CODE >19:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5D2 text5 CODE >20:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5D4 text5 CODE >21:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5D6 text5 CODE >22:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5DA text5 CODE >23:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5C8 text4 CODE >25:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5C8 text4 CODE >26:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5CC text4 CODE >27:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5D0 text4 CODE >28:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5BE text3 CODE >3:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5BE text3 CODE >5:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5C2 text3 CODE >6:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5C6 text3 CODE >7:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5B4 text2 CODE >5:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+5B4 text2 CODE >6:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+5BC text2 CODE >7:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/clock.c
+5A0 text1 CODE >9:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5A0 text1 CODE >11:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5A2 text1 CODE >12:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5A4 text1 CODE >13:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5A6 text1 CODE >15:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5AA text1 CODE >16:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
+5B2 text1 CODE >17:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/system.c
 12 text0 CODE >12:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
 12 text0 CODE >14:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
 16 text0 CODE >15:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
@@ -219,34 +220,34 @@ FE text0 CODE >48:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Ti
 266 text0 CODE >90:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
 278 text0 CODE >91:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
 27E text0 CODE >95:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab2/Timer&Buttons.X/main.c
-53A cinit CODE >1782:/tmp/xcADCo4jF.s
-53A cinit CODE >1784:/tmp/xcADCo4jF.s
-53A cinit CODE >1787:/tmp/xcADCo4jF.s
-53A cinit CODE >1841:/tmp/xcADCo4jF.s
-53C cinit CODE >1842:/tmp/xcADCo4jF.s
-53E cinit CODE >1843:/tmp/xcADCo4jF.s
-540 cinit CODE >1844:/tmp/xcADCo4jF.s
-542 cinit CODE >1845:/tmp/xcADCo4jF.s
-544 cinit CODE >1846:/tmp/xcADCo4jF.s
-546 cinit CODE >1847:/tmp/xcADCo4jF.s
-54A cinit CODE >1848:/tmp/xcADCo4jF.s
-54E cinit CODE >1849:/tmp/xcADCo4jF.s
-54E cinit CODE >1850:/tmp/xcADCo4jF.s
-550 cinit CODE >1851:/tmp/xcADCo4jF.s
-554 cinit CODE >1852:/tmp/xcADCo4jF.s
-556 cinit CODE >1853:/tmp/xcADCo4jF.s
-558 cinit CODE >1854:/tmp/xcADCo4jF.s
-55A cinit CODE >1858:/tmp/xcADCo4jF.s
-55E cinit CODE >1859:/tmp/xcADCo4jF.s
-560 cinit CODE >1860:/tmp/xcADCo4jF.s
-560 cinit CODE >1861:/tmp/xcADCo4jF.s
-562 cinit CODE >1862:/tmp/xcADCo4jF.s
-564 cinit CODE >1863:/tmp/xcADCo4jF.s
-566 cinit CODE >1869:/tmp/xcADCo4jF.s
-566 cinit CODE >1871:/tmp/xcADCo4jF.s
-568 cinit CODE >1872:/tmp/xcADCo4jF.s
-56A cinit CODE >1873:/tmp/xcADCo4jF.s
-56C cinit CODE >1874:/tmp/xcADCo4jF.s
+53A cinit CODE >1782:/tmp/xc86smvMY.s
+53A cinit CODE >1784:/tmp/xc86smvMY.s
+53A cinit CODE >1787:/tmp/xc86smvMY.s
+53A cinit CODE >1841:/tmp/xc86smvMY.s
+53C cinit CODE >1842:/tmp/xc86smvMY.s
+53E cinit CODE >1843:/tmp/xc86smvMY.s
+540 cinit CODE >1844:/tmp/xc86smvMY.s
+542 cinit CODE >1845:/tmp/xc86smvMY.s
+544 cinit CODE >1846:/tmp/xc86smvMY.s
+546 cinit CODE >1847:/tmp/xc86smvMY.s
+54A cinit CODE >1848:/tmp/xc86smvMY.s
+54E cinit CODE >1849:/tmp/xc86smvMY.s
+54E cinit CODE >1850:/tmp/xc86smvMY.s
+550 cinit CODE >1851:/tmp/xc86smvMY.s
+554 cinit CODE >1852:/tmp/xc86smvMY.s
+556 cinit CODE >1853:/tmp/xc86smvMY.s
+558 cinit CODE >1854:/tmp/xc86smvMY.s
+55A cinit CODE >1858:/tmp/xc86smvMY.s
+55E cinit CODE >1859:/tmp/xc86smvMY.s
+560 cinit CODE >1860:/tmp/xc86smvMY.s
+560 cinit CODE >1861:/tmp/xc86smvMY.s
+562 cinit CODE >1862:/tmp/xc86smvMY.s
+564 cinit CODE >1863:/tmp/xc86smvMY.s
+566 cinit CODE >1869:/tmp/xc86smvMY.s
+566 cinit CODE >1871:/tmp/xc86smvMY.s
+568 cinit CODE >1872:/tmp/xc86smvMY.s
+56A cinit CODE >1873:/tmp/xc86smvMY.s
+56C cinit CODE >1874:/tmp/xc86smvMY.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -266,19 +267,19 @@ __Hspace_1 1D 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Hspace_2 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __size_of_deviceInterrupt 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
-_timerInitialize 592 0 CODE 0 text1 dist/default/production/Timer_Buttons.X.production.o
+_timerInitialize 5A0 0 CODE 0 text1 dist/default/production/Timer_Buttons.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/Timer_Buttons.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcjnPUorJ.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcT9xHPC7.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Timer_Buttons.X.production.o
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __size_of_oscillationInitialize 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/Timer_Buttons.X.production.o
 _LATD F8C 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcjnPUorJ.o
+___sp 0 0 STACK 2 stack /tmp/xcT9xHPC7.o
 _main 12 0 CODE 0 text0 dist/default/production/Timer_Buttons.X.production.o
 btemp 1C 0 COMRAM 1 temp dist/default/production/Timer_Buttons.X.production.o
 __size_of_defineTMR0Register 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
-start E 0 CODE 0 init /tmp/xcjnPUorJ.o
+start E 0 CODE 0 init /tmp/xcT9xHPC7.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Timer_Buttons.X.production.o
@@ -289,11 +290,11 @@ ttemp5 1D 0 COMRAM 1 temp dist/default/production/Timer_Buttons.X.production.o
 ttemp6 20 0 COMRAM 1 temp dist/default/production/Timer_Buttons.X.production.o
 ttemp7 24 0 COMRAM 1 temp dist/default/production/Timer_Buttons.X.production.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/Timer_Buttons.X.production.o
-__accesstop 60 0 ABS 0 - /tmp/xcjnPUorJ.o
-intlevel0 0 0 CODE 0 text /tmp/xcjnPUorJ.o
-intlevel1 0 0 CODE 0 text /tmp/xcjnPUorJ.o
-intlevel2 0 0 CODE 0 text /tmp/xcjnPUorJ.o
-intlevel3 0 0 CODE 0 text /tmp/xcjnPUorJ.o
+__accesstop 60 0 ABS 0 - /tmp/xcT9xHPC7.o
+intlevel0 0 0 CODE 0 text /tmp/xcT9xHPC7.o
+intlevel1 0 0 CODE 0 text /tmp/xcT9xHPC7.o
+intlevel2 0 0 CODE 0 text /tmp/xcT9xHPC7.o
+intlevel3 0 0 CODE 0 text /tmp/xcT9xHPC7.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Timer_Buttons.X.production.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/Timer_Buttons.X.production.o
 ?i2_defineTMR0Register D 0 COMRAM 1 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
@@ -301,12 +302,12 @@ wtemp8 1D 0 COMRAM 1 temp dist/default/production/Timer_Buttons.X.production.o
 __Hifardata 0 0 CODE 0 ifardata dist/default/production/Timer_Buttons.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/Timer_Buttons.X.production.o
 __size_of_readIButton 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
-__pidataCOMRAM 5D6 0 CODE 0 idataCOMRAM dist/default/production/Timer_Buttons.X.production.o
-__end_of_ledInitialize 5C2 0 CODE 0 text4 dist/default/production/Timer_Buttons.X.production.o
+__pidataCOMRAM 5E6 0 CODE 0 idataCOMRAM dist/default/production/Timer_Buttons.X.production.o
+__end_of_ledInitialize 5D2 0 CODE 0 text4 dist/default/production/Timer_Buttons.X.production.o
 button@dButton 11 0 COMRAM 1 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
 _ADCON1 FC1 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
-___inthi_sp 0 0 STACK 2 stack /tmp/xcjnPUorJ.o
-___intlo_sp 0 0 STACK 2 stack /tmp/xcjnPUorJ.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcT9xHPC7.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcT9xHPC7.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/Timer_Buttons.X.production.o
 __size_of_timerInitialize 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/Timer_Buttons.X.production.o
@@ -364,7 +365,7 @@ __Hbank14 0 0 ABS 0 bank14 dist/default/production/Timer_Buttons.X.production.o
 __Hbank15 0 0 ABS 0 bank15 dist/default/production/Timer_Buttons.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Timer_Buttons.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production/Timer_Buttons.X.production.o
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcjnPUorJ.o
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcT9xHPC7.o
 __Hcomram 0 0 ABS 0 comram dist/default/production/Timer_Buttons.X.production.o
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/Timer_Buttons.X.production.o
 __Lbank0 0 0 ABS 0 bank0 dist/default/production/Timer_Buttons.X.production.o
@@ -432,17 +433,17 @@ int_func 570 0 CODE 0 intcode_body dist/default/production/Timer_Buttons.X.produ
 __Lintentry 0 0 ABS 0 intentry dist/default/production/Timer_Buttons.X.production.o
 _iCount B 0 COMRAM 1 bssCOMRAM dist/default/production/Timer_Buttons.X.production.o
 __Hramtop 1000 0 RAM 0 ramtop dist/default/production/Timer_Buttons.X.production.o
-__end_ofi2_defineTMR0Register 5D6 0 CODE 0 text7 dist/default/production/Timer_Buttons.X.production.o
+__end_ofi2_defineTMR0Register 5E6 0 CODE 0 text7 dist/default/production/Timer_Buttons.X.production.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production/Timer_Buttons.X.production.o
-_buttonInitialize 5C2 0 CODE 0 text5 dist/default/production/Timer_Buttons.X.production.o
+_buttonInitialize 5D2 0 CODE 0 text5 dist/default/production/Timer_Buttons.X.production.o
 __activetblptr 3 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Hstruct 0 0 COMRAM 1 struct dist/default/production/Timer_Buttons.X.production.o
 __Htext10 0 0 ABS 0 text10 dist/default/production/Timer_Buttons.X.production.o
-__end_of_oscillationInitialize 5B8 0 CODE 0 text3 dist/default/production/Timer_Buttons.X.production.o
+__end_of_oscillationInitialize 5C8 0 CODE 0 text3 dist/default/production/Timer_Buttons.X.production.o
 __ptext10 4EA 0 CODE 0 text10 dist/default/production/Timer_Buttons.X.production.o
 __size_of_button 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 ?_readDButton D 0 COMRAM 1 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
-__end_of_defineTMR0Register 5AE 0 CODE 0 text2 dist/default/production/Timer_Buttons.X.production.o
+__end_of_defineTMR0Register 5BE 0 CODE 0 text2 dist/default/production/Timer_Buttons.X.production.o
 __pintcode_body 570 0 CODE 0 intcode_body dist/default/production/Timer_Buttons.X.production.o
 __Lbank10 0 0 ABS 0 bank10 dist/default/production/Timer_Buttons.X.production.o
 __Lbank11 0 0 ABS 0 bank11 dist/default/production/Timer_Buttons.X.production.o
@@ -454,47 +455,47 @@ __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Timer_Buttons.X.production
 __Lbigram 0 0 ABS 0 bigram dist/default/production/Timer_Buttons.X.production.o
 __Lcomram 0 0 ABS 0 comram dist/default/production/Timer_Buttons.X.production.o
 __Lconfig 300000 0 CONFIG 0 config dist/default/production/Timer_Buttons.X.production.o
-_oscillationInitialize 5AE 0 CODE 0 text3 dist/default/production/Timer_Buttons.X.production.o
+_oscillationInitialize 5BE 0 CODE 0 text3 dist/default/production/Timer_Buttons.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/Timer_Buttons.X.production.o
 main@state 17 0 COMRAM 1 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/Timer_Buttons.X.production.o
 __size_of_readDButton 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
-stackhi F5F 0 ABS 0 - /tmp/xcjnPUorJ.o
-stacklo 60 0 ABS 0 - /tmp/xcjnPUorJ.o
+stackhi F5F 0 ABS 0 - /tmp/xcT9xHPC7.o
+stacklo 60 0 ABS 0 - /tmp/xcT9xHPC7.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production/Timer_Buttons.X.production.o
 _OSCTUNE F9B 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production/Timer_Buttons.X.production.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production/Timer_Buttons.X.production.o
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 button@iButton F 0 COMRAM 1 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
-_defineTMR0Register 5A4 0 CODE 0 text2 dist/default/production/Timer_Buttons.X.production.o
+_defineTMR0Register 5B4 0 CODE 0 text2 dist/default/production/Timer_Buttons.X.production.o
 __Lspace_0 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Lspace_1 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Lspace_2 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production/Timer_Buttons.X.production.o
-__end_of_deviceInterrupt 592 0 CODE 0 intcode_body dist/default/production/Timer_Buttons.X.production.o
+__end_of_deviceInterrupt 5A0 0 CODE 0 intcode_body dist/default/production/Timer_Buttons.X.production.o
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
 end_of_initialization 566 0 CODE 0 cinit dist/default/production/Timer_Buttons.X.production.o
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production/Timer_Buttons.X.production.o
 __Hintentry 0 0 ABS 0 intentry dist/default/production/Timer_Buttons.X.production.o
-__end_of_buttonInitialize 5CC 0 CODE 0 text5 dist/default/production/Timer_Buttons.X.production.o
+__end_of_buttonInitialize 5DC 0 CODE 0 text5 dist/default/production/Timer_Buttons.X.production.o
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production/Timer_Buttons.X.production.o
 __Lramtop 1000 0 RAM 0 ramtop dist/default/production/Timer_Buttons.X.production.o
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production/Timer_Buttons.X.production.o
 __pcinit 53A 0 CODE 0 cinit dist/default/production/Timer_Buttons.X.production.o
 __size_of_buttonInitialize 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __ptext0 12 0 CODE 0 text0 dist/default/production/Timer_Buttons.X.production.o
-__ptext1 592 0 CODE 0 text1 dist/default/production/Timer_Buttons.X.production.o
-__ptext2 5A4 0 CODE 0 text2 dist/default/production/Timer_Buttons.X.production.o
-__ptext3 5AE 0 CODE 0 text3 dist/default/production/Timer_Buttons.X.production.o
-__ptext4 5B8 0 CODE 0 text4 dist/default/production/Timer_Buttons.X.production.o
-__ptext5 5C2 0 CODE 0 text5 dist/default/production/Timer_Buttons.X.production.o
-__ptext7 5CC 0 CODE 0 text7 dist/default/production/Timer_Buttons.X.production.o
+__ptext1 5A0 0 CODE 0 text1 dist/default/production/Timer_Buttons.X.production.o
+__ptext2 5B4 0 CODE 0 text2 dist/default/production/Timer_Buttons.X.production.o
+__ptext3 5BE 0 CODE 0 text3 dist/default/production/Timer_Buttons.X.production.o
+__ptext4 5C8 0 CODE 0 text4 dist/default/production/Timer_Buttons.X.production.o
+__ptext5 5D2 0 CODE 0 text5 dist/default/production/Timer_Buttons.X.production.o
+__ptext7 5DC 0 CODE 0 text7 dist/default/production/Timer_Buttons.X.production.o
 __ptext8 2D4 0 CODE 0 text8 dist/default/production/Timer_Buttons.X.production.o
 __ptext9 49A 0 CODE 0 text9 dist/default/production/Timer_Buttons.X.production.o
 __Lstruct 0 0 COMRAM 1 struct dist/default/production/Timer_Buttons.X.production.o
 __Ltext10 0 0 ABS 0 text10 dist/default/production/Timer_Buttons.X.production.o
-__ramtop 1000 0 RAM 0 ramtop /tmp/xcjnPUorJ.o
+__ramtop 1000 0 RAM 0 ramtop /tmp/xcT9xHPC7.o
 __Lpowerup E 0 CODE 0 powerup dist/default/production/Timer_Buttons.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Timer_Buttons.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production/Timer_Buttons.X.production.o
@@ -512,11 +513,11 @@ _firstReadRA5 1B 0 COMRAM 1 dataCOMRAM dist/default/production/Timer_Buttons.X.p
 _firstReadRB0 19 0 COMRAM 1 dataCOMRAM dist/default/production/Timer_Buttons.X.production.o
 __CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __pcstackCOMRAM D 0 COMRAM 1 cstackCOMRAM dist/default/production/Timer_Buttons.X.production.o
-_ledInitialize 5B8 0 CODE 0 text4 dist/default/production/Timer_Buttons.X.production.o
+_ledInitialize 5C8 0 CODE 0 text4 dist/default/production/Timer_Buttons.X.production.o
 __end_of_readIButton 4EA 0 CODE 0 text9 dist/default/production/Timer_Buttons.X.production.o
 __end_of_main 2D4 0 CODE 0 text0 dist/default/production/Timer_Buttons.X.production.o
 __pintcode 8 0 CODE 0 intcode dist/default/production/Timer_Buttons.X.production.o
-__end_of_timerInitialize 5A4 0 CODE 0 text1 dist/default/production/Timer_Buttons.X.production.o
+__end_of_timerInitialize 5B4 0 CODE 0 text1 dist/default/production/Timer_Buttons.X.production.o
 _T0CON FD5 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 _TMR0L FD6 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 _TRISD F95 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
@@ -528,14 +529,14 @@ __LRAM 1 0 ABS 0 - dist/default/production/Timer_Buttons.X.production.o
 __Lbss 0 0 RAM 1 bss dist/default/production/Timer_Buttons.X.production.o
 __Lram 0 0 ABS 0 ram dist/default/production/Timer_Buttons.X.production.o
 __Lsfr 0 0 ABS 0 sfr dist/default/production/Timer_Buttons.X.production.o
-___extmem_base 20000 0 ABS 0 - /tmp/xcjnPUorJ.o
+___extmem_base 20000 0 ABS 0 - /tmp/xcT9xHPC7.o
 __initialization 53A 0 CODE 0 cinit dist/default/production/Timer_Buttons.X.production.o
 __pdataCOMRAM 18 0 COMRAM 1 dataCOMRAM dist/default/production/Timer_Buttons.X.production.o
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production/Timer_Buttons.X.production.o
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/Timer_Buttons.X.production.o
 __Lifardata 0 0 CODE 0 ifardata dist/default/production/Timer_Buttons.X.production.o
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/Timer_Buttons.X.production.o
-i2_defineTMR0Register 5CC 0 CODE 0 text7 dist/default/production/Timer_Buttons.X.production.o
+i2_defineTMR0Register 5DC 0 CODE 0 text7 dist/default/production/Timer_Buttons.X.production.o
 __Hintcode E 0 CODE 0 intcode dist/default/production/Timer_Buttons.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
@@ -563,7 +564,7 @@ __Hintcode E 0 CODE 0 intcode dist/default/production/Timer_Buttons.X.production
 %SEGMENTS
 idloc 0 200000 200000 8 1
 reset_vec 0 0 0 4 1
-intcode 0 8 8 5D2 1
+intcode 0 8 8 5E2 1
 bssCOMRAM 1 1 1 1C 1
 config 0 300000 300000 E 1
 # NOTES Section

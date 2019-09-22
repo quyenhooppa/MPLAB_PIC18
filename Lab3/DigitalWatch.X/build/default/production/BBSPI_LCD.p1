@@ -32,9 +32,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5066
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 5066: extern volatile LATFbits_t LATFbits __attribute__((address(0xF8E)));
 [v _LATFbits `VS199 ~T0 @X0 0 e@3982 ]
-"50 BBSPI_LCD.c
-[; ;BBSPI_LCD.c: 50:     __delay_ms(5);
-[v ___delay_ms `(i ~T0 @X0 0 e? ]
+[v F4536 `(v ~T0 @X0 1 tf1`ul ]
+"187 /Applications/microchip/xc8/v2.10/pic/include/pic18.h
+[v __delay `JF4536 ~T0 @X0 0 e ]
+[p i __delay ]
 "98 ./BBSPI_LCD.h
 [; ;./BBSPI_LCD.h: 98:     void Port_BBSPIInit (unsigned char port_dir);
 [v _Port_BBSPIInit `(v ~T0 @X0 0 ef1`uc ]
@@ -719,8 +720,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;BBSPI_LCD.c: 49:     LATFbits.LATF6 = 0;
 [e = . . _LATFbits 0 6 -> -> 0 `i `uc ]
 "50
-[; ;BBSPI_LCD.c: 50:     __delay_ms(5);
-[e ( ___delay_ms -> 5 `i ]
+[; ;BBSPI_LCD.c: 50:     _delay((unsigned long)((5)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "51
 [; ;BBSPI_LCD.c: 51:     LATFbits.LATF6 = 1;
 [e = . . _LATFbits 0 6 -> -> 1 `i `uc ]
@@ -734,8 +735,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;BBSPI_LCD.c: 54:     WritePort_BBSPI (0x12, 0);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
 "55
-[; ;BBSPI_LCD.c: 55:     __delay_ms(15);
-[e ( ___delay_ms -> 15 `i ]
+[; ;BBSPI_LCD.c: 55:     _delay((unsigned long)((15)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "56
 [; ;BBSPI_LCD.c: 56:     LCDPutInst(0x32);
 [e ( _LCDPutInst (1 -> -> 50 `i `uc ]
@@ -964,26 +965,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;BBSPI_LCD.c: 161: {
 [f ]
 "162
-[; ;BBSPI_LCD.c: 162:     __delay_ms(5);
-[e ( ___delay_ms -> 5 `i ]
+[; ;BBSPI_LCD.c: 162:     _delay((unsigned long)((5)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "163
 [; ;BBSPI_LCD.c: 163:     WritePort_BBSPI (0x12, 0x80);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 128 `i `uc ]
 "164
-[; ;BBSPI_LCD.c: 164:     __delay_ms(1);
-[e ( ___delay_ms -> 1 `i ]
+[; ;BBSPI_LCD.c: 164:     _delay((unsigned long)((1)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "165
 [; ;BBSPI_LCD.c: 165:     WritePort_BBSPI (0x13, ch);
 [e ( _WritePort_BBSPI (2 , -> -> 19 `i `uc _ch ]
 "166
-[; ;BBSPI_LCD.c: 166:     __delay_ms(1);
-[e ( ___delay_ms -> 1 `i ]
+[; ;BBSPI_LCD.c: 166:     _delay((unsigned long)((1)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "167
 [; ;BBSPI_LCD.c: 167:     WritePort_BBSPI (0x12, 0xC0);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 192 `i `uc ]
 "168
-[; ;BBSPI_LCD.c: 168:     __delay_ms(1);
-[e ( ___delay_ms -> 1 `i ]
+[; ;BBSPI_LCD.c: 168:     _delay((unsigned long)((1)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "169
 [; ;BBSPI_LCD.c: 169:     WritePort_BBSPI (0x12, 0x00);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
@@ -1005,26 +1006,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;BBSPI_LCD.c: 180: {
 [f ]
 "181
-[; ;BBSPI_LCD.c: 181:     __delay_ms(5);
-[e ( ___delay_ms -> 5 `i ]
+[; ;BBSPI_LCD.c: 181:     _delay((unsigned long)((5)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "182
 [; ;BBSPI_LCD.c: 182:     WritePort_BBSPI (0x12, 0x00);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
 "183
-[; ;BBSPI_LCD.c: 183:     __delay_ms(1);
-[e ( ___delay_ms -> 1 `i ]
+[; ;BBSPI_LCD.c: 183:     _delay((unsigned long)((1)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "184
 [; ;BBSPI_LCD.c: 184:     WritePort_BBSPI (0x13, ch);
 [e ( _WritePort_BBSPI (2 , -> -> 19 `i `uc _ch ]
 "185
-[; ;BBSPI_LCD.c: 185:     __delay_ms(1);
-[e ( ___delay_ms -> 1 `i ]
+[; ;BBSPI_LCD.c: 185:     _delay((unsigned long)((1)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "186
 [; ;BBSPI_LCD.c: 186:     WritePort_BBSPI (0x12,0x40);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 64 `i `uc ]
 "187
-[; ;BBSPI_LCD.c: 187:     __delay_ms(1);
-[e ( ___delay_ms -> 1 `i ]
+[; ;BBSPI_LCD.c: 187:     _delay((unsigned long)((1)*(10000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 10000000 `l `d .4000.0 `ul ]
 "188
 [; ;BBSPI_LCD.c: 188:     WritePort_BBSPI (0x12, 0x00);
 [e ( _WritePort_BBSPI (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]

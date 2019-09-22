@@ -7784,31 +7784,31 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 #pragma config XINST = OFF
 
 
-void oscillationInitialize(void);
-void timerInitialize(void);
-void buttonInitialize(void);
+volatile uint24_t timer0ReloadVal;
+
+void oscillationInitialize (void);
+void timerInitialize (void);
+void buttonInitialize (void);
 # 2 "system.c" 2
 
-void oscillationInitialize(void) {
-    OSCCON = 0b01110111;
+void oscillationInitialize (void) {
+    OSCCON = 0b01000111;
     OSCTUNE = 0b00001111;
 }
 
-void timerInitialize(void) {
+void timerInitialize (void) {
+    INTCONbits.GIE = 1;
 
     INTCONbits.TMR0IE = 1;
-    INTCONbits.GIE = 1;
-    T0CON = 0b11000110;
+    T0CON = 0b10000001;
 
+    TMR0H = 0xFD;
+    TMR0L = 0x8F;
+    timer0ReloadVal = TMR0;
 }
 
-void buttonInitialize(void) {
+void buttonInitialize (void) {
     TRISAbits.TRISA5 = 1;
     TRISBbits.TRISB0 = 1;
     ADCON1 = 0b00001111;
-}
-
-void ledInitialize(void) {
-    TRISD = 0x00;
-    LATD = 0x00;
 }

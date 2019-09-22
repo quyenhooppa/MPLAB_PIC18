@@ -14,7 +14,25 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
+#include "BBSPI_LCD.h"
 
+#define PERIOD 20 //increasing period
+    
+int countPressed = 0;   
+int countAuto= 0;
+int changeModePressed = 0;
+int increaseTime = 0;
+char firstReadRA5 = 1;
+char secondReadRA5 = 1;
+char firstReadRB0 = 1;
+char secondReadRB0 = 1;
+
+
+int readRA5Button (void);
+int readRB0Button (void);
+void button (void);
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 
 #ifdef	__cplusplus
 }

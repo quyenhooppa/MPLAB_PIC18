@@ -10,6 +10,7 @@ void timerInitialize(void) {
     //Timer 0
     INTCONbits.TMR0IE = 1;
     INTCONbits.GIE = 1;
+    INTCONbits.TMR0IF = 0;
     //T0CON = 0b11000110;
     T0CON = 0b10000001;//16-bit register, internal oscilation, prescale 1:4
     TMR0L = defineTMR0Register();

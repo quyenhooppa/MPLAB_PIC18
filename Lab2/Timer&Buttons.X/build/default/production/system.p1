@@ -750,70 +750,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _oscillationInitialize ]
 [f ]
-"4
-[; ;system.c: 4:     OSCCON = 0b01110111;
-[e = _OSCCON -> -> 119 `i `uc ]
 "5
-[; ;system.c: 5:     OSCTUNE = 0b00001111;
-[e = _OSCTUNE -> -> 15 `i `uc ]
+[; ;system.c: 5:     OSCCON = 0b01000111;
+[e = _OSCCON -> -> 71 `i `uc ]
 "6
-[; ;system.c: 6: }
+[; ;system.c: 6:     OSCTUNE = 0b00001111;
+[e = _OSCTUNE -> -> 15 `i `uc ]
+"7
+[; ;system.c: 7: }
 [e :UE 501 ]
 }
-"8
-[; ;system.c: 8: void timerInitialize(void) {
+"9
+[; ;system.c: 9: void timerInitialize(void) {
 [v _timerInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerInitialize ]
 [f ]
-"10
-[; ;system.c: 10:     INTCONbits.TMR0IE = 1;
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "11
-[; ;system.c: 11:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;system.c: 11:     INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "12
-[; ;system.c: 12:     T0CON = 0b11000110;
-[e = _T0CON -> -> 198 `i `uc ]
+[; ;system.c: 12:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "13
-[; ;system.c: 13:     TMR0L = defineTMR0Register();
+[; ;system.c: 13:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"15
+[; ;system.c: 15:     T0CON = 0b10000001;
+[e = _T0CON -> -> 129 `i `uc ]
+"16
+[; ;system.c: 16:     TMR0L = defineTMR0Register();
 [e = _TMR0L -> ( _defineTMR0Register ..  `uc ]
-"14
-[; ;system.c: 14: }
+"17
+[; ;system.c: 17: }
 [e :UE 502 ]
 }
-"16
-[; ;system.c: 16: void buttonInitialize(void) {
+"19
+[; ;system.c: 19: void buttonInitialize(void) {
 [v _buttonInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _buttonInitialize ]
 [f ]
-"17
-[; ;system.c: 17:     TRISAbits.TRISA5 = 1;
-[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
-"18
-[; ;system.c: 18:     TRISBbits.TRISB0 = 1;
-[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"19
-[; ;system.c: 19:     ADCON1 = 0b00001111;
-[e = _ADCON1 -> -> 15 `i `uc ]
 "20
-[; ;system.c: 20: }
+[; ;system.c: 20:     TRISAbits.TRISA5 = 1;
+[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+"21
+[; ;system.c: 21:     TRISBbits.TRISB0 = 1;
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
+"22
+[; ;system.c: 22:     ADCON1 = 0b00001111;
+[e = _ADCON1 -> -> 15 `i `uc ]
+"23
+[; ;system.c: 23: }
 [e :UE 503 ]
 }
-"22
-[; ;system.c: 22: void ledInitialize(void) {
+"25
+[; ;system.c: 25: void ledInitialize(void) {
 [v _ledInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _ledInitialize ]
 [f ]
-"23
-[; ;system.c: 23:     TRISD = 0x00;
+"26
+[; ;system.c: 26:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"24
-[; ;system.c: 24:     LATD = 0x00;
+"27
+[; ;system.c: 27:     LATD = 0x00;
 [e = _LATD -> -> 0 `i `uc ]
-"25
-[; ;system.c: 25: }
+"28
+[; ;system.c: 28: }
 [e :UE 504 ]
 }

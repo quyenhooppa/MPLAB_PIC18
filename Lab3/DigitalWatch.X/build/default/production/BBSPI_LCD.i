@@ -7887,12 +7887,12 @@ void LCDInit (void)
     InitBBSPI();
     TRISFbits.TRISF6 = 0;
     LATFbits.LATF6 = 0;
-    __delay_ms(5);
+    _delay((unsigned long)((5)*(10000000/4000.0)));
     LATFbits.LATF6 = 1;
     Port_BBSPIInit (0x00);
     Port_BBSPIInit (0x01);
     WritePort_BBSPI (0x12, 0);
-    __delay_ms(15);
+    _delay((unsigned long)((15)*(10000000/4000.0)));
     LCDPutInst(0x32);
     LCDPutInst(0x3C);
     LCDPutInst(0x0C);
@@ -7961,25 +7961,25 @@ void WritePort_BBSPI (unsigned char port_add, unsigned char a)
 # 160 "BBSPI_LCD.c"
 void LCDPutChar (unsigned char ch)
 {
-    __delay_ms(5);
+    _delay((unsigned long)((5)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0x80);
-    __delay_ms(1);
+    _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x13, ch);
-    __delay_ms(1);
+    _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0xC0);
-    __delay_ms(1);
+    _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0x00);
 }
 # 179 "BBSPI_LCD.c"
 void LCDPutInst (unsigned char ch)
 {
-    __delay_ms(5);
+    _delay((unsigned long)((5)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0x00);
-    __delay_ms(1);
+    _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x13, ch);
-    __delay_ms(1);
+    _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x12,0x40);
-    __delay_ms(1);
+    _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0x00);
 }
 # 198 "BBSPI_LCD.c"

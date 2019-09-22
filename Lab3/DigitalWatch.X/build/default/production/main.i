@@ -14,7 +14,6 @@
 
 
 
-
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7775,8 +7774,239 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 2 3
-# 10 "main.c" 2
+# 9 "main.c" 2
+
+# 1 "./stateClock.h" 1
+# 17 "./stateClock.h"
+# 1 "./interrupt.h" 1
+# 17 "./interrupt.h"
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
+# 22 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
+# 127 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 23 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 140 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+# 18 "./interrupt.h" 2
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdbool.h" 1 3
+# 19 "./interrupt.h" 2
+# 1 "./system.h" 1
+# 19 "./system.h"
+#pragma config OSC = HSPLL
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+#pragma config PWRT = OFF
+#pragma config BOREN = OFF
+#pragma config WDT = OFF
+#pragma config MCLRE = ON
+#pragma config LVP = OFF
+#pragma config XINST = OFF
+
+
+volatile uint24_t timer0ReloadVal;
+
+void oscillationInitialize (void);
+void timerInitialize (void);
+void buttonInitialize (void);
+# 20 "./interrupt.h" 2
+# 1 "./button.h" 1
+# 17 "./button.h"
+# 1 "./BBSPI_LCD.h" 1
+# 71 "./BBSPI_LCD.h"
+    void LCDInit(void);
+# 80 "./BBSPI_LCD.h"
+    void InitBBSPI (void);
+# 89 "./BBSPI_LCD.h"
+    void SendByteBBSPI (unsigned char output);
+# 98 "./BBSPI_LCD.h"
+    void Port_BBSPIInit (unsigned char port_dir);
+# 108 "./BBSPI_LCD.h"
+    void WritePort_BBSPI (unsigned char port_add, unsigned char a);
+# 117 "./BBSPI_LCD.h"
+    void LCDPutChar(unsigned char);
+# 126 "./BBSPI_LCD.h"
+    void LCDPutInst(unsigned char);
+# 135 "./BBSPI_LCD.h"
+    void LCDPutStr(const char *);
+# 18 "./button.h" 2
+
+
+
+int countPressed = 0;
+int countAuto= 0;
+int changeModePressed = 0;
+int increaseTime = 0;
+char firstReadRA5 = 1;
+char secondReadRA5 = 1;
+char firstReadRB0 = 1;
+char secondReadRB0 = 1;
+
+
+int readRA5Button (void);
+int readRB0Button (void);
+void button (void);
+
+enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+# 21 "./interrupt.h" 2
+
+int count10ms = 0;
+int timerFlag = 0;
+
+void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
+# 18 "./stateClock.h" 2
+
+int sec = 0;
+int min = 0;
+int hr = 0;
+
+void norClock (void);
+void displayClock (void);
+# 11 "main.c" 2
+# 1 "./statesModify.h" 1
+# 17 "./statesModify.h"
+int blink = 0;
+
+void modifyHour (void);
+void modifyMinute (void);
+void modifySecond (void);
+void displayModify (void);
+
+enum st{init, iNor, iAuto} stModify;
+# 12 "main.c" 2
+# 1 "./stateStpWatch.h" 1
+# 17 "./stateStpWatch.h"
+int run = 0;
+int minSTW = 0;
+int secSTW = 0;
+int miliSecSTW = 0;
+
+void stopWatch (void);
+void displayStpWatch (void);
+# 13 "main.c" 2
 
 void main(void) {
+    oscillationInitialize();
+    timerInitialize();
+    buttonInitialize();
+    state = norClk;
+    stModify = init;
+    switch (state) {
+        case norClk:
+            norClock();
+            displayClock();
+            if (changeModePressed == 1) {
+                changeModePressed = 0;
+                state = modHr;
+            }
+            break;
+        case modHr:
+            modifyHour();
+            displayModify();
+            if (changeModePressed == 1) {
+                changeModePressed = 0;
+                state = modMin;
+            }
+            break;
+        case modMin:
+            modifyMinute();
+            displayModify();
+            if (changeModePressed == 1) {
+                changeModePressed = 0;
+                state = modSec;
+            }
+            break;
+        case modSec:
+            modifySecond();
+            displayModify();
+            if (changeModePressed == 1) {
+                changeModePressed = 0;
+                state = stpWatch;
+            }
+            break;
+        case stpWatch:
+            norClock();
+            stopWatch();
+            displayStpWatch();
+            if (changeModePressed == 1) {
+                changeModePressed = 0;
+                state = norClk;
+            }
+            break;
+    }
     return;
 }

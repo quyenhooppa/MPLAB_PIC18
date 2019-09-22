@@ -1,3 +1,5 @@
+#include <pic18f8722.h>
+
 #include "clock.h"
 
 int defineTMR0Register(void) {
@@ -6,7 +8,7 @@ int defineTMR0Register(void) {
 
 void __interrupt () deviceInterrupt(void) {
     //TMR0L = 100;
-    if (INTCONbits.TMR0IF == 1) {
+    if (INTCONbits.TMR0IF == 1 && INTCONbits.TMR0IE == 1) {
         INTCONbits.TMR0IF = 0;
         TMR0L = defineTMR0Register();
         button();

@@ -7824,7 +7824,8 @@ void ledInitialize(void);
 # 2 "system.c" 2
 
 void oscillationInitialize(void) {
-    OSCCON = 0b01110111;
+
+    OSCCON = 0b01000111;
     OSCTUNE = 0b00001111;
 }
 
@@ -7832,7 +7833,9 @@ void timerInitialize(void) {
 
     INTCONbits.TMR0IE = 1;
     INTCONbits.GIE = 1;
-    T0CON = 0b11000110;
+    INTCONbits.TMR0IF = 0;
+
+    T0CON = 0b10000001;
     TMR0L = defineTMR0Register();
 }
 

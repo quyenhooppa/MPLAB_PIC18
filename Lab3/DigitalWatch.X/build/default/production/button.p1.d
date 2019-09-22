@@ -1,3 +1,4 @@
 build/default/production/button.p1:  \
 button.c  \
-button.h 
+button.h  \
+BBSPI_LCD.h 
