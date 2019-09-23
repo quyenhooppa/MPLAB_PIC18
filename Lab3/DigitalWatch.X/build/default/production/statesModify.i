@@ -8052,7 +8052,7 @@ void displayModHour (void) {
     LCDPutInst(0x80);
     LCDPutStr(" MODIFIES HOUR ");
     LCDPutInst(0xC0);
-    if (count10ms >= (20*2)) {
+    if (count10ms >= (20/2)) {
         count10ms = 0;
         if (countAuto <= 0) {
             if (blink == 0) {
@@ -8089,7 +8089,7 @@ void displayModMinute (void) {
 
     LCDPutChar(':');
     LCDPutInst(0xC3);
-    if (count10ms >= (20*2)) {
+    if (count10ms >= (20/2)) {
         count10ms = 0;
         if (countAuto <= 0) {
             if (blink == 0) {
@@ -8126,7 +8126,7 @@ void displayModSecond (void) {
 
     LCDPutChar(':');
     LCDPutInst(0xC6);
-    if (count10ms >= (20*2)) {
+    if (count10ms >= (20/2)) {
         count10ms = 0;
         if (countAuto <= 0) {
             if (blink == 0) {

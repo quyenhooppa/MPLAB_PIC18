@@ -945,46 +945,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 68:                     count10ms = 0;
 [e = _count10ms -> 0 `i ]
 "69
-[; ;main.c: 69:                 }
+[; ;main.c: 69:                     0x01;
+[e -> 1 `i ]
+"70
+[; ;main.c: 70:                 }
 }
 [e :U 514 ]
-"70
-[; ;main.c: 70:                 break;
-[e $U 505  ]
 "71
-[; ;main.c: 71:             case stpWatch:
-[e :U 515 ]
+[; ;main.c: 71:                 break;
+[e $U 505  ]
 "72
-[; ;main.c: 72:                 norClock();
-[e ( _norClock ..  ]
+[; ;main.c: 72:             case stpWatch:
+[e :U 515 ]
 "73
-[; ;main.c: 73:                 stopWatch();
-[e ( _stopWatch ..  ]
+[; ;main.c: 73:                 norClock();
+[e ( _norClock ..  ]
 "74
-[; ;main.c: 74:                 displayStpWatch();
-[e ( _displayStpWatch ..  ]
+[; ;main.c: 74:                 stopWatch();
+[e ( _stopWatch ..  ]
 "75
-[; ;main.c: 75:                 if (changeModePressed == 1) {
+[; ;main.c: 75:                 displayStpWatch();
+[e ( _displayStpWatch ..  ]
+"76
+[; ;main.c: 76:                 if (changeModePressed == 1) {
 [e $ ! == _changeModePressed -> 1 `i 516  ]
 {
-"76
-[; ;main.c: 76:                     changeModePressed = 0;
-[e = _changeModePressed -> 0 `i ]
 "77
-[; ;main.c: 77:                     state = norClk;
-[e = _state . `E4611 0 ]
+[; ;main.c: 77:                     changeModePressed = 0;
+[e = _changeModePressed -> 0 `i ]
 "78
-[; ;main.c: 78:                     runSTW = 0;
-[e = _runSTW -> 0 `i ]
+[; ;main.c: 78:                     state = norClk;
+[e = _state . `E4611 0 ]
 "79
-[; ;main.c: 79:                 }
+[; ;main.c: 79:                     runSTW = 0;
+[e = _runSTW -> 0 `i ]
+"80
+[; ;main.c: 80:                 }
 }
 [e :U 516 ]
-"80
-[; ;main.c: 80:                 break;
-[e $U 505  ]
 "81
-[; ;main.c: 81:         }
+[; ;main.c: 81:                 break;
+[e $U 505  ]
+"82
+[; ;main.c: 82:         }
 }
 [e $U 505  ]
 [e :U 506 ]
@@ -995,16 +998,16 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E4611 4 `ui 515
  505 ]
 [e :U 505 ]
-"82
-[; ;main.c: 82:     }
+"83
+[; ;main.c: 83:     }
 }
 [e :U 502 ]
 [e $U 503  ]
 [e :U 504 ]
-"83
-[; ;main.c: 83:     return;
-[e $UE 501  ]
 "84
-[; ;main.c: 84: }
+[; ;main.c: 84:     return;
+[e $UE 501  ]
+"85
+[; ;main.c: 85: }
 [e :UE 501 ]
 }

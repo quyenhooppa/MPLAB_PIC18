@@ -8015,6 +8015,7 @@ void main(void) {
                     state = stpWatch;
                     runSTW = 0;
                     count10ms = 0;
+                    0x01;
                 }
                 break;
             case stpWatch:

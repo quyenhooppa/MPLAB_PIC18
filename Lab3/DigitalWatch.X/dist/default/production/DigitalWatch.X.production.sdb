@@ -412,7 +412,7 @@ stpWatch 4
 "15 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"84
+"85
 } 0
 "9 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]

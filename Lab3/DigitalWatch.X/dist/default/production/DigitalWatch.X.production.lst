@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Mon Sep 23 10:28:17 2019
+                                                                                               Mon Sep 23 10:59:43 2019
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F8722
@@ -696,16 +696,16 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    677  00116C  EFD3  F008         	goto	l2237
    678  001170                     l2227:
    679                           
-   680                           ;main.c: 72:                 norClock();
+   680                           ;main.c: 73:                 norClock();
    681  001170  EC73  F00F         	call	_norClock	;wreg free
    682                           
-   683                           ;main.c: 73:                 stopWatch();
+   683                           ;main.c: 74:                 stopWatch();
    684  001174  EC0A  F00D         	call	_stopWatch	;wreg free
    685  001178                     
-   686                           ;main.c: 74:                 displayStpWatch();
+   686                           ;main.c: 75:                 displayStpWatch();
    687  001178  EC7E  F00D         	call	_displayStpWatch	;wreg free
    688  00117C                     
-   689                           ;main.c: 75:                 if (changeModePressed == 1) {
+   689                           ;main.c: 76:                 if (changeModePressed == 1) {
    690  00117C  0419               	decf	_changeModePressed^0,w,c
    691  00117E  101A               	iorwf	(_changeModePressed+1)^0,w,c
    692  001180  A4D8               	btfss	status,2,c
@@ -715,17 +715,17 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    696  00118A  EFD3  F008         	goto	l76
    697  00118E                     u1130:
    698  00118E                     
-   699                           ;main.c: 76:                     changeModePressed = 0;
+   699                           ;main.c: 77:                     changeModePressed = 0;
    700  00118E  0E00               	movlw	0
    701  001190  6E1A               	movwf	(_changeModePressed+1)^0,c
    702  001192  0E00               	movlw	0
    703  001194  6E19               	movwf	_changeModePressed^0,c
    704                           
-   705                           ;main.c: 77:                     state = norClk;
+   705                           ;main.c: 78:                     state = norClk;
    706  001196  0E00               	movlw	0
    707  001198  6E20               	movwf	_state^0,c
    708                           
-   709                           ;main.c: 78:                     runSTW = 0;
+   709                           ;main.c: 79:                     runSTW = 0;
    710  00119A  0E00               	movlw	0
    711  00119C  6E12               	movwf	(_runSTW+1)^0,c
    712  00119E  0E00               	movlw	0
@@ -2200,12 +2200,12 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   2132  001286  0EC6               	movlw	198
   2133  001288  EC25  F010         	call	_LCDPutInst
   2134  00128C                     
-  2135                           ;statesModify.c: 178:     if (count10ms >= (20*2)) {
+  2135                           ;statesModify.c: 178:     if (count10ms >= (20/2)) {
   2136  00128C  BE16               	btfsc	(_count10ms+1)^0,7,c
   2137  00128E  EF52  F009         	goto	u1021
   2138  001292  5016               	movf	(_count10ms+1)^0,w,c
   2139  001294  E109               	bnz	u1020
-  2140  001296  0E28               	movlw	40
+  2140  001296  0E0A               	movlw	10
   2141  001298  5C15               	subwf	_count10ms^0,w,c
   2142  00129A  A0D8               	btfss	status,0,c
   2143  00129C  EF52  F009         	goto	u1021
@@ -2416,12 +2416,12 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   2343  0013CC  0EC3               	movlw	195
   2344  0013CE  EC25  F010         	call	_LCDPutInst
   2345  0013D2                     
-  2346                           ;statesModify.c: 141:     if (count10ms >= (20*2)) {
+  2346                           ;statesModify.c: 141:     if (count10ms >= (20/2)) {
   2347  0013D2  BE16               	btfsc	(_count10ms+1)^0,7,c
   2348  0013D4  EFF5  F009         	goto	u991
   2349  0013D8  5016               	movf	(_count10ms+1)^0,w,c
   2350  0013DA  E109               	bnz	u990
-  2351  0013DC  0E28               	movlw	40
+  2351  0013DC  0E0A               	movlw	10
   2352  0013DE  5C15               	subwf	_count10ms^0,w,c
   2353  0013E0  A0D8               	btfss	status,0,c
   2354  0013E2  EFF5  F009         	goto	u991
@@ -2632,12 +2632,12 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
   2554  001512  0EC0               	movlw	192
   2555  001514  EC25  F010         	call	_LCDPutInst
   2556  001518                     
-  2557                           ;statesModify.c: 104:     if (count10ms >= (20*2)) {
+  2557                           ;statesModify.c: 104:     if (count10ms >= (20/2)) {
   2558  001518  BE16               	btfsc	(_count10ms+1)^0,7,c
   2559  00151A  EF98  F00A         	goto	u961
   2560  00151E  5016               	movf	(_count10ms+1)^0,w,c
   2561  001520  E109               	bnz	u960
-  2562  001522  0E28               	movlw	40
+  2562  001522  0E0A               	movlw	10
   2563  001524  5C15               	subwf	_count10ms^0,w,c
   2564  001526  A0D8               	btfss	status,0,c
   2565  001528  EF98  F00A         	goto	u961
@@ -4995,7 +4995,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Mon Sep 23 10:28:17 2019
+Symbol Table                                                                                   Mon Sep 23 10:59:43 2019
 
       __end_of_displayModMinute 1500        __end_of_displayModSecond 1376                     ?_LCDPutChar 0021  
                             l76 11A6                              u10 1F9C                              u11 1F98  
