@@ -7881,21 +7881,21 @@ void ledInitialize(void);
 # 1 "./button.h" 1
 # 17 "./button.h"
 # 1 "./BBSPI_LCD.h" 1
-# 71 "./BBSPI_LCD.h"
+# 77 "./BBSPI_LCD.h"
     void LCDInit(void);
-# 80 "./BBSPI_LCD.h"
+# 86 "./BBSPI_LCD.h"
     void InitBBSPI (void);
-# 89 "./BBSPI_LCD.h"
+# 95 "./BBSPI_LCD.h"
     void SendByteBBSPI (unsigned char output);
-# 98 "./BBSPI_LCD.h"
+# 104 "./BBSPI_LCD.h"
     void Port_BBSPIInit (unsigned char port_dir);
-# 108 "./BBSPI_LCD.h"
+# 114 "./BBSPI_LCD.h"
     void WritePort_BBSPI (unsigned char port_add, unsigned char a);
-# 117 "./BBSPI_LCD.h"
+# 123 "./BBSPI_LCD.h"
     void LCDPutChar(unsigned char);
-# 126 "./BBSPI_LCD.h"
+# 132 "./BBSPI_LCD.h"
     void LCDPutInst(unsigned char);
-# 135 "./BBSPI_LCD.h"
+# 141 "./BBSPI_LCD.h"
     void LCDPutStr(const char *);
 # 18 "./button.h" 2
 
@@ -7918,16 +7918,15 @@ void button (void);
 
 int count10ms = 0;
 int timerFlag = 0;
+int runSTW = 0;
+int minSTW = 0;
+int secSTW = 0;
+int miliSecSTW = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
 
 enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 16 "./stateStpWatch.h" 2
-
-int run = 0;
-int minSTW = 0;
-int secSTW = 0;
-int miliSecSTW = 0;
 
 void stopWatch (void);
 void displayStpWatch (void);
@@ -7935,17 +7934,17 @@ void displayStpWatch (void);
 
 void stopWatch (void) {
     if (countPressed > 0) {
-        if (run == 0) {
+        if (runSTW == 0) {
             miliSecSTW = 0;
             secSTW = 0;
             minSTW = 0;
         }
-        run = (run + 1) % 2;
+        runSTW = (runSTW + 1) % 2;
         timerFlag = 0;
     }
-    if (run == 1) {
-        if (timerFlag == 1) {
-            miliSecSTW++;
+    if (runSTW == 1) {
+
+
             if (miliSecSTW >= 100) {
                 miliSecSTW = 0;
                 secSTW++;
@@ -7957,8 +7956,8 @@ void stopWatch (void) {
             if (minSTW >= 60) {
                 minSTW = 0;
             }
-            timerFlag = 0;
-        }
+
+
     }
 }
 
@@ -7968,10 +7967,14 @@ void displayStpWatch (void) {
     LCDPutInst(0xC0);
     LCDPutChar(minSTW/10+'0');
     LCDPutChar(minSTW%10+'0');
+    LCDPutInst(0xC2);
     LCDPutChar(':');
+    LCDPutInst(0xC3);
     LCDPutChar(secSTW/10+'0');
     LCDPutChar(secSTW%10+'0');
+    LCDPutInst(0xC5);
     LCDPutChar(':');
+    LCDPutInst(0xC6);
     LCDPutChar(miliSecSTW/10+'0');
     LCDPutChar(miliSecSTW%10+'0');
 }

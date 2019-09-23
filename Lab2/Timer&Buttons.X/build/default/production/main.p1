@@ -1,16 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"13 main.c
-[; ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-[c E4595 0 1 2 3 4 5 6 .. ]
-[n E4595 State init iNormal iFast iSlow dNormal dFast dSlow  ]
-"31 ./system.h
+"15 main.c
+[; ;main.c: 15:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
+[c E4566 0 1 2 3 4 5 6 .. ]
+[n E4566 State init iNormal iFast iSlow dNormal dFast dSlow  ]
+"33 ./system.h
 [v _oscillationInitialize `(v ~T0 @X0 0 ef ]
-"32
-[v _timerInitialize `(v ~T0 @X0 0 ef ]
-"33
-[v _buttonInitialize `(v ~T0 @X0 0 ef ]
 "34
+[v _timerInitialize `(v ~T0 @X0 0 ef ]
+"35
+[v _buttonInitialize `(v ~T0 @X0 0 ef ]
+"36
 [v _ledInitialize `(v ~T0 @X0 0 ef ]
 "4815 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 4815: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
@@ -669,8 +669,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"21 ./clock.h
-[; ;./clock.h: 21: int timer0Register = 0;
+"19 ./clock.h
+[; ;./clock.h: 19: int timer0Register = 0;
 [v _timer0Register `i ~T0 @X0 1 e ]
 [i _timer0Register
 -> 0 `i
@@ -693,319 +693,325 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x LVP = OFF ]
 "28
 [p x XINST = OFF ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "12 main.c
-[; ;main.c: 12: void main(void) {
+[; ;main.c: 12: int counter = 0;
+[v _counter `i ~T0 @X0 1 e ]
+[i _counter
+-> 0 `i
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"14
+[; ;main.c: 14: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"13
-[; ;main.c: 13:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
-[v _state `E4595 ~T0 @X0 1 a ]
-"14
-[; ;main.c: 14:     oscillationInitialize();
-[e ( _oscillationInitialize ..  ]
 "15
-[; ;main.c: 15:     timerInitialize();
-[e ( _timerInitialize ..  ]
+[; ;main.c: 15:     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
+[v _state `E4566 ~T0 @X0 1 a ]
 "16
-[; ;main.c: 16:     buttonInitialize();
-[e ( _buttonInitialize ..  ]
+[; ;main.c: 16:     oscillationInitialize();
+[e ( _oscillationInitialize ..  ]
 "17
-[; ;main.c: 17:     ledInitialize();
-[e ( _ledInitialize ..  ]
+[; ;main.c: 17:     timerInitialize();
+[e ( _timerInitialize ..  ]
 "18
-[; ;main.c: 18:     state = init;
-[e = _state . `E4595 0 ]
+[; ;main.c: 18:     buttonInitialize();
+[e ( _buttonInitialize ..  ]
 "19
-[; ;main.c: 19:     while (1) {
+[; ;main.c: 19:     ledInitialize();
+[e ( _ledInitialize ..  ]
+"20
+[; ;main.c: 20:     state = init;
+[e = _state . `E4566 0 ]
+"21
+[; ;main.c: 21:     while (1) {
 [e :U 503 ]
 {
-"20
-[; ;main.c: 20:         switch (state) {
+"22
+[; ;main.c: 22:         switch (state) {
 [e $U 506  ]
 {
-"21
-[; ;main.c: 21:             case init:
-[e :U 507 ]
-"22
-[; ;main.c: 22:                 countFast = 0;
-[e = _countFast -> 0 `i ]
 "23
-[; ;main.c: 23:                 countSlow = 0;
-[e = _countSlow -> 0 `i ]
+[; ;main.c: 23:             case init:
+[e :U 507 ]
 "24
-[; ;main.c: 24:                 if (iCount > 0) {
+[; ;main.c: 24:                 countFast = 0;
+[e = _countFast -> 0 `i ]
+"25
+[; ;main.c: 25:                 countSlow = 0;
+[e = _countSlow -> 0 `i ]
+"26
+[; ;main.c: 26:                 if (iCount > 0) {
 [e $ ! > _iCount -> 0 `i 508  ]
 {
-"25
-[; ;main.c: 25:                     LATD++;
-[e ++ _LATD -> -> 1 `i `Vuc ]
-"26
-[; ;main.c: 26:                     state = iNormal;
-[e = _state . `E4595 1 ]
 "27
-[; ;main.c: 27:                 }
+[; ;main.c: 27:                     LATD = counter++;
+[e = _LATD -> ++ _counter -> 1 `i `uc ]
+"28
+[; ;main.c: 28:                     state = iNormal;
+[e = _state . `E4566 1 ]
+"29
+[; ;main.c: 29:                 }
 }
 [e $U 509  ]
-"28
-[; ;main.c: 28:                 else if (iCount == 0 && dCount > 0) {
+"30
+[; ;main.c: 30:                 else if (iCount == 0 && dCount > 0) {
 [e :U 508 ]
 [e $ ! && == _iCount -> 0 `i > _dCount -> 0 `i 510  ]
 {
-"29
-[; ;main.c: 29:                     LATD--;
-[e -- _LATD -> -> 1 `i `Vuc ]
-"30
-[; ;main.c: 30:                     state = dNormal;
-[e = _state . `E4595 4 ]
 "31
-[; ;main.c: 31:                 }
+[; ;main.c: 31:                     LATD = counter--;
+[e = _LATD -> -- _counter -> 1 `i `uc ]
+"32
+[; ;main.c: 32:                     state = dNormal;
+[e = _state . `E4566 4 ]
+"33
+[; ;main.c: 33:                 }
 }
 [e :U 510 ]
 [e :U 509 ]
-"32
-[; ;main.c: 32:                 break;
-[e $U 505  ]
-"33
-[; ;main.c: 33:             case iNormal:
-[e :U 511 ]
 "34
-[; ;main.c: 34:                 if (iCount == 0) {
+[; ;main.c: 34:                 break;
+[e $U 505  ]
+"35
+[; ;main.c: 35:             case iNormal:
+[e :U 511 ]
+"36
+[; ;main.c: 36:                 if (iCount == 0) {
 [e $ ! == _iCount -> 0 `i 512  ]
 {
-"35
-[; ;main.c: 35:                     state = init;
-[e = _state . `E4595 0 ]
-"36
-[; ;main.c: 36:                 }
+"37
+[; ;main.c: 37:                     state = init;
+[e = _state . `E4566 0 ]
+"38
+[; ;main.c: 38:                 }
 }
 [e :U 512 ]
-"37
-[; ;main.c: 37:                 if (countSlow > 0) {
+"39
+[; ;main.c: 39:                 if (countSlow > 0) {
 [e $ ! > _countSlow -> 0 `i 513  ]
 {
-"38
-[; ;main.c: 38:                     changeSlow = 1;
-[e = _changeSlow -> 1 `i ]
-"39
-[; ;main.c: 39:                     state = iSlow;
-[e = _state . `E4595 3 ]
 "40
-[; ;main.c: 40:                 }
+[; ;main.c: 40:                     changeSlow = 1;
+[e = _changeSlow -> 1 `i ]
+"41
+[; ;main.c: 41:                     state = iSlow;
+[e = _state . `E4566 3 ]
+"42
+[; ;main.c: 42:                 }
 }
 [e :U 513 ]
-"41
-[; ;main.c: 41:                 break;
-[e $U 505  ]
-"42
-[; ;main.c: 42:             case iSlow:
-[e :U 514 ]
 "43
-[; ;main.c: 43:                 if (iCount == 0) {
+[; ;main.c: 43:                 break;
+[e $U 505  ]
+"44
+[; ;main.c: 44:             case iSlow:
+[e :U 514 ]
+"45
+[; ;main.c: 45:                 if (iCount == 0) {
 [e $ ! == _iCount -> 0 `i 515  ]
 {
-"44
-[; ;main.c: 44:                     state = init;
-[e = _state . `E4595 0 ]
-"45
-[; ;main.c: 45:                 }
+"46
+[; ;main.c: 46:                     state = init;
+[e = _state . `E4566 0 ]
+"47
+[; ;main.c: 47:                 }
 }
 [e :U 515 ]
-"46
-[; ;main.c: 46:                 if (changeSlow == 1) {
+"48
+[; ;main.c: 48:                 if (changeSlow == 1) {
 [e $ ! == _changeSlow -> 1 `i 516  ]
 {
-"47
-[; ;main.c: 47:                     LATD++;
-[e ++ _LATD -> -> 1 `i `Vuc ]
-"48
-[; ;main.c: 48:                     changeSlow = 0;
-[e = _changeSlow -> 0 `i ]
 "49
-[; ;main.c: 49:                 }
+[; ;main.c: 49:                     LATD = counter++;
+[e = _LATD -> ++ _counter -> 1 `i `uc ]
+"50
+[; ;main.c: 50:                     changeSlow = 0;
+[e = _changeSlow -> 0 `i ]
+"51
+[; ;main.c: 51:                 }
 }
 [e :U 516 ]
-"50
-[; ;main.c: 50:                 if (countFast > 0) {
+"52
+[; ;main.c: 52:                 if (countFast > 0) {
 [e $ ! > _countFast -> 0 `i 517  ]
 {
-"51
-[; ;main.c: 51:                     changeFast = 1;
-[e = _changeFast -> 1 `i ]
-"52
-[; ;main.c: 52:                     state = iFast;
-[e = _state . `E4595 2 ]
 "53
-[; ;main.c: 53:                 }
+[; ;main.c: 53:                     changeFast = 1;
+[e = _changeFast -> 1 `i ]
+"54
+[; ;main.c: 54:                     state = iFast;
+[e = _state . `E4566 2 ]
+"55
+[; ;main.c: 55:                 }
 }
 [e :U 517 ]
-"54
-[; ;main.c: 54:                 break;
-[e $U 505  ]
-"55
-[; ;main.c: 55:             case iFast:
-[e :U 518 ]
 "56
-[; ;main.c: 56:                 if (iCount == 0) {
+[; ;main.c: 56:                 break;
+[e $U 505  ]
+"57
+[; ;main.c: 57:             case iFast:
+[e :U 518 ]
+"58
+[; ;main.c: 58:                 if (iCount == 0) {
 [e $ ! == _iCount -> 0 `i 519  ]
 {
-"57
-[; ;main.c: 57:                     state = init;
-[e = _state . `E4595 0 ]
-"58
-[; ;main.c: 58:                 }
+"59
+[; ;main.c: 59:                     state = init;
+[e = _state . `E4566 0 ]
+"60
+[; ;main.c: 60:                 }
 }
 [e :U 519 ]
-"59
-[; ;main.c: 59:                 if (changeFast == 1) {
+"61
+[; ;main.c: 61:                 if (changeFast == 1) {
 [e $ ! == _changeFast -> 1 `i 520  ]
 {
-"60
-[; ;main.c: 60:                     LATD++;
-[e ++ _LATD -> -> 1 `i `Vuc ]
-"61
-[; ;main.c: 61:                     changeFast = 0;
-[e = _changeFast -> 0 `i ]
 "62
-[; ;main.c: 62:                 }
+[; ;main.c: 62:                     LATD = counter++;
+[e = _LATD -> ++ _counter -> 1 `i `uc ]
+"63
+[; ;main.c: 63:                     changeFast = 0;
+[e = _changeFast -> 0 `i ]
+"64
+[; ;main.c: 64:                 }
 }
 [e :U 520 ]
-"63
-[; ;main.c: 63:                 break;
-[e $U 505  ]
-"64
-[; ;main.c: 64:             case dNormal:
-[e :U 521 ]
 "65
-[; ;main.c: 65:                 if (dCount == 0 || iCount > 0) {
+[; ;main.c: 65:                 break;
+[e $U 505  ]
+"66
+[; ;main.c: 66:             case dNormal:
+[e :U 521 ]
+"67
+[; ;main.c: 67:                 if (dCount == 0 || iCount > 0) {
 [e $ ! || == _dCount -> 0 `i > _iCount -> 0 `i 522  ]
 {
-"66
-[; ;main.c: 66:                     state = init;
-[e = _state . `E4595 0 ]
-"67
-[; ;main.c: 67:                 }
+"68
+[; ;main.c: 68:                     state = init;
+[e = _state . `E4566 0 ]
+"69
+[; ;main.c: 69:                 }
 }
 [e :U 522 ]
-"68
-[; ;main.c: 68:                 if (countSlow > 0) {
+"70
+[; ;main.c: 70:                 if (countSlow > 0) {
 [e $ ! > _countSlow -> 0 `i 523  ]
 {
-"69
-[; ;main.c: 69:                     changeSlow = 1;
-[e = _changeSlow -> 1 `i ]
-"70
-[; ;main.c: 70:                     state = dSlow;
-[e = _state . `E4595 6 ]
 "71
-[; ;main.c: 71:                 }
+[; ;main.c: 71:                     changeSlow = 1;
+[e = _changeSlow -> 1 `i ]
+"72
+[; ;main.c: 72:                     state = dSlow;
+[e = _state . `E4566 6 ]
+"73
+[; ;main.c: 73:                 }
 }
 [e :U 523 ]
-"72
-[; ;main.c: 72:                 break;
-[e $U 505  ]
-"73
-[; ;main.c: 73:             case dSlow:
-[e :U 524 ]
 "74
-[; ;main.c: 74:                 if (dCount == 0 || iCount > 0) {
+[; ;main.c: 74:                 break;
+[e $U 505  ]
+"75
+[; ;main.c: 75:             case dSlow:
+[e :U 524 ]
+"76
+[; ;main.c: 76:                 if (dCount == 0 || iCount > 0) {
 [e $ ! || == _dCount -> 0 `i > _iCount -> 0 `i 525  ]
 {
-"75
-[; ;main.c: 75:                     state = init;
-[e = _state . `E4595 0 ]
-"76
-[; ;main.c: 76:                 }
+"77
+[; ;main.c: 77:                     state = init;
+[e = _state . `E4566 0 ]
+"78
+[; ;main.c: 78:                 }
 }
 [e :U 525 ]
-"77
-[; ;main.c: 77:                 if (changeSlow == 1) {
+"79
+[; ;main.c: 79:                 if (changeSlow == 1) {
 [e $ ! == _changeSlow -> 1 `i 526  ]
 {
-"78
-[; ;main.c: 78:                     LATD--;
-[e -- _LATD -> -> 1 `i `Vuc ]
-"79
-[; ;main.c: 79:                     changeSlow = 0;
-[e = _changeSlow -> 0 `i ]
 "80
-[; ;main.c: 80:                 }
+[; ;main.c: 80:                     LATD = counter--;
+[e = _LATD -> -- _counter -> 1 `i `uc ]
+"81
+[; ;main.c: 81:                     changeSlow = 0;
+[e = _changeSlow -> 0 `i ]
+"82
+[; ;main.c: 82:                 }
 }
 [e :U 526 ]
-"81
-[; ;main.c: 81:                 if (countFast > 0) {
+"83
+[; ;main.c: 83:                 if (countFast > 0) {
 [e $ ! > _countFast -> 0 `i 527  ]
 {
-"82
-[; ;main.c: 82:                     changeFast = 1;
-[e = _changeFast -> 1 `i ]
-"83
-[; ;main.c: 83:                     state = dFast;
-[e = _state . `E4595 5 ]
 "84
-[; ;main.c: 84:                 }
+[; ;main.c: 84:                     changeFast = 1;
+[e = _changeFast -> 1 `i ]
+"85
+[; ;main.c: 85:                     state = dFast;
+[e = _state . `E4566 5 ]
+"86
+[; ;main.c: 86:                 }
 }
 [e :U 527 ]
-"85
-[; ;main.c: 85:                 break;
-[e $U 505  ]
-"86
-[; ;main.c: 86:             case dFast:
-[e :U 528 ]
 "87
-[; ;main.c: 87:                 if (dCount == 0 || iCount > 0) {
+[; ;main.c: 87:                 break;
+[e $U 505  ]
+"88
+[; ;main.c: 88:             case dFast:
+[e :U 528 ]
+"89
+[; ;main.c: 89:                 if (dCount == 0 || iCount > 0) {
 [e $ ! || == _dCount -> 0 `i > _iCount -> 0 `i 529  ]
 {
-"88
-[; ;main.c: 88:                     state = init;
-[e = _state . `E4595 0 ]
-"89
-[; ;main.c: 89:                 }
+"90
+[; ;main.c: 90:                     state = init;
+[e = _state . `E4566 0 ]
+"91
+[; ;main.c: 91:                 }
 }
 [e :U 529 ]
-"90
-[; ;main.c: 90:                 if (changeFast == 1) {
+"92
+[; ;main.c: 92:                 if (changeFast == 1) {
 [e $ ! == _changeFast -> 1 `i 530  ]
 {
-"91
-[; ;main.c: 91:                     LATD--;
-[e -- _LATD -> -> 1 `i `Vuc ]
-"92
-[; ;main.c: 92:                     changeFast = 0;
-[e = _changeFast -> 0 `i ]
 "93
-[; ;main.c: 93:                 }
+[; ;main.c: 93:                     LATD = counter--;
+[e = _LATD -> -- _counter -> 1 `i `uc ]
+"94
+[; ;main.c: 94:                     changeFast = 0;
+[e = _changeFast -> 0 `i ]
+"95
+[; ;main.c: 95:                 }
 }
 [e :U 530 ]
-"94
-[; ;main.c: 94:                 break;
+"96
+[; ;main.c: 96:                 break;
 [e $U 505  ]
-"95
-[; ;main.c: 95:         }
+"97
+[; ;main.c: 97:         }
 }
 [e $U 505  ]
 [e :U 506 ]
-[e [\ -> _state `ui , $ -> . `E4595 0 `ui 507
- , $ -> . `E4595 1 `ui 511
- , $ -> . `E4595 3 `ui 514
- , $ -> . `E4595 2 `ui 518
- , $ -> . `E4595 4 `ui 521
- , $ -> . `E4595 6 `ui 524
- , $ -> . `E4595 5 `ui 528
+[e [\ -> _state `ui , $ -> . `E4566 0 `ui 507
+ , $ -> . `E4566 1 `ui 511
+ , $ -> . `E4566 3 `ui 514
+ , $ -> . `E4566 2 `ui 518
+ , $ -> . `E4566 4 `ui 521
+ , $ -> . `E4566 6 `ui 524
+ , $ -> . `E4566 5 `ui 528
  505 ]
 [e :U 505 ]
-"96
-[; ;main.c: 96:     }
+"98
+[; ;main.c: 98:     }
 }
 [e :U 502 ]
 [e $U 503  ]
 [e :U 504 ]
-"97
-[; ;main.c: 97:     return;
+"99
+[; ;main.c: 99:     return;
 [e $UE 501  ]
-"98
-[; ;main.c: 98: }
+"100
+[; ;main.c: 100: }
 [e :UE 501 ]
 }

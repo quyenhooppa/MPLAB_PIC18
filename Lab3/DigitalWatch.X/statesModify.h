@@ -20,7 +20,6 @@ int count = 0;
 void modifyHour (void);
 void modifyMinute (void);
 void modifySecond (void);
-void displayModify (void);
 void displayModHour (void);
 void displayModMinute (void);
 void displayModSecond (void);

@@ -1,12 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./interrupt.h
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4607 0 1 2 3 4 .. ]
-[n E4607 State norClk modHr modMin modSec stpWatch  ]
-"28 ./statesModify.h
-[; ;./statesModify.h: 28: enum st{init, iNor, iAuto} stModify;
-[c E4628 0 1 2 .. ]
-[n E4628 st init iNor iAuto  ]
+"31 ./interrupt.h
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4611 0 1 2 3 4 .. ]
+[n E4611 State norClk modHr modMin modSec stpWatch  ]
+"27 ./statesModify.h
+[; ;./statesModify.h: 27: enum st{init, iNor, iAuto} stModify;
+[c E4631 0 1 2 .. ]
+[n E4631 st init iNor iAuto  ]
 [p mainexit ]
 "32 ./system.h
 [v _oscillationInitialize `(v ~T0 @X0 0 ef ]
@@ -14,10 +14,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _timerInitialize `(v ~T0 @X0 0 ef ]
 "34
 [v _buttonInitialize `(v ~T0 @X0 0 ef ]
-"35
-[v _ledInitialize `(v ~T0 @X0 0 ef ]
-"71 ./BBSPI_LCD.h
-[; ;./BBSPI_LCD.h: 71:     void LCDInit(void);
+"77 ./BBSPI_LCD.h
+[; ;./BBSPI_LCD.h: 77:     void LCDInit(void);
 [v _LCDInit `(v ~T0 @X0 0 ef ]
 "23 ./stateClock.h
 [; ;./stateClock.h: 23: void norClock (void);
@@ -28,26 +26,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20 ./statesModify.h
 [; ;./statesModify.h: 20: void modifyHour (void);
 [v _modifyHour `(v ~T0 @X0 0 ef ]
-"24
-[; ;./statesModify.h: 24: void displayModHour (void);
+"23
+[; ;./statesModify.h: 23: void displayModHour (void);
 [v _displayModHour `(v ~T0 @X0 0 ef ]
 "21
 [; ;./statesModify.h: 21: void modifyMinute (void);
 [v _modifyMinute `(v ~T0 @X0 0 ef ]
-"25
-[; ;./statesModify.h: 25: void displayModMinute (void);
+"24
+[; ;./statesModify.h: 24: void displayModMinute (void);
 [v _displayModMinute `(v ~T0 @X0 0 ef ]
 "22
 [; ;./statesModify.h: 22: void modifySecond (void);
 [v _modifySecond `(v ~T0 @X0 0 ef ]
-"26
-[; ;./statesModify.h: 26: void displayModSecond (void);
+"25
+[; ;./statesModify.h: 25: void displayModSecond (void);
 [v _displayModSecond `(v ~T0 @X0 0 ef ]
-"22 ./stateStpWatch.h
-[; ;./stateStpWatch.h: 22: void stopWatch (void);
+"17 ./stateStpWatch.h
+[; ;./stateStpWatch.h: 17: void stopWatch (void);
 [v _stopWatch `(v ~T0 @X0 0 ef ]
-"23
-[; ;./stateStpWatch.h: 23: void displayStpWatch (void);
+"18
+[; ;./stateStpWatch.h: 18: void displayStpWatch (void);
 [v _displayStpWatch `(v ~T0 @X0 0 ef ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -721,9 +719,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"24
+[; ;./interrupt.h: 24: int runSTW = 0;
+[v _runSTW `i ~T0 @X0 1 e ]
+[i _runSTW
+-> 0 `i
+]
+"25
+[; ;./interrupt.h: 25: int minSTW = 0;
+[v _minSTW `i ~T0 @X0 1 e ]
+[i _minSTW
+-> 0 `i
+]
+"26
+[; ;./interrupt.h: 26: int secSTW = 0;
+[v _secSTW `i ~T0 @X0 1 e ]
+[i _secSTW
+-> 0 `i
+]
 "27
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4607 ~T0 @X0 1 e ]
+[; ;./interrupt.h: 27: int miliSecSTW = 0;
+[v _miliSecSTW `i ~T0 @X0 1 e ]
+[i _miliSecSTW
+-> 0 `i
+]
+"31
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4611 ~T0 @X0 1 e ]
 "19 ./stateClock.h
 [; ;./stateClock.h: 19: int sec = 0;
 [v _sec `i ~T0 @X0 1 e ]
@@ -754,33 +776,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _count
 -> 0 `i
 ]
-"28
-[; ;./statesModify.h: 28: enum st{init, iNor, iAuto} stModify;
-[v _stModify `E4628 ~T0 @X0 1 e ]
-"17 ./stateStpWatch.h
-[; ;./stateStpWatch.h: 17: int run = 0;
-[v _run `i ~T0 @X0 1 e ]
-[i _run
--> 0 `i
-]
-"18
-[; ;./stateStpWatch.h: 18: int minSTW = 0;
-[v _minSTW `i ~T0 @X0 1 e ]
-[i _minSTW
--> 0 `i
-]
-"19
-[; ;./stateStpWatch.h: 19: int secSTW = 0;
-[v _secSTW `i ~T0 @X0 1 e ]
-[i _secSTW
--> 0 `i
-]
-"20
-[; ;./stateStpWatch.h: 20: int miliSecSTW = 0;
-[v _miliSecSTW `i ~T0 @X0 1 e ]
-[i _miliSecSTW
--> 0 `i
-]
+"27
+[; ;./statesModify.h: 27: enum st{init, iNor, iAuto} stModify;
+[v _stModify `E4631 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "15 main.c
 [; ;main.c: 15: void main(void) {
@@ -798,186 +796,186 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 18:     buttonInitialize();
 [e ( _buttonInitialize ..  ]
 "19
-[; ;main.c: 19:     ledInitialize();
-[e ( _ledInitialize ..  ]
-"20
-[; ;main.c: 20:     LCDInit();
+[; ;main.c: 19:     LCDInit();
 [e ( _LCDInit ..  ]
+"20
+[; ;main.c: 20:     state = norClk;
+[e = _state . `E4611 0 ]
 "21
-[; ;main.c: 21:     state = norClk;
-[e = _state . `E4607 0 ]
+[; ;main.c: 21:     stModify = init;
+[e = _stModify . `E4631 0 ]
 "22
-[; ;main.c: 22:     stModify = init;
-[e = _stModify . `E4628 0 ]
-"23
-[; ;main.c: 23:     while (1)
+[; ;main.c: 22:     while (1)
 [e :U 503 ]
-"24
-[; ;main.c: 24:     {
+"23
+[; ;main.c: 23:     {
 {
-"25
-[; ;main.c: 25:         switch (state) {
+"24
+[; ;main.c: 24:         switch (state) {
 [e $U 506  ]
 {
-"26
-[; ;main.c: 26:             case norClk:
+"25
+[; ;main.c: 25:             case norClk:
 [e :U 507 ]
-"27
-[; ;main.c: 27:                 miliSecSTW = 0;
+"26
+[; ;main.c: 26:                 miliSecSTW = 0;
 [e = _miliSecSTW -> 0 `i ]
-"28
-[; ;main.c: 28:                 secSTW = 0;
+"27
+[; ;main.c: 27:                 secSTW = 0;
 [e = _secSTW -> 0 `i ]
-"29
-[; ;main.c: 29:                 minSTW = 0;
+"28
+[; ;main.c: 28:                 minSTW = 0;
 [e = _minSTW -> 0 `i ]
-"30
-[; ;main.c: 30:                 norClock();
+"29
+[; ;main.c: 29:                 norClock();
 [e ( _norClock ..  ]
-"31
-[; ;main.c: 31:                 displayClock();
+"30
+[; ;main.c: 30:                 displayClock();
 [e ( _displayClock ..  ]
-"32
-[; ;main.c: 32:                 if (changeModePressed == 1) {
+"31
+[; ;main.c: 31:                 if (changeModePressed == 1) {
 [e $ ! == _changeModePressed -> 1 `i 508  ]
 {
-"33
-[; ;main.c: 33:                     changeModePressed = 0;
+"32
+[; ;main.c: 32:                     changeModePressed = 0;
 [e = _changeModePressed -> 0 `i ]
+"33
+[; ;main.c: 33:                     state = modHr;
+[e = _state . `E4611 1 ]
 "34
-[; ;main.c: 34:                     state = modHr;
-[e = _state . `E4607 1 ]
-"35
-[; ;main.c: 35:                     blink = 0;
+[; ;main.c: 34:                     blink = 0;
 [e = _blink -> 0 `i ]
-"36
-[; ;main.c: 36:                     count10ms = 0;
+"35
+[; ;main.c: 35:                     count10ms = 0;
 [e = _count10ms -> 0 `i ]
-"37
-[; ;main.c: 37:                 }
+"36
+[; ;main.c: 36:                 }
 }
 [e :U 508 ]
-"38
-[; ;main.c: 38:                 break;
+"37
+[; ;main.c: 37:                 break;
 [e $U 505  ]
-"39
-[; ;main.c: 39:             case modHr:
+"38
+[; ;main.c: 38:             case modHr:
 [e :U 509 ]
-"40
-[; ;main.c: 40:                 modifyHour();
+"39
+[; ;main.c: 39:                 modifyHour();
 [e ( _modifyHour ..  ]
-"42
-[; ;main.c: 42:                 displayModHour();
+"41
+[; ;main.c: 41:                 displayModHour();
 [e ( _displayModHour ..  ]
-"43
-[; ;main.c: 43:                 if (changeModePressed == 1) {
+"42
+[; ;main.c: 42:                 if (changeModePressed == 1) {
 [e $ ! == _changeModePressed -> 1 `i 510  ]
 {
-"44
-[; ;main.c: 44:                     changeModePressed = 0;
+"43
+[; ;main.c: 43:                     changeModePressed = 0;
 [e = _changeModePressed -> 0 `i ]
+"44
+[; ;main.c: 44:                     state = modMin;
+[e = _state . `E4611 2 ]
 "45
-[; ;main.c: 45:                     state = modMin;
-[e = _state . `E4607 2 ]
-"46
-[; ;main.c: 46:                     blink = 0;
+[; ;main.c: 45:                     blink = 0;
 [e = _blink -> 0 `i ]
-"47
-[; ;main.c: 47:                     count10ms = 0;
+"46
+[; ;main.c: 46:                     count10ms = 0;
 [e = _count10ms -> 0 `i ]
-"48
-[; ;main.c: 48:                 }
+"47
+[; ;main.c: 47:                 }
 }
 [e :U 510 ]
-"49
-[; ;main.c: 49:                 break;
+"48
+[; ;main.c: 48:                 break;
 [e $U 505  ]
-"50
-[; ;main.c: 50:             case modMin:
+"49
+[; ;main.c: 49:             case modMin:
 [e :U 511 ]
-"51
-[; ;main.c: 51:                 modifyMinute();
+"50
+[; ;main.c: 50:                 modifyMinute();
 [e ( _modifyMinute ..  ]
-"53
-[; ;main.c: 53:                 displayModMinute();
+"52
+[; ;main.c: 52:                 displayModMinute();
 [e ( _displayModMinute ..  ]
-"54
-[; ;main.c: 54:                 if (changeModePressed == 1) {
+"53
+[; ;main.c: 53:                 if (changeModePressed == 1) {
 [e $ ! == _changeModePressed -> 1 `i 512  ]
 {
-"55
-[; ;main.c: 55:                     changeModePressed = 0;
+"54
+[; ;main.c: 54:                     changeModePressed = 0;
 [e = _changeModePressed -> 0 `i ]
+"55
+[; ;main.c: 55:                     state = modSec;
+[e = _state . `E4611 3 ]
 "56
-[; ;main.c: 56:                     state = modSec;
-[e = _state . `E4607 3 ]
-"57
-[; ;main.c: 57:                     blink = 0;
+[; ;main.c: 56:                     blink = 0;
 [e = _blink -> 0 `i ]
-"58
-[; ;main.c: 58:                     count10ms = 0;
+"57
+[; ;main.c: 57:                     count10ms = 0;
 [e = _count10ms -> 0 `i ]
-"59
-[; ;main.c: 59:                 }
+"58
+[; ;main.c: 58:                 }
 }
 [e :U 512 ]
-"60
-[; ;main.c: 60:                 break;
+"59
+[; ;main.c: 59:                 break;
 [e $U 505  ]
-"61
-[; ;main.c: 61:             case modSec:
+"60
+[; ;main.c: 60:             case modSec:
 [e :U 513 ]
-"62
-[; ;main.c: 62:                 modifySecond();
+"61
+[; ;main.c: 61:                 modifySecond();
 [e ( _modifySecond ..  ]
-"64
-[; ;main.c: 64:                 displayModSecond();
+"63
+[; ;main.c: 63:                 displayModSecond();
 [e ( _displayModSecond ..  ]
-"65
-[; ;main.c: 65:                 if (changeModePressed == 1) {
+"64
+[; ;main.c: 64:                 if (changeModePressed == 1) {
 [e $ ! == _changeModePressed -> 1 `i 514  ]
 {
-"66
-[; ;main.c: 66:                     changeModePressed = 0;
+"65
+[; ;main.c: 65:                     changeModePressed = 0;
 [e = _changeModePressed -> 0 `i ]
+"66
+[; ;main.c: 66:                     state = stpWatch;
+[e = _state . `E4611 4 ]
 "67
-[; ;main.c: 67:                     state = stpWatch;
-[e = _state . `E4607 4 ]
+[; ;main.c: 67:                     runSTW = 0;
+[e = _runSTW -> 0 `i ]
 "68
-[; ;main.c: 68:                     run = 0;
-[e = _run -> 0 `i ]
-"69
-[; ;main.c: 69:                     count10ms = 0;
+[; ;main.c: 68:                     count10ms = 0;
 [e = _count10ms -> 0 `i ]
-"70
-[; ;main.c: 70:                 }
+"69
+[; ;main.c: 69:                 }
 }
 [e :U 514 ]
-"71
-[; ;main.c: 71:                 break;
+"70
+[; ;main.c: 70:                 break;
 [e $U 505  ]
-"72
-[; ;main.c: 72:             case stpWatch:
+"71
+[; ;main.c: 71:             case stpWatch:
 [e :U 515 ]
-"73
-[; ;main.c: 73:                 norClock();
+"72
+[; ;main.c: 72:                 norClock();
 [e ( _norClock ..  ]
-"74
-[; ;main.c: 74:                 stopWatch();
+"73
+[; ;main.c: 73:                 stopWatch();
 [e ( _stopWatch ..  ]
-"75
-[; ;main.c: 75:                 displayStpWatch();
+"74
+[; ;main.c: 74:                 displayStpWatch();
 [e ( _displayStpWatch ..  ]
-"76
-[; ;main.c: 76:                 if (changeModePressed == 1) {
+"75
+[; ;main.c: 75:                 if (changeModePressed == 1) {
 [e $ ! == _changeModePressed -> 1 `i 516  ]
 {
-"77
-[; ;main.c: 77:                     changeModePressed = 0;
+"76
+[; ;main.c: 76:                     changeModePressed = 0;
 [e = _changeModePressed -> 0 `i ]
+"77
+[; ;main.c: 77:                     state = norClk;
+[e = _state . `E4611 0 ]
 "78
-[; ;main.c: 78:                     state = norClk;
-[e = _state . `E4607 0 ]
+[; ;main.c: 78:                     runSTW = 0;
+[e = _runSTW -> 0 `i ]
 "79
 [; ;main.c: 79:                 }
 }
@@ -990,11 +988,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 505  ]
 [e :U 506 ]
-[e [\ -> _state `ui , $ -> . `E4607 0 `ui 507
- , $ -> . `E4607 1 `ui 509
- , $ -> . `E4607 2 `ui 511
- , $ -> . `E4607 3 `ui 513
- , $ -> . `E4607 4 `ui 515
+[e [\ -> _state `ui , $ -> . `E4611 0 `ui 507
+ , $ -> . `E4611 1 `ui 509
+ , $ -> . `E4611 2 `ui 511
+ , $ -> . `E4611 3 `ui 513
+ , $ -> . `E4611 4 `ui 515
  505 ]
 [e :U 505 ]
 "82

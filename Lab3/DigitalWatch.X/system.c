@@ -11,11 +11,12 @@ void timerInitialize (void) {
     //Timer 0
     INTCONbits.TMR0IE = 1;//set timer0
     INTCONbits.TMR0IF = 0;
-    //T0CON = 0b10000011;//16-bit register, internal oscillation, prescaler 1:4 
-    T0CON = 0b11000110;
+    T0CON = 0b10000100; 
+    //T0CON = 0b11000110;
     //write to timer0 register
-    //TMR0H = 0xfd;
-    TMR0L = 100;
+    TMR0H = 0xfd;
+    TMR0L = 0x8f;
+    //TMR0L = 100;
     //timer0ReloadVal = TMR0;
 }
 

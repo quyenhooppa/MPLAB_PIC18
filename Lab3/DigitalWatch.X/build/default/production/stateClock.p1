@@ -1,16 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./interrupt.h
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4607 0 1 2 3 4 .. ]
-[n E4607 State norClk modHr modMin modSec stpWatch  ]
-"126 ./BBSPI_LCD.h
-[; ;./BBSPI_LCD.h: 126:     void LCDPutInst(unsigned char);
+"31 ./interrupt.h
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4611 0 1 2 3 4 .. ]
+[n E4611 State norClk modHr modMin modSec stpWatch  ]
+"132 ./BBSPI_LCD.h
+[; ;./BBSPI_LCD.h: 132:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
-"135
-[; ;./BBSPI_LCD.h: 135:     void LCDPutStr(const char *);
+"141
+[; ;./BBSPI_LCD.h: 141:     void LCDPutStr(const char *);
 [v _LCDPutStr `(v ~T0 @X0 0 ef1`*Cuc ]
-"117
-[; ;./BBSPI_LCD.h: 117:     void LCDPutChar(unsigned char);
+"123
+[; ;./BBSPI_LCD.h: 123:     void LCDPutChar(unsigned char);
 [v _LCDPutChar `(v ~T0 @X0 0 ef1`uc ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -684,9 +684,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"24
+[; ;./interrupt.h: 24: int runSTW = 0;
+[v _runSTW `i ~T0 @X0 1 e ]
+[i _runSTW
+-> 0 `i
+]
+"25
+[; ;./interrupt.h: 25: int minSTW = 0;
+[v _minSTW `i ~T0 @X0 1 e ]
+[i _minSTW
+-> 0 `i
+]
+"26
+[; ;./interrupt.h: 26: int secSTW = 0;
+[v _secSTW `i ~T0 @X0 1 e ]
+[i _secSTW
+-> 0 `i
+]
 "27
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4607 ~T0 @X0 1 e ]
+[; ;./interrupt.h: 27: int miliSecSTW = 0;
+[v _miliSecSTW `i ~T0 @X0 1 e ]
+[i _miliSecSTW
+-> 0 `i
+]
+"31
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4611 ~T0 @X0 1 e ]
 "19 ./stateClock.h
 [; ;./stateClock.h: 19: int sec = 0;
 [v _sec `i ~T0 @X0 1 e ]
@@ -711,104 +735,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _norClock ]
 [f ]
-"5
-[; ;stateClock.c: 5:         if (count10ms >= 100) {
+"4
+[; ;stateClock.c: 4:     if (count10ms >= 100) {
 [e $ ! >= _count10ms -> 100 `i 502  ]
 {
-"6
-[; ;stateClock.c: 6:             count10ms = 0;
+"5
+[; ;stateClock.c: 5:         count10ms = 0;
 [e = _count10ms -> 0 `i ]
-"7
-[; ;stateClock.c: 7:             sec++;
+"6
+[; ;stateClock.c: 6:         sec++;
 [e ++ _sec -> 1 `i ]
-"8
-[; ;stateClock.c: 8:             if (sec >= 60) {
+"7
+[; ;stateClock.c: 7:         if (sec >= 60) {
 [e $ ! >= _sec -> 60 `i 503  ]
 {
-"9
-[; ;stateClock.c: 9:                 sec = 0;
+"8
+[; ;stateClock.c: 8:             sec = 0;
 [e = _sec -> 0 `i ]
-"10
-[; ;stateClock.c: 10:                 min++;
+"9
+[; ;stateClock.c: 9:             min++;
 [e ++ _min -> 1 `i ]
-"11
-[; ;stateClock.c: 11:             }
+"10
+[; ;stateClock.c: 10:         }
 }
 [e :U 503 ]
-"12
-[; ;stateClock.c: 12:             if (min >= 60) {
+"11
+[; ;stateClock.c: 11:         if (min >= 60) {
 [e $ ! >= _min -> 60 `i 504  ]
 {
-"13
-[; ;stateClock.c: 13:                 min = 0;
+"12
+[; ;stateClock.c: 12:             min = 0;
 [e = _min -> 0 `i ]
-"14
-[; ;stateClock.c: 14:                 hr++;
+"13
+[; ;stateClock.c: 13:             hr++;
 [e ++ _hr -> 1 `i ]
-"15
-[; ;stateClock.c: 15:             }
+"14
+[; ;stateClock.c: 14:         }
 }
 [e :U 504 ]
-"16
-[; ;stateClock.c: 16:             if (hr >= 24) {
+"15
+[; ;stateClock.c: 15:         if (hr >= 24) {
 [e $ ! >= _hr -> 24 `i 505  ]
 {
-"17
-[; ;stateClock.c: 17:                 hr = 0;
+"16
+[; ;stateClock.c: 16:             hr = 0;
 [e = _hr -> 0 `i ]
-"18
-[; ;stateClock.c: 18:             }
+"17
+[; ;stateClock.c: 17:         }
 }
 [e :U 505 ]
-"19
-[; ;stateClock.c: 19:         }
+"18
+[; ;stateClock.c: 18:     }
 }
 [e :U 502 ]
-"21
-[; ;stateClock.c: 21: }
+"19
+[; ;stateClock.c: 19: }
 [e :UE 501 ]
 }
-"23
-[; ;stateClock.c: 23: void displayClock (void) {
+"21
+[; ;stateClock.c: 21: void displayClock (void) {
 [v _displayClock `(v ~T0 @X0 1 ef ]
 {
 [e :U _displayClock ]
 [f ]
-"25
-[; ;stateClock.c: 25:         LCDPutInst(0x80);
+"22
+[; ;stateClock.c: 22:     LCDPutInst(0x80);
 [e ( _LCDPutInst (1 -> -> 128 `i `uc ]
-"26
-[; ;stateClock.c: 26:         LCDPutStr("  NORMAL CLOCK  ");
+"23
+[; ;stateClock.c: 23:     LCDPutStr("  NORMAL CLOCK  ");
 [e ( _LCDPutStr (1 :s 1C ]
-"27
-[; ;stateClock.c: 27:         LCDPutInst(0xC0);
+"24
+[; ;stateClock.c: 24:     LCDPutInst(0xC0);
 [e ( _LCDPutInst (1 -> -> 192 `i `uc ]
-"28
-[; ;stateClock.c: 28:         LCDPutChar(hr/10+'0');
+"25
+[; ;stateClock.c: 25:     LCDPutChar(hr/10+'0');
 [e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
-"29
-[; ;stateClock.c: 29:         LCDPutChar(hr%10+'0');
+"26
+[; ;stateClock.c: 26:     LCDPutChar(hr%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
+"27
+[; ;stateClock.c: 27:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"28
+[; ;stateClock.c: 28:     LCDPutChar(min/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+"29
+[; ;stateClock.c: 29:     LCDPutChar(min%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
 "30
-[; ;stateClock.c: 30:         LCDPutChar(':');
+[; ;stateClock.c: 30:     LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
 "31
-[; ;stateClock.c: 31:         LCDPutChar(min/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
-"32
-[; ;stateClock.c: 32:         LCDPutChar(min%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
-"33
-[; ;stateClock.c: 33:         LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"34
-[; ;stateClock.c: 34:         LCDPutChar(sec/10+'0');
+[; ;stateClock.c: 31:     LCDPutChar(sec/10+'0');
 [e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
-"35
-[; ;stateClock.c: 35:         LCDPutChar(sec%10+'0');
+"32
+[; ;stateClock.c: 32:     LCDPutChar(sec%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
-"37
-[; ;stateClock.c: 37: }
+"33
+[; ;stateClock.c: 33: }
 [e :UE 506 ]
 }
 [a 1C 32 32 78 79 82 77 65 76 32 67 76 79 67 75 32 32 0 ]

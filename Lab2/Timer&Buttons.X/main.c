@@ -9,6 +9,8 @@
 #include "system.h"
 #include "button.h"
 
+int counter = 0;
+
 void main(void) {
     enum State{init, iNormal, iFast, iSlow, dNormal, dFast, dSlow} state;
     oscillationInitialize();
@@ -22,11 +24,11 @@ void main(void) {
                 countFast = 0;
                 countSlow = 0;
                 if (iCount > 0) {
-                    LATD++;
+                    LED = counter++;
                     state = iNormal;
                 }
                 else if (iCount == 0 && dCount > 0) {
-                    LATD--;
+                    LED = counter--;
                     state = dNormal;
                 }
                 break;
@@ -44,7 +46,7 @@ void main(void) {
                     state = init;
                 }
                 if (changeSlow == 1) {
-                    LATD++;
+                    LED = counter++;
                     changeSlow = 0;
                 }
                 if (countFast > 0) {
@@ -57,7 +59,7 @@ void main(void) {
                     state = init;
                 }
                 if (changeFast == 1) {
-                    LATD++;
+                    LED = counter++;
                     changeFast = 0;
                 }
                 break;
@@ -75,7 +77,7 @@ void main(void) {
                     state = init;
                 }
                 if (changeSlow == 1) {
-                    LATD--;
+                    LED = counter--;
                     changeSlow = 0;
                 }
                 if (countFast > 0) {
@@ -88,7 +90,7 @@ void main(void) {
                     state = init;
                 }
                 if (changeFast == 1) {
-                    LATD--;
+                    LED = counter--;
                     changeFast = 0;
                 }
                 break;  

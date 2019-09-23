@@ -16,7 +16,6 @@ void main(void) {
     oscillationInitialize();
     timerInitialize();
     buttonInitialize();
-    ledInitialize();
     LCDInit();
     state = norClk;
     stModify = init;
@@ -65,7 +64,7 @@ void main(void) {
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = stpWatch;
-                    run = 0;
+                    runSTW = 0;
                     count10ms = 0;
                 }
                 break; 
@@ -76,6 +75,7 @@ void main(void) {
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = norClk;
+                    runSTW = 0;
                 }
                 break;
         }

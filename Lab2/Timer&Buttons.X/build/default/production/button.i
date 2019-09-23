@@ -7797,29 +7797,26 @@ void button (void);
 int readIButton(void) {
     firstReadRA5 = secondReadRA5;
     secondReadRA5 = PORTAbits.RA5;
+    int check = 0;
     if (firstReadRA5 == secondReadRA5) {
         if (firstReadRA5 == 0) {
-            return 1;
-        }
-        else {
-            return 2;
+            check = 1;
         }
     }
-   return 0;
+   return check;
 }
 
 int readDButton (void) {
     firstReadRB0 = secondReadRB0;
     secondReadRB0 = PORTBbits.RB0;
+
+    int check = 0;
     if (firstReadRB0 == secondReadRB0) {
         if (firstReadRB0 == 0) {
-            return 1;
-        }
-        else {
-            return 2;
+            check = 1;
         }
     }
-    return 0;
+   return check;
 }
 
 void button (void) {
@@ -7858,8 +7855,7 @@ void button (void) {
                 countFast = 0;
             }
         }
-    }
-    else if (iButton == 2 || dButton == 2) {
+    } else {
         iCount = 0;
         dCount = 0;
         countFast = 0;

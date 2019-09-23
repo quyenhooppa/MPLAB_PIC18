@@ -7883,21 +7883,21 @@ void ledInitialize(void);
 # 1 "./button.h" 1
 # 17 "./button.h"
 # 1 "./BBSPI_LCD.h" 1
-# 71 "./BBSPI_LCD.h"
+# 77 "./BBSPI_LCD.h"
     void LCDInit(void);
-# 80 "./BBSPI_LCD.h"
+# 86 "./BBSPI_LCD.h"
     void InitBBSPI (void);
-# 89 "./BBSPI_LCD.h"
+# 95 "./BBSPI_LCD.h"
     void SendByteBBSPI (unsigned char output);
-# 98 "./BBSPI_LCD.h"
+# 104 "./BBSPI_LCD.h"
     void Port_BBSPIInit (unsigned char port_dir);
-# 108 "./BBSPI_LCD.h"
+# 114 "./BBSPI_LCD.h"
     void WritePort_BBSPI (unsigned char port_add, unsigned char a);
-# 117 "./BBSPI_LCD.h"
+# 123 "./BBSPI_LCD.h"
     void LCDPutChar(unsigned char);
-# 126 "./BBSPI_LCD.h"
+# 132 "./BBSPI_LCD.h"
     void LCDPutInst(unsigned char);
-# 135 "./BBSPI_LCD.h"
+# 141 "./BBSPI_LCD.h"
     void LCDPutStr(const char *);
 # 18 "./button.h" 2
 
@@ -7920,6 +7920,10 @@ void button (void);
 
 int count10ms = 0;
 int timerFlag = 0;
+int runSTW = 0;
+int minSTW = 0;
+int secSTW = 0;
+int miliSecSTW = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
 
@@ -7940,7 +7944,6 @@ int count = 0;
 void modifyHour (void);
 void modifyMinute (void);
 void modifySecond (void);
-void displayModify (void);
 void displayModHour (void);
 void displayModMinute (void);
 void displayModSecond (void);
@@ -8049,8 +8052,9 @@ void displayModHour (void) {
     LCDPutInst(0x80);
     LCDPutStr(" MODIFIES HOUR ");
     LCDPutInst(0xC0);
-    if (count10ms >= (20/4)) {
+    if (count10ms >= (20*2)) {
         count10ms = 0;
+        if (countAuto <= 0) {
             if (blink == 0) {
                 LCDPutChar(' ');
                 LCDPutChar(' ');
@@ -8059,11 +8063,19 @@ void displayModHour (void) {
                 LCDPutChar(hr%10+'0');
             }
             blink = (blink + 1) % 2;
+        } else {
+            LCDPutChar(hr/10+'0');
+            LCDPutChar(hr%10+'0');
+        }
     }
+    LCDPutInst(0xC2);
     LCDPutChar(':');
+
     LCDPutChar(min/10+'0');
     LCDPutChar(min%10+'0');
+
     LCDPutChar(':');
+
     LCDPutChar(sec/10+'0');
     LCDPutChar(sec%10+'0');
 }
@@ -8074,9 +8086,12 @@ void displayModMinute (void) {
     LCDPutInst(0xC0);
     LCDPutChar(hr/10+'0');
     LCDPutChar(hr%10+'0');
+
     LCDPutChar(':');
-    if (count10ms >= (20/4)) {
+    LCDPutInst(0xC3);
+    if (count10ms >= (20*2)) {
         count10ms = 0;
+        if (countAuto <= 0) {
             if (blink == 0) {
                 LCDPutChar(' ');
                 LCDPutChar(' ');
@@ -8085,24 +8100,35 @@ void displayModMinute (void) {
                 LCDPutChar(min%10+'0');
             }
             blink = (blink + 1) % 2;
+        } else {
+            LCDPutChar(min/10+'0');
+            LCDPutChar(min%10+'0');
+        }
     }
+    LCDPutInst(0xC5);
     LCDPutChar(':');
+
     LCDPutChar(sec/10+'0');
     LCDPutChar(sec%10+'0');
 }
 
 void displayModSecond (void) {
     LCDPutInst(0x80);
-    LCDPutStr("MODIFIES MINUTE");
+    LCDPutStr("MODIFIES SECOND");
     LCDPutInst(0xC0);
     LCDPutChar(hr/10+'0');
     LCDPutChar(hr%10+'0');
+
     LCDPutChar(':');
+    LCDPutInst(0xC3);
     LCDPutChar(min/10+'0');
     LCDPutChar(min%10+'0');
+
     LCDPutChar(':');
-    if (count10ms >= (20/4)) {
+    LCDPutInst(0xC6);
+    if (count10ms >= (20*2)) {
         count10ms = 0;
+        if (countAuto <= 0) {
             if (blink == 0) {
                 LCDPutChar(' ');
                 LCDPutChar(' ');
@@ -8111,5 +8137,9 @@ void displayModSecond (void) {
                 LCDPutChar(sec%10+'0');
             }
             blink = (blink + 1) % 2;
+        } else {
+            LCDPutChar(sec/10+'0');
+            LCDPutChar(sec%10+'0');
+        }
     }
 }

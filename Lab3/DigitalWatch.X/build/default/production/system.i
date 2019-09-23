@@ -7803,11 +7803,12 @@ void timerInitialize (void) {
 
     INTCONbits.TMR0IE = 1;
     INTCONbits.TMR0IF = 0;
+    T0CON = 0b10000100;
 
-    T0CON = 0b11000110;
 
+    TMR0H = 0xfd;
+    TMR0L = 0x8f;
 
-    TMR0L = 100;
 
 }
 

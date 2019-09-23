@@ -724,264 +724,242 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;button.c: 5:     secondReadRA5 = PORTAbits.RA5;
 [e = _secondReadRA5 -> . . _PORTAbits 0 5 `uc ]
 "6
-[; ;button.c: 6:     if (firstReadRA5 == secondReadRA5) {
+[; ;button.c: 6:     int check = 0;
+[v _check `i ~T0 @X0 1 a ]
+[e = _check -> 0 `i ]
+"7
+[; ;button.c: 7:     if (firstReadRA5 == secondReadRA5) {
 [e $ ! == -> _firstReadRA5 `i -> _secondReadRA5 `i 502  ]
 {
-"7
-[; ;button.c: 7:         if (firstReadRA5 == 0) {
+"8
+[; ;button.c: 8:         if (firstReadRA5 == 0) {
 [e $ ! == -> _firstReadRA5 `i -> 0 `i 503  ]
 {
-"8
-[; ;button.c: 8:             return 1;
-[e ) -> 1 `i ]
-[e $UE 501  ]
 "9
-[; ;button.c: 9:         }
-}
-[e $U 504  ]
+[; ;button.c: 9:             check = 1;
+[e = _check -> 1 `i ]
 "10
-[; ;button.c: 10:         else {
-[e :U 503 ]
-{
-"11
-[; ;button.c: 11:             return 2;
-[e ) -> 2 `i ]
-[e $UE 501  ]
-"12
-[; ;button.c: 12:         }
+[; ;button.c: 10:         }
 }
-[e :U 504 ]
-"13
-[; ;button.c: 13:     }
+[e :U 503 ]
+"11
+[; ;button.c: 11:     }
 }
 [e :U 502 ]
-"14
-[; ;button.c: 14:    return 0;
-[e ) -> 0 `i ]
+"12
+[; ;button.c: 12:    return check;
+[e ) _check ]
 [e $UE 501  ]
-"15
-[; ;button.c: 15: }
+"13
+[; ;button.c: 13: }
 [e :UE 501 ]
 }
-"17
-[; ;button.c: 17: int readDButton (void) {
+"15
+[; ;button.c: 15: int readDButton (void) {
 [v _readDButton `(i ~T0 @X0 1 ef ]
 {
 [e :U _readDButton ]
 [f ]
-"18
-[; ;button.c: 18:     firstReadRB0 = secondReadRB0;
+"16
+[; ;button.c: 16:     firstReadRB0 = secondReadRB0;
 [e = _firstReadRB0 _secondReadRB0 ]
-"19
-[; ;button.c: 19:     secondReadRB0 = PORTBbits.RB0;
+"17
+[; ;button.c: 17:     secondReadRB0 = PORTBbits.RB0;
 [e = _secondReadRB0 -> . . _PORTBbits 0 0 `uc ]
+"19
+[; ;button.c: 19:     int check = 0;
+[v _check `i ~T0 @X0 1 a ]
+[e = _check -> 0 `i ]
 "20
 [; ;button.c: 20:     if (firstReadRB0 == secondReadRB0) {
-[e $ ! == -> _firstReadRB0 `i -> _secondReadRB0 `i 506  ]
+[e $ ! == -> _firstReadRB0 `i -> _secondReadRB0 `i 505  ]
 {
 "21
 [; ;button.c: 21:         if (firstReadRB0 == 0) {
-[e $ ! == -> _firstReadRB0 `i -> 0 `i 507  ]
+[e $ ! == -> _firstReadRB0 `i -> 0 `i 506  ]
 {
 "22
-[; ;button.c: 22:             return 1;
-[e ) -> 1 `i ]
-[e $UE 505  ]
+[; ;button.c: 22:             check = 1;
+[e = _check -> 1 `i ]
 "23
 [; ;button.c: 23:         }
 }
-[e $U 508  ]
-"24
-[; ;button.c: 24:         else {
-[e :U 507 ]
-{
-"25
-[; ;button.c: 25:             return 2;
-[e ) -> 2 `i ]
-[e $UE 505  ]
-"26
-[; ;button.c: 26:         }
-}
-[e :U 508 ]
-"27
-[; ;button.c: 27:     }
-}
 [e :U 506 ]
-"28
-[; ;button.c: 28:     return 0;
-[e ) -> 0 `i ]
-[e $UE 505  ]
-"29
-[; ;button.c: 29: }
-[e :UE 505 ]
+"24
+[; ;button.c: 24:     }
 }
-"31
-[; ;button.c: 31: void button (void) {
+[e :U 505 ]
+"25
+[; ;button.c: 25:    return check;
+[e ) _check ]
+[e $UE 504  ]
+"26
+[; ;button.c: 26: }
+[e :UE 504 ]
+}
+"28
+[; ;button.c: 28: void button (void) {
 [v _button `(v ~T0 @X0 1 ef ]
 {
 [e :U _button ]
 [f ]
-"32
-[; ;button.c: 32:     int iButton = readIButton();
+"29
+[; ;button.c: 29:     int iButton = readIButton();
 [v _iButton `i ~T0 @X0 1 a ]
 [e = _iButton ( _readIButton ..  ]
-"33
-[; ;button.c: 33:     int dButton = readDButton();
+"30
+[; ;button.c: 30:     int dButton = readDButton();
 [v _dButton `i ~T0 @X0 1 a ]
 [e = _dButton ( _readDButton ..  ]
-"34
-[; ;button.c: 34:     if (iButton == 1) {
-[e $ ! == _iButton -> 1 `i 510  ]
+"31
+[; ;button.c: 31:     if (iButton == 1) {
+[e $ ! == _iButton -> 1 `i 508  ]
 {
-"35
-[; ;button.c: 35:         iCount++;
+"32
+[; ;button.c: 32:         iCount++;
 [e ++ _iCount -> 1 `i ]
-"36
-[; ;button.c: 36:         if (iCount > 1000 / 10) {
-[e $ ! > _iCount / -> 1000 `i -> 10 `i 511  ]
+"33
+[; ;button.c: 33:         if (iCount > 1000 / 10) {
+[e $ ! > _iCount / -> 1000 `i -> 10 `i 509  ]
 {
-"37
-[; ;button.c: 37:             countSlow++;
+"34
+[; ;button.c: 34:             countSlow++;
 [e ++ _countSlow -> 1 `i ]
-"38
-[; ;button.c: 38:             if (countSlow > 500 / 10) {
-[e $ ! > _countSlow / -> 500 `i -> 10 `i 512  ]
+"35
+[; ;button.c: 35:             if (countSlow > 500 / 10) {
+[e $ ! > _countSlow / -> 500 `i -> 10 `i 510  ]
 {
-"39
-[; ;button.c: 39:                 changeSlow = 1;
+"36
+[; ;button.c: 36:                 changeSlow = 1;
 [e = _changeSlow -> 1 `i ]
-"40
-[; ;button.c: 40:                 countSlow = 0;
+"37
+[; ;button.c: 37:                 countSlow = 0;
 [e = _countSlow -> 0 `i ]
+"38
+[; ;button.c: 38:             }
+}
+[e :U 510 ]
+"39
+[; ;button.c: 39:         }
+}
+[e :U 509 ]
+"40
+[; ;button.c: 40:         if (iCount > 3000 / 10) {
+[e $ ! > _iCount / -> 3000 `i -> 10 `i 511  ]
+{
 "41
-[; ;button.c: 41:             }
+[; ;button.c: 41:             countFast++;
+[e ++ _countFast -> 1 `i ]
+"42
+[; ;button.c: 42:             if (countFast > 100 / 10) {
+[e $ ! > _countFast / -> 100 `i -> 10 `i 512  ]
+{
+"43
+[; ;button.c: 43:                 changeFast = 1;
+[e = _changeFast -> 1 `i ]
+"44
+[; ;button.c: 44:                 countFast = 0;
+[e = _countFast -> 0 `i ]
+"45
+[; ;button.c: 45:             }
 }
 [e :U 512 ]
-"42
-[; ;button.c: 42:         }
+"46
+[; ;button.c: 46:         }
 }
 [e :U 511 ]
-"43
-[; ;button.c: 43:         if (iCount > 3000 / 10) {
-[e $ ! > _iCount / -> 3000 `i -> 10 `i 513  ]
-{
-"44
-[; ;button.c: 44:             countFast++;
-[e ++ _countFast -> 1 `i ]
-"45
-[; ;button.c: 45:             if (countFast > 100 / 10) {
-[e $ ! > _countFast / -> 100 `i -> 10 `i 514  ]
-{
-"46
-[; ;button.c: 46:                 changeFast = 1;
-[e = _changeFast -> 1 `i ]
 "47
-[; ;button.c: 47:                 countFast = 0;
-[e = _countFast -> 0 `i ]
+[; ;button.c: 47:     }
+}
+[e $U 513  ]
 "48
-[; ;button.c: 48:             }
-}
-[e :U 514 ]
+[; ;button.c: 48:     else if (dButton == 1) {
+[e :U 508 ]
+[e $ ! == _dButton -> 1 `i 514  ]
+{
 "49
-[; ;button.c: 49:         }
-}
-[e :U 513 ]
-"50
-[; ;button.c: 50:     }
-}
-[e $U 515  ]
-"51
-[; ;button.c: 51:     else if (dButton == 1) {
-[e :U 510 ]
-[e $ ! == _dButton -> 1 `i 516  ]
-{
-"52
-[; ;button.c: 52:         dCount++;
+[; ;button.c: 49:         dCount++;
 [e ++ _dCount -> 1 `i ]
-"53
-[; ;button.c: 53:         if (dCount > 1000 / 10) {
-[e $ ! > _dCount / -> 1000 `i -> 10 `i 517  ]
+"50
+[; ;button.c: 50:         if (dCount > 1000 / 10) {
+[e $ ! > _dCount / -> 1000 `i -> 10 `i 515  ]
 {
-"54
-[; ;button.c: 54:             countSlow++;
+"51
+[; ;button.c: 51:             countSlow++;
 [e ++ _countSlow -> 1 `i ]
-"55
-[; ;button.c: 55:             if (countSlow > 500 / 10) {
-[e $ ! > _countSlow / -> 500 `i -> 10 `i 518  ]
+"52
+[; ;button.c: 52:             if (countSlow > 500 / 10) {
+[e $ ! > _countSlow / -> 500 `i -> 10 `i 516  ]
 {
-"56
-[; ;button.c: 56:                 changeSlow = 1;
+"53
+[; ;button.c: 53:                 changeSlow = 1;
 [e = _changeSlow -> 1 `i ]
-"57
-[; ;button.c: 57:                 countSlow = 0;
+"54
+[; ;button.c: 54:                 countSlow = 0;
 [e = _countSlow -> 0 `i ]
+"55
+[; ;button.c: 55:             }
+}
+[e :U 516 ]
+"56
+[; ;button.c: 56:         }
+}
+[e :U 515 ]
+"57
+[; ;button.c: 57:         if (dCount > 3000 / 10) {
+[e $ ! > _dCount / -> 3000 `i -> 10 `i 517  ]
+{
 "58
-[; ;button.c: 58:             }
+[; ;button.c: 58:             countFast++;
+[e ++ _countFast -> 1 `i ]
+"59
+[; ;button.c: 59:             if (countFast > 100 / 10) {
+[e $ ! > _countFast / -> 100 `i -> 10 `i 518  ]
+{
+"60
+[; ;button.c: 60:                 changeFast = 1;
+[e = _changeFast -> 1 `i ]
+"61
+[; ;button.c: 61:                 countFast = 0;
+[e = _countFast -> 0 `i ]
+"62
+[; ;button.c: 62:             }
 }
 [e :U 518 ]
-"59
-[; ;button.c: 59:         }
+"63
+[; ;button.c: 63:         }
 }
 [e :U 517 ]
-"60
-[; ;button.c: 60:         if (dCount > 3000 / 10) {
-[e $ ! > _dCount / -> 3000 `i -> 10 `i 519  ]
-{
-"61
-[; ;button.c: 61:             countFast++;
-[e ++ _countFast -> 1 `i ]
-"62
-[; ;button.c: 62:             if (countFast > 100 / 10) {
-[e $ ! > _countFast / -> 100 `i -> 10 `i 520  ]
-{
-"63
-[; ;button.c: 63:                 changeFast = 1;
-[e = _changeFast -> 1 `i ]
 "64
-[; ;button.c: 64:                 countFast = 0;
-[e = _countFast -> 0 `i ]
-"65
-[; ;button.c: 65:             }
+[; ;button.c: 64:     } else {
 }
-[e :U 520 ]
+[e $U 519  ]
+[e :U 514 ]
+{
+"65
+[; ;button.c: 65:         iCount = 0;
+[e = _iCount -> 0 `i ]
 "66
-[; ;button.c: 66:         }
+[; ;button.c: 66:         dCount = 0;
+[e = _dCount -> 0 `i ]
+"67
+[; ;button.c: 67:         countFast = 0;
+[e = _countFast -> 0 `i ]
+"68
+[; ;button.c: 68:         changeFast = 0;
+[e = _changeFast -> 0 `i ]
+"69
+[; ;button.c: 69:         countSlow = 0;
+[e = _countSlow -> 0 `i ]
+"70
+[; ;button.c: 70:         changeSlow = 0;
+[e = _changeSlow -> 0 `i ]
+"71
+[; ;button.c: 71:     }
 }
 [e :U 519 ]
-"67
-[; ;button.c: 67:     }
-}
-[e $U 521  ]
-"68
-[; ;button.c: 68:     else if (iButton == 2 || dButton == 2) {
-[e :U 516 ]
-[e $ ! || == _iButton -> 2 `i == _dButton -> 2 `i 522  ]
-{
-"69
-[; ;button.c: 69:         iCount = 0;
-[e = _iCount -> 0 `i ]
-"70
-[; ;button.c: 70:         dCount = 0;
-[e = _dCount -> 0 `i ]
-"71
-[; ;button.c: 71:         countFast = 0;
-[e = _countFast -> 0 `i ]
+[e :U 513 ]
 "72
-[; ;button.c: 72:         changeFast = 0;
-[e = _changeFast -> 0 `i ]
-"73
-[; ;button.c: 73:         countSlow = 0;
-[e = _countSlow -> 0 `i ]
-"74
-[; ;button.c: 74:         changeSlow = 0;
-[e = _changeSlow -> 0 `i ]
-"75
-[; ;button.c: 75:     }
-}
-[e :U 522 ]
-[e :U 521 ]
-[e :U 515 ]
-"76
-[; ;button.c: 76: }
-[e :UE 509 ]
+[; ;button.c: 72: }
+[e :UE 507 ]
 }

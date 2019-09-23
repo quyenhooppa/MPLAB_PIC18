@@ -27,8 +27,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12557
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12557: extern volatile unsigned char T0CON __attribute__((address(0xFD5)));
 [v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
-"24 ./clock.h
-[; ;./clock.h: 24: int defineTMR0Register(void);
+"22 ./clock.h
+[; ;./clock.h: 22: int defineTMR0Register(void);
 [v _defineTMR0Register `(i ~T0 @X0 0 ef ]
 "12640 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12640: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
@@ -726,8 +726,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"21 ./clock.h
-[; ;./clock.h: 21: int timer0Register = 0;
+"19 ./clock.h
+[; ;./clock.h: 19: int timer0Register = 0;
 [v _timer0Register `i ~T0 @X0 1 e ]
 [i _timer0Register
 -> 0 `i
@@ -759,73 +759,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4
 [; ;system.c: 4:     OSCCON = 0b01110111;
 [e = _OSCCON -> -> 119 `i `uc ]
-"6
-[; ;system.c: 6:     OSCTUNE = 0b00001111;
+"5
+[; ;system.c: 5:     OSCTUNE = 0b00001111;
 [e = _OSCTUNE -> -> 15 `i `uc ]
-"7
-[; ;system.c: 7: }
+"6
+[; ;system.c: 6: }
 [e :UE 501 ]
 }
-"9
-[; ;system.c: 9: void timerInitialize(void) {
+"8
+[; ;system.c: 8: void timerInitialize(void) {
 [v _timerInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerInitialize ]
 [f ]
+"9
+[; ;system.c: 9:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "11
 [; ;system.c: 11:     INTCONbits.TMR0IE = 1;
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "12
-[; ;system.c: 12:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"13
-[; ;system.c: 13:     INTCONbits.TMR0IF = 0;
+[; ;system.c: 12:     INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"14
-[; ;system.c: 14:     T0CON = 0b11000110;
+"13
+[; ;system.c: 13:     T0CON = 0b11000110;
 [e = _T0CON -> -> 198 `i `uc ]
-"19
-[; ;system.c: 19:     timer0Register = defineTMR0Register();
+"14
+[; ;system.c: 14:     timer0Register = defineTMR0Register();
 [e = _timer0Register ( _defineTMR0Register ..  ]
-"20
-[; ;system.c: 20:     TMR0L = timer0Register;
+"15
+[; ;system.c: 15:     TMR0L = timer0Register;
 [e = _TMR0L -> _timer0Register `uc ]
-"21
-[; ;system.c: 21: }
+"16
+[; ;system.c: 16: }
 [e :UE 502 ]
 }
-"23
-[; ;system.c: 23: void buttonInitialize(void) {
+"18
+[; ;system.c: 18: void buttonInitialize(void) {
 [v _buttonInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _buttonInitialize ]
 [f ]
-"24
-[; ;system.c: 24:     TRISAbits.TRISA5 = 1;
+"19
+[; ;system.c: 19:     TRISAbits.TRISA5 = 1;
 [e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
-"25
-[; ;system.c: 25:     TRISBbits.TRISB0 = 1;
+"20
+[; ;system.c: 20:     TRISBbits.TRISB0 = 1;
 [e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"26
-[; ;system.c: 26:     ADCON1 = 0b00001111;
+"21
+[; ;system.c: 21:     ADCON1 = 0b00001111;
 [e = _ADCON1 -> -> 15 `i `uc ]
-"27
-[; ;system.c: 27: }
+"22
+[; ;system.c: 22: }
 [e :UE 503 ]
 }
-"29
-[; ;system.c: 29: void ledInitialize(void) {
+"24
+[; ;system.c: 24: void ledInitialize(void) {
 [v _ledInitialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _ledInitialize ]
 [f ]
-"30
-[; ;system.c: 30:     TRISD = 0x00;
+"25
+[; ;system.c: 25:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"31
-[; ;system.c: 31:     LATD = 0x00;
+"26
+[; ;system.c: 26:     LATD = 0x00;
 [e = _LATD -> -> 0 `i `uc ]
-"32
-[; ;system.c: 32: }
+"27
+[; ;system.c: 27: }
 [e :UE 504 ]
 }

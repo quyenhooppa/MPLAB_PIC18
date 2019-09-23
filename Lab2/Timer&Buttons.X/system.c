@@ -6,9 +6,9 @@ void oscillationInitialize(void) {
 }
 
 void timerInitialize(void) {
+    INTCONbits.GIE = 1;
     //Timer 0
     INTCONbits.TMR0IE = 1;
-    INTCONbits.GIE = 1;
     INTCONbits.TMR0IF = 0;
     T0CON = 0b11000110;
     timer0Register = defineTMR0Register();

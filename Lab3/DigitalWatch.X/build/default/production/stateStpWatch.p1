@@ -1,16 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./interrupt.h
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4607 0 1 2 3 4 .. ]
-[n E4607 State norClk modHr modMin modSec stpWatch  ]
-"126 ./BBSPI_LCD.h
-[; ;./BBSPI_LCD.h: 126:     void LCDPutInst(unsigned char);
+"31 ./interrupt.h
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4611 0 1 2 3 4 .. ]
+[n E4611 State norClk modHr modMin modSec stpWatch  ]
+"132 ./BBSPI_LCD.h
+[; ;./BBSPI_LCD.h: 132:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
-"135
-[; ;./BBSPI_LCD.h: 135:     void LCDPutStr(const char *);
+"141
+[; ;./BBSPI_LCD.h: 141:     void LCDPutStr(const char *);
 [v _LCDPutStr `(v ~T0 @X0 0 ef1`*Cuc ]
-"117
-[; ;./BBSPI_LCD.h: 117:     void LCDPutChar(unsigned char);
+"123
+[; ;./BBSPI_LCD.h: 123:     void LCDPutChar(unsigned char);
 [v _LCDPutChar `(v ~T0 @X0 0 ef1`uc ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -684,33 +684,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
-"27
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4607 ~T0 @X0 1 e ]
-"17 ./stateStpWatch.h
-[; ;./stateStpWatch.h: 17: int run = 0;
-[v _run `i ~T0 @X0 1 e ]
-[i _run
+"24
+[; ;./interrupt.h: 24: int runSTW = 0;
+[v _runSTW `i ~T0 @X0 1 e ]
+[i _runSTW
 -> 0 `i
 ]
-"18
-[; ;./stateStpWatch.h: 18: int minSTW = 0;
+"25
+[; ;./interrupt.h: 25: int minSTW = 0;
 [v _minSTW `i ~T0 @X0 1 e ]
 [i _minSTW
 -> 0 `i
 ]
-"19
-[; ;./stateStpWatch.h: 19: int secSTW = 0;
+"26
+[; ;./interrupt.h: 26: int secSTW = 0;
 [v _secSTW `i ~T0 @X0 1 e ]
 [i _secSTW
 -> 0 `i
 ]
-"20
-[; ;./stateStpWatch.h: 20: int miliSecSTW = 0;
+"27
+[; ;./interrupt.h: 27: int miliSecSTW = 0;
 [v _miliSecSTW `i ~T0 @X0 1 e ]
 [i _miliSecSTW
 -> 0 `i
 ]
+"31
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4611 ~T0 @X0 1 e ]
 "3 stateStpWatch.c
 [; ;stateStpWatch.c: 3: void stopWatch (void) {
 [v _stopWatch `(v ~T0 @X0 1 ef ]
@@ -722,8 +722,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! > _countPressed -> 0 `i 502  ]
 {
 "5
-[; ;stateStpWatch.c: 5:         if (run == 0) {
-[e $ ! == _run -> 0 `i 503  ]
+[; ;stateStpWatch.c: 5:         if (runSTW == 0) {
+[e $ ! == _runSTW -> 0 `i 503  ]
 {
 "6
 [; ;stateStpWatch.c: 6:             miliSecSTW = 0;
@@ -739,8 +739,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 503 ]
 "10
-[; ;stateStpWatch.c: 10:         run = (run + 1) % 2;
-[e = _run % + _run -> 1 `i -> 2 `i ]
+[; ;stateStpWatch.c: 10:         runSTW = (runSTW + 1) % 2;
+[e = _runSTW % + _runSTW -> 1 `i -> 2 `i ]
 "11
 [; ;stateStpWatch.c: 11:         timerFlag = 0;
 [e = _timerFlag -> 0 `i ]
@@ -749,19 +749,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 502 ]
 "13
-[; ;stateStpWatch.c: 13:     if (run == 1) {
-[e $ ! == _run -> 1 `i 504  ]
+[; ;stateStpWatch.c: 13:     if (runSTW == 1) {
+[e $ ! == _runSTW -> 1 `i 504  ]
 {
-"14
-[; ;stateStpWatch.c: 14:         if (timerFlag == 1) {
-[e $ ! == _timerFlag -> 1 `i 505  ]
-{
-"15
-[; ;stateStpWatch.c: 15:             miliSecSTW++;
-[e ++ _miliSecSTW -> 1 `i ]
 "16
 [; ;stateStpWatch.c: 16:             if (miliSecSTW >= 100) {
-[e $ ! >= _miliSecSTW -> 100 `i 506  ]
+[e $ ! >= _miliSecSTW -> 100 `i 505  ]
 {
 "17
 [; ;stateStpWatch.c: 17:                 miliSecSTW = 0;
@@ -772,10 +765,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19
 [; ;stateStpWatch.c: 19:             }
 }
-[e :U 506 ]
+[e :U 505 ]
 "20
 [; ;stateStpWatch.c: 20:             if (secSTW >= 60) {
-[e $ ! >= _secSTW -> 60 `i 507  ]
+[e $ ! >= _secSTW -> 60 `i 506  ]
 {
 "21
 [; ;stateStpWatch.c: 21:                 secSTW = 0;
@@ -786,10 +779,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "23
 [; ;stateStpWatch.c: 23:             }
 }
-[e :U 507 ]
+[e :U 506 ]
 "24
 [; ;stateStpWatch.c: 24:             if (minSTW >= 60) {
-[e $ ! >= _minSTW -> 60 `i 508  ]
+[e $ ! >= _minSTW -> 60 `i 507  ]
 {
 "25
 [; ;stateStpWatch.c: 25:                 minSTW = 0;
@@ -797,14 +790,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26
 [; ;stateStpWatch.c: 26:             }
 }
-[e :U 508 ]
-"27
-[; ;stateStpWatch.c: 27:             timerFlag = 0;
-[e = _timerFlag -> 0 `i ]
-"28
-[; ;stateStpWatch.c: 28:         }
-}
-[e :U 505 ]
+[e :U 507 ]
 "29
 [; ;stateStpWatch.c: 29:     }
 }
@@ -835,25 +821,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;stateStpWatch.c: 37:     LCDPutChar(minSTW%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _minSTW -> 10 `i `ui -> 48 `ui `uc ]
 "38
-[; ;stateStpWatch.c: 38:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+[; ;stateStpWatch.c: 38:     LCDPutInst(0xC2);
+[e ( _LCDPutInst (1 -> -> 194 `i `uc ]
 "39
-[; ;stateStpWatch.c: 39:     LCDPutChar(secSTW/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _secSTW -> 10 `i `ui -> 48 `ui `uc ]
-"40
-[; ;stateStpWatch.c: 40:     LCDPutChar(secSTW%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _secSTW -> 10 `i `ui -> 48 `ui `uc ]
-"41
-[; ;stateStpWatch.c: 41:     LCDPutChar(':');
+[; ;stateStpWatch.c: 39:     LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"40
+[; ;stateStpWatch.c: 40:     LCDPutInst(0xC3);
+[e ( _LCDPutInst (1 -> -> 195 `i `uc ]
+"41
+[; ;stateStpWatch.c: 41:     LCDPutChar(secSTW/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _secSTW -> 10 `i `ui -> 48 `ui `uc ]
 "42
-[; ;stateStpWatch.c: 42:     LCDPutChar(miliSecSTW/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateStpWatch.c: 42:     LCDPutChar(secSTW%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _secSTW -> 10 `i `ui -> 48 `ui `uc ]
 "43
-[; ;stateStpWatch.c: 43:     LCDPutChar(miliSecSTW%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+[; ;stateStpWatch.c: 43:     LCDPutInst(0xC5);
+[e ( _LCDPutInst (1 -> -> 197 `i `uc ]
 "44
-[; ;stateStpWatch.c: 44: }
-[e :UE 509 ]
+[; ;stateStpWatch.c: 44:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"45
+[; ;stateStpWatch.c: 45:     LCDPutInst(0xC6);
+[e ( _LCDPutInst (1 -> -> 198 `i `uc ]
+"46
+[; ;stateStpWatch.c: 46:     LCDPutChar(miliSecSTW/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+"47
+[; ;stateStpWatch.c: 47:     LCDPutChar(miliSecSTW%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _miliSecSTW -> 10 `i `ui -> 48 `ui `uc ]
+"48
+[; ;stateStpWatch.c: 48: }
+[e :UE 508 ]
 }
 [a 1C 32 32 32 83 84 79 80 32 87 65 84 67 72 32 32 32 0 ]

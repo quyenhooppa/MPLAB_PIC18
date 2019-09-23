@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./interrupt.h
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4607 0 1 2 3 4 .. ]
-[n E4607 State norClk modHr modMin modSec stpWatch  ]
+"31 ./interrupt.h
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4611 0 1 2 3 4 .. ]
+[n E4611 State norClk modHr modMin modSec stpWatch  ]
 [t ~ __interrupt . k ]
 [t T111 __interrupt ]
 "13118 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
@@ -24,6 +24,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13144
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 13144: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS493 ~T0 @X0 0 e@4082 ]
+"12647
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12647: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
+[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
 "12640
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 12640: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
@@ -702,9 +705,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"24
+[; ;./interrupt.h: 24: int runSTW = 0;
+[v _runSTW `i ~T0 @X0 1 e ]
+[i _runSTW
+-> 0 `i
+]
+"25
+[; ;./interrupt.h: 25: int minSTW = 0;
+[v _minSTW `i ~T0 @X0 1 e ]
+[i _minSTW
+-> 0 `i
+]
+"26
+[; ;./interrupt.h: 26: int secSTW = 0;
+[v _secSTW `i ~T0 @X0 1 e ]
+[i _secSTW
+-> 0 `i
+]
 "27
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4607 ~T0 @X0 1 e ]
+[; ;./interrupt.h: 27: int miliSecSTW = 0;
+[v _miliSecSTW `i ~T0 @X0 1 e ]
+[i _miliSecSTW
+-> 0 `i
+]
+"31
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4611 ~T0 @X0 1 e ]
 [v $root$_deviceInterrupt `(v ~T0 @X0 0 e ]
 "3 interrupt.c
 [; ;interrupt.c: 3: void __attribute__((picinterrupt(("")))) deviceInterrupt(void) {
@@ -719,23 +746,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5
 [; ;interrupt.c: 5:         INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"7
+[; ;interrupt.c: 7:         TMR0H = 0xfd;
+[e = _TMR0H -> -> 253 `i `uc ]
 "8
-[; ;interrupt.c: 8:         TMR0L = 100;
-[e = _TMR0L -> -> 100 `i `uc ]
-"9
-[; ;interrupt.c: 9:         count10ms++;
+[; ;interrupt.c: 8:         TMR0L = 0xaf;
+[e = _TMR0L -> -> 175 `i `uc ]
+"10
+[; ;interrupt.c: 10:         count10ms++;
 [e ++ _count10ms -> 1 `i ]
-"11
-[; ;interrupt.c: 11:         timerFlag = 1;
-[e = _timerFlag -> 1 `i ]
 "12
-[; ;interrupt.c: 12:         button();
-[e ( _button ..  ]
+[; ;interrupt.c: 12:         timerFlag = 1;
+[e = _timerFlag -> 1 `i ]
 "13
-[; ;interrupt.c: 13:     }
+[; ;interrupt.c: 13:         if (runSTW == 1) {
+[e $ ! == _runSTW -> 1 `i 503  ]
+{
+"14
+[; ;interrupt.c: 14:             miliSecSTW++;
+[e ++ _miliSecSTW -> 1 `i ]
+"15
+[; ;interrupt.c: 15:         }
+}
+[e :U 503 ]
+"16
+[; ;interrupt.c: 16:         button();
+[e ( _button ..  ]
+"17
+[; ;interrupt.c: 17:     }
 }
 [e :U 502 ]
-"14
-[; ;interrupt.c: 14: }
+"18
+[; ;interrupt.c: 18: }
 [e :UE 501 ]
 }

@@ -7886,21 +7886,21 @@ void ledInitialize(void);
 # 1 "./button.h" 1
 # 17 "./button.h"
 # 1 "./BBSPI_LCD.h" 1
-# 71 "./BBSPI_LCD.h"
+# 77 "./BBSPI_LCD.h"
     void LCDInit(void);
-# 80 "./BBSPI_LCD.h"
+# 86 "./BBSPI_LCD.h"
     void InitBBSPI (void);
-# 89 "./BBSPI_LCD.h"
+# 95 "./BBSPI_LCD.h"
     void SendByteBBSPI (unsigned char output);
-# 98 "./BBSPI_LCD.h"
+# 104 "./BBSPI_LCD.h"
     void Port_BBSPIInit (unsigned char port_dir);
-# 108 "./BBSPI_LCD.h"
+# 114 "./BBSPI_LCD.h"
     void WritePort_BBSPI (unsigned char port_add, unsigned char a);
-# 117 "./BBSPI_LCD.h"
+# 123 "./BBSPI_LCD.h"
     void LCDPutChar(unsigned char);
-# 126 "./BBSPI_LCD.h"
+# 132 "./BBSPI_LCD.h"
     void LCDPutInst(unsigned char);
-# 135 "./BBSPI_LCD.h"
+# 141 "./BBSPI_LCD.h"
     void LCDPutStr(const char *);
 # 18 "./button.h" 2
 
@@ -7923,6 +7923,10 @@ void button (void);
 
 int count10ms = 0;
 int timerFlag = 0;
+int runSTW = 0;
+int minSTW = 0;
+int secSTW = 0;
+int miliSecSTW = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
 
@@ -7945,7 +7949,6 @@ int count = 0;
 void modifyHour (void);
 void modifyMinute (void);
 void modifySecond (void);
-void displayModify (void);
 void displayModHour (void);
 void displayModMinute (void);
 void displayModSecond (void);
@@ -7954,11 +7957,6 @@ enum st{init, iNor, iAuto} stModify;
 # 13 "main.c" 2
 # 1 "./stateStpWatch.h" 1
 # 17 "./stateStpWatch.h"
-int run = 0;
-int minSTW = 0;
-int secSTW = 0;
-int miliSecSTW = 0;
-
 void stopWatch (void);
 void displayStpWatch (void);
 # 14 "main.c" 2
@@ -7967,7 +7965,6 @@ void main(void) {
     oscillationInitialize();
     timerInitialize();
     buttonInitialize();
-    ledInitialize();
     LCDInit();
     state = norClk;
     stModify = init;
@@ -8016,7 +8013,7 @@ void main(void) {
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = stpWatch;
-                    run = 0;
+                    runSTW = 0;
                     count10ms = 0;
                 }
                 break;
@@ -8027,6 +8024,7 @@ void main(void) {
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = norClk;
+                    runSTW = 0;
                 }
                 break;
         }

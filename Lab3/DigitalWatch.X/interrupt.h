@@ -21,6 +21,10 @@ extern "C" {
     
 int count10ms = 0;    
 int timerFlag = 0;
+int runSTW = 0;
+int minSTW = 0;
+int secSTW = 0;
+int miliSecSTW = 0;
 
 void __interrupt () deviceInterrupt(void);  
 

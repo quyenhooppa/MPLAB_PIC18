@@ -13,11 +13,6 @@ extern "C" {
 #endif
 
 #include "interrupt.h"
-
-int run = 0;
-int minSTW = 0;
-int secSTW = 0;
-int miliSecSTW = 0;
     
 void stopWatch (void);
 void displayStpWatch (void);

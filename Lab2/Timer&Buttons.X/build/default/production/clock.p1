@@ -680,8 +680,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"21 ./clock.h
-[; ;./clock.h: 21: int timer0Register = 0;
+"19 ./clock.h
+[; ;./clock.h: 19: int timer0Register = 0;
 [v _timer0Register `i ~T0 @X0 1 e ]
 [i _timer0Register
 -> 0 `i
@@ -707,24 +707,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _deviceInterrupt ]
 [f ]
-"9
-[; ;clock.c: 9:     if (INTCONbits.TMR0IF == 1 && INTCONbits.TMR0IE == 1) {
+"8
+[; ;clock.c: 8:     if (INTCONbits.TMR0IF == 1 && INTCONbits.TMR0IE == 1) {
 [e $ ! && == -> . . _INTCONbits 0 2 `i -> 1 `i == -> . . _INTCONbits 0 5 `i -> 1 `i 503  ]
 {
-"10
-[; ;clock.c: 10:         INTCONbits.TMR0IF = 0;
+"9
+[; ;clock.c: 9:         INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"11
-[; ;clock.c: 11:         TMR0L = timer0Register;
+"10
+[; ;clock.c: 10:         TMR0L = timer0Register;
 [e = _TMR0L -> _timer0Register `uc ]
-"13
-[; ;clock.c: 13:         button();
+"12
+[; ;clock.c: 12:         button();
 [e ( _button ..  ]
-"14
-[; ;clock.c: 14:     }
+"13
+[; ;clock.c: 13:     }
 }
 [e :U 503 ]
-"15
-[; ;clock.c: 15: }
+"14
+[; ;clock.c: 14: }
 [e :UE 502 ]
 }

@@ -7857,21 +7857,21 @@ typedef uint32_t uint_fast32_t;
 # 19 "./BBSPI_LCD.h" 2
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdbool.h" 1 3
 # 20 "./BBSPI_LCD.h" 2
-# 71 "./BBSPI_LCD.h"
+# 77 "./BBSPI_LCD.h"
     void LCDInit(void);
-# 80 "./BBSPI_LCD.h"
+# 86 "./BBSPI_LCD.h"
     void InitBBSPI (void);
-# 89 "./BBSPI_LCD.h"
+# 95 "./BBSPI_LCD.h"
     void SendByteBBSPI (unsigned char output);
-# 98 "./BBSPI_LCD.h"
+# 104 "./BBSPI_LCD.h"
     void Port_BBSPIInit (unsigned char port_dir);
-# 108 "./BBSPI_LCD.h"
+# 114 "./BBSPI_LCD.h"
     void WritePort_BBSPI (unsigned char port_add, unsigned char a);
-# 117 "./BBSPI_LCD.h"
+# 123 "./BBSPI_LCD.h"
     void LCDPutChar(unsigned char);
-# 126 "./BBSPI_LCD.h"
+# 132 "./BBSPI_LCD.h"
     void LCDPutInst(unsigned char);
-# 135 "./BBSPI_LCD.h"
+# 141 "./BBSPI_LCD.h"
     void LCDPutStr(const char *);
 # 37 "BBSPI_LCD.c" 2
 
@@ -7887,7 +7887,7 @@ void LCDInit (void)
     InitBBSPI();
     TRISFbits.TRISF6 = 0;
     LATFbits.LATF6 = 0;
-    _delay((unsigned long)((5)*(10000000/4000.0)));
+    _delay((unsigned long)((0)*(10000000/4000.0)));
     LATFbits.LATF6 = 1;
     Port_BBSPIInit (0x00);
     Port_BBSPIInit (0x01);
@@ -7961,7 +7961,7 @@ void WritePort_BBSPI (unsigned char port_add, unsigned char a)
 # 160 "BBSPI_LCD.c"
 void LCDPutChar (unsigned char ch)
 {
-    _delay((unsigned long)((5)*(10000000/4000.0)));
+    _delay((unsigned long)((0)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0x80);
     _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x13, ch);
@@ -7973,7 +7973,7 @@ void LCDPutChar (unsigned char ch)
 # 179 "BBSPI_LCD.c"
 void LCDPutInst (unsigned char ch)
 {
-    _delay((unsigned long)((5)*(10000000/4000.0)));
+    _delay((unsigned long)((0)*(10000000/4000.0)));
     WritePort_BBSPI (0x12, 0x00);
     _delay((unsigned long)((1)*(10000000/4000.0)));
     WritePort_BBSPI (0x13, ch);

@@ -14,8 +14,6 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
-#include <stdint.h>
-#include <stdbool.h>
 #include "button.h"
 
 int timer0Register = 0;

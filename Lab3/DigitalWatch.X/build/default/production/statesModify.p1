@@ -1,20 +1,20 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./interrupt.h
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4607 0 1 2 3 4 .. ]
-[n E4607 State norClk modHr modMin modSec stpWatch  ]
-"28 ./statesModify.h
-[; ;./statesModify.h: 28: enum st{init, iNor, iAuto} stModify;
-[c E4628 0 1 2 .. ]
-[n E4628 st init iNor iAuto  ]
-"126 ./BBSPI_LCD.h
-[; ;./BBSPI_LCD.h: 126:     void LCDPutInst(unsigned char);
+"31 ./interrupt.h
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4611 0 1 2 3 4 .. ]
+[n E4611 State norClk modHr modMin modSec stpWatch  ]
+"27 ./statesModify.h
+[; ;./statesModify.h: 27: enum st{init, iNor, iAuto} stModify;
+[c E4631 0 1 2 .. ]
+[n E4631 st init iNor iAuto  ]
+"132 ./BBSPI_LCD.h
+[; ;./BBSPI_LCD.h: 132:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
-"135
-[; ;./BBSPI_LCD.h: 135:     void LCDPutStr(const char *);
+"141
+[; ;./BBSPI_LCD.h: 141:     void LCDPutStr(const char *);
 [v _LCDPutStr `(v ~T0 @X0 0 ef1`*Cuc ]
-"117
-[; ;./BBSPI_LCD.h: 117:     void LCDPutChar(unsigned char);
+"123
+[; ;./BBSPI_LCD.h: 123:     void LCDPutChar(unsigned char);
 [v _LCDPutChar `(v ~T0 @X0 0 ef1`uc ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -688,9 +688,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _timerFlag
 -> 0 `i
 ]
+"24
+[; ;./interrupt.h: 24: int runSTW = 0;
+[v _runSTW `i ~T0 @X0 1 e ]
+[i _runSTW
+-> 0 `i
+]
+"25
+[; ;./interrupt.h: 25: int minSTW = 0;
+[v _minSTW `i ~T0 @X0 1 e ]
+[i _minSTW
+-> 0 `i
+]
+"26
+[; ;./interrupt.h: 26: int secSTW = 0;
+[v _secSTW `i ~T0 @X0 1 e ]
+[i _secSTW
+-> 0 `i
+]
 "27
-[; ;./interrupt.h: 27: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4607 ~T0 @X0 1 e ]
+[; ;./interrupt.h: 27: int miliSecSTW = 0;
+[v _miliSecSTW `i ~T0 @X0 1 e ]
+[i _miliSecSTW
+-> 0 `i
+]
+"31
+[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4611 ~T0 @X0 1 e ]
 "19 ./stateClock.h
 [; ;./stateClock.h: 19: int sec = 0;
 [v _sec `i ~T0 @X0 1 e ]
@@ -721,9 +745,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _count
 -> 0 `i
 ]
-"28
-[; ;./statesModify.h: 28: enum st{init, iNor, iAuto} stModify;
-[v _stModify `E4628 ~T0 @X0 1 e ]
+"27
+[; ;./statesModify.h: 27: enum st{init, iNor, iAuto} stModify;
+[v _stModify `E4631 ~T0 @X0 1 e ]
 "4 statesModify.c
 [; ;statesModify.c: 4: void modifyHour (void) {
 [v _modifyHour `(v ~T0 @X0 1 ef ]
@@ -746,7 +770,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _hr -> 1 `i ]
 "9
 [; ;statesModify.c: 9:                 stModify = iNor;
-[e = _stModify . `E4628 1 ]
+[e = _stModify . `E4631 1 ]
 "10
 [; ;statesModify.c: 10:             }
 }
@@ -763,7 +787,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "14
 [; ;statesModify.c: 14:                 stModify = init;
-[e = _stModify . `E4628 0 ]
+[e = _stModify . `E4631 0 ]
 "15
 [; ;statesModify.c: 15:             }
 }
@@ -777,7 +801,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _increaseTime -> 1 `i ]
 "18
 [; ;statesModify.c: 18:                 stModify = iAuto;
-[e = _stModify . `E4628 2 ]
+[e = _stModify . `E4631 2 ]
 "19
 [; ;statesModify.c: 19:             }
 }
@@ -794,7 +818,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "23
 [; ;statesModify.c: 23:                 stModify = init;
-[e = _stModify . `E4628 0 ]
+[e = _stModify . `E4631 0 ]
 "24
 [; ;statesModify.c: 24:             }
 }
@@ -821,9 +845,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 502  ]
 [e :U 503 ]
-[e [\ -> _stModify `ui , $ -> . `E4628 0 `ui 504
- , $ -> . `E4628 1 `ui 506
- , $ -> . `E4628 2 `ui 509
+[e [\ -> _stModify `ui , $ -> . `E4631 0 `ui 504
+ , $ -> . `E4631 1 `ui 506
+ , $ -> . `E4631 2 `ui 509
  502 ]
 [e :U 502 ]
 "31
@@ -863,7 +887,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _min -> 1 `i ]
 "41
 [; ;statesModify.c: 41:                 stModify = iNor;
-[e = _stModify . `E4628 1 ]
+[e = _stModify . `E4631 1 ]
 "42
 [; ;statesModify.c: 42:             }
 }
@@ -880,7 +904,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "46
 [; ;statesModify.c: 46:                 stModify = init;
-[e = _stModify . `E4628 0 ]
+[e = _stModify . `E4631 0 ]
 "47
 [; ;statesModify.c: 47:             }
 }
@@ -894,7 +918,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _increaseTime -> 1 `i ]
 "50
 [; ;statesModify.c: 50:                 stModify = iAuto;
-[e = _stModify . `E4628 2 ]
+[e = _stModify . `E4631 2 ]
 "51
 [; ;statesModify.c: 51:             }
 }
@@ -911,7 +935,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "55
 [; ;statesModify.c: 55:                 stModify = init;
-[e = _stModify . `E4628 0 ]
+[e = _stModify . `E4631 0 ]
 "56
 [; ;statesModify.c: 56:             }
 }
@@ -938,9 +962,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 514  ]
 [e :U 515 ]
-[e [\ -> _stModify `ui , $ -> . `E4628 0 `ui 516
- , $ -> . `E4628 1 `ui 518
- , $ -> . `E4628 2 `ui 521
+[e [\ -> _stModify `ui , $ -> . `E4631 0 `ui 516
+ , $ -> . `E4631 1 `ui 518
+ , $ -> . `E4631 2 `ui 521
  514 ]
 [e :U 514 ]
 "63
@@ -980,7 +1004,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _sec -> 1 `i ]
 "73
 [; ;statesModify.c: 73:                 stModify = iNor;
-[e = _stModify . `E4628 1 ]
+[e = _stModify . `E4631 1 ]
 "74
 [; ;statesModify.c: 74:             }
 }
@@ -997,7 +1021,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "78
 [; ;statesModify.c: 78:                 stModify = init;
-[e = _stModify . `E4628 0 ]
+[e = _stModify . `E4631 0 ]
 "79
 [; ;statesModify.c: 79:             }
 }
@@ -1011,7 +1035,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _increaseTime -> 1 `i ]
 "82
 [; ;statesModify.c: 82:                 stModify = iAuto;
-[e = _stModify . `E4628 2 ]
+[e = _stModify . `E4631 2 ]
 "83
 [; ;statesModify.c: 83:             }
 }
@@ -1028,7 +1052,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "87
 [; ;statesModify.c: 87:                 stModify = init;
-[e = _stModify . `E4628 0 ]
+[e = _stModify . `E4631 0 ]
 "88
 [; ;statesModify.c: 88:             }
 }
@@ -1055,9 +1079,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 526  ]
 [e :U 527 ]
-[e [\ -> _stModify `ui , $ -> . `E4628 0 `ui 528
- , $ -> . `E4628 1 `ui 530
- , $ -> . `E4628 2 `ui 533
+[e [\ -> _stModify `ui , $ -> . `E4631 0 `ui 528
+ , $ -> . `E4631 1 `ui 530
+ , $ -> . `E4631 2 `ui 533
  526 ]
 [e :U 526 ]
 "95
@@ -1091,221 +1115,296 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;statesModify.c: 103:     LCDPutInst(0xC0);
 [e ( _LCDPutInst (1 -> -> 192 `i `uc ]
 "104
-[; ;statesModify.c: 104:     if (count10ms >= (20/4)) {
-[e $ ! >= _count10ms / -> 20 `i -> 4 `i 538  ]
+[; ;statesModify.c: 104:     if (count10ms >= (20*2)) {
+[e $ ! >= _count10ms * -> 20 `i -> 2 `i 538  ]
 {
 "105
 [; ;statesModify.c: 105:         count10ms = 0;
 [e = _count10ms -> 0 `i ]
 "106
-[; ;statesModify.c: 106:             if (blink == 0) {
-[e $ ! == _blink -> 0 `i 539  ]
+[; ;statesModify.c: 106:         if (countAuto <= 0) {
+[e $ ! <= _countAuto -> 0 `i 539  ]
 {
 "107
-[; ;statesModify.c: 107:                 LCDPutChar(' ');
-[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+[; ;statesModify.c: 107:             if (blink == 0) {
+[e $ ! == _blink -> 0 `i 540  ]
+{
 "108
 [; ;statesModify.c: 108:                 LCDPutChar(' ');
 [e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
 "109
-[; ;statesModify.c: 109:             } else {
+[; ;statesModify.c: 109:                 LCDPutChar(' ');
+[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+"110
+[; ;statesModify.c: 110:             } else {
 }
-[e $U 540  ]
+[e $U 541  ]
+[e :U 540 ]
+{
+"111
+[; ;statesModify.c: 111:                 LCDPutChar(hr/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
+"112
+[; ;statesModify.c: 112:                 LCDPutChar(hr%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
+"113
+[; ;statesModify.c: 113:             }
+}
+[e :U 541 ]
+"114
+[; ;statesModify.c: 114:             blink = (blink + 1) % 2;
+[e = _blink % + _blink -> 1 `i -> 2 `i ]
+"115
+[; ;statesModify.c: 115:         } else {
+}
+[e $U 542  ]
 [e :U 539 ]
 {
-"110
-[; ;statesModify.c: 110:                 LCDPutChar(hr/10+'0');
+"116
+[; ;statesModify.c: 116:             LCDPutChar(hr/10+'0');
 [e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
-"111
-[; ;statesModify.c: 111:                 LCDPutChar(hr%10+'0');
+"117
+[; ;statesModify.c: 117:             LCDPutChar(hr%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
-"112
-[; ;statesModify.c: 112:             }
+"118
+[; ;statesModify.c: 118:         }
 }
-[e :U 540 ]
-"113
-[; ;statesModify.c: 113:             blink = (blink + 1) % 2;
-[e = _blink % + _blink -> 1 `i -> 2 `i ]
-"114
-[; ;statesModify.c: 114:     }
+[e :U 542 ]
+"119
+[; ;statesModify.c: 119:     }
 }
 [e :U 538 ]
-"115
-[; ;statesModify.c: 115:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"116
-[; ;statesModify.c: 116:     LCDPutChar(min/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
-"117
-[; ;statesModify.c: 117:     LCDPutChar(min%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
-"118
-[; ;statesModify.c: 118:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"119
-[; ;statesModify.c: 119:     LCDPutChar(sec/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
 "120
-[; ;statesModify.c: 120:     LCDPutChar(sec%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
+[; ;statesModify.c: 120:     LCDPutInst(0xC2);
+[e ( _LCDPutInst (1 -> -> 194 `i `uc ]
 "121
-[; ;statesModify.c: 121: }
+[; ;statesModify.c: 121:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"123
+[; ;statesModify.c: 123:     LCDPutChar(min/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+"124
+[; ;statesModify.c: 124:     LCDPutChar(min%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
+"126
+[; ;statesModify.c: 126:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"128
+[; ;statesModify.c: 128:     LCDPutChar(sec/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
+"129
+[; ;statesModify.c: 129:     LCDPutChar(sec%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
+"130
+[; ;statesModify.c: 130: }
 [e :UE 537 ]
 }
-"123
-[; ;statesModify.c: 123: void displayModMinute (void) {
+"132
+[; ;statesModify.c: 132: void displayModMinute (void) {
 [v _displayModMinute `(v ~T0 @X0 1 ef ]
 {
 [e :U _displayModMinute ]
 [f ]
-"124
-[; ;statesModify.c: 124:     LCDPutInst(0x80);
-[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
-"125
-[; ;statesModify.c: 125:     LCDPutStr("MODIFIES MINUTE");
-[e ( _LCDPutStr (1 :s 2C ]
-"126
-[; ;statesModify.c: 126:     LCDPutInst(0xC0);
-[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
-"127
-[; ;statesModify.c: 127:     LCDPutChar(hr/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
-"128
-[; ;statesModify.c: 128:     LCDPutChar(hr%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
-"129
-[; ;statesModify.c: 129:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"130
-[; ;statesModify.c: 130:     if (count10ms >= (20/4)) {
-[e $ ! >= _count10ms / -> 20 `i -> 4 `i 542  ]
-{
-"131
-[; ;statesModify.c: 131:         count10ms = 0;
-[e = _count10ms -> 0 `i ]
-"132
-[; ;statesModify.c: 132:             if (blink == 0) {
-[e $ ! == _blink -> 0 `i 543  ]
-{
 "133
-[; ;statesModify.c: 133:                 LCDPutChar(' ');
-[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+[; ;statesModify.c: 133:     LCDPutInst(0x80);
+[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
 "134
-[; ;statesModify.c: 134:                 LCDPutChar(' ');
-[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+[; ;statesModify.c: 134:     LCDPutStr("MODIFIES MINUTE");
+[e ( _LCDPutStr (1 :s 2C ]
 "135
-[; ;statesModify.c: 135:             } else {
-}
-[e $U 544  ]
-[e :U 543 ]
-{
+[; ;statesModify.c: 135:     LCDPutInst(0xC0);
+[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
 "136
-[; ;statesModify.c: 136:                 LCDPutChar(min/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+[; ;statesModify.c: 136:     LCDPutChar(hr/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
 "137
-[; ;statesModify.c: 137:                 LCDPutChar(min%10+'0');
+[; ;statesModify.c: 137:     LCDPutChar(hr%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
+"139
+[; ;statesModify.c: 139:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"140
+[; ;statesModify.c: 140:     LCDPutInst(0xC3);
+[e ( _LCDPutInst (1 -> -> 195 `i `uc ]
+"141
+[; ;statesModify.c: 141:     if (count10ms >= (20*2)) {
+[e $ ! >= _count10ms * -> 20 `i -> 2 `i 544  ]
+{
+"142
+[; ;statesModify.c: 142:         count10ms = 0;
+[e = _count10ms -> 0 `i ]
+"143
+[; ;statesModify.c: 143:         if (countAuto <= 0) {
+[e $ ! <= _countAuto -> 0 `i 545  ]
+{
+"144
+[; ;statesModify.c: 144:             if (blink == 0) {
+[e $ ! == _blink -> 0 `i 546  ]
+{
+"145
+[; ;statesModify.c: 145:                 LCDPutChar(' ');
+[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+"146
+[; ;statesModify.c: 146:                 LCDPutChar(' ');
+[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+"147
+[; ;statesModify.c: 147:             } else {
+}
+[e $U 547  ]
+[e :U 546 ]
+{
+"148
+[; ;statesModify.c: 148:                 LCDPutChar(min/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+"149
+[; ;statesModify.c: 149:                 LCDPutChar(min%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
-"138
-[; ;statesModify.c: 138:             }
+"150
+[; ;statesModify.c: 150:             }
+}
+[e :U 547 ]
+"151
+[; ;statesModify.c: 151:             blink = (blink + 1) % 2;
+[e = _blink % + _blink -> 1 `i -> 2 `i ]
+"152
+[; ;statesModify.c: 152:         } else {
+}
+[e $U 548  ]
+[e :U 545 ]
+{
+"153
+[; ;statesModify.c: 153:             LCDPutChar(min/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+"154
+[; ;statesModify.c: 154:             LCDPutChar(min%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
+"155
+[; ;statesModify.c: 155:         }
+}
+[e :U 548 ]
+"156
+[; ;statesModify.c: 156:     }
 }
 [e :U 544 ]
-"139
-[; ;statesModify.c: 139:             blink = (blink + 1) % 2;
-[e = _blink % + _blink -> 1 `i -> 2 `i ]
-"140
-[; ;statesModify.c: 140:     }
-}
-[e :U 542 ]
-"141
-[; ;statesModify.c: 141:     LCDPutChar(':');
+"157
+[; ;statesModify.c: 157:     LCDPutInst(0xC5);
+[e ( _LCDPutInst (1 -> -> 197 `i `uc ]
+"158
+[; ;statesModify.c: 158:     LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"142
-[; ;statesModify.c: 142:     LCDPutChar(sec/10+'0');
+"160
+[; ;statesModify.c: 160:     LCDPutChar(sec/10+'0');
 [e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
-"143
-[; ;statesModify.c: 143:     LCDPutChar(sec%10+'0');
+"161
+[; ;statesModify.c: 161:     LCDPutChar(sec%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
-"144
-[; ;statesModify.c: 144: }
-[e :UE 541 ]
+"162
+[; ;statesModify.c: 162: }
+[e :UE 543 ]
 }
-"146
-[; ;statesModify.c: 146: void displayModSecond (void) {
+"164
+[; ;statesModify.c: 164: void displayModSecond (void) {
 [v _displayModSecond `(v ~T0 @X0 1 ef ]
 {
 [e :U _displayModSecond ]
 [f ]
-"147
-[; ;statesModify.c: 147:     LCDPutInst(0x80);
-[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
-"148
-[; ;statesModify.c: 148:     LCDPutStr("MODIFIES MINUTE");
-[e ( _LCDPutStr (1 :s 3C ]
-"149
-[; ;statesModify.c: 149:     LCDPutInst(0xC0);
-[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
-"150
-[; ;statesModify.c: 150:     LCDPutChar(hr/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
-"151
-[; ;statesModify.c: 151:     LCDPutChar(hr%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
-"152
-[; ;statesModify.c: 152:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"153
-[; ;statesModify.c: 153:     LCDPutChar(min/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
-"154
-[; ;statesModify.c: 154:     LCDPutChar(min%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
-"155
-[; ;statesModify.c: 155:     LCDPutChar(':');
-[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"156
-[; ;statesModify.c: 156:     if (count10ms >= (20/4)) {
-[e $ ! >= _count10ms / -> 20 `i -> 4 `i 546  ]
-{
-"157
-[; ;statesModify.c: 157:         count10ms = 0;
-[e = _count10ms -> 0 `i ]
-"158
-[; ;statesModify.c: 158:             if (blink == 0) {
-[e $ ! == _blink -> 0 `i 547  ]
-{
-"159
-[; ;statesModify.c: 159:                 LCDPutChar(' ');
-[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
-"160
-[; ;statesModify.c: 160:                 LCDPutChar(' ');
-[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
-"161
-[; ;statesModify.c: 161:             } else {
-}
-[e $U 548  ]
-[e :U 547 ]
-{
-"162
-[; ;statesModify.c: 162:                 LCDPutChar(sec/10+'0');
-[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
-"163
-[; ;statesModify.c: 163:                 LCDPutChar(sec%10+'0');
-[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
-"164
-[; ;statesModify.c: 164:             }
-}
-[e :U 548 ]
 "165
-[; ;statesModify.c: 165:             blink = (blink + 1) % 2;
-[e = _blink % + _blink -> 1 `i -> 2 `i ]
+[; ;statesModify.c: 165:     LCDPutInst(0x80);
+[e ( _LCDPutInst (1 -> -> 128 `i `uc ]
 "166
-[; ;statesModify.c: 166:     }
-}
-[e :U 546 ]
+[; ;statesModify.c: 166:     LCDPutStr("MODIFIES SECOND");
+[e ( _LCDPutStr (1 :s 3C ]
 "167
-[; ;statesModify.c: 167: }
-[e :UE 545 ]
+[; ;statesModify.c: 167:     LCDPutInst(0xC0);
+[e ( _LCDPutInst (1 -> -> 192 `i `uc ]
+"168
+[; ;statesModify.c: 168:     LCDPutChar(hr/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _hr -> 10 `i `ui -> 48 `ui `uc ]
+"169
+[; ;statesModify.c: 169:     LCDPutChar(hr%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
+"171
+[; ;statesModify.c: 171:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"172
+[; ;statesModify.c: 172:     LCDPutInst(0xC3);
+[e ( _LCDPutInst (1 -> -> 195 `i `uc ]
+"173
+[; ;statesModify.c: 173:     LCDPutChar(min/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
+"174
+[; ;statesModify.c: 174:     LCDPutChar(min%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
+"176
+[; ;statesModify.c: 176:     LCDPutChar(':');
+[e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
+"177
+[; ;statesModify.c: 177:     LCDPutInst(0xC6);
+[e ( _LCDPutInst (1 -> -> 198 `i `uc ]
+"178
+[; ;statesModify.c: 178:     if (count10ms >= (20*2)) {
+[e $ ! >= _count10ms * -> 20 `i -> 2 `i 550  ]
+{
+"179
+[; ;statesModify.c: 179:         count10ms = 0;
+[e = _count10ms -> 0 `i ]
+"180
+[; ;statesModify.c: 180:         if (countAuto <= 0) {
+[e $ ! <= _countAuto -> 0 `i 551  ]
+{
+"181
+[; ;statesModify.c: 181:             if (blink == 0) {
+[e $ ! == _blink -> 0 `i 552  ]
+{
+"182
+[; ;statesModify.c: 182:                 LCDPutChar(' ');
+[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+"183
+[; ;statesModify.c: 183:                 LCDPutChar(' ');
+[e ( _LCDPutChar (1 -> -> 32 `ui `uc ]
+"184
+[; ;statesModify.c: 184:             } else {
+}
+[e $U 553  ]
+[e :U 552 ]
+{
+"185
+[; ;statesModify.c: 185:                 LCDPutChar(sec/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
+"186
+[; ;statesModify.c: 186:                 LCDPutChar(sec%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
+"187
+[; ;statesModify.c: 187:             }
+}
+[e :U 553 ]
+"188
+[; ;statesModify.c: 188:             blink = (blink + 1) % 2;
+[e = _blink % + _blink -> 1 `i -> 2 `i ]
+"189
+[; ;statesModify.c: 189:         } else {
+}
+[e $U 554  ]
+[e :U 551 ]
+{
+"190
+[; ;statesModify.c: 190:             LCDPutChar(sec/10+'0');
+[e ( _LCDPutChar (1 -> + -> / _sec -> 10 `i `ui -> 48 `ui `uc ]
+"191
+[; ;statesModify.c: 191:             LCDPutChar(sec%10+'0');
+[e ( _LCDPutChar (1 -> + -> % _sec -> 10 `i `ui -> 48 `ui `uc ]
+"192
+[; ;statesModify.c: 192:         }
+}
+[e :U 554 ]
+"193
+[; ;statesModify.c: 193:     }
+}
+[e :U 550 ]
+"194
+[; ;statesModify.c: 194: }
+[e :UE 549 ]
 }
 [a 2C 77 79 68 73 70 73 69 83 32 77 73 78 85 84 69 0 ]
-[a 3C 77 79 68 73 70 73 69 83 32 77 73 78 85 84 69 0 ]
+[a 3C 77 79 68 73 70 73 69 83 32 83 69 67 79 78 68 0 ]
 [a 1C 32 77 79 68 73 70 73 69 83 32 72 79 85 82 32 0 ]
