@@ -7789,7 +7789,6 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
-void ledInitialize(void);
 # 2 "system.c" 2
 
 void oscillationInitialize (void) {
@@ -7807,7 +7806,7 @@ void timerInitialize (void) {
 
 
     TMR0H = 0xfd;
-    TMR0L = 0x8f;
+    TMR0L = 0x7f;
 
 
 }
@@ -7816,9 +7815,4 @@ void buttonInitialize (void) {
     TRISAbits.TRISA5 = 1;
     TRISBbits.TRISB0 = 1;
     ADCON1 = 0b00001111;
-}
-
-void ledInitialize(void) {
-    TRISD = 0x00;
-    LATD = 0x00;
 }

@@ -18,13 +18,10 @@ extern "C" {
 #include <stdbool.h>
 #include "system.h"
 #include "button.h"
+#include "stateStpWatch.h" 
     
 int count10ms = 0;    
-int timerFlag = 0;
-int runSTW = 0;
-int minSTW = 0;
-int secSTW = 0;
-int miliSecSTW = 0;
+int flag = 0;
 
 void __interrupt () deviceInterrupt(void);  
 

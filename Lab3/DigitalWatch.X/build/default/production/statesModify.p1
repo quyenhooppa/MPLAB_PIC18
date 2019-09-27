@@ -1,12 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"31 ./interrupt.h
-[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4611 0 1 2 3 4 .. ]
-[n E4611 State norClk modHr modMin modSec stpWatch  ]
+"28 ./interrupt.h
+[; ;./interrupt.h: 28: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[c E4612 0 1 2 3 4 .. ]
+[n E4612 State norClk modHr modMin modSec stpWatch  ]
 "27 ./statesModify.h
 [; ;./statesModify.h: 27: enum st{init, iNor, iAuto} stModify;
-[c E4631 0 1 2 .. ]
-[n E4631 st init iNor iAuto  ]
+[c E4632 0 1 2 .. ]
+[n E4632 st init iNor iAuto  ]
 "132 ./BBSPI_LCD.h
 [; ;./BBSPI_LCD.h: 132:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
@@ -676,45 +676,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
-"22 ./interrupt.h
-[; ;./interrupt.h: 22: int count10ms = 0;
-[v _count10ms `i ~T0 @X0 1 e ]
-[i _count10ms
--> 0 `i
-]
-"23
-[; ;./interrupt.h: 23: int timerFlag = 0;
-[v _timerFlag `i ~T0 @X0 1 e ]
-[i _timerFlag
--> 0 `i
-]
-"24
-[; ;./interrupt.h: 24: int runSTW = 0;
+"17 ./stateStpWatch.h
+[; ;./stateStpWatch.h: 17: int runSTW = 0;
 [v _runSTW `i ~T0 @X0 1 e ]
 [i _runSTW
 -> 0 `i
 ]
-"25
-[; ;./interrupt.h: 25: int minSTW = 0;
+"18
+[; ;./stateStpWatch.h: 18: int minSTW = 0;
 [v _minSTW `i ~T0 @X0 1 e ]
 [i _minSTW
 -> 0 `i
 ]
-"26
-[; ;./interrupt.h: 26: int secSTW = 0;
+"19
+[; ;./stateStpWatch.h: 19: int secSTW = 0;
 [v _secSTW `i ~T0 @X0 1 e ]
 [i _secSTW
 -> 0 `i
 ]
-"27
-[; ;./interrupt.h: 27: int miliSecSTW = 0;
+"20
+[; ;./stateStpWatch.h: 20: int miliSecSTW = 0;
 [v _miliSecSTW `i ~T0 @X0 1 e ]
 [i _miliSecSTW
 -> 0 `i
 ]
-"31
-[; ;./interrupt.h: 31: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4611 ~T0 @X0 1 e ]
+"23 ./interrupt.h
+[; ;./interrupt.h: 23: int count10ms = 0;
+[v _count10ms `i ~T0 @X0 1 e ]
+[i _count10ms
+-> 0 `i
+]
+"24
+[; ;./interrupt.h: 24: int flag = 0;
+[v _flag `i ~T0 @X0 1 e ]
+[i _flag
+-> 0 `i
+]
+"28
+[; ;./interrupt.h: 28: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
+[v _state `E4612 ~T0 @X0 1 e ]
 "19 ./stateClock.h
 [; ;./stateClock.h: 19: int sec = 0;
 [v _sec `i ~T0 @X0 1 e ]
@@ -747,7 +747,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "27
 [; ;./statesModify.h: 27: enum st{init, iNor, iAuto} stModify;
-[v _stModify `E4631 ~T0 @X0 1 e ]
+[v _stModify `E4632 ~T0 @X0 1 e ]
 "4 statesModify.c
 [; ;statesModify.c: 4: void modifyHour (void) {
 [v _modifyHour `(v ~T0 @X0 1 ef ]
@@ -770,7 +770,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _hr -> 1 `i ]
 "9
 [; ;statesModify.c: 9:                 stModify = iNor;
-[e = _stModify . `E4631 1 ]
+[e = _stModify . `E4632 1 ]
 "10
 [; ;statesModify.c: 10:             }
 }
@@ -787,7 +787,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "14
 [; ;statesModify.c: 14:                 stModify = init;
-[e = _stModify . `E4631 0 ]
+[e = _stModify . `E4632 0 ]
 "15
 [; ;statesModify.c: 15:             }
 }
@@ -801,7 +801,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _increaseTime -> 1 `i ]
 "18
 [; ;statesModify.c: 18:                 stModify = iAuto;
-[e = _stModify . `E4631 2 ]
+[e = _stModify . `E4632 2 ]
 "19
 [; ;statesModify.c: 19:             }
 }
@@ -818,7 +818,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "23
 [; ;statesModify.c: 23:                 stModify = init;
-[e = _stModify . `E4631 0 ]
+[e = _stModify . `E4632 0 ]
 "24
 [; ;statesModify.c: 24:             }
 }
@@ -845,9 +845,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 502  ]
 [e :U 503 ]
-[e [\ -> _stModify `ui , $ -> . `E4631 0 `ui 504
- , $ -> . `E4631 1 `ui 506
- , $ -> . `E4631 2 `ui 509
+[e [\ -> _stModify `ui , $ -> . `E4632 0 `ui 504
+ , $ -> . `E4632 1 `ui 506
+ , $ -> . `E4632 2 `ui 509
  502 ]
 [e :U 502 ]
 "31
@@ -887,7 +887,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _min -> 1 `i ]
 "41
 [; ;statesModify.c: 41:                 stModify = iNor;
-[e = _stModify . `E4631 1 ]
+[e = _stModify . `E4632 1 ]
 "42
 [; ;statesModify.c: 42:             }
 }
@@ -904,7 +904,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "46
 [; ;statesModify.c: 46:                 stModify = init;
-[e = _stModify . `E4631 0 ]
+[e = _stModify . `E4632 0 ]
 "47
 [; ;statesModify.c: 47:             }
 }
@@ -918,7 +918,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _increaseTime -> 1 `i ]
 "50
 [; ;statesModify.c: 50:                 stModify = iAuto;
-[e = _stModify . `E4631 2 ]
+[e = _stModify . `E4632 2 ]
 "51
 [; ;statesModify.c: 51:             }
 }
@@ -935,7 +935,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "55
 [; ;statesModify.c: 55:                 stModify = init;
-[e = _stModify . `E4631 0 ]
+[e = _stModify . `E4632 0 ]
 "56
 [; ;statesModify.c: 56:             }
 }
@@ -962,9 +962,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 514  ]
 [e :U 515 ]
-[e [\ -> _stModify `ui , $ -> . `E4631 0 `ui 516
- , $ -> . `E4631 1 `ui 518
- , $ -> . `E4631 2 `ui 521
+[e [\ -> _stModify `ui , $ -> . `E4632 0 `ui 516
+ , $ -> . `E4632 1 `ui 518
+ , $ -> . `E4632 2 `ui 521
  514 ]
 [e :U 514 ]
 "63
@@ -1004,7 +1004,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ++ _sec -> 1 `i ]
 "73
 [; ;statesModify.c: 73:                 stModify = iNor;
-[e = _stModify . `E4631 1 ]
+[e = _stModify . `E4632 1 ]
 "74
 [; ;statesModify.c: 74:             }
 }
@@ -1021,7 +1021,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "78
 [; ;statesModify.c: 78:                 stModify = init;
-[e = _stModify . `E4631 0 ]
+[e = _stModify . `E4632 0 ]
 "79
 [; ;statesModify.c: 79:             }
 }
@@ -1035,7 +1035,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _increaseTime -> 1 `i ]
 "82
 [; ;statesModify.c: 82:                 stModify = iAuto;
-[e = _stModify . `E4631 2 ]
+[e = _stModify . `E4632 2 ]
 "83
 [; ;statesModify.c: 83:             }
 }
@@ -1052,7 +1052,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "87
 [; ;statesModify.c: 87:                 stModify = init;
-[e = _stModify . `E4631 0 ]
+[e = _stModify . `E4632 0 ]
 "88
 [; ;statesModify.c: 88:             }
 }
@@ -1079,9 +1079,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 526  ]
 [e :U 527 ]
-[e [\ -> _stModify `ui , $ -> . `E4631 0 `ui 528
- , $ -> . `E4631 1 `ui 530
- , $ -> . `E4631 2 `ui 533
+[e [\ -> _stModify `ui , $ -> . `E4632 0 `ui 528
+ , $ -> . `E4632 1 `ui 530
+ , $ -> . `E4632 2 `ui 533
  526 ]
 [e :U 526 ]
 "95
@@ -1323,18 +1323,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "169
 [; ;statesModify.c: 169:     LCDPutChar(hr%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _hr -> 10 `i `ui -> 48 `ui `uc ]
+"170
+[; ;statesModify.c: 170:     LCDPutInst(0xC2);
+[e ( _LCDPutInst (1 -> -> 194 `i `uc ]
 "171
 [; ;statesModify.c: 171:     LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]
-"172
-[; ;statesModify.c: 172:     LCDPutInst(0xC3);
-[e ( _LCDPutInst (1 -> -> 195 `i `uc ]
 "173
 [; ;statesModify.c: 173:     LCDPutChar(min/10+'0');
 [e ( _LCDPutChar (1 -> + -> / _min -> 10 `i `ui -> 48 `ui `uc ]
 "174
 [; ;statesModify.c: 174:     LCDPutChar(min%10+'0');
 [e ( _LCDPutChar (1 -> + -> % _min -> 10 `i `ui -> 48 `ui `uc ]
+"175
+[; ;statesModify.c: 175:     LCDPutInst(0xC5);
+[e ( _LCDPutInst (1 -> -> 197 `i `uc ]
 "176
 [; ;statesModify.c: 176:     LCDPutChar(':');
 [e ( _LCDPutChar (1 -> -> 58 `ui `uc ]

@@ -4,6 +4,6 @@ interrupt.h  \
 system.h  \
 button.h  \
 BBSPI_LCD.h  \
+stateStpWatch.h  \
 stateClock.h  \
-statesModify.h  \
-stateStpWatch.h 
+statesModify.h 

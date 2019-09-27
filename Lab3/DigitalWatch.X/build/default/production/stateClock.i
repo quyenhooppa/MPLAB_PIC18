@@ -7876,7 +7876,6 @@ typedef uint32_t uint_fast32_t;
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
-void ledInitialize(void);
 # 20 "./interrupt.h" 2
 # 1 "./button.h" 1
 # 17 "./button.h"
@@ -7915,13 +7914,22 @@ int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
 # 21 "./interrupt.h" 2
+# 1 "./stateStpWatch.h" 1
+# 15 "./stateStpWatch.h"
+# 1 "./interrupt.h" 1
+# 16 "./stateStpWatch.h" 2
 
-int count10ms = 0;
-int timerFlag = 0;
 int runSTW = 0;
 int minSTW = 0;
 int secSTW = 0;
 int miliSecSTW = 0;
+
+void stopWatch (void);
+void displayStpWatch (void);
+# 22 "./interrupt.h" 2
+
+int count10ms = 0;
+int flag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
 

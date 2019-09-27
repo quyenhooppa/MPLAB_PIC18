@@ -5,13 +5,15 @@ void __interrupt () deviceInterrupt(void) {
         INTCONbits.TMR0IF = 0;//clear overflow flag
         //write to timer0 register
         TMR0H = 0xfd;
-        TMR0L = 0xaf;
+        TMR0L = 0x5f;
         //TMR0L = 100;
         count10ms++;
-        //LATD++;
-        timerFlag = 1;
         if (runSTW == 1) {
             miliSecSTW++;
+            if (miliSecSTW >= 100) {
+                miliSecSTW = 0;
+                flag = 1;
+            }
         }
         button();
     }

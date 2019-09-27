@@ -5,4 +5,5 @@ stateClock.h  \
 interrupt.h  \
 system.h  \
 button.h  \
-BBSPI_LCD.h 
+BBSPI_LCD.h  \
+stateStpWatch.h 

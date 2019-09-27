@@ -167,12 +167,12 @@ void displayModSecond (void) {
     mCURSOR_HOUR;
     LCDPutChar(hr/10+'0');
     LCDPutChar(hr%10+'0');
-    //LCDPutInst(0xC2);
+    LCDPutInst(0xC2);
     LCDPutChar(':');
-    mCURSOR_MINUTE;
+    //mCURSOR_MINUTE;
     LCDPutChar(min/10+'0');
     LCDPutChar(min%10+'0');
-    //LCDPutInst(0xC5);
+    LCDPutInst(0xC5);
     LCDPutChar(':');
     mCURSOR_SECOND;
     if (count10ms >= (PERIOD/2)) {

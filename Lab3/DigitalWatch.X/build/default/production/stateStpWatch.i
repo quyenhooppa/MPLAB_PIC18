@@ -7876,7 +7876,6 @@ typedef uint32_t uint_fast32_t;
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
-void ledInitialize(void);
 # 20 "./interrupt.h" 2
 # 1 "./button.h" 1
 # 17 "./button.h"
@@ -7915,38 +7914,40 @@ int readRA5Button (void);
 int readRB0Button (void);
 void button (void);
 # 21 "./interrupt.h" 2
+# 1 "./stateStpWatch.h" 1
+# 22 "./interrupt.h" 2
 
 int count10ms = 0;
-int timerFlag = 0;
-int runSTW = 0;
-int minSTW = 0;
-int secSTW = 0;
-int miliSecSTW = 0;
+int flag = 0;
 
 void __attribute__((picinterrupt(("")))) deviceInterrupt(void);
 
 enum State{norClk, modHr, modMin, modSec, stpWatch} state;
 # 16 "./stateStpWatch.h" 2
 
+int runSTW = 0;
+int minSTW = 0;
+int secSTW = 0;
+int miliSecSTW = 0;
+
 void stopWatch (void);
 void displayStpWatch (void);
 # 2 "stateStpWatch.c" 2
 
 void stopWatch (void) {
-    if (countPressed > 0) {
+    if (countPressed >= 5) {
         if (runSTW == 0) {
             miliSecSTW = 0;
             secSTW = 0;
             minSTW = 0;
         }
         runSTW = (runSTW + 1) % 2;
-        timerFlag = 0;
     }
     if (runSTW == 1) {
 
 
-            if (miliSecSTW >= 100) {
-                miliSecSTW = 0;
+            if (flag == 1) {
+                flag = 0;
                 secSTW++;
             }
             if (secSTW >= 60) {
@@ -7957,11 +7958,11 @@ void stopWatch (void) {
                 minSTW = 0;
             }
 
-
     }
 }
 
 void displayStpWatch (void) {
+    0x01;
     LCDPutInst(0x80);
     LCDPutStr("   STOP WATCH   ");
     LCDPutInst(0xC0);

@@ -37,7 +37,6 @@ void main(void) {
                 break;
             case modHr:
                 modifyHour();
-                //displayModify
                 displayModHour();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
@@ -48,7 +47,6 @@ void main(void) {
                 break;
             case modMin:
                 modifyMinute();
-                //displayModify();
                 displayModMinute();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
@@ -59,14 +57,12 @@ void main(void) {
                 break;
             case modSec:
                 modifySecond();
-                //displayModify();
                 displayModSecond();
                 if (changeModePressed == 1) {
                     changeModePressed = 0;
                     state = stpWatch;
                     runSTW = 0;
                     count10ms = 0;
-                    LCD_CLEAR;
                 }
                 break; 
             case stpWatch:

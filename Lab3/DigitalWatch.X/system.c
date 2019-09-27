@@ -15,7 +15,7 @@ void timerInitialize (void) {
     //T0CON = 0b11000110;
     //write to timer0 register
     TMR0H = 0xfd;
-    TMR0L = 0x8f;
+    TMR0L = 0x7f;
     //TMR0L = 100;
     //timer0ReloadVal = TMR0;
 }
@@ -24,9 +24,4 @@ void buttonInitialize (void) {
     TRISAbits.TRISA5 = 1;
     TRISBbits.TRISB0 = 1;
     ADCON1 = 0b00001111;
-}
-
-void ledInitialize(void) {
-    TRISD = 0x00;
-    LATD = 0x00;
 }

@@ -32,7 +32,6 @@ extern "C" {
 void oscillationInitialize (void);
 void timerInitialize (void);
 void buttonInitialize (void);
-void ledInitialize(void);
 
 #ifdef	__cplusplus
 }
