@@ -7880,7 +7880,8 @@ typedef uint32_t uint_fast32_t;
 
 int countPressed = 0;
 int countAuto= 0;
-int changeModePressed = 0;
+int RA5Pressed = 0;
+int RB0Pressed = 0;
 int increaseTime = 0;
 char firstReadRA5 = 1;
 char secondReadRA5 = 1;
@@ -7921,10 +7922,11 @@ void button (void) {
     int checkRA5 = readRA5Button();
     int checkRB0 = readRB0Button();
     if (checkRA5 == 1) {
-        changeModePressed = 1;
+        RA5Pressed = 1;
     }
     else if (checkRB0 == 1) {
         countPressed++;
+        RB0Pressed = 1;
         if (countPressed >= 100) {
             countAuto++;
             if (countAuto > 20) {
@@ -7936,7 +7938,8 @@ void button (void) {
     else {
         countPressed = 0;
         countAuto = 0;
-        changeModePressed = 0;
+        RA5Pressed = 0;
+        RB0Pressed = 0;
         increaseTime = 0;
     }
 }

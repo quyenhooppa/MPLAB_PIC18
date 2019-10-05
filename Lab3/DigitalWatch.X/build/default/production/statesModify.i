@@ -7904,7 +7904,8 @@ void buttonInitialize (void);
 
 int countPressed = 0;
 int countAuto= 0;
-int changeModePressed = 0;
+int RA5Pressed = 0;
+int RB0Pressed = 0;
 int increaseTime = 0;
 char firstReadRA5 = 1;
 char secondReadRA5 = 1;
@@ -7921,6 +7922,7 @@ void button (void);
 # 1 "./interrupt.h" 1
 # 16 "./stateStpWatch.h" 2
 
+int btnPressed = 0;
 int runSTW = 0;
 int minSTW = 0;
 int secSTW = 0;
@@ -7963,13 +7965,13 @@ enum st{init, iNor, iAuto} stModify;
 void modifyHour (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 0 && countPressed > 0) {
+            if (RA5Pressed == 0 && countPressed > 0) {
                 hr++;
                 stModify = iNor;
             }
             break;
         case iNor:
-            if (countPressed == 0 || changeModePressed == 1) {
+            if (countPressed == 0 || RA5Pressed == 1) {
                 stModify = init;
             }
             if (countAuto > 0) {
@@ -7978,7 +7980,7 @@ void modifyHour (void) {
             }
             break;
         case iAuto:
-            if (countPressed == 0 || changeModePressed == 1) {
+            if (countPressed == 0 || RA5Pressed == 1) {
                 stModify = init;
             }
             if (increaseTime == 1) {
@@ -7995,13 +7997,13 @@ void modifyHour (void) {
 void modifyMinute (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 0 && countPressed > 0) {
+            if (RA5Pressed == 0 && countPressed > 0) {
                 min++;
                 stModify = iNor;
             }
             break;
         case iNor:
-            if (countPressed == 0 || changeModePressed == 1) {
+            if (countPressed == 0 || RA5Pressed == 1) {
                 stModify = init;
             }
             if (countAuto > 0) {
@@ -8010,7 +8012,7 @@ void modifyMinute (void) {
             }
             break;
         case iAuto:
-            if (countPressed == 0 || changeModePressed == 1) {
+            if (countPressed == 0 || RA5Pressed == 1) {
                 stModify = init;
             }
             if (increaseTime == 1) {
@@ -8027,13 +8029,13 @@ void modifyMinute (void) {
 void modifySecond (void) {
     switch (stModify) {
         case init:
-            if (changeModePressed == 0 && countPressed > 0) {
+            if (RA5Pressed == 0 && countPressed > 0) {
                 sec++;
                 stModify = iNor;
             }
             break;
         case iNor:
-            if (countPressed == 0 || changeModePressed == 1) {
+            if (countPressed == 0 || RA5Pressed == 1) {
                 stModify = init;
             }
             if (countAuto > 0) {
@@ -8042,7 +8044,7 @@ void modifySecond (void) {
             }
             break;
         case iAuto:
-            if (countPressed == 0 || changeModePressed == 1) {
+            if (countPressed == 0 || RA5Pressed == 1) {
                 stModify = init;
             }
             if (increaseTime == 1) {
@@ -8071,10 +8073,11 @@ void displayModHour (void) {
                 LCDPutChar(hr%10+'0');
             }
             blink = (blink + 1) % 2;
-        } else {
-            LCDPutChar(hr/10+'0');
-            LCDPutChar(hr%10+'0');
         }
+    }
+    if (countAuto > 0) {
+        LCDPutChar(hr/10+'0');
+        LCDPutChar(hr%10+'0');
     }
     LCDPutInst(0xC2);
     LCDPutChar(':');
@@ -8108,10 +8111,11 @@ void displayModMinute (void) {
                 LCDPutChar(min%10+'0');
             }
             blink = (blink + 1) % 2;
-        } else {
-            LCDPutChar(min/10+'0');
-            LCDPutChar(min%10+'0');
         }
+    }
+    if (countAuto > 0) {
+        LCDPutChar(min/10+'0');
+        LCDPutChar(min%10+'0');
     }
     LCDPutInst(0xC5);
     LCDPutChar(':');
@@ -8145,9 +8149,10 @@ void displayModSecond (void) {
                 LCDPutChar(sec%10+'0');
             }
             blink = (blink + 1) % 2;
-        } else {
-            LCDPutChar(sec/10+'0');
-            LCDPutChar(sec%10+'0');
         }
+    }
+    if (countAuto > 0) {
+        LCDPutChar(sec/10+'0');
+        LCDPutChar(sec%10+'0');
     }
 }

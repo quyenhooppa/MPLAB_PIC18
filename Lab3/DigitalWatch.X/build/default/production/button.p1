@@ -664,37 +664,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 "23
-[; ;./button.h: 23: int changeModePressed = 0;
-[v _changeModePressed `i ~T0 @X0 1 e ]
-[i _changeModePressed
+[; ;./button.h: 23: int RA5Pressed = 0;
+[v _RA5Pressed `i ~T0 @X0 1 e ]
+[i _RA5Pressed
 -> 0 `i
 ]
 "24
-[; ;./button.h: 24: int increaseTime = 0;
+[; ;./button.h: 24: int RB0Pressed = 0;
+[v _RB0Pressed `i ~T0 @X0 1 e ]
+[i _RB0Pressed
+-> 0 `i
+]
+"25
+[; ;./button.h: 25: int increaseTime = 0;
 [v _increaseTime `i ~T0 @X0 1 e ]
 [i _increaseTime
 -> 0 `i
 ]
-"25
-[; ;./button.h: 25: char firstReadRA5 = 1;
+"26
+[; ;./button.h: 26: char firstReadRA5 = 1;
 [v _firstReadRA5 `uc ~T0 @X0 1 e ]
 [i _firstReadRA5
 -> -> 1 `i `uc
 ]
-"26
-[; ;./button.h: 26: char secondReadRA5 = 1;
+"27
+[; ;./button.h: 27: char secondReadRA5 = 1;
 [v _secondReadRA5 `uc ~T0 @X0 1 e ]
 [i _secondReadRA5
 -> -> 1 `i `uc
 ]
-"27
-[; ;./button.h: 27: char firstReadRB0 = 1;
+"28
+[; ;./button.h: 28: char firstReadRB0 = 1;
 [v _firstReadRB0 `uc ~T0 @X0 1 e ]
 [i _firstReadRB0
 -> -> 1 `i `uc
 ]
-"28
-[; ;./button.h: 28: char secondReadRB0 = 1;
+"29
+[; ;./button.h: 29: char secondReadRB0 = 1;
 [v _secondReadRB0 `uc ~T0 @X0 1 e ]
 [i _secondReadRB0
 -> -> 1 `i `uc
@@ -804,8 +810,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _checkRA5 -> 1 `i 508  ]
 {
 "31
-[; ;button.c: 31:         changeModePressed = 1;
-[e = _changeModePressed -> 1 `i ]
+[; ;button.c: 31:         RA5Pressed = 1;
+[e = _RA5Pressed -> 1 `i ]
 "32
 [; ;button.c: 32:     }
 }
@@ -819,56 +825,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;button.c: 34:         countPressed++;
 [e ++ _countPressed -> 1 `i ]
 "35
-[; ;button.c: 35:         if (countPressed >= 100) {
+[; ;button.c: 35:         RB0Pressed = 1;
+[e = _RB0Pressed -> 1 `i ]
+"36
+[; ;button.c: 36:         if (countPressed >= 100) {
 [e $ ! >= _countPressed -> 100 `i 511  ]
 {
-"36
-[; ;button.c: 36:             countAuto++;
-[e ++ _countAuto -> 1 `i ]
 "37
-[; ;button.c: 37:             if (countAuto > 20) {
+[; ;button.c: 37:             countAuto++;
+[e ++ _countAuto -> 1 `i ]
+"38
+[; ;button.c: 38:             if (countAuto > 20) {
 [e $ ! > _countAuto -> 20 `i 512  ]
 {
-"38
-[; ;button.c: 38:                 increaseTime = 1;
-[e = _increaseTime -> 1 `i ]
 "39
-[; ;button.c: 39:                 countAuto = 0;
-[e = _countAuto -> 0 `i ]
+[; ;button.c: 39:                 increaseTime = 1;
+[e = _increaseTime -> 1 `i ]
 "40
-[; ;button.c: 40:             }
+[; ;button.c: 40:                 countAuto = 0;
+[e = _countAuto -> 0 `i ]
+"41
+[; ;button.c: 41:             }
 }
 [e :U 512 ]
-"41
-[; ;button.c: 41:         }
+"42
+[; ;button.c: 42:         }
 }
 [e :U 511 ]
-"42
-[; ;button.c: 42:     }
+"43
+[; ;button.c: 43:     }
 }
 [e $U 513  ]
-"43
-[; ;button.c: 43:     else {
+"44
+[; ;button.c: 44:     else {
 [e :U 510 ]
 {
-"44
-[; ;button.c: 44:         countPressed = 0;
-[e = _countPressed -> 0 `i ]
 "45
-[; ;button.c: 45:         countAuto = 0;
-[e = _countAuto -> 0 `i ]
+[; ;button.c: 45:         countPressed = 0;
+[e = _countPressed -> 0 `i ]
 "46
-[; ;button.c: 46:         changeModePressed = 0;
-[e = _changeModePressed -> 0 `i ]
+[; ;button.c: 46:         countAuto = 0;
+[e = _countAuto -> 0 `i ]
 "47
-[; ;button.c: 47:         increaseTime = 0;
-[e = _increaseTime -> 0 `i ]
+[; ;button.c: 47:         RA5Pressed = 0;
+[e = _RA5Pressed -> 0 `i ]
 "48
-[; ;button.c: 48:     }
+[; ;button.c: 48:         RB0Pressed = 0;
+[e = _RB0Pressed -> 0 `i ]
+"49
+[; ;button.c: 49:         increaseTime = 0;
+[e = _increaseTime -> 0 `i ]
+"50
+[; ;button.c: 50:     }
 }
 [e :U 513 ]
 [e :U 509 ]
-"49
-[; ;button.c: 49: }
+"51
+[; ;button.c: 51: }
 [e :UE 507 ]
 }

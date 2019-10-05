@@ -6,7 +6,6 @@ void __interrupt () deviceInterrupt(void) {
         //write to timer0 register
         TMR0H = 0xfd;
         TMR0L = 0x5f;
-        //TMR0L = 100;
         count10ms++;
         if (runSTW == 1) {
             miliSecSTW++;

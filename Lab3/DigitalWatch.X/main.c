@@ -19,6 +19,10 @@ void main(void) {
     LCDInit();
     state = norClk;
     stModify = init;
+    int changeModePressed = 0;
+    if (RA5Pressed == 0) {
+        changeModePressed = 0;
+    }
     while (1)
     {
         switch (state) {
@@ -28,8 +32,8 @@ void main(void) {
                 minSTW = 0;
                 norClock();
                 displayClock();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = modHr;
                     blink = 0;
                     count10ms = 0;
@@ -38,8 +42,8 @@ void main(void) {
             case modHr:
                 modifyHour();
                 displayModHour();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = modMin;
                     blink = 0;
                     count10ms = 0;
@@ -48,8 +52,8 @@ void main(void) {
             case modMin:
                 modifyMinute();
                 displayModMinute();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = modSec;
                     blink = 0;
                     count10ms = 0;
@@ -58,8 +62,8 @@ void main(void) {
             case modSec:
                 modifySecond();
                 displayModSecond();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = stpWatch;
                     runSTW = 0;
                     count10ms = 0;
@@ -69,8 +73,8 @@ void main(void) {
                 norClock();
                 stopWatch();
                 displayStpWatch();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = norClk;
                     runSTW = 0;
                 }

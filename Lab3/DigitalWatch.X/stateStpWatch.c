@@ -1,7 +1,8 @@
 #include "stateStpWatch.h"
 
 void stopWatch (void) {
-    if (countPressed >= 2) {
+    if (btnPressed == 0) {
+        btnPressed = 1;
         if (runSTW == 0) {
             miliSecSTW = 0;
             secSTW = 0;
@@ -9,21 +10,21 @@ void stopWatch (void) {
         }
         runSTW = (runSTW + 1) % 2;
     }
+    if (RA5Pressed == 0) {
+        btnPressed = 0;
+    }
     if (runSTW == 1) {
-        //if (timerFlag == 1) {
-            //miliSecSTW++;
-            if (flag == 1) {
-                flag = 0;
-                secSTW++;
-            }
-            if (secSTW >= 60) {
-                secSTW = 0;
-                minSTW++;
-            }
-            if (minSTW >= 60) {
-                minSTW = 0;
-            }
-        //}
+        if (flag == 1) {
+            flag = 0;
+            secSTW++;
+        }
+        if (secSTW >= 60) {
+            secSTW = 0;
+            minSTW++;
+        }
+        if (minSTW >= 60) {
+            minSTW = 0;
+        }
     }
 }
 

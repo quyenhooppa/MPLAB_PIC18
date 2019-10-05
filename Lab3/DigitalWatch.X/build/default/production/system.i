@@ -7792,7 +7792,6 @@ void buttonInitialize (void);
 # 2 "system.c" 2
 
 void oscillationInitialize (void) {
-
     OSCCON = 0b01110111;
     OSCTUNE = 0b00001111;
 }
@@ -7804,11 +7803,8 @@ void timerInitialize (void) {
     INTCONbits.TMR0IF = 0;
     T0CON = 0b10000100;
 
-
     TMR0H = 0xfd;
     TMR0L = 0x7f;
-
-
 }
 
 void buttonInitialize (void) {

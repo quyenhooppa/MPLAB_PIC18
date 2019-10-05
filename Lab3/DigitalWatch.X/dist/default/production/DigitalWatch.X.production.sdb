@@ -4,7 +4,7 @@
 [d chip 18F8722 ]
 [d frameptr 4065 ]
 "28 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.h
-[e E4612 State `uc
+[e E4614 State `uc
 norClk 0
 modHr 1
 modMin 2
@@ -12,27 +12,27 @@ modSec 3
 stpWatch 4
 ]
 "27 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/statesModify.h
-[e E4632 st `uc
+[e E4634 st `uc
 init 0
 iNor 1
 iAuto 2
 ]
 "28 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.h
-[e E4612 State `uc
+[e E4614 State `uc
 norClk 0
 modHr 1
 modMin 2
 modSec 3
 stpWatch 4
 ]
-[e E4612 State `uc
+[e E4614 State `uc
 norClk 0
 modHr 1
 modMin 2
 modSec 3
 stpWatch 4
 ]
-[e E4612 State `uc
+[e E4614 State `uc
 norClk 0
 modHr 1
 modMin 2
@@ -40,13 +40,13 @@ modSec 3
 stpWatch 4
 ]
 "27 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/statesModify.h
-[e E4632 st `uc
+[e E4634 st `uc
 init 0
 iNor 1
 iAuto 2
 ]
 "28 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.h
-[e E4606 State `uc
+[e E4607 State `uc
 norClk 0
 modHr 1
 modMin 2
@@ -119,42 +119,44 @@ stpWatch 4
 [v _modifySecond modifySecond `(v  1 e 1 0 ]
 "100
 [v _displayModHour displayModHour `(v  1 e 1 0 ]
-"132
+"133
 [v _displayModMinute displayModMinute `(v  1 e 1 0 ]
-"164
+"166
 [v _displayModSecond displayModSecond `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
 [v _stopWatch stopWatch `(v  1 e 1 0 ]
-"30
+"31
 [v _displayStpWatch displayStpWatch `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _oscillationInitialize oscillationInitialize `(v  1 e 1 0 ]
-"9
+"8
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]
-"23
+"19
 [v _buttonInitialize buttonInitialize `(v  1 e 1 0 ]
 "21 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/button.h
 [v _countPressed countPressed `i  1 e 2 0 ]
 "22
 [v _countAuto countAuto `i  1 e 2 0 ]
 "23
-[v _changeModePressed changeModePressed `i  1 e 2 0 ]
+[v _RA5Pressed RA5Pressed `i  1 e 2 0 ]
 "24
-[v _increaseTime increaseTime `i  1 e 2 0 ]
+[v _RB0Pressed RB0Pressed `i  1 e 2 0 ]
 "25
-[v _firstReadRA5 firstReadRA5 `uc  1 e 1 0 ]
+[v _increaseTime increaseTime `i  1 e 2 0 ]
 "26
-[v _secondReadRA5 secondReadRA5 `uc  1 e 1 0 ]
+[v _firstReadRA5 firstReadRA5 `uc  1 e 1 0 ]
 "27
-[v _firstReadRB0 firstReadRB0 `uc  1 e 1 0 ]
+[v _secondReadRA5 secondReadRA5 `uc  1 e 1 0 ]
 "28
+[v _firstReadRB0 firstReadRB0 `uc  1 e 1 0 ]
+"29
 [v _secondReadRB0 secondReadRB0 `uc  1 e 1 0 ]
 "23 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.h
 [v _count10ms count10ms `i  1 e 2 0 ]
 "24
 [v _flag flag `i  1 e 2 0 ]
 "28
-[v _state state `E4612  1 e 1 0 ]
+[v _state state `E4614  1 e 1 0 ]
 "19 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateClock.h
 [v _sec sec `i  1 e 2 0 ]
 "20
@@ -164,16 +166,18 @@ stpWatch 4
 "17 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/statesModify.h
 [v _blink blink `i  1 e 2 0 ]
 "27
-[v _stModify stModify `E4632  1 e 1 0 ]
+[v _stModify stModify `E4634  1 e 1 0 ]
 "17 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.h
-[v _runSTW runSTW `i  1 e 2 0 ]
+[v _btnPressed btnPressed `i  1 e 2 0 ]
 "18
-[v _minSTW minSTW `i  1 e 2 0 ]
+[v _runSTW runSTW `i  1 e 2 0 ]
 "19
-[v _secSTW secSTW `i  1 e 2 0 ]
+[v _minSTW minSTW `i  1 e 2 0 ]
 "20
+[v _secSTW secSTW `i  1 e 2 0 ]
+"21
 [v _miliSecSTW miliSecSTW `i  1 e 2 0 ]
-[s S179 . 1 `uc 1 RA0 1 0 :1:0 
+[s S182 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -183,29 +187,29 @@ stpWatch 4
 `uc 1 RA7 1 0 :1:7 
 ]
 "2684 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
-[s S295 . 1 `uc 1 . 1 0 :2:0 
+[s S298 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 T0CKI 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S301 . 1 `uc 1 AN0 1 0 :1:0 
+[s S304 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 AN4 1 0 :1:5 
 ]
-[s S308 . 1 `uc 1 . 1 0 :5:0 
+[s S311 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S311 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S314 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 `uc 1 . 1 0 :6:1 
 `uc 1 RJPU 1 0 :1:7 
 ]
-[u S315 . 1 `S179 1 . 1 0 `S295 1 . 1 0 `S301 1 . 1 0 `S308 1 . 1 0 `S311 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES315  1 e 1 @3968 ]
-[s S219 . 1 `uc 1 RB0 1 0 :1:0 
+[u S318 . 1 `S182 1 . 1 0 `S298 1 . 1 0 `S304 1 . 1 0 `S311 1 . 1 0 `S314 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES318  1 e 1 @3968 ]
+[s S222 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -215,7 +219,7 @@ stpWatch 4
 `uc 1 RB7 1 0 :1:7 
 ]
 "2833
-[s S360 . 1 `uc 1 INT0 1 0 :1:0 
+[s S363 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 INT3 1 0 :1:3 
@@ -224,22 +228,22 @@ stpWatch 4
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S369 . 1 `uc 1 FLT0 1 0 :1:0 
+[s S372 . 1 `uc 1 FLT0 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 ECCP2 1 0 :1:3 
 ]
-[s S373 . 1 `uc 1 . 1 0 :3:0 
+[s S376 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2 1 0 :1:3 
 ]
-[s S376 . 1 `uc 1 . 1 0 :3:0 
+[s S379 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 P2A 1 0 :1:3 
 ]
-[s S379 . 1 `uc 1 . 1 0 :3:0 
+[s S382 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S382 . 1 `S219 1 . 1 0 `S360 1 . 1 0 `S369 1 . 1 0 `S373 1 . 1 0 `S376 1 . 1 0 `S379 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES382  1 e 1 @3969 ]
-[s S622 . 1 `uc 1 LATA0 1 0 :1:0 
+[u S385 . 1 `S222 1 . 1 0 `S363 1 . 1 0 `S372 1 . 1 0 `S376 1 . 1 0 `S379 1 . 1 0 `S382 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES385  1 e 1 @3969 ]
+[s S626 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -249,7 +253,7 @@ stpWatch 4
 `uc 1 LATA7 1 0 :1:7 
 ]
 "4506
-[s S631 . 1 `uc 1 LA0 1 0 :1:0 
+[s S635 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -258,9 +262,9 @@ stpWatch 4
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S640 . 1 `S622 1 . 1 0 `S631 1 . 1 0 ]
-[v _LATAbits LATAbits `VES640  1 e 1 @3977 ]
-[s S662 . 1 `uc 1 LATC0 1 0 :1:0 
+[u S644 . 1 `S626 1 . 1 0 `S635 1 . 1 0 ]
+[v _LATAbits LATAbits `VES644  1 e 1 @3977 ]
+[s S666 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -270,7 +274,7 @@ stpWatch 4
 `uc 1 LATC7 1 0 :1:7 
 ]
 "4730
-[s S671 . 1 `uc 1 LC0 1 0 :1:0 
+[s S675 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -279,9 +283,9 @@ stpWatch 4
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S680 . 1 `S662 1 . 1 0 `S671 1 . 1 0 ]
-[v _LATCbits LATCbits `VES680  1 e 1 @3979 ]
-[s S498 . 1 `uc 1 LATF0 1 0 :1:0 
+[u S684 . 1 `S666 1 . 1 0 `S675 1 . 1 0 ]
+[v _LATCbits LATCbits `VES684  1 e 1 @3979 ]
+[s S502 . 1 `uc 1 LATF0 1 0 :1:0 
 `uc 1 LATF1 1 0 :1:1 
 `uc 1 LATF2 1 0 :1:2 
 `uc 1 LATF3 1 0 :1:3 
@@ -291,7 +295,7 @@ stpWatch 4
 `uc 1 LATF7 1 0 :1:7 
 ]
 "5066
-[s S507 . 1 `uc 1 LF0 1 0 :1:0 
+[s S511 . 1 `uc 1 LF0 1 0 :1:0 
 `uc 1 LF1 1 0 :1:1 
 `uc 1 LF2 1 0 :1:2 
 `uc 1 LF3 1 0 :1:3 
@@ -300,9 +304,9 @@ stpWatch 4
 `uc 1 LF6 1 0 :1:6 
 `uc 1 LF7 1 0 :1:7 
 ]
-[u S516 . 1 `S498 1 . 1 0 `S507 1 . 1 0 ]
-[v _LATFbits LATFbits `VES516  1 e 1 @3982 ]
-[s S170 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S520 . 1 `S502 1 . 1 0 `S511 1 . 1 0 ]
+[v _LATFbits LATFbits `VES520  1 e 1 @3982 ]
+[s S173 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -312,9 +316,9 @@ stpWatch 4
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "5489
-[u S188 . 1 `S170 1 . 1 0 `S179 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES188  1 e 1 @3986 ]
-[s S210 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S191 . 1 `S173 1 . 1 0 `S182 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES191  1 e 1 @3986 ]
+[s S213 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -324,9 +328,9 @@ stpWatch 4
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "5711
-[u S228 . 1 `S210 1 . 1 0 `S219 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES228  1 e 1 @3987 ]
-[s S582 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S231 . 1 `S213 1 . 1 0 `S222 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES231  1 e 1 @3987 ]
+[s S586 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -336,7 +340,7 @@ stpWatch 4
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "5933
-[s S591 . 1 `uc 1 RC0 1 0 :1:0 
+[s S595 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -345,9 +349,9 @@ stpWatch 4
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S600 . 1 `S582 1 . 1 0 `S591 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES600  1 e 1 @3988 ]
-[s S458 . 1 `uc 1 TRISF0 1 0 :1:0 
+[u S604 . 1 `S586 1 . 1 0 `S595 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES604  1 e 1 @3988 ]
+[s S462 . 1 `uc 1 TRISF0 1 0 :1:0 
 `uc 1 TRISF1 1 0 :1:1 
 `uc 1 TRISF2 1 0 :1:2 
 `uc 1 TRISF3 1 0 :1:3 
@@ -357,7 +361,7 @@ stpWatch 4
 `uc 1 TRISF7 1 0 :1:7 
 ]
 "6599
-[s S467 . 1 `uc 1 RF0 1 0 :1:0 
+[s S471 . 1 `uc 1 RF0 1 0 :1:0 
 `uc 1 RF1 1 0 :1:1 
 `uc 1 RF2 1 0 :1:2 
 `uc 1 RF3 1 0 :1:3 
@@ -366,8 +370,8 @@ stpWatch 4
 `uc 1 RF6 1 0 :1:6 
 `uc 1 RF7 1 0 :1:7 
 ]
-[u S476 . 1 `S458 1 . 1 0 `S467 1 . 1 0 ]
-[v _TRISFbits TRISFbits `VES476  1 e 1 @3991 ]
+[u S480 . 1 `S462 1 . 1 0 `S471 1 . 1 0 ]
+[v _TRISFbits TRISFbits `VES480  1 e 1 @3991 ]
 "7383
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3995 ]
 "10174
@@ -380,7 +384,7 @@ stpWatch 4
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "12647
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S118 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S121 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -390,7 +394,7 @@ stpWatch 4
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "13144
-[s S127 . 1 `uc 1 . 1 0 :1:0 
+[s S130 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -399,31 +403,33 @@ stpWatch 4
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S136 . 1 `uc 1 . 1 0 :6:0 
+[s S139 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S140 . 1 `S118 1 . 1 0 `S127 1 . 1 0 `S136 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES140  1 e 1 @4082 ]
+[u S143 . 1 `S121 1 . 1 0 `S130 1 . 1 0 `S139 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES143  1 e 1 @4082 ]
 "15 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"81
+"22
+[v main@changeModePressed changeModePressed `i  1 a 2 21 ]
+"85
 } 0
-"9 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
+"8 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]
 {
-"21
+"17
 } 0
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
 [v _stopWatch stopWatch `(v  1 e 1 0 ]
 {
-"28
+"29
 } 0
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _oscillationInitialize oscillationInitialize `(v  1 e 1 0 ]
 {
-"7
+"6
 } 0
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateClock.c
 [v _norClock norClock `(v  1 e 1 0 ]
@@ -445,25 +451,25 @@ stpWatch 4
 {
 "34
 } 0
-"30 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
+"31 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
 [v _displayStpWatch displayStpWatch `(v  1 e 1 0 ]
 {
-"47
+"46
 } 0
-"164 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/statesModify.c
+"166 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/statesModify.c
 [v _displayModSecond displayModSecond `(v  1 e 1 0 ]
 {
-"194
+"197
 } 0
-"132
+"133
 [v _displayModMinute displayModMinute `(v  1 e 1 0 ]
 {
-"162
+"164
 } 0
 "100
 [v _displayModHour displayModHour `(v  1 e 1 0 ]
 {
-"130
+"131
 } 0
 "21 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateClock.c
 [v _displayClock displayClock `(v  1 e 1 0 ]
@@ -509,10 +515,10 @@ stpWatch 4
 [v LCDPutChar@ch ch `uc  1 a 1 14 ]
 "170
 } 0
-"23 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
+"19 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _buttonInitialize buttonInitialize `(v  1 e 1 0 ]
 {
-"27
+"23
 } 0
 "45 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/BBSPI_LCD.c
 [v _LCDInit LCDInit `(v  1 e 1 0 ]
@@ -569,7 +575,7 @@ stpWatch 4
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.c
 [v _deviceInterrupt deviceInterrupt `IIH(v  1 e 1 0 ]
 {
-"24
+"19
 } 0
 "27 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/button.c
 [v _button button `(v  1 e 1 0 ]
@@ -578,7 +584,7 @@ stpWatch 4
 [v button@checkRB0 checkRB0 `i  1 a 2 6 ]
 "28
 [v button@checkRA5 checkRA5 `i  1 a 2 4 ]
-"49
+"51
 } 0
 "15
 [v _readRB0Button readRB0Button `(i  1 e 2 0 ]

@@ -7907,7 +7907,8 @@ void buttonInitialize (void);
 
 int countPressed = 0;
 int countAuto= 0;
-int changeModePressed = 0;
+int RA5Pressed = 0;
+int RB0Pressed = 0;
 int increaseTime = 0;
 char firstReadRA5 = 1;
 char secondReadRA5 = 1;
@@ -7924,6 +7925,7 @@ void button (void);
 # 1 "./interrupt.h" 1
 # 16 "./stateStpWatch.h" 2
 
+int btnPressed = 0;
 int runSTW = 0;
 int minSTW = 0;
 int secSTW = 0;
@@ -7972,6 +7974,10 @@ void main(void) {
     LCDInit();
     state = norClk;
     stModify = init;
+    int changeModePressed = 0;
+    if (RA5Pressed == 0) {
+        changeModePressed = 0;
+    }
     while (1)
     {
         switch (state) {
@@ -7981,8 +7987,8 @@ void main(void) {
                 minSTW = 0;
                 norClock();
                 displayClock();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = modHr;
                     blink = 0;
                     count10ms = 0;
@@ -7991,8 +7997,8 @@ void main(void) {
             case modHr:
                 modifyHour();
                 displayModHour();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = modMin;
                     blink = 0;
                     count10ms = 0;
@@ -8001,8 +8007,8 @@ void main(void) {
             case modMin:
                 modifyMinute();
                 displayModMinute();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = modSec;
                     blink = 0;
                     count10ms = 0;
@@ -8011,8 +8017,8 @@ void main(void) {
             case modSec:
                 modifySecond();
                 displayModSecond();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = stpWatch;
                     runSTW = 0;
                     count10ms = 0;
@@ -8022,8 +8028,8 @@ void main(void) {
                 norClock();
                 stopWatch();
                 displayStpWatch();
-                if (changeModePressed == 1) {
-                    changeModePressed = 0;
+                if (changeModePressed == 0) {
+                    changeModePressed = 1;
                     state = norClk;
                     runSTW = 0;
                 }

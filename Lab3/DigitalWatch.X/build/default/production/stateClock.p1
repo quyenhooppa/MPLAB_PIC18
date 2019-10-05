@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "28 ./interrupt.h
 [; ;./interrupt.h: 28: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[c E4612 0 1 2 3 4 .. ]
-[n E4612 State norClk modHr modMin modSec stpWatch  ]
+[c E4614 0 1 2 3 4 .. ]
+[n E4614 State norClk modHr modMin modSec stpWatch  ]
 "132 ./BBSPI_LCD.h
 [; ;./BBSPI_LCD.h: 132:     void LCDPutInst(unsigned char);
 [v _LCDPutInst `(v ~T0 @X0 0 ef1`uc ]
@@ -637,61 +637,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 "23
-[; ;./button.h: 23: int changeModePressed = 0;
-[v _changeModePressed `i ~T0 @X0 1 e ]
-[i _changeModePressed
+[; ;./button.h: 23: int RA5Pressed = 0;
+[v _RA5Pressed `i ~T0 @X0 1 e ]
+[i _RA5Pressed
 -> 0 `i
 ]
 "24
-[; ;./button.h: 24: int increaseTime = 0;
+[; ;./button.h: 24: int RB0Pressed = 0;
+[v _RB0Pressed `i ~T0 @X0 1 e ]
+[i _RB0Pressed
+-> 0 `i
+]
+"25
+[; ;./button.h: 25: int increaseTime = 0;
 [v _increaseTime `i ~T0 @X0 1 e ]
 [i _increaseTime
 -> 0 `i
 ]
-"25
-[; ;./button.h: 25: char firstReadRA5 = 1;
+"26
+[; ;./button.h: 26: char firstReadRA5 = 1;
 [v _firstReadRA5 `uc ~T0 @X0 1 e ]
 [i _firstReadRA5
 -> -> 1 `i `uc
 ]
-"26
-[; ;./button.h: 26: char secondReadRA5 = 1;
+"27
+[; ;./button.h: 27: char secondReadRA5 = 1;
 [v _secondReadRA5 `uc ~T0 @X0 1 e ]
 [i _secondReadRA5
 -> -> 1 `i `uc
 ]
-"27
-[; ;./button.h: 27: char firstReadRB0 = 1;
+"28
+[; ;./button.h: 28: char firstReadRB0 = 1;
 [v _firstReadRB0 `uc ~T0 @X0 1 e ]
 [i _firstReadRB0
 -> -> 1 `i `uc
 ]
-"28
-[; ;./button.h: 28: char secondReadRB0 = 1;
+"29
+[; ;./button.h: 29: char secondReadRB0 = 1;
 [v _secondReadRB0 `uc ~T0 @X0 1 e ]
 [i _secondReadRB0
 -> -> 1 `i `uc
 ]
 "17 ./stateStpWatch.h
-[; ;./stateStpWatch.h: 17: int runSTW = 0;
+[; ;./stateStpWatch.h: 17: int btnPressed = 0;
+[v _btnPressed `i ~T0 @X0 1 e ]
+[i _btnPressed
+-> 0 `i
+]
+"18
+[; ;./stateStpWatch.h: 18: int runSTW = 0;
 [v _runSTW `i ~T0 @X0 1 e ]
 [i _runSTW
 -> 0 `i
 ]
-"18
-[; ;./stateStpWatch.h: 18: int minSTW = 0;
+"19
+[; ;./stateStpWatch.h: 19: int minSTW = 0;
 [v _minSTW `i ~T0 @X0 1 e ]
 [i _minSTW
 -> 0 `i
 ]
-"19
-[; ;./stateStpWatch.h: 19: int secSTW = 0;
+"20
+[; ;./stateStpWatch.h: 20: int secSTW = 0;
 [v _secSTW `i ~T0 @X0 1 e ]
 [i _secSTW
 -> 0 `i
 ]
-"20
-[; ;./stateStpWatch.h: 20: int miliSecSTW = 0;
+"21
+[; ;./stateStpWatch.h: 21: int miliSecSTW = 0;
 [v _miliSecSTW `i ~T0 @X0 1 e ]
 [i _miliSecSTW
 -> 0 `i
@@ -710,7 +722,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "28
 [; ;./interrupt.h: 28: enum State{norClk, modHr, modMin, modSec, stpWatch} state;
-[v _state `E4612 ~T0 @X0 1 e ]
+[v _state `E4614 ~T0 @X0 1 e ]
 "19 ./stateClock.h
 [; ;./stateClock.h: 19: int sec = 0;
 [v _sec `i ~T0 @X0 1 e ]

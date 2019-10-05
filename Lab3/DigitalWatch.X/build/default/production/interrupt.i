@@ -7900,7 +7900,8 @@ void buttonInitialize (void);
 
 int countPressed = 0;
 int countAuto= 0;
-int changeModePressed = 0;
+int RA5Pressed = 0;
+int RB0Pressed = 0;
 int increaseTime = 0;
 char firstReadRA5 = 1;
 char secondReadRA5 = 1;
@@ -7917,6 +7918,7 @@ void button (void);
 # 1 "./interrupt.h" 1
 # 16 "./stateStpWatch.h" 2
 
+int btnPressed = 0;
 int runSTW = 0;
 int minSTW = 0;
 int secSTW = 0;
@@ -7940,9 +7942,7 @@ void __attribute__((picinterrupt(("")))) deviceInterrupt(void) {
 
         TMR0H = 0xfd;
         TMR0L = 0x5f;
-
         count10ms++;
-
         if (runSTW == 1) {
             miliSecSTW++;
             if (miliSecSTW >= 100) {
@@ -7950,9 +7950,6 @@ void __attribute__((picinterrupt(("")))) deviceInterrupt(void) {
                 flag = 1;
             }
         }
-
-
-
         button();
     }
 }

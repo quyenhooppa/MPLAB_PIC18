@@ -13,7 +13,8 @@ extern "C" {
 #endif
 
 #include "interrupt.h"
-    
+
+int btnPressed = 0;    
 int runSTW = 0;
 int minSTW = 0;
 int secSTW = 0;
