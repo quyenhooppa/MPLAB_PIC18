@@ -7937,7 +7937,8 @@ void displayStpWatch (void);
 # 2 "stateStpWatch.c" 2
 
 void stopWatch (void) {
-    if (btnPressed == 0) {
+    if (RB0Pressed == 1) {
+        if (btnPressed == 0) {
         btnPressed = 1;
         if (runSTW == 0) {
             miliSecSTW = 0;
@@ -7945,8 +7946,9 @@ void stopWatch (void) {
             minSTW = 0;
         }
         runSTW = (runSTW + 1) % 2;
+        }
     }
-    if (RA5Pressed == 0) {
+    if (RB0Pressed == 0) {
         btnPressed = 0;
     }
     if (runSTW == 1) {

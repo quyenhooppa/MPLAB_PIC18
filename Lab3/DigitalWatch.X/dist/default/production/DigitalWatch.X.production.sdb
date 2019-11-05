@@ -125,7 +125,7 @@ stpWatch 4
 [v _displayModSecond displayModSecond `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
 [v _stopWatch stopWatch `(v  1 e 1 0 ]
-"31
+"33
 [v _displayStpWatch displayStpWatch `(v  1 e 1 0 ]
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _oscillationInitialize oscillationInitialize `(v  1 e 1 0 ]
@@ -414,7 +414,7 @@ stpWatch 4
 {
 "22
 [v main@changeModePressed changeModePressed `i  1 a 2 21 ]
-"85
+"95
 } 0
 "8 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _timerInitialize timerInitialize `(v  1 e 1 0 ]
@@ -424,7 +424,7 @@ stpWatch 4
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
 [v _stopWatch stopWatch `(v  1 e 1 0 ]
 {
-"29
+"31
 } 0
 "3 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/system.c
 [v _oscillationInitialize oscillationInitialize `(v  1 e 1 0 ]
@@ -451,10 +451,10 @@ stpWatch 4
 {
 "34
 } 0
-"31 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
+"33 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/stateStpWatch.c
 [v _displayStpWatch displayStpWatch `(v  1 e 1 0 ]
 {
-"46
+"48
 } 0
 "166 /Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/statesModify.c
 [v _displayModSecond displayModSecond `(v  1 e 1 0 ]

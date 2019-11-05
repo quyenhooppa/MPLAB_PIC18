@@ -7975,11 +7975,11 @@ void main(void) {
     state = norClk;
     stModify = init;
     int changeModePressed = 0;
-    if (RA5Pressed == 0) {
-        changeModePressed = 0;
-    }
     while (1)
     {
+        if (RA5Pressed == 0) {
+            changeModePressed = 0;
+        }
         switch (state) {
             case norClk:
                 miliSecSTW = 0;
@@ -7987,51 +7987,61 @@ void main(void) {
                 minSTW = 0;
                 norClock();
                 displayClock();
+                if (RA5Pressed == 1) {
                 if (changeModePressed == 0) {
                     changeModePressed = 1;
                     state = modHr;
                     blink = 0;
                     count10ms = 0;
                 }
+                }
                 break;
             case modHr:
                 modifyHour();
                 displayModHour();
+                if (RA5Pressed == 1) {
                 if (changeModePressed == 0) {
                     changeModePressed = 1;
                     state = modMin;
                     blink = 0;
                     count10ms = 0;
                 }
+                }
                 break;
             case modMin:
                 modifyMinute();
                 displayModMinute();
+                if (RA5Pressed == 1) {
                 if (changeModePressed == 0) {
                     changeModePressed = 1;
                     state = modSec;
                     blink = 0;
                     count10ms = 0;
                 }
+                }
                 break;
             case modSec:
                 modifySecond();
                 displayModSecond();
+                if (RA5Pressed == 1) {
                 if (changeModePressed == 0) {
                     changeModePressed = 1;
                     state = stpWatch;
                     runSTW = 0;
                     count10ms = 0;
                 }
+                }
                 break;
             case stpWatch:
                 norClock();
                 stopWatch();
                 displayStpWatch();
+                if (RA5Pressed == 1) {
                 if (changeModePressed == 0) {
                     changeModePressed = 1;
                     state = norClk;
                     runSTW = 0;
+                }
                 }
                 break;
         }
