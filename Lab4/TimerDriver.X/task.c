@@ -11,7 +11,7 @@ void initStateLed(void) {
     LED7 = 0;
 }
 
-void blink (int led) {
+void blink (unsigned long int led) {
     switch (led) {
         case 0: 
             LED0 = (LED0 + 1) % 2;
@@ -37,5 +37,21 @@ void blink (int led) {
         case 7: 
             LED7 = (LED7 + 1) % 2;
             break;   
+    }
+}
+
+void printLCD (unsigned long int num) {
+    LCDPutInst(LCD_CURSOR_LINE1);
+    int numOfDigit = 1;
+    char arr[16] = {'\0'};
+    num = get_time();
+    int temp = num;
+    while (num != 0) {
+        numOfDigit++;
+        arr[16 - numOfDigit] = temp % 10;
+        temp = temp / 10;
+    }
+    for (int i = num; i>0; i--) {
+        LCDPutChar(arr[num -i]);
     }
 }

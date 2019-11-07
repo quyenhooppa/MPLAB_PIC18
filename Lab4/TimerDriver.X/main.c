@@ -7,18 +7,17 @@
 
 
 #include <xc.h>
-#include "clock.h"
+#include "task.h"
 
 void main (void) {
     oscillationInitialize ();
     timerInitialize ();
     buttonInitialize ();
     ledInitialize (); 
+    LCDInit();
     initStateLed ();
-    listOfTask.size = 0;
-    listOfExe.size = 0;
     
-    void(*pF)(int);
+    void(*pF)(unsigned long int);
     pF = blink;
     int count = 0;
     register_timer(500, 1000, pF, &count);
@@ -32,6 +31,8 @@ void main (void) {
     register_timer(300, 0, pF, &count);
     count++;
     register_timer(200, 1500, pF, &count);
+    pF = printLCD;
+    register_timer(0, 10, pF, &count);
     start_timer();
     while (1) {
         dispatch();

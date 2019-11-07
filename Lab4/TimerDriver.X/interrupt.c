@@ -8,8 +8,8 @@ void __interrupt () deviceInterrupt(void) {
         //write to timer0 register
         TMR0H = 0xfd;
         TMR0L = 0x5f;
-        LCDPutInst(LCD_CURSOR_LINE1);
-        printLCD(counterTime);
+        //LCDPutInst(LCD_CURSOR_LINE1);
+        //printLCD(counterTime);
     }
     
     //Timer 1 interrupt

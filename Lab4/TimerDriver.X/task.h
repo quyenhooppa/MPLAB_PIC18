@@ -14,6 +14,8 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
+#include "BBSPI_LCD.h"
+#include "clock.h"
 
 #define LED0 LATD0
 #define LED1 LATD1
@@ -25,7 +27,8 @@ extern "C" {
 #define LED7 LATD7
   
 void initStateLed (void);
-void blink (int led);
+void blink (unsigned long int);
+void printLCD(unsigned long int);
 
 
 #ifdef	__cplusplus

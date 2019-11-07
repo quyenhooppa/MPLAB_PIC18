@@ -1,6 +1,7 @@
 #include "clock.h"
 
 void start_timer (void) {
+    initTask();
     T0CONbits.TMR0ON = 1;
     //write to timer0 register
     TMR0H = 0xfd;
@@ -17,53 +18,42 @@ timestamp_t get_time (void) {
 }
 
 uint32_t register_timer (uint32_t delay, uint32_t period, timer_callback_t callback, void* arg) {
-    if (listOfTask.size > MAX_TASK) {
+    int pos = -1;
+    for (int i = 0; i < MAX_TASK; i++) {
+        if (lsOfTask[i].pTask != NULL && lsOfTask[i].run != -1) {
+            pos = i;
+            break;
+        }
+    }
+    if (pos == -1) {
         return 0;
     }
-    struct task* temp;
-    temp->pTask = callback;
-    temp->delay = delay;
-    temp->period = period;
-    temp->run = 0;
-    temp->led = (int)(arg);
-    temp->next = NULL;
-    if (listOfTask.size == 0) { //current have no task
-        listOfTask.head = temp;
-        listOfTask.tail = temp;
-    }
-    else {
-       (listOfTask.tail)->next = temp;
-       listOfTask.tail = temp; 
-    }
-    listOfTask.size++;
-    return listOfTask.size;
+    lsOfTask[pos].pTask = callback;
+    lsOfTask[pos].delay = delay;
+    lsOfTask[pos].period = period;
+    lsOfTask[pos].run = 0;
+    lsOfTask[pos].arg = (uint32_t)arg;
+    lsOfTask[pos].next = -1;
+    return pos + 1;
 }
 
 int remove_timer (uint32_t id) {
-    if (id > MAX_TASK || id == 0 || id > listOfTask.size) {
+    if (id > MAX_TASK || id == 0) {
         return 0;
     }
-    listOfTask.size--;
-    struct task* temp;
-    if (id == 1) { //first task in the list
-        temp = listOfTask.head;
-        listOfTask.head = temp->next;
-        temp->next = NULL;
+    if (lsOfTask[id - 1].pTask == NULL && lsOfTask[id - 1].run ==  -1) {
+        return 0;
     }
-    else {
-        int pos = 1;
-        //find the task before the removed 
-        while (pos < id - 1) {
-            temp = temp->next;
-            pos++;
-        }
-        struct task* del = temp->next;//removed task
-        temp->next = del->next;
-        del->next = NULL;
-        if (temp->next == NULL) { //last task in the list
-            listOfTask.tail = temp;
-        }
+    uint32_t cur = lsOfTask[id - 1].next;
+    while (cur != -1) {
+        lsOfTask[cur].delay += lsOfTask[id - 1].delay;
+        cur = lsOfTask[cur].next;
     }
+    lsOfTask[id - 1].pTask = NULL;
+    lsOfTask[id - 1].delay = 0;
+    lsOfTask[id - 1].period = 0;
+    lsOfTask[id - 1].run = -1;
+    lsOfTask[id - 1].next = -1;   
     return 1;
 }
 
@@ -71,136 +61,108 @@ void stop_timer (void) {
     T0CONbits.TMR0ON = 0;
     T1CONbits.TMR1ON = 0;
     //remove all the task 
-    int empty = 0;
-    empty = remove_timer(1);
-    while (empty != 0) {
-        remove_timer(1);
+    for (int i = 0; i < MAX_TASK; i++) {
+        remove_timer(i + 1);
     }
 }
 
 int timer_ISR (void) {
-    if (listOfExe.head == NULL) {
+    if (head == 0) {
         return 0;
     }
-    struct task* temp = listOfExe.head;
-    if (temp->delay == 0) {
-        temp->run += 1;
-        if (temp->period != 0) {
-            temp->delay = temp->period;
+    struct task temp = lsOfTask[head - 1];
+    if (temp.delay == 0) {
+        temp.run = 1;
+        if (temp.period != 0) {
+            temp.delay = temp.period;
         }
     } else {
-        temp->delay -= 1;
+        temp.delay -= 1;
     }
     return 1;
 }
 
-void addTaskExe (struct task* tsk) {
-    if (listOfExe.size == 0) {
-        listOfExe.head = tsk;
-    } else if (listOfExe.size == 1) {
-        struct task* temp = listOfExe.head;
-        if (tsk->delay >= temp->delay) {
-            temp->next = tsk;
-            tsk->delay -= temp->delay;
+void initTask(void) {
+    for (int i = 0; i< MAX_TASK; i++) {
+        lsOfTask[i].pTask = NULL;
+        lsOfTask[i].delay = 0;
+        lsOfTask[i].period = 0;
+        lsOfTask[i].run = -1;  
+        lsOfTask[i].next = -1;
+    }
+}
+
+void addTaskExe (struct task tsk, uint32_t id) {//id equals index in arr - 1 
+    if (head == 0) {
+        head = id;
+    } else if (lsOfTask[head - 1].next == -1) {
+        if (lsOfTask[head - 1].delay > tsk.delay) {
+            lsOfTask[head - 1].delay -= tsk.delay;
+            tsk.next = head - 1;
+            head = id;
         } else {
-            tsk->next = temp;
-            listOfExe.head = tsk;
-            temp->delay -= tsk->delay;
+            tsk.delay -= lsOfTask[head - 1].delay;
+            lsOfTask[head - 1].next = id - 1;
         }
     } else {
-        struct task* tempPrev = listOfExe.head;
-        struct task* temp = tempPrev->next;
-        if (tsk->delay < tempPrev->delay) {
-            tsk->next = tempPrev;
-            listOfExe.head = tsk;
-            tempPrev->delay -= tsk->delay;
+        uint32_t pre = head - 1;
+        uint32_t cur = lsOfTask[pre].next;
+        if (tsk.delay < lsOfTask[pre].delay) {
+            lsOfTask[pre].delay -= tsk.delay;
+            tsk.next = head - 1;
+            head = id - 1;
         } else {
             int add = 0;
-            int pos = 0;
-            while (add != 1 && temp != NULL) {
-                pos++;
-                if (tsk->delay == temp->delay) {
+            while (cur != -1) {
+                if (tsk.delay == lsOfTask[cur].delay) {
                     add = 1;
-                    tsk->next = (temp->next)->next;
-                    temp->next = tsk;  
-                    tsk->delay = 0;
-                } else if (tsk->delay < temp->delay) {
+                    tsk.delay -= lsOfTask[cur].delay;
+                    tsk.next = lsOfTask[cur].next;
+                    lsOfTask[cur].next = id - 1;
+                    break;
+                } else if (tsk.delay < lsOfTask[cur].delay) {
                     add = 1;
-                    tsk->next = temp;
-                    tempPrev->next = tsk;
-                }
-                else {
-                    add = 1;
-                    tsk->delay -= temp->delay;
-                    tempPrev = temp;
-                    temp = temp->next;
+                    lsOfTask[pre].next = id - 1;
+                    tsk.next = cur;
+                    lsOfTask[cur].delay -= tsk.delay;
+                    break;
+                } else {
+                    tsk.delay -= lsOfTask[cur].delay;
+                    pre = cur;
+                    cur = lsOfTask[pre].next;
                 }
             }
             if (add == 0) {
-                temp->next = tsk;
+                lsOfTask[pre].next = id - 1;
+                tsk.next = -1;
             } else {
-                while (temp != NULL) {
-                    temp->delay -= tsk->delay;
-                    temp->next = temp;
+                cur = lsOfTask[cur].next;
+                if (cur == id - 1) {
+                    cur = lsOfTask[cur].next;
                 }
-            }   
+                while (cur != -1) {
+                    lsOfTask[cur].delay -= tsk.delay;
+                    cur = lsOfTask[cur].next;
+                }
+            }
         }
-    }
-    listOfExe.size++;
-}
-
-void deleteTask (struct task* tsk) {
-    struct task* temp = listOfTask.head;
-    int pos = 0;
-    while (temp != NULL) {
-        pos++;
-        if (temp == tsk) {
-            remove_timer(pos);
-            temp = NULL;
-        } else {
-            temp = temp->next;
-        }
-    }
-    temp = listOfExe.head;
-    pos = 0;
-    while (temp != NULL) {
-        pos++;
-        if (temp == data) {
-            break;
-        }
-    }
-    if (temp != NULL) {
-        
     }
 }
 
 void dispatch (void) {
-    if (listOfExe.head != NULL) {
-        struct task* temp = listOfExe.head;
-        if (temp->run > 0) {
-            (*(temp->pTask))(temp->led);
-            temp->run = 0;
-            if (temp->period == 0) {
-                deleteTask(temp);
+    if (head != 0) {
+        struct task temp = lsOfTask[head - 1]; 
+        if (temp.run > 0) {
+            (*(temp.pTask))(temp.arg);
+            temp.run = 0;
+            if (temp.period == 0) {
+                remove_timer(head);
             } else {
-                addTaskExe(temp);
+                uint32_t id = head;
+                head = temp.next;
+                temp.next = -1;
+                addTaskExe(temp, id);
             }
-            LCDPutInst(LCD_CURSOR_LINE2);
-            printLCD(counterTime);
         }
-    }
-}
-
-void printLCD (unsigned long int num) {
-    int numOfDigit = 1;
-    char arr[16] = {'\0'};
-    int temp = num;
-    while (num != 0) {
-        numOfDigit++;
-        arr[16 - numOfDigit] = temp % 10;
-        temp = temp / 10;
-    }
-    for (int i = num; i>0; i--) {
-        LCDPutChar(arr[num -i]);
     }
 }
