@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Mon Oct  7 09:16:27 2019
+                                                                                               Mon Nov 11 09:32:52 2019
 
 Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
      1                           	processor	18F8722
@@ -584,7 +584,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    565  0010C0  EF3A  F008         	goto	l79
    566  0010C4                     u1250:
    567  0010C4                     
-   568                           ;main.c: 36:                 if (changeModePressed == 0) {
+   568                           ;main.c: 36:                     if (changeModePressed == 0) {
    569  0010C4  503A               	movf	main@changeModePressed^0,w,c
    570  0010C6  103B               	iorwf	(main@changeModePressed+1)^0,w,c
    571  0010C8  A4D8               	btfss	status,2,c
@@ -594,23 +594,23 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    575  0010D2  EF32  F009         	goto	l85
    576  0010D6                     u1260:
    577  0010D6                     
-   578                           ;main.c: 37:                     changeModePressed = 1;
+   578                           ;main.c: 37:                         changeModePressed = 1;
    579  0010D6  0E00               	movlw	0
    580  0010D8  6E3B               	movwf	(main@changeModePressed+1)^0,c
    581  0010DA  0E01               	movlw	1
    582  0010DC  6E3A               	movwf	main@changeModePressed^0,c
    583                           
-   584                           ;main.c: 38:                     state = modHr;
+   584                           ;main.c: 38:                         state = modHr;
    585  0010DE  0E01               	movlw	1
    586  0010E0  6E24               	movwf	_state^0,c
    587                           
-   588                           ;main.c: 39:                     blink = 0;
+   588                           ;main.c: 39:                         blink = 0;
    589  0010E2  0E00               	movlw	0
    590  0010E4  6E04               	movwf	(_blink+1)^0,c
    591  0010E6  0E00               	movlw	0
    592  0010E8  6E03               	movwf	_blink^0,c
    593                           
-   594                           ;main.c: 40:                     count10ms = 0;
+   594                           ;main.c: 40:                         count10ms = 0;
    595  0010EA  0E00               	movlw	0
    596  0010EC  6E0E               	movwf	(_count10ms+1)^0,c
    597  0010EE  0E00               	movlw	0
@@ -634,7 +634,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    615  00110C  EF3A  F008         	goto	l79
    616  001110                     u1270:
    617  001110                     
-   618                           ;main.c: 48:                 if (changeModePressed == 0) {
+   618                           ;main.c: 48:                     if (changeModePressed == 0) {
    619  001110  503A               	movf	main@changeModePressed^0,w,c
    620  001112  103B               	iorwf	(main@changeModePressed+1)^0,w,c
    621  001114  A4D8               	btfss	status,2,c
@@ -644,23 +644,23 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    625  00111E  EF32  F009         	goto	l85
    626  001122                     u1280:
    627  001122                     
-   628                           ;main.c: 49:                     changeModePressed = 1;
+   628                           ;main.c: 49:                         changeModePressed = 1;
    629  001122  0E00               	movlw	0
    630  001124  6E3B               	movwf	(main@changeModePressed+1)^0,c
    631  001126  0E01               	movlw	1
    632  001128  6E3A               	movwf	main@changeModePressed^0,c
    633                           
-   634                           ;main.c: 50:                     state = modMin;
+   634                           ;main.c: 50:                         state = modMin;
    635  00112A  0E02               	movlw	2
    636  00112C  6E24               	movwf	_state^0,c
    637                           
-   638                           ;main.c: 51:                     blink = 0;
+   638                           ;main.c: 51:                         blink = 0;
    639  00112E  0E00               	movlw	0
    640  001130  6E04               	movwf	(_blink+1)^0,c
    641  001132  0E00               	movlw	0
    642  001134  6E03               	movwf	_blink^0,c
    643                           
-   644                           ;main.c: 52:                     count10ms = 0;
+   644                           ;main.c: 52:                         count10ms = 0;
    645  001136  0E00               	movlw	0
    646  001138  6E0E               	movwf	(_count10ms+1)^0,c
    647  00113A  0E00               	movlw	0
@@ -684,7 +684,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    665  001158  EF3A  F008         	goto	l79
    666  00115C                     u1290:
    667  00115C                     
-   668                           ;main.c: 60:                 if (changeModePressed == 0) {
+   668                           ;main.c: 60:                     if (changeModePressed == 0) {
    669  00115C  503A               	movf	main@changeModePressed^0,w,c
    670  00115E  103B               	iorwf	(main@changeModePressed+1)^0,w,c
    671  001160  A4D8               	btfss	status,2,c
@@ -694,23 +694,23 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    675  00116A  EF32  F009         	goto	l85
    676  00116E                     u1300:
    677  00116E                     
-   678                           ;main.c: 61:                     changeModePressed = 1;
+   678                           ;main.c: 61:                         changeModePressed = 1;
    679  00116E  0E00               	movlw	0
    680  001170  6E3B               	movwf	(main@changeModePressed+1)^0,c
    681  001172  0E01               	movlw	1
    682  001174  6E3A               	movwf	main@changeModePressed^0,c
    683                           
-   684                           ;main.c: 62:                     state = modSec;
+   684                           ;main.c: 62:                         state = modSec;
    685  001176  0E03               	movlw	3
    686  001178  6E24               	movwf	_state^0,c
    687                           
-   688                           ;main.c: 63:                     blink = 0;
+   688                           ;main.c: 63:                         blink = 0;
    689  00117A  0E00               	movlw	0
    690  00117C  6E04               	movwf	(_blink+1)^0,c
    691  00117E  0E00               	movlw	0
    692  001180  6E03               	movwf	_blink^0,c
    693                           
-   694                           ;main.c: 64:                     count10ms = 0;
+   694                           ;main.c: 64:                         count10ms = 0;
    695  001182  0E00               	movlw	0
    696  001184  6E0E               	movwf	(_count10ms+1)^0,c
    697  001186  0E00               	movlw	0
@@ -734,7 +734,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    715  0011A4  EF3A  F008         	goto	l79
    716  0011A8                     u1310:
    717  0011A8                     
-   718                           ;main.c: 72:                 if (changeModePressed == 0) {
+   718                           ;main.c: 72:                     if (changeModePressed == 0) {
    719  0011A8  503A               	movf	main@changeModePressed^0,w,c
    720  0011AA  103B               	iorwf	(main@changeModePressed+1)^0,w,c
    721  0011AC  A4D8               	btfss	status,2,c
@@ -744,23 +744,23 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    725  0011B6  EF32  F009         	goto	l85
    726  0011BA                     u1320:
    727  0011BA                     
-   728                           ;main.c: 73:                     changeModePressed = 1;
+   728                           ;main.c: 73:                         changeModePressed = 1;
    729  0011BA  0E00               	movlw	0
    730  0011BC  6E3B               	movwf	(main@changeModePressed+1)^0,c
    731  0011BE  0E01               	movlw	1
    732  0011C0  6E3A               	movwf	main@changeModePressed^0,c
    733                           
-   734                           ;main.c: 74:                     state = stpWatch;
+   734                           ;main.c: 74:                         state = stpWatch;
    735  0011C2  0E04               	movlw	4
    736  0011C4  6E24               	movwf	_state^0,c
    737                           
-   738                           ;main.c: 75:                     runSTW = 0;
+   738                           ;main.c: 75:                         runSTW = 0;
    739  0011C6  0E00               	movlw	0
    740  0011C8  6E16               	movwf	(_runSTW+1)^0,c
    741  0011CA  0E00               	movlw	0
    742  0011CC  6E15               	movwf	_runSTW^0,c
    743                           
-   744                           ;main.c: 76:                     count10ms = 0;
+   744                           ;main.c: 76:                         count10ms = 0;
    745  0011CE  0E00               	movlw	0
    746  0011D0  6E0E               	movwf	(_count10ms+1)^0,c
    747  0011D2  0E00               	movlw	0
@@ -787,7 +787,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    768  0011F4  EF3A  F008         	goto	l79
    769  0011F8                     u1330:
    770  0011F8                     
-   771                           ;main.c: 85:                 if (changeModePressed == 0) {
+   771                           ;main.c: 85:                     if (changeModePressed == 0) {
    772  0011F8  503A               	movf	main@changeModePressed^0,w,c
    773  0011FA  103B               	iorwf	(main@changeModePressed+1)^0,w,c
    774  0011FC  A4D8               	btfss	status,2,c
@@ -797,17 +797,17 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    778  001206  EF32  F009         	goto	l85
    779  00120A                     u1340:
    780  00120A                     
-   781                           ;main.c: 86:                     changeModePressed = 1;
+   781                           ;main.c: 86:                         changeModePressed = 1;
    782  00120A  0E00               	movlw	0
    783  00120C  6E3B               	movwf	(main@changeModePressed+1)^0,c
    784  00120E  0E01               	movlw	1
    785  001210  6E3A               	movwf	main@changeModePressed^0,c
    786                           
-   787                           ;main.c: 87:                     state = norClk;
+   787                           ;main.c: 87:                         state = norClk;
    788  001212  0E00               	movlw	0
    789  001214  6E24               	movwf	_state^0,c
    790                           
-   791                           ;main.c: 88:                     runSTW = 0;
+   791                           ;main.c: 88:                         runSTW = 0;
    792  001216  0E00               	movlw	0
    793  001218  6E16               	movwf	(_runSTW+1)^0,c
    794  00121A  0E00               	movlw	0
@@ -988,7 +988,7 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
    958  001AFC  EFA3  F00D         	goto	l1719
    959  001B00                     u650:
    960  001B00                     
-   961                           ;stateStpWatch.c: 6:         btnPressed = 1;
+   961                           ;stateStpWatch.c: 6:             btnPressed = 1;
    962  001B00  0E00               	movlw	0
    963  001B02  6E18               	movwf	(_btnPressed+1)^0,c
    964  001B04  0E01               	movlw	1
@@ -5156,7 +5156,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Mon Oct  7 09:16:27 2019
+Symbol Table                                                                                   Mon Nov 11 09:32:52 2019
 
       __end_of_displayModMinute 15B2        __end_of_displayModSecond 1412                     ?_LCDPutChar 0025  
                             l85 1264                              l79 1074                              u10 20F8  

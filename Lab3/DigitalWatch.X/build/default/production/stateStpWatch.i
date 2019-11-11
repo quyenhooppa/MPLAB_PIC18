@@ -7939,7 +7939,7 @@ void displayStpWatch (void);
 void stopWatch (void) {
     if (RB0Pressed == 1) {
         if (btnPressed == 0) {
-        btnPressed = 1;
+            btnPressed = 1;
         if (runSTW == 0) {
             miliSecSTW = 0;
             secSTW = 0;

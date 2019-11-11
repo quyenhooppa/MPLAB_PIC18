@@ -738,7 +738,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _btnPressed -> 0 `i 503  ]
 {
 "6
-[; ;stateStpWatch.c: 6:         btnPressed = 1;
+[; ;stateStpWatch.c: 6:             btnPressed = 1;
 [e = _btnPressed -> 1 `i ]
 "7
 [; ;stateStpWatch.c: 7:         if (runSTW == 0) {

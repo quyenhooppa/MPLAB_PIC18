@@ -7988,48 +7988,48 @@ void main(void) {
                 norClock();
                 displayClock();
                 if (RA5Pressed == 1) {
-                if (changeModePressed == 0) {
-                    changeModePressed = 1;
-                    state = modHr;
-                    blink = 0;
-                    count10ms = 0;
-                }
+                    if (changeModePressed == 0) {
+                        changeModePressed = 1;
+                        state = modHr;
+                        blink = 0;
+                        count10ms = 0;
+                    }
                 }
                 break;
             case modHr:
                 modifyHour();
                 displayModHour();
                 if (RA5Pressed == 1) {
-                if (changeModePressed == 0) {
-                    changeModePressed = 1;
-                    state = modMin;
-                    blink = 0;
-                    count10ms = 0;
-                }
+                    if (changeModePressed == 0) {
+                        changeModePressed = 1;
+                        state = modMin;
+                        blink = 0;
+                        count10ms = 0;
+                    }
                 }
                 break;
             case modMin:
                 modifyMinute();
                 displayModMinute();
                 if (RA5Pressed == 1) {
-                if (changeModePressed == 0) {
-                    changeModePressed = 1;
-                    state = modSec;
-                    blink = 0;
-                    count10ms = 0;
-                }
+                    if (changeModePressed == 0) {
+                        changeModePressed = 1;
+                        state = modSec;
+                        blink = 0;
+                        count10ms = 0;
+                    }
                 }
                 break;
             case modSec:
                 modifySecond();
                 displayModSecond();
                 if (RA5Pressed == 1) {
-                if (changeModePressed == 0) {
-                    changeModePressed = 1;
-                    state = stpWatch;
-                    runSTW = 0;
-                    count10ms = 0;
-                }
+                    if (changeModePressed == 0) {
+                        changeModePressed = 1;
+                        state = stpWatch;
+                        runSTW = 0;
+                        count10ms = 0;
+                    }
                 }
                 break;
             case stpWatch:
@@ -8037,11 +8037,11 @@ void main(void) {
                 stopWatch();
                 displayStpWatch();
                 if (RA5Pressed == 1) {
-                if (changeModePressed == 0) {
-                    changeModePressed = 1;
-                    state = norClk;
-                    runSTW = 0;
-                }
+                    if (changeModePressed == 0) {
+                        changeModePressed = 1;
+                        state = norClk;
+                        runSTW = 0;
+                    }
                 }
                 break;
         }

@@ -427,7 +427,7 @@ text0 1054 23C1 CODE 1054 0
 %locals
 dist/default/production/DigitalWatch.X.production.o
 /Applications/microchip/xc8/v2.10/pic/include/pic18f8722.h
-/tmp/xcAAyRblX.s
+/tmp/xcBfXw5xo.s
 3524 231A 0 CODE 0
 3526 231A 0 CODE 0
 3529 231A 0 CODE 0
@@ -877,7 +877,7 @@ BBSPI_LCD.c
 79 23A4 0 CODE 0
 80 23A6 0 CODE 0
 81 23A8 0 CODE 0
-/tmp/xcAAyRblX.s
+/tmp/xcBfXw5xo.s
 9035 8 0 CODE 0
 interrupt.c
 3 8 0 CODE 0

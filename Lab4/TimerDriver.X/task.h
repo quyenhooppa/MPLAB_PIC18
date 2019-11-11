@@ -27,8 +27,9 @@ extern "C" {
 #define LED7 LATD7
   
 void initStateLed (void);
-void blink (unsigned long int);
-void printLCD(unsigned long int);
+void blink (uint32_t);
+void printLCD(uint32_t);
+void print10msInterrupt(uint32_t);
 
 
 #ifdef	__cplusplus

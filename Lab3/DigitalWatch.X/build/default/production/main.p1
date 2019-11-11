@@ -864,23 +864,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _RA5Pressed -> 1 `i 509  ]
 {
 "36
-[; ;main.c: 36:                 if (changeModePressed == 0) {
+[; ;main.c: 36:                     if (changeModePressed == 0) {
 [e $ ! == _changeModePressed -> 0 `i 510  ]
 {
 "37
-[; ;main.c: 37:                     changeModePressed = 1;
+[; ;main.c: 37:                         changeModePressed = 1;
 [e = _changeModePressed -> 1 `i ]
 "38
-[; ;main.c: 38:                     state = modHr;
+[; ;main.c: 38:                         state = modHr;
 [e = _state . `E4614 1 ]
 "39
-[; ;main.c: 39:                     blink = 0;
+[; ;main.c: 39:                         blink = 0;
 [e = _blink -> 0 `i ]
 "40
-[; ;main.c: 40:                     count10ms = 0;
+[; ;main.c: 40:                         count10ms = 0;
 [e = _count10ms -> 0 `i ]
 "41
-[; ;main.c: 41:                 }
+[; ;main.c: 41:                     }
 }
 [e :U 510 ]
 "42
@@ -904,23 +904,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _RA5Pressed -> 1 `i 512  ]
 {
 "48
-[; ;main.c: 48:                 if (changeModePressed == 0) {
+[; ;main.c: 48:                     if (changeModePressed == 0) {
 [e $ ! == _changeModePressed -> 0 `i 513  ]
 {
 "49
-[; ;main.c: 49:                     changeModePressed = 1;
+[; ;main.c: 49:                         changeModePressed = 1;
 [e = _changeModePressed -> 1 `i ]
 "50
-[; ;main.c: 50:                     state = modMin;
+[; ;main.c: 50:                         state = modMin;
 [e = _state . `E4614 2 ]
 "51
-[; ;main.c: 51:                     blink = 0;
+[; ;main.c: 51:                         blink = 0;
 [e = _blink -> 0 `i ]
 "52
-[; ;main.c: 52:                     count10ms = 0;
+[; ;main.c: 52:                         count10ms = 0;
 [e = _count10ms -> 0 `i ]
 "53
-[; ;main.c: 53:                 }
+[; ;main.c: 53:                     }
 }
 [e :U 513 ]
 "54
@@ -944,23 +944,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _RA5Pressed -> 1 `i 515  ]
 {
 "60
-[; ;main.c: 60:                 if (changeModePressed == 0) {
+[; ;main.c: 60:                     if (changeModePressed == 0) {
 [e $ ! == _changeModePressed -> 0 `i 516  ]
 {
 "61
-[; ;main.c: 61:                     changeModePressed = 1;
+[; ;main.c: 61:                         changeModePressed = 1;
 [e = _changeModePressed -> 1 `i ]
 "62
-[; ;main.c: 62:                     state = modSec;
+[; ;main.c: 62:                         state = modSec;
 [e = _state . `E4614 3 ]
 "63
-[; ;main.c: 63:                     blink = 0;
+[; ;main.c: 63:                         blink = 0;
 [e = _blink -> 0 `i ]
 "64
-[; ;main.c: 64:                     count10ms = 0;
+[; ;main.c: 64:                         count10ms = 0;
 [e = _count10ms -> 0 `i ]
 "65
-[; ;main.c: 65:                 }
+[; ;main.c: 65:                     }
 }
 [e :U 516 ]
 "66
@@ -984,23 +984,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _RA5Pressed -> 1 `i 518  ]
 {
 "72
-[; ;main.c: 72:                 if (changeModePressed == 0) {
+[; ;main.c: 72:                     if (changeModePressed == 0) {
 [e $ ! == _changeModePressed -> 0 `i 519  ]
 {
 "73
-[; ;main.c: 73:                     changeModePressed = 1;
+[; ;main.c: 73:                         changeModePressed = 1;
 [e = _changeModePressed -> 1 `i ]
 "74
-[; ;main.c: 74:                     state = stpWatch;
+[; ;main.c: 74:                         state = stpWatch;
 [e = _state . `E4614 4 ]
 "75
-[; ;main.c: 75:                     runSTW = 0;
+[; ;main.c: 75:                         runSTW = 0;
 [e = _runSTW -> 0 `i ]
 "76
-[; ;main.c: 76:                     count10ms = 0;
+[; ;main.c: 76:                         count10ms = 0;
 [e = _count10ms -> 0 `i ]
 "77
-[; ;main.c: 77:                 }
+[; ;main.c: 77:                     }
 }
 [e :U 519 ]
 "78
@@ -1027,20 +1027,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _RA5Pressed -> 1 `i 521  ]
 {
 "85
-[; ;main.c: 85:                 if (changeModePressed == 0) {
+[; ;main.c: 85:                     if (changeModePressed == 0) {
 [e $ ! == _changeModePressed -> 0 `i 522  ]
 {
 "86
-[; ;main.c: 86:                     changeModePressed = 1;
+[; ;main.c: 86:                         changeModePressed = 1;
 [e = _changeModePressed -> 1 `i ]
 "87
-[; ;main.c: 87:                     state = norClk;
+[; ;main.c: 87:                         state = norClk;
 [e = _state . `E4614 0 ]
 "88
-[; ;main.c: 88:                     runSTW = 0;
+[; ;main.c: 88:                         runSTW = 0;
 [e = _runSTW -> 0 `i ]
 "89
-[; ;main.c: 89:                 }
+[; ;main.c: 89:                     }
 }
 [e :U 522 ]
 "90

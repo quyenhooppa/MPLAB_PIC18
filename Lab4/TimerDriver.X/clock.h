@@ -23,10 +23,10 @@ extern "C" {
 #define MAX_TASK 10
     
 typedef unsigned long int timestamp_t;
-typedef void(*timer_callback_t)(unsigned long int);
+typedef void(*timer_callback_t)(uint32_t);
 
 struct task{
-    void(*pTask)(unsigned long int);
+    void(*pTask)(uint32_t);
     uint32_t delay;
     uint32_t period;
     int run;
@@ -42,12 +42,12 @@ uint32_t head = 0;//head begins at 1
 
 void start_timer (void);
 timestamp_t get_time (void);
-uint32_t register_timer (uint32_t, uint32_t, timer_callback_t, void*);
-int remove_timer (uint32_t);
-void stop_timer (void);
-int timer_ISR (void);
 void initTask(void);
-void addTaskExe (struct task, uint32_t);
+void register_timer (uint32_t, uint32_t, timer_callback_t, uint32_t);
+void remove_timer (uint32_t);
+void stop_timer (void);
+void timer_ISR (void);
+void addTaskExe (uint32_t);
 void dispatch (void);
 
 #ifdef	__cplusplus
