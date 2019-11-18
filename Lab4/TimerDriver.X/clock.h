@@ -37,7 +37,6 @@ struct task{
 struct task lsOfTask[MAX_TASK];
 
 unsigned long int counterTime = 0;
-unsigned long int ticks = 0;
 uint32_t head = 0;//head begins at 1 
 
 void start_timer (void);

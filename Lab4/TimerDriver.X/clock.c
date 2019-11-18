@@ -63,11 +63,8 @@ void remove_timer (uint32_t id) {
                     cur = lsOfTask[pre].next;
                 }
                 lsOfTask[pre].next = lsOfTask[cur].next;
-                cur = lsOfTask[cur].next;
-                //while (cur != -1) {
+                    cur = lsOfTask[cur].next;
                 lsOfTask[cur].delay += lsOfTask[id - 1].delay;
-                    //cur = lsOfTask[cur].next;
-                //}
                 lsOfTask[id - 1].pTask = 0x0000;
                 lsOfTask[id - 1].delay = 0;
                 lsOfTask[id - 1].period = 0;

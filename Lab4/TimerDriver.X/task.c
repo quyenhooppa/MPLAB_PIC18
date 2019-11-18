@@ -37,40 +37,7 @@ void blink (uint32_t led) {
         case 7: 
             LED7 = (LED7 + 1) % 2;
             break; 
+        default:
+            break;
     }
-}
-
-void printLCD (uint32_t num) {
-    LCDPutInst(LCD_CURSOR_LINE1);
-    int numOfDigit = 1;
-    char arr[16];
-    num = get_time();
-    int temp = num;
-    while (num != 0) {
-        numOfDigit++;
-        arr[16 - numOfDigit] = temp % 10;
-        temp = temp / 10;
-    }
-    for (int i = num; i > 0; i--) {
-        LCDPutChar(arr[num -i]);
-    }
-}
-
-void print10msInterrupt(uint32_t num) {
-    LCDPutInst(LCD_CURSOR_LINE2);
-    LCDPutChar('T');
-    LCDPutChar(':');
-    LCDPutChar(' ');
-    LCDPutInst(0xC3);
-    LCDPutChar(num%10);
-    int numOfDigit = 1;
-    char arr[16];
-    num = get_time();
-    int temp = num;
-    while (num != 0) {
-        numOfDigit++;
-        arr[16 - numOfDigit] = temp % 10;
-        temp = temp / 10;
-    }
-    //LCDPutStr(arr);
 }

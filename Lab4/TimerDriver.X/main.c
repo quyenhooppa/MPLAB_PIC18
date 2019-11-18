@@ -27,5 +27,8 @@ void main (void) {
     start_timer();
     while (1) {
         dispatch();
+//        if (counterTime == 5000) {
+//            remove_timer(2);
+//        }
     }
 }
