@@ -11,11 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcbpxnJlK.o
-idloc IDLOC 0 200000 200000 8 1
-init CODE 0 E E 4 1
-reset_vec CODE 0 0 0 4 1
-config CONFIG 0 300000 300000 E 1
 $dist/default/production/DigitalWatch.X.production.o
 cinit CODE 0 231A 231A 36 1
 intcode_body CODE 0 206A 206A 76 1
@@ -53,6 +48,11 @@ intcode CODE 0 8 8 6 1
 smallconst SMALLCONST 0 1000 1000 54 1
 dataCOMRAM COMRAM 1 3C 3C 4 1
 bssCOMRAM COMRAM 1 1 1 24 1
+$/tmp/xcVr7TeGo.o
+idloc IDLOC 0 200000 200000 8 1
+init CODE 0 E E 4 1
+reset_vec CODE 0 0 0 4 1
+config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -104,7 +104,7 @@ MEDIUMCONST 11000-1FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/DigitalWatch.X.production.o
-8 intcode CODE >9035:/tmp/xcBfXw5xo.s
+8 intcode CODE >9035:/tmp/xclgnk8sN.s
 8 intcode CODE >3:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/interrupt.c
 2294 text27 CODE >3:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/button.c
 2294 text27 CODE >4:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/button.c
@@ -555,34 +555,34 @@ $dist/default/production/DigitalWatch.X.production.o
 1212 text0 CODE >87:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
 1216 text0 CODE >88:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
 1222 text0 CODE >92:/Users/quyenhooppa/Documents/OISP191/Micro/MPLAB_PIC18/Lab3/DigitalWatch.X/main.c
-231A cinit CODE >3524:/tmp/xcBfXw5xo.s
-231A cinit CODE >3526:/tmp/xcBfXw5xo.s
-231A cinit CODE >3529:/tmp/xcBfXw5xo.s
-231A cinit CODE >3623:/tmp/xcBfXw5xo.s
-231C cinit CODE >3624:/tmp/xcBfXw5xo.s
-231E cinit CODE >3625:/tmp/xcBfXw5xo.s
-2320 cinit CODE >3626:/tmp/xcBfXw5xo.s
-2322 cinit CODE >3627:/tmp/xcBfXw5xo.s
-2324 cinit CODE >3628:/tmp/xcBfXw5xo.s
-2326 cinit CODE >3629:/tmp/xcBfXw5xo.s
-232A cinit CODE >3630:/tmp/xcBfXw5xo.s
-232E cinit CODE >3631:/tmp/xcBfXw5xo.s
-232E cinit CODE >3632:/tmp/xcBfXw5xo.s
-2330 cinit CODE >3633:/tmp/xcBfXw5xo.s
-2334 cinit CODE >3634:/tmp/xcBfXw5xo.s
-2336 cinit CODE >3635:/tmp/xcBfXw5xo.s
-2338 cinit CODE >3636:/tmp/xcBfXw5xo.s
-233A cinit CODE >3640:/tmp/xcBfXw5xo.s
-233E cinit CODE >3641:/tmp/xcBfXw5xo.s
-2340 cinit CODE >3642:/tmp/xcBfXw5xo.s
-2340 cinit CODE >3643:/tmp/xcBfXw5xo.s
-2342 cinit CODE >3644:/tmp/xcBfXw5xo.s
-2344 cinit CODE >3645:/tmp/xcBfXw5xo.s
-2346 cinit CODE >3651:/tmp/xcBfXw5xo.s
-2346 cinit CODE >3653:/tmp/xcBfXw5xo.s
-2348 cinit CODE >3654:/tmp/xcBfXw5xo.s
-234A cinit CODE >3655:/tmp/xcBfXw5xo.s
-234C cinit CODE >3656:/tmp/xcBfXw5xo.s
+231A cinit CODE >3524:/tmp/xclgnk8sN.s
+231A cinit CODE >3526:/tmp/xclgnk8sN.s
+231A cinit CODE >3529:/tmp/xclgnk8sN.s
+231A cinit CODE >3623:/tmp/xclgnk8sN.s
+231C cinit CODE >3624:/tmp/xclgnk8sN.s
+231E cinit CODE >3625:/tmp/xclgnk8sN.s
+2320 cinit CODE >3626:/tmp/xclgnk8sN.s
+2322 cinit CODE >3627:/tmp/xclgnk8sN.s
+2324 cinit CODE >3628:/tmp/xclgnk8sN.s
+2326 cinit CODE >3629:/tmp/xclgnk8sN.s
+232A cinit CODE >3630:/tmp/xclgnk8sN.s
+232E cinit CODE >3631:/tmp/xclgnk8sN.s
+232E cinit CODE >3632:/tmp/xclgnk8sN.s
+2330 cinit CODE >3633:/tmp/xclgnk8sN.s
+2334 cinit CODE >3634:/tmp/xclgnk8sN.s
+2336 cinit CODE >3635:/tmp/xclgnk8sN.s
+2338 cinit CODE >3636:/tmp/xclgnk8sN.s
+233A cinit CODE >3640:/tmp/xclgnk8sN.s
+233E cinit CODE >3641:/tmp/xclgnk8sN.s
+2340 cinit CODE >3642:/tmp/xclgnk8sN.s
+2340 cinit CODE >3643:/tmp/xclgnk8sN.s
+2342 cinit CODE >3644:/tmp/xclgnk8sN.s
+2344 cinit CODE >3645:/tmp/xclgnk8sN.s
+2346 cinit CODE >3651:/tmp/xclgnk8sN.s
+2346 cinit CODE >3653:/tmp/xclgnk8sN.s
+2348 cinit CODE >3654:/tmp/xclgnk8sN.s
+234A cinit CODE >3655:/tmp/xclgnk8sN.s
+234C cinit CODE >3656:/tmp/xclgnk8sN.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -607,7 +607,7 @@ __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __size_of_deviceInterrupt 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 _timerInitialize 2384 0 CODE 0 text1 dist/default/production/DigitalWatch.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/DigitalWatch.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcbpxnJlK.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcVr7TeGo.o
 __end_of_InitBBSPI 23AA 0 CODE 0 text23 dist/default/production/DigitalWatch.X.production.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/DigitalWatch.X.production.o
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
@@ -617,11 +617,11 @@ __end_of_displayModHour 174C 0 CODE 0 text11 dist/default/production/DigitalWatc
 __size_of_oscillationInitialize 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __size_of_Port_BBSPIInit 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __Lsmallconst 1000 0 SMALLCONST 0 smallconst dist/default/production/DigitalWatch.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcbpxnJlK.o
+___sp 0 0 STACK 2 stack /tmp/xcVr7TeGo.o
 _flag B 0 COMRAM 1 bssCOMRAM dist/default/production/DigitalWatch.X.production.o
 _main 1054 0 CODE 0 text0 dist/default/production/DigitalWatch.X.production.o
 btemp 40 0 COMRAM 1 temp dist/default/production/DigitalWatch.X.production.o
-start E 0 CODE 0 init /tmp/xcbpxnJlK.o
+start E 0 CODE 0 init /tmp/xcVr7TeGo.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __size_of___awmod 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
@@ -640,11 +640,11 @@ ttemp7 48 0 COMRAM 1 temp dist/default/production/DigitalWatch.X.production.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/DigitalWatch.X.production.o
 __end_of_WritePort_BBSPI 2384 0 CODE 0 text21 dist/default/production/DigitalWatch.X.production.o
 _norClock 1FCC 0 CODE 0 text4 dist/default/production/DigitalWatch.X.production.o
-__accesstop 60 0 ABS 0 - /tmp/xcbpxnJlK.o
-intlevel0 0 0 CODE 0 text /tmp/xcbpxnJlK.o
-intlevel1 0 0 CODE 0 text /tmp/xcbpxnJlK.o
-intlevel2 0 0 CODE 0 text /tmp/xcbpxnJlK.o
-intlevel3 0 0 CODE 0 text /tmp/xcbpxnJlK.o
+__accesstop 60 0 ABS 0 - /tmp/xcVr7TeGo.o
+intlevel0 0 0 CODE 0 text /tmp/xcVr7TeGo.o
+intlevel1 0 0 CODE 0 text /tmp/xcVr7TeGo.o
+intlevel2 0 0 CODE 0 text /tmp/xcVr7TeGo.o
+intlevel3 0 0 CODE 0 text /tmp/xcVr7TeGo.o
 SendByteBBSPI@output 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/DigitalWatch.X.production.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/DigitalWatch.X.production.o
 __end_of_LCDPutChar 21A6 0 CODE 0 text16 dist/default/production/DigitalWatch.X.production.o
@@ -661,8 +661,8 @@ __Hclrtext 0 0 ABS 0 clrtext dist/default/production/DigitalWatch.X.production.o
 __pidataCOMRAM 23BE 0 CODE 0 idataCOMRAM dist/default/production/DigitalWatch.X.production.o
 _ADCON1 FC1 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 ___awdiv@dividend 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/DigitalWatch.X.production.o
-___inthi_sp 0 0 STACK 2 stack /tmp/xcbpxnJlK.o
-___intlo_sp 0 0 STACK 2 stack /tmp/xcbpxnJlK.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcVr7TeGo.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcVr7TeGo.o
 _modifySecond 174C 0 CODE 0 text5 dist/default/production/DigitalWatch.X.production.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/DigitalWatch.X.production.o
 __size_of_timerInitialize 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
@@ -742,7 +742,7 @@ __Hbank14 0 0 ABS 0 bank14 dist/default/production/DigitalWatch.X.production.o
 __Hbank15 0 0 ABS 0 bank15 dist/default/production/DigitalWatch.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/DigitalWatch.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production/DigitalWatch.X.production.o
-__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xcbpxnJlK.o
+__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xcVr7TeGo.o
 __size_of_WritePort_BBSPI 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __Hcomram 0 0 ABS 0 comram dist/default/production/DigitalWatch.X.production.o
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/DigitalWatch.X.production.o
@@ -898,8 +898,8 @@ __Lfardata 0 0 FARRAM 0 fardata dist/default/production/DigitalWatch.X.productio
 __size_of_displayModSecond 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 SendByteBBSPI@bitcount 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/DigitalWatch.X.production.o
 _readRA5Button 2294 0 CODE 0 text27 dist/default/production/DigitalWatch.X.production.o
-stackhi F5F 0 ABS 0 - /tmp/xcbpxnJlK.o
-stacklo 60 0 ABS 0 - /tmp/xcbpxnJlK.o
+stackhi F5F 0 ABS 0 - /tmp/xcVr7TeGo.o
+stacklo 60 0 ABS 0 - /tmp/xcVr7TeGo.o
 __size_of_SendByteBBSPI 0 0 ABS 0 - dist/default/production/DigitalWatch.X.production.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production/DigitalWatch.X.production.o
 __end_of_displayStpWatch 1CB8 0 CODE 0 text8 dist/default/production/DigitalWatch.X.production.o
@@ -957,7 +957,7 @@ __Ltext23 0 0 ABS 0 text23 dist/default/production/DigitalWatch.X.production.o
 __Ltext25 0 0 ABS 0 text25 dist/default/production/DigitalWatch.X.production.o
 __Ltext26 0 0 ABS 0 text26 dist/default/production/DigitalWatch.X.production.o
 __Ltext27 0 0 ABS 0 text27 dist/default/production/DigitalWatch.X.production.o
-__ramtop 1000 0 RAM 0 ramtop /tmp/xcbpxnJlK.o
+__ramtop 1000 0 RAM 0 ramtop /tmp/xcVr7TeGo.o
 WritePort_BBSPI@a 30 0 COMRAM 1 cstackCOMRAM dist/default/production/DigitalWatch.X.production.o
 __Lpowerup E 0 CODE 0 powerup dist/default/production/DigitalWatch.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/DigitalWatch.X.production.o
@@ -1001,7 +1001,7 @@ _blink 3 0 COMRAM 1 bssCOMRAM dist/default/production/DigitalWatch.X.production.
 _count 1 0 COMRAM 1 bssCOMRAM dist/default/production/DigitalWatch.X.production.o
 _displayModHour 15B2 0 CODE 0 text11 dist/default/production/DigitalWatch.X.production.o
 _state 24 0 COMRAM 1 bssCOMRAM dist/default/production/DigitalWatch.X.production.o
-___extmem_base 20000 0 ABS 0 - /tmp/xcbpxnJlK.o
+___extmem_base 20000 0 ABS 0 - /tmp/xcVr7TeGo.o
 _miliSecSTW F 0 COMRAM 1 bssCOMRAM dist/default/production/DigitalWatch.X.production.o
 __end_of_readRA5Button 22DC 0 CODE 0 text27 dist/default/production/DigitalWatch.X.production.o
 __initialization 231A 0 CODE 0 cinit dist/default/production/DigitalWatch.X.production.o
