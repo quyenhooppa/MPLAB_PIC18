@@ -21,7 +21,7 @@ extern "C" {
 // set up the timing for the LCD delays
 #define _XTAL_FREQ 10000000                                  // device clock frequency (_XTAL_FREQ) used by XC8 for __delay_ms()
 #define LCD_delay           0                               // ~5mS
-#define LCD_Startup         15                               // ~15mS
+#define LCD_Startup         10                               // ~15mS
 
 // Command set for LCD display controller
 #define LCD_CLEAR           0x01
@@ -35,9 +35,9 @@ extern "C" {
 #define LCD_CURSOR_BLINK    0x0F
 #define LCD_CURSOR_LINE1    0x80
 #define LCD_CURSOR_LINE2    0xC0
-#define LCD_CURSOR_HOUR 0xC0
-#define LCD_CURSOR_MINUTE 0xC3
-#define LCD_CURSOR_SECOND 0xC6
+#define LCD_CURSOR_HOUR 0x88
+#define LCD_CURSOR_MINUTE 0x90
+#define LCD_CURSOR_SECOND 0x92
 
 // Macros recommended for new labs
 #define mOPEN_LCD           LCDInit()

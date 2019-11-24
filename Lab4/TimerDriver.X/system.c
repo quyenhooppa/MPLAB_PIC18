@@ -21,12 +21,6 @@ void timerInitialize (void) {
     T1CON = 0b00001110;
 }
 
-void buttonInitialize (void) {
-    TRISAbits.TRISA5 = 1;
-    TRISBbits.TRISB0 = 1;
-    ADCON1 = 0b00001111;
-}
-
 void ledInitialize(void) {
     TRISD = 0x00;
     LATD = 0x00;

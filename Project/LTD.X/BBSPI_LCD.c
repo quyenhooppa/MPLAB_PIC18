@@ -161,11 +161,11 @@ void LCDPutChar (unsigned char ch)
 {
     __delay_ms(LCD_delay);
     WritePort_BBSPI (PORTA_ADD, data);        // prepare to send data to LCD
-    __delay_ms(1);
+    __delay_us(10);
     WritePort_BBSPI (PORTB_ADD, ch);          // write the character to be displayed
-    __delay_ms(1);
+    __delay_us(10);
     WritePort_BBSPI (PORTA_ADD, send_data);   // send data to LCD
-    __delay_ms(1);
+    __delay_us(10);
     WritePort_BBSPI (PORTA_ADD, 0x00);        // stop sending data to LCD
 }
 

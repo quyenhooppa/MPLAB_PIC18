@@ -43,6 +43,7 @@ void stop_timer (void);
 void timer_ISR (void);
 void addTaskExe (uint32_t);
 void dispatch (void);
+uint32_t findTask(uint32_t);
 
 #ifdef	__cplusplus
 }

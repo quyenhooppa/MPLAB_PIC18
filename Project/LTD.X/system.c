@@ -11,9 +11,7 @@ void timerInitialize (void) {
     //Timer 0
     INTCONbits.TMR0IE = 1;//set timer0
     INTCONbits.TMR0IF = 0;
-    T0CON = 0b10000100; 
-    TMR0H = 0xfd;
-    TMR0L = 0x5f;
+    T0CON = 0b0000100; 
     
     //Timer 1
     PIE1bits.TMR1IE = 1;
@@ -23,6 +21,7 @@ void timerInitialize (void) {
 
 void inputInitialize (void) {
     TRISA = 0x00;
+    //PORTA = 0xff;
     ADCON1 = 0b00001111;
 }
 

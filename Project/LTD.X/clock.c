@@ -41,6 +41,17 @@ void register_timer (uint32_t delay, uint32_t period, timer_callback_t callback,
     }
 }
 
+uint32_t findTask (uint32_t arg) {
+    int pos = -1;
+    for (int i = 0; i < MAX_TASK; i++) {
+        if (lsOfTask[i].arg == arg) {
+            pos = i;
+            break;
+        }
+    }
+    return pos + 1;
+}
+
 void remove_timer (uint32_t id) {
     if (id <= MAX_TASK && id != 0 && head > 0) {
         if (lsOfTask[id - 1].run !=  -1) {

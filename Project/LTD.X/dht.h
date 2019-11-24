@@ -14,29 +14,27 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
-#include "interrupt.h"
 #include "BBSPI_LCD.h"
+#include "system.h"
     
 #define MAX_TEMP 40
-#define MAX_HUMID 80
+#define MAX_HUMID 60
+#define TIME_OUT 80
     
-unsigned temp = 0;
-unsigned humid = 0;
-int receive = 0;
-int stReadA0 = 0;
-int sdReadA0 = 0;
-int stReadA1 = 0;
-int sdReadA1 = 0;
-int stReadA2 = 0;
-int sdReadA2 = 0;
+#define DHT_DIRECTION TRISAbits.TRISA5
+#define DHT_IN PORTAbits.RA5
+#define DHT_OUT LATAbits.LATA5
+#define ERROR -10    
+    
+int realTemp;
+int realHumid;
+char dhtData[5];
+int error = 0;
 
-void startSignal (void);
-void checkSignal (void);
-char readA0 (void);
-void readA1 (void);
-void readA2 (void);
-void readTemp (void);
-void readHumid (void);
+
+char getByteData(void);
+int readDHT (void);
+void readTempAndHumid(void);
 
 
 #ifdef	__cplusplus
