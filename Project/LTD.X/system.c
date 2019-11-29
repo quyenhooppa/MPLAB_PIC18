@@ -19,9 +19,11 @@ void timerInitialize (void) {
     T1CON = 0b00001110;
 }
 
-void inputInitialize (void) {
-    TRISA = 0x00;
-    //PORTA = 0xff;
+
+void pinInitialize (void) {
+    TRISAbits.TRISA5 = 1;
+    TRISBbits.TRISB0 = 1;
+    //DHT_DIRECTION = 0;
     ADCON1 = 0b00001111;
 }
 

@@ -10,6 +10,7 @@
       <itemPath>devices.h</itemPath>
       <itemPath>clock.h</itemPath>
       <itemPath>BBSPI_LCD.h</itemPath>
+      <itemPath>button.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -25,6 +26,7 @@
       <itemPath>devices.c</itemPath>
       <itemPath>clock.c</itemPath>
       <itemPath>BBSPI_LCD.c</itemPath>
+      <itemPath>button.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

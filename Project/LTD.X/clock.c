@@ -1,11 +1,6 @@
 #include "clock.h"
 
 void start_timer (void) {
-    T0CONbits.TMR0ON = 1;
-    //write to timer0 register
-    TMR0H = 0xfd;
-    TMR0L = 0x0f;
-    
     T1CONbits.TMR1ON = 1;
     //write to timer1 register
     TMR1H = 0xff;
@@ -85,10 +80,6 @@ void remove_timer (uint32_t id) {
 void stop_timer (void) {
     T0CONbits.TMR0ON = 0;
     T1CONbits.TMR1ON = 0;
-    //remove all the task 
-    for (int i = 0; i < MAX_TASK; i++) {
-        remove_timer(i + 1);
-    }
 }
 
 void timer_ISR (void) {

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c interrupt.c system.c dht.c devices.c clock.c BBSPI_LCD.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c interrupt.c system.c dht.c devices.c clock.c BBSPI_LCD.c button.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/interrupt.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/dht.p1 ${OBJECTDIR}/devices.p1 ${OBJECTDIR}/clock.p1 ${OBJECTDIR}/BBSPI_LCD.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/interrupt.p1.d ${OBJECTDIR}/system.p1.d ${OBJECTDIR}/dht.p1.d ${OBJECTDIR}/devices.p1.d ${OBJECTDIR}/clock.p1.d ${OBJECTDIR}/BBSPI_LCD.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/interrupt.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/dht.p1 ${OBJECTDIR}/devices.p1 ${OBJECTDIR}/clock.p1 ${OBJECTDIR}/BBSPI_LCD.p1 ${OBJECTDIR}/button.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/interrupt.p1.d ${OBJECTDIR}/system.p1.d ${OBJECTDIR}/dht.p1.d ${OBJECTDIR}/devices.p1.d ${OBJECTDIR}/clock.p1.d ${OBJECTDIR}/BBSPI_LCD.p1.d ${OBJECTDIR}/button.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/interrupt.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/dht.p1 ${OBJECTDIR}/devices.p1 ${OBJECTDIR}/clock.p1 ${OBJECTDIR}/BBSPI_LCD.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/interrupt.p1 ${OBJECTDIR}/system.p1 ${OBJECTDIR}/dht.p1 ${OBJECTDIR}/devices.p1 ${OBJECTDIR}/clock.p1 ${OBJECTDIR}/BBSPI_LCD.p1 ${OBJECTDIR}/button.p1
 
 # Source Files
-SOURCEFILES=main.c interrupt.c system.c dht.c devices.c clock.c BBSPI_LCD.c
+SOURCEFILES=main.c interrupt.c system.c dht.c devices.c clock.c BBSPI_LCD.c button.c
 
 
 
@@ -150,6 +150,14 @@ ${OBJECTDIR}/BBSPI_LCD.p1: BBSPI_LCD.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/BBSPI_LCD.d ${OBJECTDIR}/BBSPI_LCD.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/BBSPI_LCD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/button.p1: button.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/button.p1.d 
+	@${RM} ${OBJECTDIR}/button.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/button.p1 button.c 
+	@-${MV} ${OBJECTDIR}/button.d ${OBJECTDIR}/button.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/button.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -206,6 +214,14 @@ ${OBJECTDIR}/BBSPI_LCD.p1: BBSPI_LCD.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/BBSPI_LCD.p1 BBSPI_LCD.c 
 	@-${MV} ${OBJECTDIR}/BBSPI_LCD.d ${OBJECTDIR}/BBSPI_LCD.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/BBSPI_LCD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/button.p1: button.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/button.p1.d 
+	@${RM} ${OBJECTDIR}/button.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/button.p1 button.c 
+	@-${MV} ${OBJECTDIR}/button.d ${OBJECTDIR}/button.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/button.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

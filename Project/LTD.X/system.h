@@ -27,7 +27,6 @@ extern "C" {
 #pragma config 	XINST = OFF
 #endif
 
-#define LED1 LATD0
 #define LED2 LATD1
 #define LED3 LATD2
 #define LED4 LATD3
@@ -35,10 +34,14 @@ extern "C" {
 #define LED6 LATD5
 #define LED7 LATD6
 #define LED8 LATD7
+    
+#define DHT_DIRECTION TRISDbits.TRISD0
+#define DHT_IN PORTDbits.RD0
+#define DHT_OUT LATDbits.LATD0
 
 void oscillationInitialize (void);
 void timerInitialize (void);
-void inputInitialize (void);
+void pinInitialize (void);
 void ledInitialize (void); 
 
 

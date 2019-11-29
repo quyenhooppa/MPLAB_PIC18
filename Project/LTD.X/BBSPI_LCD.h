@@ -37,7 +37,8 @@ extern "C" {
 #define LCD_CURSOR_LINE2    0xC0
 #define LCD_CURSOR_HOUR 0x88
 #define LCD_CURSOR_MINUTE 0x90
-#define LCD_CURSOR_SECOND 0x92
+#define LCD_CURSOR_TEMP 0x8D
+#define LCD_CURSOR_HUMID 0xCD
 
 // Macros recommended for new labs
 #define mOPEN_LCD           LCDInit()
@@ -54,8 +55,8 @@ extern "C" {
 #define mCURSOR_LINE1       LCDPutInst(LCD_CURSOR_LINE1)
 #define mCURSOR_LINE2       LCDPutInst(LCD_CURSOR_LINE2)
 #define mCURSOR_HOUR       LCDPutInst(LCD_CURSOR_HOUR)
-#define mCURSOR_MINUTE       LCDPutInst(LCD_CURSOR_MINUTE)
-#define mCURSOR_SECOND       LCDPutInst(LCD_CURSOR_SECOND)
+#define mCURSOR_TEMP       LCDPutInst(LCD_CURSOR_TEMP)
+#define mCURSOR_HUMID       LCDPutInst(LCD_CURSOR_HUMID)
     
 // Macro definitions specific to XC8 (not recommended for new code)
 #define text_display        LCDPutStr                       // legacy support
@@ -178,6 +179,7 @@ extern "C" {
 #define LCD_DIN_TRIS    TRISCbits.TRISC4        //Serial Data Input pin
 #define LCD_SCLK        LATCbits.LATC3          //Serial Clock pin
 #define LCD_SCLK_TRIS   TRISCbits.TRISC3        //Serial Clock pin
+
 
 
 #ifdef	__cplusplus

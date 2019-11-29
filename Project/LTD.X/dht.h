@@ -14,27 +14,25 @@ extern "C" {
 
 #include <xc.h>
 #include <pic18f8722.h>
-#include "BBSPI_LCD.h"
-#include "system.h"
+#include "clock.h"
+#define _XTAL_FREQ 10000000 
     
-#define MAX_TEMP 40
-#define MAX_HUMID 60
-#define TIME_OUT 80
+#define TIME_OUT 1000
     
-#define DHT_DIRECTION TRISAbits.TRISA5
-#define DHT_IN PORTAbits.RA5
-#define DHT_OUT LATAbits.LATA5
 #define ERROR -10    
     
+int MAX_TEMP = 40;
+int MAX_HUMID = 60;
+
 int realTemp;
 int realHumid;
 char dhtData[5];
-int error = 0;
 
 
 char getByteData(void);
 int readDHT (void);
 void readTempAndHumid(void);
+void printTempHumid (void);
 
 
 #ifdef	__cplusplus
