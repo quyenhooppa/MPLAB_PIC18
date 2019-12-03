@@ -8,10 +8,6 @@ void oscillationInitialize (void) {
 void timerInitialize (void) {
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-    //Timer 0
-    INTCONbits.TMR0IE = 1;//set timer0
-    INTCONbits.TMR0IF = 0;
-    T0CON = 0b0000100; 
     
     //Timer 1
     PIE1bits.TMR1IE = 1;

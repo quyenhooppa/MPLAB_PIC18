@@ -69,20 +69,6 @@ int readDHT (void) {
     dhtData[3] = getByteData();
     dhtData[4] = getByteData();
     char temp = (dhtData[0] + dhtData[1] + dhtData[2] + dhtData[3]) & 0xFF; 
-//    mLCD_CLEAR;
-//    LCDPutChar(dhtData[0]/10 +'0');
-//    LCDPutChar(dhtData[0]%10 +'0');
-//    LCDPutChar(dhtData[1]/10 +'0');
-//    LCDPutChar(dhtData[1]%10 +'0');
-//    LCDPutChar(dhtData[2]/10 +'0');
-//    LCDPutChar(dhtData[2]%10 +'0');
-//    LCDPutChar(dhtData[3]/10 +'0');
-//    LCDPutChar(dhtData[3]%10 +'0');
-//    LCDPutChar(dhtData[4]/10 + '0');
-//    LCDPutChar(dhtData[4]%10 + '0');
-//    LCDPutChar(temp/10 + '0');
-//    LCDPutChar(temp%10 + '0');
-
     if (temp != dhtData[4]) {
         return 0;
     }

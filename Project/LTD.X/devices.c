@@ -3,7 +3,7 @@
 void runFan(uint32_t fan) {
     switch(fan) {
         case 1: 
-            LED2 = (LED2 + 1) % 2;
+            LED5 = (LED5 + 1) % 2;
             break;
         case 2: 
             LED3 = (LED3 + 1) % 2;
@@ -234,6 +234,7 @@ void stateDevices (void) {
         } 
         switch(fan3St) {
             case off:
+                //LED5 = 0;
                 if (change == 1) {
                     fan3St = on;
                     speed = speedFan3(realHumid);
@@ -245,7 +246,7 @@ void stateDevices (void) {
                     fan3St = off;
                     uint32_t remove = findTask(1);
                     remove_timer(remove);
-                    LED2 = 0;
+                    LED5 = 0;
                 } else if (realHumid > MAX_HUMID) {
                     newSpeed = speedFan3(realHumid);
                     if (newSpeed != speed) {

@@ -10,8 +10,6 @@
 #include <pic18f8722.h>
 #include "devices.h"
 #include "interrupt.h"
-//#include "dht.h"
-//#include "clock.h"
 
 void main(void) {
     oscillationInitialize();
@@ -25,16 +23,12 @@ void main(void) {
     valHumid = normal;
     heatSt = heater;
     fan3St = off;
-    void(*pF)(uint32_t);
-    pF = runFan;
-    //register_timer(0, 10, pF, 5);
+
     state = chooseTemp;
     int changeMod = 0;
     start_timer();
     
     while (1) {
-//        readTempAndHumid();
-//        __delay_ms(1000);
         dispatch();
         if (RA5Pressed == 0) {
             changeMod = 0;
